@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, latexsym, amsfonts,amssymb, amsthm,
+    amscd, geometry, xspace, enumerate,mathtools}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength{\oddsidemargin}{-10mm}
+\setlength{\evensidemargin}{5mm}
+\setlength{\textwidth}{175mm}
+\setlength{\headsep}{0mm}
+\setlength{\topmargin}{0mm}
+\setlength{\textheight}{220mm}
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\stSheaf}{\mathcal{O}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsubsection]{Theorem}
+\newtheorem{lem}[subsubsection]{Lemma}
+\newtheorem{prop}[subsubsection]{Proposition}
+\newtheorem{cor}[subsubsection]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[subsubsection]{Definition}
+\newtheorem{rmq}[subsubsection]{Remark}
+\newtheorem{conj}[subsubsection]{Conjecture}
+\newtheorem{exmp}[subsubsection]{Examples}
+\newtheorem{quest}[subsubsection]{Exercises}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newtheorem{note}{Note}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+
+\begin{document}
+Là le but c'est donner mon avancement sur ce que j'ai bossé. Et d'avoir
+un avant après pour me rendre compte.
+\section{Curves}
+\subsection{07/07/2024, 22:31}
+Ducoup aujourd'hui j'ai regardé les \textbf{courbes hyperelliptiques en
+genre 2} et pourquoi on peut regarder les diviseurs non nuls de degré
+$0$ comme:
+\begin{itemize}
+    \item $\sum_{i=1}^r (P_i) - r.(\infty)$.
+    \item $r\leq g$.
+\end{itemize}
+L'idée c'était de partir de l'involution $y\mapsto -y$ pour étudier:
+\begin{itemize}
+    \item $(X-a)$ et voir que $div(X-a) = P_a+\iota P_a - 2(\infty)$.
+    \item Ducoup fallait regarder $l((P_a)+(\iota P_a))$.
+\end{itemize}
+Au début c'était vraiment flou rien que la tête de la partie de degré $0$
+d'un diviseur quelconque. Pareil la localisation dans l'anneau de 
+fonction. Je suis tjr un peu dubitatif de ce que je fais. Bon là ce que
+j'ai éclairci:
+\begin{itemize}
+    \item Pour calculer l'ordre exact en $P_a$ algébriquement fallait
+        regarder dans les localisés: 
+        \[(\F_q[X,Y]/(y^2-G(X)))_{\mathfrak m_{P_a}}\]
+où $\mathfrak_{P_a} = (X-a, Y-y_a)$. J'arrivais pas à voir pourquoi 
+$Y-y_a\in (X-a)$, me suis rendu compte que le point clé c'était de 
+distinguer $y_a\ne 0$ et $=0$ (c'était clair en fait). Dans le premier
+cas, l'idée c'est que $Y+y_a$ est inversible! On pouvait ensuite écrire
+$Y^2-y_a = G(X)-G(a)$ et voir que $X-a\mid G(X)-G(a)$!! Cool non?
+    \item Géometriquement on peut regarder la fibre de 
+        $[X-a,1] : C\to \mathbb P^1$. Et là c'est clair les points
+        ramifiés ou non. On peut calculer le degré en regardant la fibre
+        en $[0,1]$.
+\end{itemize}
+Ce qui est marrant c'est que là c'était beaucoup plus clair 
+géometriquement. On a juste à travailler dans $\F_q[X]$. Alors que
+si on travaille sur la courbe elle même faut utiliser pleins de tricks.
+En fait le théorème:
+\[\sum_{\phi(P)= Q} e(P) = deg(\phi)\]
+permet de se ramener à une étude sur le pullback de l'anneau de fonctions
+! 
+
+\textbf{Pour la suite}:
+\begin{itemize}
+    \item Il s'avère que $\F_q[X]$ est de Dedekind car principal. Donc
+        on a toute la théorie habituelle des extensions d'anneaux de 
+        Dedekind! Explorer ça. 
+    \item La différence c'est que le groupe de classe a pas l'air fini.
+        Vu qu'on a pas d'analyse et de Minkowski.
+        On a aussi \textbf{pas de place archimédienne}! C'est quoi l'impact?
+    \item Y'a certaines correspondance entre groupe de classe et groupe
+        de diviseurs, faut voir p.q!
+    \item Regarder un peu plus la ramification comme dans la remarque du
+        dessus.
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,728 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{res}{Résumé}
+\newtheorem{rep}{Réponse}
+\newtheorem{cons}{Conséquence}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\chapter{Remarques générales}
+Dans tous les autres chapitres. Dans le cas algébriquement clos, 
+comme une variété algébrique abstraite est seulement isomorphe à une
+variété algébrique abstraite. Ça fait sens de parler de schémas !
+Enfin 
+\[(\A^n(k),\Or_{\A^n(k)})\simeq (Spm(k[T_1,\ldots, T_n]),\Or_{Spm(...)})
+\]
+avec la topologie de Zariski. En particulier, 
+\[(\A^0(k), \Or_{\A^0(k)})\simeq (Spm(k), \Or_{Spm(k)})\]
+
+\section{Variétés vers schémas}
+\subsection{Fonctions vs sections}
+La construction de la correspondance schémas
+affines et anneaux, avec des fonctions sur un corps algébriquement clos
+c'est clair, avec des sections c'est moins clair.
+
+Essentiellement, ça fait plus sens de dire, je prends la flèche
+topologique $|f|$ et le morphisme de faisceaux s'écrit :
+\[s\mapsto s\circ |f|\]
+On peut juste dire, $f^\sharp(X)^{-1}(\p)=|f|(\p)$ modulo ce que ça veut
+dire. En conséquence de la flèche locale 
+\[\Or_{Y,|f|(x)}\to \Or_{X,x}\]
+
+\subsection{Ambiguité du support}
+Y'a un soucis avec le support de $f\in \Or_X(X)$ c'est pas analogue
+vraiment à $f^{-1}(D(0))$. Quand on est nul dans une fibre en un premier
+$\p_x$ ça a l'air plus fort parce que on est nul sur un ouvert autour
+de $x$. Ç'est quoi ducoup $f^{-1}(0)$? Déjà 
+\begin{enumerate}
+    \item On a un truc qui semble similaire 
+	\[\Or_X(U)=\Hom(U,\A^1_\Z)\]
+	mais qui l'est pas du tout, $(0)$ est générique mais ni ouvert
+	ni fermé!
+    \item Sur un $k$-schéma $X$ par contre, 
+	\[\Or_X(U)=\Hom_k(U,\A^1_k)\]
+	d'où si $k=\bar k$, $f^{-1}((0))$ est fermé.
+\end{enumerate}
+
+
+
+\chapter{Cinquième point : Séparation}
+\begin{defn}
+    Une variété algébrique $X$ est séparée si 
+    \[\Delta_X\colon X\to X\times_k X\]
+    est une immersion fermée.
+\end{defn}
+\section{Petit lemme}
+Quand la target est séparée, on a le critère usuel :
+\[f,g\colon Z\to X\textrm{ tels que }f|_U=g|_U\textrm{ pour un ouvert
+dense $U\subset Z$ alors $f=g$}\]
+Essentiellement, on a deux égalités à prouver $|f|=|g|$ qui est clair
+parce que $X$ est séparée. Et $f^\sharp=g^\sharp$.
+
+
+\chapter{Quatrième point : produits fibrés, cas des variétés abstraites}
+\section{Espace topologique sous jacent}
+On cherche un pullback de
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJYIl0sWzEsMCwiWSJdLFsxLDEsIlNwbShrKSJdLFswLDJdLFsxLDJdXQ==
+\[\begin{tikzcd}
+	& Y \\
+	X & {Spm(k)}
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+en tant qu'espace topologiques on peut remarquer qu'un tel produit
+\[X\times_k Y\]
+vérifie $|X\times Y|=|X|\times |Y|$ par le foncteur de points. On a 
+par propriété universelle
+\[\Hom(W, X\times_k Y)\to \Hom(W,X)\times_k\Hom(W,Y)\]
+est une bijection, en particulier si $W=Spm(k)$ on sait que 
+$|X|\approx \Hom(Spm(k),X)$.
+
+\begin{cons}
+    L'espace topologique sous jaçent est bien le produit des espaces
+    topologiques. À voir en fonction de la base, ici $S=Spm(k)$.
+\end{cons}
+\section{Cas affine}
+Dans le cas affine si $X=Z(I)\subset \A^n(k)$ et $Y=Z(J)\subset \A^m(k)$
+on peut par le point de vue foncteur de point regarder 
+\[Z(I,J)\subset \A^{n+m}\]
+Étant donné un couple \[(f,g)\in \Hom(k[T_1,\ldots, T_n]/I, \Or_W(W))
+\times\Hom(k[T_{n+1},\ldots,T_{n+m}]/J, \Or_W(W))\]
+on définit \[(f,g)\in \Hom(k[T_1,\ldots, T_n, T_{n+1},\ldots,T_{n+m}]
+/(I,J), \Or_W(W))\]
+par le morphisme évident $T_i\mapsto f(T_i)$ si $i\leq n$ et $g(T_i)$
+sinon. Essentiellement par la flèche induite sur le produit tensoriel 
+(adjonction).
+
+\section{Cas général : points techniques}
+Étend donné l'existence de $X\times_k Y$ c'est intéressant de 
+montrer que si $W\subset X$ alors 
+$W\times_k Y\hookrightarrow X\times_kY$. Et surtout on a les identités
+\[p_X^{-1}(U)\cap p_Y^{-1}(V)=U\times_k V\]
+et 
+\[X_1\times Y\cap X_2\times Y=p_X^{-1}(X_1)\cap p_X^{-1}(X_2)=
+(X_1\cap X_2)\times_k Y\]
+On peut le dire parce que 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJwX1heey0xfShYX2kpIl0sWzAsMSwiWF9pIl0sWzAsMiwiWCJdLFsyLDAsIlkiXSxbMSwxLCJYX2lcXHRpbWVzX2sgWSJdLFsyLDIsIlhcXHRpbWVzX2tZIl0sWzAsMV0sWzEsMiwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwzXSxbMCw0LCJoXzEiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCwxXSxbNCwzXSxbNSwyXSxbNSwzXSxbNCw1LCJoIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	{p_X^{-1}(X_i)} && Y \\
+	{X_i} & {X_i\times_k Y} \\
+	X && {X\times_kY}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow["{h_1}"{description}, dashed, from=1-1, to=2-2]
+	\arrow[hook, from=2-1, to=3-1]
+	\arrow[from=2-2, to=1-3]
+	\arrow[from=2-2, to=2-1]
+	\arrow["h"{description}, dashed, from=2-2, to=3-3]
+	\arrow[from=3-3, to=1-3]
+	\arrow[from=3-3, to=3-1]
+\end{tikzcd}\]
+$h\circ h_1$ et l'inclusion sont deux flèches
+$p_X^{-1}(X_i)\to X\times_kY$ qui font commuter le diagramme donc sont
+égales. Pareil $h_1\circ h\circ h_1$  et $h_1$ c'est deux flèches 
+\[p_X^{-1}(X_i) \to X_i\times_kY\].
+donc sont égales par unicité, mais c'est pas clair que $h_1$ est un mono.
+
+\begin{rem}
+    J'ai pas montré l'existence de tout les autres produits fibrés là.
+    Juste qu'ils coincident avec ce que j'ai dit.
+\end{rem}
+Pour montrer leur existence faut juste utiliser la commutativité des
+flèches. Si on a 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJXIl0sWzAsMSwiVSJdLFswLDIsIlgiXSxbMiwwLCJZIl0sWzEsMCwiViJdLFsyLDIsIlhcXHRpbWVzX2sgWSJdLFsxLDIsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsNCwiZiIsMV0sWzAsMSwiZyIsMV0sWzQsMywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSwzXSxbNSwyXSxbMCw1LCJoIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	W & V & Y \\
+	U \\
+	X && {X\times_k Y}
+	\arrow["f"{description}, from=1-1, to=1-2]
+	\arrow["g"{description}, from=1-1, to=2-1]
+	\arrow["h"{description}, dashed, from=1-1, to=3-3]
+	\arrow[hook, from=1-2, to=1-3]
+	\arrow[hook, from=2-1, to=3-1]
+	\arrow[from=3-3, to=1-3]
+	\arrow[from=3-3, to=3-1]
+\end{tikzcd}\]
+suffit de voir que $h(W)\subseteq p_X^{-1}(U)\cap p_X^{-1}(V)$ via
+$p_X\circ h=g$ et $p_Y\circ h=f$.
+
+C'est aussi intéressant de voir que si $U\hookrightarrow X$ est une
+immersion ouverte alors
+\[U\times_k Y\to X\times_k Y\]
+aussi (directement via les points d'avant).
+\section{Construction générale}
+Étant donné le fait que $X_i\times Y\cap X_j\cap Y=(X_i\cap X_j)\times Y$
+on peut recoller ! Et c'est ça la construction mdr. 
+
+\begin{prop}
+    La dimension de $X\times_k Y$ c'est $\dim(X)+\dim(Y)$.
+\end{prop}
+\begin{proof}
+    On se ramène facilement au cas affine puis par Noether c'est clair.
+\end{proof}
+
+
+\chapter{Troisième point : dimension}
+
+\section{Les définitions}
+\subsection{Définition topologique}
+Concrètement pour $X=\cup_{i=1}^n X_i$ une variété algébrique décomposée
+en composantes irréductibles :
+\[\dim(X)=\max(\dim(X_i))=\sup_{U\subset X~ouvert} \dim(U)\]
+et pour une variété irréductible c'est le sup des longueurs de chaines
+\[Y_0\subsetneq Y_1\subsetneq \ldots \subsetneq Y_d=X\]
+
+\subsection{Définition par les corps de fonctions}
+Ducoup dans le cas intègre, les restrictions du faisceau sont 
+injectives et le faisceau est approximable par les ouverts principaux
+affines ! En particulier 
+\[k(X)\simeq k(U)\]
+et \[k(X)\simeq Frac(\Or_X(U_0))\]
+pour un affine ouvert $U_0\subset X$ quelconque. On peut montrer que
+\[dim(X)= degtr_k k(X)\]
+et c'est bien défini :
+\begin{enumerate}
+    \item Si on prends deux familles algébriquement 
+indépendantes et $K$ algébriques sur les deux, on peut montrer qu'elles
+ont la même cardinalité. 
+    \item On peut se réduire au cas affine.
+    \item On conclut par l'injection de Noether dans $A(X)$ qui fixe la
+	dimension en passant au corps de fractions!
+\end{enumerate}
+
+\section{Hypersurfaces}
+\subsection{Cas affine}
+Essentiellement, y'a cette suite d'arguments :
+\begin{enumerate}
+    \item La dimension est invariante par extension d'anneaux entiers.
+	(Y'a pas mal d'algèbre là dedans, j'en parlerai ailleurs)
+    \item Par Noether si $F\in k[T_1,\ldots, T_n]-k$ alors 
+	\[\dim k[T_1,\ldots, T_n]/(F)=\dim k[T_1,\ldots, T_{n-1}]\]
+    \item Ensuite $\dim k[T_1,\ldots,T_n]=n$ par récurrence et 
+	l'argument d'avant (faut faire un tout petit peu attention).
+    \item Automatiquement, si $F\in k[T_1,\ldots, T_n]$ alors
+	$\dim(Z(F))=n-1$.
+\end{enumerate}
+\subsection{Cas intègre}
+Ça c'était le cas affine, maintenant le cas intègre : Étant donné
+$f\in \Or_X(X)$ on a
+\[\dim(Z(f))=\dim(X)-1\]
+La preuve consiste à dire 
+\begin{enumerate}
+    \item $\dim(U)=\dim(X)$ en utilisant $k(U)\simeq k(X)$ d'où
+	on se ramène au cas affine.
+    \item On à une injection entière finie 
+	\[k[T_1,\ldots, T_n]/fA\cap k[T_1,\ldots, T_n]\hookrightarrow
+	A(X)/fA(X)\]
+	où $fA\cap k[T_1,\ldots, T_n]$ c'est juste en identifiant avec
+	l'image.
+    \item Puis on a 
+	\[fA\cap k[T_1,\ldots, T_n]\subset \sqrt{N_{k(X)/k(\A^n)}(f)}
+	\subset \sqrt{fA\cap k[T_1,\ldots, T_n]}\]
+    et on conclut par Noether.
+\end{enumerate}
+\begin{rem}
+    Les anneaux de polynômes sont factoriels donc intégralement clos.
+    D'où la norme fonctionne bien là.
+\end{rem}
+\begin{rem}
+    Je sais vraiment pas si on est obligés d'utiliser $k(U)\simeq k(X)$
+    mdr. À méditer. Si $F_1\cap U \subsetneq F_2\cap U$ et $U$ dense
+    dans $X$, alors $\bar F_1 = \bar F_2$ implique $F_1$ dense dans 
+    $F_2$ d'où y sont égaux dans $U$ car fermés ? 
+\end{rem}
+\subsection{Nombre d'équations d'un fermé}
+Tout irréductible affine $Z$ de dimension $s$ dans $\A^n$ est une 
+composante d'un
+\[Z\subseteq Z(f_1,\ldots, f_{n-s})\]
+dont toutes les composantes ont dimension $s$. 
+
+À l'inverse
+\[Z(f_1,\ldots, f_{s})\subset \A^n(k)\]
+est de dimension $\geq n-s$.
+\subsection{Dimension des fibres}
+On en déduit que si $f\colon X\to Y$ est dominant alors
+\[\dim(f^{-1}(y))\geq \dim(X)-\dim(Y)\]
+parce que $f^{-1}(y)\subseteq Z(f_*\m_y)$ et $\m_y$ est défini
+par $\dim(Y)$ équations !
+\chapter{Deuxième point sur les cours : Variétés abstraites à la Weil}
+\section{Premières définitions}
+Ducoup essentiellement maintenant on travaille avec des 
+\[(X,\Or_X)\]
+ou $X$ est un ensemble algébrique affine et $\Or_X$ le faisceau de
+fonctions régulières. Plus généralement
+\[X=\cup X_i\]
+une union finie d'affines et $\Or_X$ est le faisceau qui étend les 
+$\Or_{X_i}$.
+\begin{res}
+ Pour tout définir on procède comme suit :
+    \begin{enumerate}
+	\item Équivalence de catégories entres variétés algébriques affines
+	    et variétés algébriques abstraites affines.
+	\item Les $D(f)$ sont des variétés abstraites.
+	\item Définition d'une variété abstraite par réunion d'ouverts 
+	    affines.
+	\item Les ouverts d'affines sont des variétés abstraites.
+	\item Les ouverts sont des variétés abstraites.
+	\item la bijection :
+    \end{enumerate}
+\end{res}
+\begin{res}
+Le détail des preuves discute :
+    \begin{enumerate}
+	\item Comment décrire des morphismes de variétés abstraites.
+	\item Bien décrire algébriquement les $D(r)$.
+	\item La bijection
+	    \[\Hom(X,Y)\to \Hom(\Or_Y(Y),\Or_X(X))\]
+	    où $Y$ est affine.
+    \end{enumerate}
+\end{res}
+
+À nouveau, on a 
+\[Z(I)\cap D(F(\bar T))=X\cap D(F)\simeq Z(I,FS-1)\subset \A^{n+1}\]
+en tant que variétés algébriques abstraites. La preuve du cours 
+consiste à dire 
+\[ i\colon(X\cap D(F),\Or_X|_{D(F)})\to Z(I,FS-1)\]
+a pour inverse la projection $p\colon \A^{n+1}\to \A^n$ et il montre
+que c'est un homéomorphisme à la main en disant que c'est ouvert par :
+\begin{enumerate}
+    \item Si on regarde $D(h)\cap Z(I,FS-1)$, alors 
+	$h(\bar T, S)\mod FS-1$ s'écrit $h(\bar T, 1/F)$.
+    \item On en déduit $F^N h(\bar T, S) \mod FS-1$ a un représentant
+	$R$ dépendant pas de $S$. 
+    \item Par déf $p(D(h)\cap Z(I, FS-1)=D(R)\cap X$.
+\end{enumerate}
+L'isomorphisme de faisceaux, on peut vouloir conclure directement en 
+utilisant l'équivalence de catégorie $2$ puis $1$. Mais ça donne juste 
+les morphismes de sections globales et je sais pas pq il veut pas
+utiliser le fait que $p$ et $i$ sont régulières.
+
+\begin{rem}
+    J'ai compris l'intérêt de faire la preuve comme ça.. C'est juste
+    que pour l'iso de faisceaux, si on veut se restreindre aux carrés
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJBKFooSSxGUy0xKSkiXSxbMCwwLCJBKFgpX2YiXSxbMCwxLCJcXE9yX1goRChyKSkiXSxbMSwxLCJcXE9yX3taKC4uLil9KEQoUikpIl0sWzEsMF0sWzEsMl0sWzIsM10sWzAsM11d
+\[\begin{tikzcd}
+	{A(X)_f} & {A(Z(I,FS-1))} \\
+	{\Or_X(D(r))} & {\Or_{Z(...)}(D(R))}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+    faut bien montrer que l'image d'un principal c'est un principal.
+    Le reste de la preuve paraît tellement compliqué pour rien mdr, 
+    mais ça a l'air nécessaire : essentiellement, on peut tjr écrire
+    $\Or_X(D(r))=A(X)[W]/(rW-1)$ et $D(r)\subset D(f)$ implique
+    $f$ inversible dans $\Or_X(D(r))$ puis $A_f\simeq A$ si $f$
+    est inversible dans $A$. Je mettrai pas tjr tout les détails.
+\end{rem}
+On peut définir les variétés abstraites par union finie:
+\[(X,\Or_X)=\cup (X_i,\Or_X|_{X_i})\]
+On en déduit que les ouverts sont bien des variétés. Enfin on a 
+\[\Hom(X,Y)\to \Hom(\Or_Y(Y),\Or_X(X))\]
+pour $Y$ affine et $X$ quelconque par recollement des flèches affines.
+La continuité c'est le point flou mais qui est en fait le plus facile,
+le recollement des faisceaux est clair.
+
+\section{Recollement de variétés}
+Étant donné des $(X_i)_i$ est des ouverts $U_{ij}\subset X_i$ tels que
+\[\phi_{ij}\colon U_{ij}\simeq U_{ji}\]
+et que les $\phi_{ij}$ engendrent une relation d'équivalence sur 
+\[\sqcup X_i\]
+alors le quotient est une variété définit par les ouverts $X_i$.
+\begin{quest}
+    Pourquoi les $X_i$ sont ouverts?
+\end{quest}
+
+\begin{rep}
+    C'est \textbf{PAS} juste que la projection est ouverte pour la
+    topologie quotient, puisque c'est pas tjr vrai. C'est plutôt que
+    la classe d'équivalence de $X_i$ c'est $X_i \sqcup_j U_ji$ qui est
+    ouvert.
+\end{rep}
+\begin{rem}
+    La topologie finale pour la projection, par déf
+    la topologie la plus fine sur le quotient qui rend la projection
+    continue, en particulier la projection devient ouverte quand
+    \[p^{-1}p(U)\]
+    est ouvert autrement dit la classe d'équivalence d'un ouvert
+    est ouvert. C'est le cas ici, ce serait le cas avec des 
+    groupes/anneaux topologiques j'imagine et pour toute topologie
+    "équilibrée".
+\end{rem}
+\section{Sous-variétés}
+Concrètement, les sous variétés c'est immersions ouvertes ou fermées,
+le cas des ouverts est clair. Pour les fermés, la version faiscautique :
+\[\textrm{On prends un fermé $Z$ de $X$ et le pullback }i^*\Or_X\]
+La traduction c'est que les fonctions sur $Z$ c'est localement des
+restrictions de fonctions sur $X$.
+\begin{rem}
+    Sur les affines c'est même pas localement ça se recolle bien.
+    On peut regarder les fibres, si $Z$ et $X$ sont affines on a 
+    \[i^{-1}\Or_X(Z)_x=\Or_{X,i(x)}=A(X)_{\m_x}\]
+    et en tensorisant par $\Or_Z(Z)=A(Z)$ on obtient que $i^*\Or_X$
+    a les mêmes fibres que $\Or_Z$ avec un isomorphisme naturel.
+\end{rem}
+\begin{quest}
+    Cas ou $X$ est un recollement de deux affines ?
+\end{quest}
+\section{Variétés quasi-projectives abstraites}
+On définit sur $Z\subset \P^n(k)$ le faisceau donné par le faisceau
+de fonctions régulières muni des recollements donnés par les cartes 
+affines. En gros, avec le Proj : à faire,
+\begin{enumerate}
+    \item En gros le faisceau du Proj est bien un faisceau.
+    \item Ducoup revoir un peu le Proj.
+    \item C'est bien le faisceau de fonctions régulières.
+    \item Les $Z^+(I)$ avec le faisceau $\Or_X$ de fonctions réguières
+	est une variété.
+\end{enumerate}
+Ducoup il se passe un truc marrant
+\[\textrm{Les ouverts du type $D^+(P)$ sont affines !}\]
+L'idée c'est simplement d'utiliser le Veronese puis de montrer que 
+$D^+(H)\simeq D^+(T_i)$ est affine. Pour ça suffit de montrer que
+les morphismes de pullbacks 
+\[(\phi_i)_*(U)\colon \Or_{\A^n_k}(U)\to \Or_{D^+(T_i)}(\phi_i^{-1}(U))\]
+sont bien définis, c'est clair via la définition locale.  
+\subsection{Le faisceau de fonctions régulières sur une variété
+projective}
+J'ai eu une idée ducoup, si on prends une variété projective $X=Z^+(I)$
+et $P=p\mod I$ alors si $U=D^+(p)$ :
+\[\Or_X(U)=(k[T_0,\ldots, T_n]/I)_{(p)}\]
+Mon idée pour justifier la preuve c'est : si $g\in \Or_X(U)$ et 
+\[g|_{U_i}=P_i/Q_i\]
+ alors où est-ce qu'on peut regarder $gP_i=Q_i$? Je me disais on peut 
+ regarder dans 
+ \[S(X)=A(X')\]
+ avec $X'$ le cone de $X$ dans $\A^{n+1}$. Mon guess c'est :
+\[\Or_X(U)=A(X')_{(p)}\]
+et dans ce cas, l'identité $gQ_i^2=P_iQ_i$ fait sens dans $A(X')$
+parce que $D(p)$ est dense $Z(gQ_i^2-P_iQ_i)$.
+
+
+\chapter{Point sur le chapitre I : Variétés algébriques classiques}
+\section{Résumé}
+\section{Framework}
+Quand y s'agit de trouver des fermés projectifs ou des relations :
+\begin{enumerate}
+    \item Ajouter des relations adaptées à la situation jusqu'à obtenir
+	le vide.
+    \item Utiliser le nullstellensatz projectif.
+    \item Faire de l'algèbre linéaire.
+\end{enumerate}
+pour le premier point une utilisation cool c'est de prouver que des
+morphismes sont finis. Typiquement les projections linéaires.
+
+Quand y s'agit de montrer des isomorphismes. La partie 
+homéomorphisme est souvent claire :
+\begin{enumerate}
+    \item Tel point est dans tel ouvert ssi il vérifie telle ou telle
+	relations.
+\end{enumerate}
+La partie isomorphisme est moins claire, faut montrer que la flèche
+inverse est régulière et là c'est assez ad hoc.
+
+
+\section{$k$-algèbres et Noether}
+J'ai essayé de prouver la normalisation de Noether qui dit que
+\begin{thm}[Normalisation de Noether]
+    Une $k$-algèbre de type fini $A$ est entière sur un $k[T_1,\ldots,
+    T_d]$.
+\end{thm}
+Et en fait y'a un
+truc intéressant. Ma stratégie c'était:
+\begin{enumerate}
+    \item On suppose $k[T_1,\ldots,T_n]/I$
+avec $n$ minimal alors $I$ petit.
+    \item On peut supp $I$ premier, on se ramene au cas réduit 
+	trivialement et au cas intègre avec le lemme chinois.
+\end{enumerate}
+Maintenant on peut regarder dans le corps de fractions une famille
+alg indép maximale, enfin c'est ce que j'aurai aimé. Mais c'est pas 
+clair que elle est de taille $n-1$! C'est là tout le pb. La raison 
+c'est que :
+\begin{center}
+    Les variétés, par exemple les courbes ont pas nécessairement de
+    modèles dans $\P^2$ non singuliers. D'où on peut rien dire sur 
+    le nombre de générateurs de $I$ facilement (si $n$ minimal implique
+    $I$ minimal et $dim(C)=1$ alors $I$ est engendré par un élément 
+    et on est dans $\P^2$).
+\end{center}
+
+Bon la vraie preuve mtn :
+\begin{itemize}
+    \item Essentiellement, on veut juste montrer que pour chaque
+	générateur $P$ on a un automorphisme qui le rend unitaire en
+	une des variables. D'où le résultat par récurrence.
+\end{itemize}
+Deux questions maintenant :
+\begin{enumerate}
+    \item Pq à automorphisme près ça suffit ?
+    \item Quel automorphisme ?
+\end{enumerate}
+Pour la première question ducoup y'a un ou deux petit trick mentaux
+qu'il mentionne pas.
+\begin{enumerate}
+    \item Quand on obtient une relation unitaire pour $P$, on fait une 
+	récurrence pour trouver l'injection entière $k[T_1,\ldots,T_d]$.
+	Et surtout être entier c'est transitif.
+    \item L'injection ça peut être $T_1\mapsto L_1(T_1,\ldots, T_d)$
+	avec les $L_i$ de degré $1$ pas nécessairement $T_i$!
+\end{enumerate}
+Pour la deuxième question : on commence par regarder comment rendre
+$T_1\ldots T_n$ unitaire en $T_n$ par exemple. On peut regarder
+l'automorphisme 
+\[T_i\mapsto T_i+T_1;T_n\mapsto T_n\]
+C'est clair que le résultat est unitaire en $T_n$ ! Post-automorphisme
+l'injection de $k[T_1,\ldots,T_n]$ est \textbf{l'inclusion}, 
+pré-automorphisme faut composer avec l'automorphisme inverse. Bon
+maintenant en général ça marche pas forcément ça faut tricker un peu,
+parce qu'on a plusieurs monomes.
+On peut prendre
+\[T_i\mapsto T_i+T_n^{m_i}\]
+et jouer sur le tuple $m=(m_1,\ldots,m_{n-1},1)$, mais c'est juste
+de l'écriture.
+
+Maintenant le nullstellensatz ! 
+\section{Nullstellensatz}
+\begin{cor}[Nullstellensatz faible]
+    Si $A$ est une $k$-algèbre tf et $\m$ est maximal. Alors 
+    $A/\m$ est une extension finie de $k$.
+\end{cor}
+La preuve consiste à simplement se rendre compte que 
+\[k[T_1,\ldots,T_d]\hookrightarrow A\]
+entier implique $k[T_1,\ldots, T_d]$ est un corps d'où $d=0$.
+\begin{thm}[Nullstellensatz fort]
+    Soit $A$ une $k$-algèbre tf, alors pour tout $I$
+    \[\sqrt I =\cap_{I\subset \m}\m\]
+\end{thm}
+Une idée de preuve c'est de remarquer que si $\cap \m$ contient des
+non nilpotents, disons $f$. Alors pour $\m'\subset A_f$ avec 
+$\delta\colon A\to A_f$ non nul :
+\[k\mapsto A/\delta^{-1}\m'\to A_f/\m'\]
+est algébrique d'où la deuxième flèche est entière d'où $\delta^{-1}\m'$
+est maximal contenant pas $f$ ce qui est contradictoire. À noter
+qu'on utilise $A_f\simeq A[T]/(fT-1)$ pour montrer que c'est tf.
+\begin{quest}
+    De manière constructive? Déjà, les localisés $A_\m$ sont pas t.f sur
+    $k$ mdr.
+\end{quest}
+
+En particulier on obtient la correspondance avec le spectre maximal
+muni de sa topologie de Zariski. On en déduit direct :
+\begin{thm}[Nullstellensatz fort 2]
+    Sur un corps algébriquement clos, $I(Z(J))=\sqrt J$ pour tout idéal
+    $J$ de $k[T_1,\ldots, T_n]$.
+\end{thm}
+
+On a maintenant une correspondance entre ensembles algébriques et
+idéaux radicaux quand $k$ est \textbf{algébriquement clos}.
+\section{Topologie et irréductibles}
+Essentiellement, dans un anneau noethérien, on a 
+\[\textrm{Tout idéal radical } I \textrm{ est intersection finie 
+d'idéaux premiers.}\]
+En particulier, on déduit la décomposition finie unique en irréductible
+avec la correspondance de la section d'avant. La preuve se fait
+bien par contradication et maximalité vu qu'on est dans le cas
+Noethérien.
+\begin{rem}
+    Un critère d'irréducibilité c'est que les ouverts s'intersectent
+    tout court.
+\end{rem}
+\begin{rem}
+    La topologie induite sur un \textbf{sous-ensemble} existe toujours.
+\end{rem}
+\section{Espaces projectifs}
+Ducoup les définitions à retenir :
+\begin{enumerate}
+    \item Un idéal homogène c'est un truc de la forme $\oplus A_d\cap I$.
+	C'est à dire que toute les composantes homogènes d'un $f\in I$ 
+	sont dans $I$.
+    \item Les $Z^+(I)$ sont défs par les zéros de polynômes homogènes.
+	De manière équivalentes par la projection de
+	$Z(I)\subset \A^{n+1}$.
+    \item À l'inverse $I^+(Z)=I(\pi^{-1}Z)$. 
+\end{enumerate}
+Maintenant le nullstellensatz devient :
+\begin{center}
+    Les idéaux homogènes différents de $(T_0,\ldots,T_n)$ correspondent
+    aux variétés projectives.
+\end{center}
+un idéal définit le vide si et seulement si il contient
+\[(T_0,\ldots,T_n)^s\] pour un $s$.
+
+On obtient le générateur de relation (ce nullstellensatz)! À détailler un
+peu plus avec la preuve que les projections sont entières !
+
+\section{Fonctions régulières}
+On prends toujours la définition locale sur les variétés 
+quasi-projectives et même algébriques. Y'a toujours un élément de preuve
+intéressant dans 
+\[A(Z)_f\simeq \Or_Z(D(f))\]
+sur les variétés affines pour $f\in A(Z)$. On recouvre $D(f)$ par des
+$D(f_i)=D(f_i^2)$ avec $g\in \Or_Z(D(f))$ et $g|_{U_i}=g_i/f_i$.
+En particulier, 
+\[f^r=\sum a_if_i^2\]
+puis $gf^r=\sum a_ig_if_i$ d'où la surjectivité de 
+$A(Z)_f\to \Or_Z(D(f))$! 
+
+\section{Morphismes de variétés affines, première déf}
+Dans le cas des variétés affines : on définit littéralement via 
+\begin{center}
+    Des restrictions de morphismes $\A^n\to \A^m$.
+\end{center}
+On obtient directement les flèches 
+% https://q.uiver.app/#q=WzAsNixbMCwxLCJrW1NfMSxcXGxkb3RzLFNfbV0iXSxbMSwxLCJrW1RfMSxcXGxkb3RzLFRfbl0iXSxbMCwyLCJBKFkpIl0sWzEsMiwiQShYKSJdLFswLDAsIlNfaiJdLFsxLDAsIlxccGhpX2koVF9qLGopIl0sWzAsMV0sWzIsM10sWzAsMl0sWzEsM10sWzQsNSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+\[\begin{tikzcd}
+	{S_j} & {\phi_i(T_j,j)} \\
+	{k[S_1,\ldots,S_m]} & {k[T_1,\ldots,T_n]} \\
+	{A(Y)} & {A(X)}
+	\arrow[maps to, from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+de l'équivalence de catégorie. Il faut juste prouver que de 
+$A(Y)\to A(X)$ on peut relever un morphismes de variétés.
+
+
+
+
+
+\printbibliography
+\end{document}
+

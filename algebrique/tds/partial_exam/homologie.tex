@@ -1,0 +1,197 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Examen partiel géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Exercice 3)}
+Pour l'exo $3)$ sur les codimensions :
+\begin{enumerate}
+    \item Cas irreductible :
+\[codim(Z,X)=\sup\{\#\{Z = Z_0\subsetneq\ldots\subsetneq Z_n\}\}\]
+    \item En général :
+	\[\inf codim(W,X)\]
+	pour les composantes $W$ de $Z$.
+\end{enumerate}
+\subsection{$\dim(X)\geq codim(Z,X)+dim(Z)$}
+Clair.
+\subsection{$codim(Z,X)=0$ ssi $Z$ contient une composante de $X$}
+On peut supposer $X$ irréductible ? Si $Z$ contient une composante
+c'est clair la codimension. Si $codim(Z,X)=0$, et si $Z$ ne contient
+pas de composante, étant donné une chaine de longueur maximale 
+$Z_0\subsetneq\ldots\subsetneq Z_n=Z$ on peut pas conclure direct
+parce que la chaine peut-être de longueur maximale pour $Z$ ET maximale
+pour $X$ sans être de longueur maximale. Maintenant $Z$ irreductible
+implique $Z\subset W$ une composante de $X$. Et $codim(Z,W)=0$ implique
+$Z\subset W$ n'est pas stricte, d'où $Z=W$.
+\newline
+Suffit de supposer $Z$ irréductible (on prends une de ses composantes
+de dim maximale).
+
+\subsection{$X$ affine, $Z$ fermé irreductible de $X$, 
+$codim(Z,X)=1\leftrightarrow dim A(X)_{I(Z)}=1$}
+On a une bijection entre $Spec(A(X)_{I(Z)}$ et $Spec(A(X))\cap D(I(Z))$
+(Faut pas croiser $A-I(Z)$) préservant l'inclusion.
+Le résultat tombe direct.
+\subsection{$X$ affine intégre et $Z$ irred, $codim(Z,X)=1$}
+Faut montrer que pour tout $f\in I(Z)-0$ il existe $h\in A(X)$ t.q
+\[Z\cap D(h)=Z(f)\cap D(h)\ne \emptyset.\]
+Pour un tel $f$ on a $Z\subset Z(f)$, si $Z(f)=Z$ on a $h=0$ suffit.
+Sinon, on a $Z\subsetneq Z(f)$ et $codim(Z,Z(f))=0$ d'où
+$Z$ est une composante de $Z(f)\cup \bigcup_i W_i$. On prends des
+générateurs des $I(W_i)=(g_{ij},j)$ puis on pose $h=\prod g_{ij}$ et
+le résultat via la dimension ?
+
+\subsection{$X$ intègre, $Z$ irred fermé, $codim(Z,X)=dim(X)-dim(Z)$}
+Par récurrence apparemment, pour codimension $0$ c'est clair, 
+Pour la codimension $1$ c'est question $4)$? On peut prouver maintenant
+que pour tout $Z\subsetneq Z_1$ irréd avec $codim(Z,Z_1)=1$ on a
+\[codim(Z_1,X)\leq codim(Z,X)-1\]
+alors $codim(Z,X)\geq dim(X)-dim(Z_1)+1=dim(X)-dim(Z)$. D'où le
+résultat par double inégalité.
+\newline
+Le claim c'est que si 
+\[Z\subsetneq Z_1\subsetneq Z_2\subsetneq\ldots\subsetneq Z_{codim(Z,X)}\]
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
+

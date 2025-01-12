@@ -1,0 +1,172 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Approximation $p$-adiques(Hensel)}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Relever des facteurs}
+Y'a trois théorèmes, dans $K$ ultramétrique, si 
+\[P\in \Or_K[X]\]
+et
+\[\bar P= f.g\in k_K[X]\]
+avec $(f,g)=1$ alors il existe d'uniques (à unités près)
+$\bar F=f$, $\bar G=g$ 
+avec $\deg(f)=\deg(F)$ (on peut fixer un des deux degrés) et
+\[P=F.G\in \Or_K[X]\]
+\begin{note}
+    On peut relever des facteurs premiers entre eux de manière
+    unique.
+\end{note}
+\begin{rem}
+    La preuve consiste à approximer $F$ et $G$ par $(F_n)$
+    et $(G_n)$ et dire que $||P-F_nG_n||$ tend vers $0$ en
+    norme de Gauss. En particulier on obtient les coefficients
+    des facteurs!
+\end{rem}
+\begin{rem}
+    Petite remarque sur la preuve, on est pas forcément de 
+    valuation discrète. Donc écrire $P-F_0G_0\in t\Or_K[X]$
+    c'est pas évident comment trouver le $t$. Fin c'est
+    que si $|t|$ est maximale parmis les valeurs absolues
+    $|a_i|$ des coeffs de la différence ben $|a_i/t|\leq 1$.
+    D'où $a_i\in t\Or_K$.
+\end{rem}
+La deuxième version dit que si il existe $\alpha\in \Or_K$
+tel que \[|P(\alpha)|<|P'(\alpha)|^2\] alors il existe un unique
+zéro $\widetilde\alpha\in \Or_K$ proche de $\alpha$, i.e. 
+telque 
+\[|\alpha-\tilde\alpha|<|P'(\alpha)|\]
+\begin{note}
+    Le point c'est de dire que si la pente est suffisamment grande
+    et $P(\alpha)$ est suffisamment petit devant la pente. On
+    va pouvoir se rapprocher assez de $0$ pour avoir un zéro!
+    Penser au cas réel.
+\end{note}
+\begin{rem}
+    En notant $P(\alpha)=\lambda$ le tricks c'est de considérer 
+    l'expansion de Taylor $P(X+\alpha)=P(\alpha)+\lambda X+X^2R(X)$
+    d'où
+    \[\lambda^{-2}P(\lambda X+\alpha)=\lambda^{-2}(P(\alpha)+\lambda^2 X+X^2S(X))\]
+    puis en réduisant modulo $\m$ le résultat.
+\end{rem}
+\section{Critère nécessaire à l'irréducibilité}
+On sait que si $P\in \Or_K[X]$, alors 
+$\max |a_i|=\max |a_0|,|a_d|$. Le point c'est que sinon si 
+$|a_i|>|a_0|,|a_d|$ alors $Q=a_i^{-1}P\in\Or_K[X]$ et 
+$\bar Q=X^rQ'\mod \m$ avec $r<d$ (important) et $Q'\wedge X=1$.
+D'où on conclut avec Hensel.
+
+\end{document}
+

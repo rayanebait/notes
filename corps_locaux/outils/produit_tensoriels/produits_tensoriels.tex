@@ -1,0 +1,295 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+%
+%\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+%\fancyhf{}
+%\fancyfoot[C]{\thepage}
+%\fancyhead[LO]{\textit \leftmark}
+%\fancyhead[RE]{\textit \rightmark}
+%\renewcommand{\headrulewidth}{0pt} % and the line
+%\fancypagestyle{plain}{%
+%\fancyhead{} % get rid of headers
+%}
+%
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Produits tensoriels}
+\date{}
+
+\begin{document}
+\maketitle
+Je veux discuter à nouveau les produits tensoriels. Une très grande
+remarque, bilinéaire implique pas linéaire ! Et inversement.
+
+\section{Cadre}
+On se place toujours dans le cadre où on a des $R$-modules $M$ et 
+$N$ ou des $R$-algèbres
+\[R\to A\]
+et
+\[R\to B\]
+dans le cas d'anneaux $M=A$ et $N=B$ bah c'est des $R$-algèbres.
+\section{Construction}
+Comme d'hab, on prends un gros quotient de $A\times B$.
+\section{Propriété universelle}
+Voir produits fibrés.
+
+\section{Codiagonale, ou pas}
+Étant donné $id_{A\times B}$, on pourrait dire qu'on obtient
+$c\colon A\otimes_C B \to
+A\times B$ tel que $c\circ \otimes =id_{A\times B}$. Mais en fait
+ça aurait pas de sens vu que $c(a\otimes b)=(a,b)$ voudrait dire
+que $(ra,b)=r(a,b)=(a,rb)$. Le problème c'est que $id_{A\times B}$
+est pas bilinéaire, vu que 
+\[(a+a',2b)=(a,b)+(a',b)\ne (a+a',b)\]
+mais elle est bien linéaire.
+\begin{rem}
+    De cette manière on voit que la bilinéarité c'est vachement
+    différent de la linéarité en un sens.
+\end{rem}
+
+\section{Exactitude}
+Là c'est croustillant.  On regarde
+% https://q.uiver.app/#q=WzAsOSxbMCwwLCIwIl0sWzEsMCwiQSJdLFsyLDAsIkQiXSxbMywwLCJFIl0sWzQsMCwiMCJdLFsxLDEsIkFcXG90aW1lc19SIEIiXSxbMiwxLCJEXFxvdGltZXNfUiBCIl0sWzMsMSwiRVxcb3RpbWVzX1IgQiJdLFs0LDEsIjAiXSxbMCwxXSxbMSwyLCJmIl0sWzIsMywiZyJdLFszLDRdLFs3LDhdLFs2LDcsImZcXG90aW1lcyBpZF9CIl0sWzUsNiwiZlxcb3RpbWVzIGlkX0IiXV0=
+\[\begin{tikzcd}
+	0 & A & D & E & 0 \\
+	& {A\otimes_R B} & {D\otimes_R B} & {E\otimes_R B} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["f", from=1-2, to=1-3]
+	\arrow["g", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{f\otimes id_B}", from=2-2, to=2-3]
+	\arrow["{f\otimes id_B}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+La surjectivité à droite est immédiate ! Pour l'exactitude au
+milieu, pour un élément du noyau
+$g\otimes id_B (\sum d_i\otimes b_i)=0$
+on remarque que la flèche bilinéaire (!!)
+\[D\times B\to E\times B\to E\]
+se factorise en
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJEXFx0aW1lcyBCIl0sWzEsMCwiRVxcdGltZXMgQiJdLFsyLDAsIkUiXSxbMSwxLCJFXFxvdGltZXNfQyBCIl0sWzEsMiwicF8xIl0sWzAsMV0sWzMsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzEsM11d
+\[\begin{tikzcd}
+	{D\times B} & {E\times B} & E \\
+	& {E\otimes_C B}
+	\arrow[from=1-1, to=1-2]
+	\arrow["{p_1}", from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[dotted, from=2-2, to=1-3]
+\end{tikzcd}\]
+d'où le noyau de $D\otimes_C B\to E\otimes_C B$ est
+contenu dans $\ker(D\to E)\otimes_C B$. Et l'inverse est clair.
+
+\begin{rem}
+    Pas besoin de parler de $R$-algèbre, on aurait juste pu
+    raccourcir la preuve en regardant les $(d,1)$ quoi.
+\end{rem}
+
+Maintenant pourquoi c'est pas nécessairemment injectif à gauche? 
+En fait la propriété universelle pour $A\otimes_R B$ est pas
+entièrement vérifiée. C'est à dire que $\sum f(a_i)\times b_i$ est
+d'image nulle pour tout $D\times B\to F$, mais c'est pas assez pour
+que ça implique que $v=\sum (a_i,b_i)$ soit nul. Simplement parce
+que $v$ est d'image nulle seulement pour les $A\times B\to F$ qui
+se factorisent par $A\times B\to D\times B\to F$. Il en manque.
+
+
+\section{Produits de corps}
+Un jour je regarderai bien  
+\href{https://mathoverflow.net/questions/82083/when-is-the-tensor-product-of-two-fields-a-field}{ça} sur MO.
+Apparemment étant donné $L/k, E/k$ deux extensions de $k$. On a
+\[\dim_{Krull}(L\otimes_k K)=\min(dimtr_k(L),dimtr_k(K))\]
+c'est trop marrant. Donc pour que le produit soit un corps
+y faut forcément que l'un des deux corps soit algébrique sur $k$.
+Ça discute une condition suffisante aussi!
+
+\section{Produits d'algèbres}
+Si on remplace $A\times B\to F$ un morphisme bilinéaire de 
+$R$-modules. Par un morphisme de $R$-algèbres en plus d'être 
+bilinéaire. Le morphisme $A\otimes_R B\to F$ devient un morphisme
+de $R$-algèbres.
+\subsection{Polynomes}
+En particulier si on a $R\to A$ alors
+\[R[X]\otimes_R A=A[X]\]
+parce que $A[X]$ représente $B\mapsto B$ le foncteur 
+\[Mod_A\to Set\]
+c'est à dire que suffit de connaître l'image de $X$. 
+Je détaille parce que c'est pas entièrement clair.
+Faut aussi montrer que étant donné $b\in B$ on peut
+toujours définir entièrement $f\colon R[X]\times A\to B$ 
+à partir de $f(X,1)$. Mais on les envoie où les
+$(1,a)$? Bah $B$ a forcément une structure de $A$-algèbre
+ici. D'où 
+\[f(1,a)=af(1,1)=a\]
+dans $A$-$Alg$.
+
+\subsection{Nouvelle conditions pour $a\otimes b=0$}
+Cette fois on a $a\otimes b=(a\otimes 1).(1\otimes b)=0$. D'où
+si on a $\varphi(a).\psi(b)=0$ pour tout deux morphismes de
+$R$-algèbres compatibles, et qu'on peut envoyer dans une algèbre
+intègre ben on obtient $\varphi(a)=0$ ou $\psi(b)=0$. Est-ce 
+qu'y en a un non constant canonique ?
+
+\section{Remarques}
+Si on étudie plus en détail des familles génératrices dans 
+$A\times B$ comparées à $A\otimes_C B$ on se rend compte de 
+plusieurs trucs. On "perd" des éléments dans $A\otimes_C B$ mais
+ça force la dimension à augmenter ! Je parle du fait qu'on perd
+après parce que c'est bizarre.
+
+\subsection{"On perd"}
+On a une flèche surjective $A\times B\to A\otimes_C B$ ce qui est
+étonnant vu les histoires de dimension. On a un noyau qui contient
+$0\times B$ et $A\times 0$ par exemple. Le truc c'est que c'est
+une flèche bilinéaire mais pas linéaire! ($f(ra,rb)=r^2f(a,b)$)
+
+\subsection{Ça force la dimension à augmenter!}
+Par exemple si on a 
+$(a_i)\in A$ et $(b_j)\in B$ des familles alors 
+\[(a_i, b_j)\]
+sont engendrés par les $(a_i,0)$ et $(0,b_j)$. Sauf que par 
+bilinéarité $a_i\otimes 0=0\otimes b_j=0$. On est obligés de
+considérer les 
+\[a_i\otimes b_j\]
+d'où si $C=k$ un corps par exemple on a 
+\[\dim_k A\times B=\dim_k (A)+\dim_k(B)\]
+tandis que
+\[\dim_k A\otimes_k B=\dim_k(A).\dim_k(B)!\]
+Pour prouver le deuxième on peut juste remarque que
+les $(a_i\otimes b_j)_j$ sont libres en indexant à droite. D'où
+la liberté se ramène à une liberté terme à terme.
+\section{Résumé}
+Pour la construction, on peut le voir comme le quotient du 
+$R$-module libre sur $A\times B$, $E$, où on quotiente par les 
+conditions nécessaires à ce que toute $f\colon A\times B\to F$
+bilinéaire s'étende en $E\to F$ par $\bar f(e_{(a,b)})=f(a,b)$.
+En particulier c'est engendré par 
+\[e_{ax+by,z}-ae_{x,z}-be_{y,z}=e_{x,az+bt}-ae_{x,z}-be_{x,t}=0\]
+c'est là qu'on voit que le produit est engendré par les
+\[x\otimes y\]
+
+
+\subsection{Même définitions}
+Donc la construction en tant que $R$-module est exactement
+la même que la construction en tant que $R$-algèbres, juste 
+on rajoute le produit terme à terme (loi de composition
+pas quotient).
+\subsection{Deux propriétés universelles}
+En tant que $R$-modules : les $R$-flèche bilinéaires
+\[A\times B\to C\]
+se factorisent par $A\otimes_R B\to F$ en flèche linéaire de 
+manière unique une fois $\otimes$ fixé.
+En tant que $R$-algèbres : Toutes deux $R$-flèches d'algèbres
+\[A\to C, B\to C\]
+fournissent une unique flèche $A\times_R B\to C$ de $R$-algèbres.
+C'est le produit fibré. 
+
+\begin{rem}
+    La dernière remarque c'est que les $R$-flèches doivent
+    coincider, faut donc former le carré du push-out. La flèche
+    bilinéaire fait rentrer ça dans sa définition. La différence
+    c'est qu'un $R$-module c'est pas qu'un morphisme $R\to A$ 
+    nécessairemment! C'est plutôt $R\to End(A,A)$ (qui a une
+    structure d'anneau via celle de $A$) j'ai
+    l'impression.
+\end{rem}
+
+\end{document}
+

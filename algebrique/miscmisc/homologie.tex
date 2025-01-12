@@ -1,0 +1,549 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Notes perso : Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Produits fibrés et foncteur de points}
+Petite intuition du foncteur de points : en fait sur un $R$-schéma $T$
+on a des $R$-flèches $T\to \Spec(R[T_1,\ldots,T_n])$, essentiellement 
+c'est donné par 
+\[\Hom_R(R[T_1,\ldots,T_n],\Gamma(T,\Or_T))\simeq \Gamma(T,\Or_T)^n\]
+là où c'est marrant c'est que si on regarde le noyau donné par des 
+polynômes (c'est une $R$-flèche) $f_1,\ldots, f_s$ on obtient une 
+flèche dans 
+\[\Hom_R(R[T_1,\ldots, T_n]/(f_1,\ldots, f_s), \Or_T(T))\]
+en particulier des équations pour des sections globales de $T$.
+
+\begin{rem}
+    En toute généralité je sais pas si ça dit grand chose de $T$. Mais
+    ça doit être intéressant de creuser.
+\end{rem}
+
+
+\section{Construction}
+
+
+
+
+\chapter{Morphismes d'espaces localement annelés}
+Le but là c'est de revoir pourquoi dans le cas localement annelé 
+$(f,f^\sharp)\colon X\to Y$ la flèche $f^\sharp$ correspond bien au
+pullback $g\mapsto g\circ f$ (c'est pas tjr défini sur un Schéma affine)
+et l'intuition est exacte dans le cas des variétés. Ensuite de voir
+pourquoi les schémas affines généralisent bien les variétés et ensembles
+algébriques initiales.
+
+\section{Le cas des $k$-algèbre de type fini}
+Dans le cas des variétés abstraites, on prends deux variétés affines
+$X\simeq (Z(I)\subset \A^n, \Or_X)$ et $(Y,\Or_Y)$. Étant donné un
+morphisme d'espaces localement annelés $(f,f^\sharp)\colon X\to Y$ on 
+a
+% https://q.uiver.app/#q=WzAsMTAsWzEsMCwiZl57XFwjfVxcY29sb25cXG1hdGhjYWwgT19ZKFUpIl0sWzIsMCwiXFxtYXRoY2FsIE9fWChmXnstMX1VKSJdLFsxLDEsIlxcbWF0aGNhbCBPX3tZLGYoeCl9Il0sWzIsMSwiXFxtYXRoY2FsIE9fe1gseH0iXSxbMSwyLCJcXGthcHBhKGYoeCkpIl0sWzIsMiwiXFxrYXBwYSh4KSJdLFswLDAsInMiXSxbMCwyLCJzKGYoeCkpIl0sWzMsMCwiZl57XFwjfShzKSJdLFszLDIsImZee1xcI30ocykoeCkiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMiw0XSxbMyw1XSxbNCw1LCJpZCJdLFs2LDcsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbOCw5LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+\[\begin{tikzcd}
+	s & {f^{\#}\colon\mathcal O_Y(U)} & {\mathcal O_X(f^{-1}U)} & {f^{\#}(s)} \\
+	& {\mathcal O_{Y,f(x)}} & {\mathcal O_{X,x}} \\
+	{s(f(x))} & {\kappa(f(x))=k} & {\kappa(x)=k} & {f^{\#}(s)(x)}
+	\arrow[maps to, from=1-1, to=3-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[maps to, from=1-4, to=3-4]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=3-3]
+	\arrow["id", from=3-2, to=3-3]
+\end{tikzcd}\]
+Un truc qui fait tiquer c'est que ça semble pas utiliser le fait que
+c'est localement annelé, déjà c'est pas clair que c'est un morphisme
+de $k$-algèbres les morphismes de corps résiduels. En fait l'endroit
+où ça l'utilise c'est que l'existence de ce morphisme vient du fait que
+\[\Or_{Y,f(x)}\to \Or_{X,x}\to \kappa(x)=\Or_{X,x}/\p_x\]
+passe au quotient parce que $f^\sharp_x(\p_{f(x)})\subseteq \p_x$.
+
+\section{L'équivalence de catégorie avec les variétés abstraites affines}
+Essentiellement, d'un côté on a une flèche topologique continue 
+\[|f|\colon X\to Y\]
+et une flèche de faisceau localement annelée
+\[f^\sharp\colon \Or_Y\to f_*\Or_X\]
+on a pas forcément une flèche polynomiale encore de $\A^n\to \A^m$.
+On sait quand même que $\Or_Y(Y)\to \Or_X(X)$ correspond à 
+$f_*\colon A(Y)\to A(X)$, faut juste relever en $A(\A^m)\to A(X)$
+et obtenir $X\to \A^m$ comme une restriction $\A^n\to \A^m$! À l'inverse,
+si on a $f\colon X\to Y$ polynomiale, on obtient $A(Y)\to A(X)$. Faut
+juste obtenir $\Or_Y(U)\to \Or_X(f^{-1} U)$, mais c'est clair que le 
+pullback de fonctions marche!
+
+
+
+
+\section{L'équivalence de catégorie avec schémas affines}
+\subsection{L'équivalence}
+On regarde $\Spec\colon Ring\to Aff$, c'est essentiellement surjectif
+par définition et $\Gamma\circ \Spec=id$. Ducoup faut montrer que c'est
+pleinement fidèle. En reprenant les définitions, de 
+\[(f,f^\sharp)\colon \Spec(B)\to \Spec(A)\]
+un morphisme de schémas affines faut montrer que si $\varphi:=\Gamma(f)$
+alors $\Spec(\varphi)$, la flèche de pullback, est égale à $f$. On peut 
+montrer que $\Spec(\varphi)=f$ et $\varphi_x=f^\sharp_x$ pour tout $x$.
+Dire que $f^\sharp(\p_x)=\varphi^{-1}(\p_x)$ on peut le déduire de 
+l'existence de 
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJCIl0sWzAsMCwiQSJdLFswLDEsIkFfe1xccF97Zih4KX19Il0sWzEsMSwiQl97XFxwX3h9Il0sWzAsMiwiXFxrYXBwYShmKHgpKSJdLFsxLDIsIlxca2FwcGEoeCkiXSxbMSwwLCJcXHZhcnBoaSJdLFsxLDIsImlfeCIsMl0sWzIsMywiZl5cXHNoYXJwX3giLDJdLFswLDMsImpfeCJdLFsyLDRdLFszLDVdLFs0LDVdXQ==
+\[\begin{tikzcd}
+	A & B \\
+	{A_{\p_{f(x)}}} & {B_{\p_x}} \\
+	{\kappa(f(x))} & {\kappa(x)}
+	\arrow["\varphi", from=1-1, to=1-2]
+	\arrow["{i_x}"', from=1-1, to=2-1]
+	\arrow["{j_x}", from=1-2, to=2-2]
+	\arrow["{f^\sharp_x}"', from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+non trivial, on peut voir ça en regardant le carré du haut, on a 
+\begin{enumerate}
+    \item $j_x^{-1}(\p_xB_{\p_x})=\p_x$.
+    \item $i_{f(x)}^{-1}(\p_{f(x)}A_{\p_{f(x)}})=\p_{f(x)}$
+\end{enumerate}
+et $(f^\sharp_x)^{-1}(\p_x)\subset \p_{f(x)}$, comme $j_x\circ\varphi=
+f_x^\sharp\circ i_x$. On obtient 
+\[\varphi^{-1}(\p_x)\subset \p_{f(x)}\]
+l'inclusion inverse est conséquence directe du fait que c'est
+localement annelé. Faut quand même montrer que $\Spec(\varphi)^\sharp$
+donné par les flèches induites par $\varphi$ est égale à $f^\sharp$.
+Mais ça c'est clair sur les fibres par unicité donc partout.
+
+
+
+\subsection{Le morphisme sur les fibres}
+Retour sur l'adjonction entre $f^{-1}$ et $f_*$ pour un morphisme de 
+faisceaux $f\colon (X,\F)\to (Y,\G)$. On remarque que des deux carrés 
+% https://q.uiver.app/#q=WzAsOSxbMSwwLCJcXE9yX1goZl57LTF9VSkiXSxbMCwwLCJcXE9yX1koVSkiXSxbMCwxLCJcXE9yX3tZLGYoeCl9Il0sWzEsMSwiXFxPcl97WCx4fSJdLFs0LDAsIlxcT3JfWChWKSJdLFs0LDEsIlxcT3Jfe1gseH0iXSxbMywxLCIoZl57LTF9XFxPcl9ZKV97Zih4KX0iXSxbMywwLCIoZl57LTF9XFxPcl9ZKShWKSJdLFszLDIsIlxcT3Jfe1ksZih4KX0iXSxbMSwwXSxbMSwyXSxbMiwzXSxbMCwzXSxbNiw1XSxbNyw2XSxbNiw4LCJcXHNpbWVxIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNF0sWzQsNV1d
+\[\begin{tikzcd}
+	{\Or_Y(U)} & {\Or_X(f^{-1}U)} && {(f^{-1}\Or_Y)(V)} & {\Or_X(V)} \\
+	{\Or_{Y,f(x)}} & {\Or_{X,x}} && {(f^{-1}\Or_Y)_{f(x)}} & {\Or_{X,x}} \\
+	&&& {\Or_{Y,f(x)}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\simeq"{description}, draw=none, from=2-4, to=3-4]
+\end{tikzcd}\]
+C'est étonnamment celui de droite qui est intuitif à prouver. On
+regarde la famille des $f^{-1}\Or_Y(V)\to \Or_X(V)\to \Or_{X,x}$ ça 
+donne une flèche de la limite des $x\in V$ tels que $f(V)\subseteq U$
+d'où la limite des $f(x)\in U$!
+
+
+
+
+
+\chapter{Notes de lecture du Shafarevich}
+\section{Variété produit}
+Ce qui est assez clair c'est le produit de variétés affines. L'idée
+en général c'est de construire 
+\[X\times Y\to \Pr^n(k)\]
+un isomorphisme sur son image qu'on peut reconstruire localement de 
+sorte à ce qu'il soit unique. 
+\begin{note}
+    Page 54.
+\end{note}
+Concrètement dans le cas affine, les fermés de $\A^{n+m}$
+qui sont fermés de $\A^n\times \A^m$ c'est les fermés du type
+$V(F(X_1,\ldots, X_n)), G(X_{n+1},\ldots, X_m))$. Pour le projectif
+c'est assez similaire. Le truc c'est que brutalement définir
+\[\Pr^n\times \Pr^m\to \Pr^{n+1+m+1-1}\]
+ca marche pas. Un tuple du produit $(u_0,\ldots, u_n, v_0,\ldots, v_m)$
+est doublement homogène donc définit pas un point de $\Pr^{n+m+1}$. 
+Ducoup faut déf plutôt
+\begin{align*}
+    \phi\colon\Pr^n\times \Pr^m&\to \Pr^{(n+1)(m+1)-1}\\
+([u_0,\ldots, u_n],[v_0,\ldots, v_m])&\mapsto (u_iv_j)_{i,j}
+\end{align*}
+Et là on a clairement 
+\[\phi(\Pr^n\times \Pr^m)=\bigcap_{i,j}V\left(\begin{vmatrix}
+X_{ij}& X_{il}\\ X_{kj}&X_{kl}\end{vmatrix}\right)\]
+En fait ce qui est cool c'est la remarque suivante.
+\begin{rem}
+    Si on regarde les mineures $2x2$ de $(X_{ij})$ et le lieu de leur
+    zéros communs. On peut prouver que $\phi$ se surjecte dedans. En
+    particulier la matrice $(w_{ij})=(u_iv_j)$ est de rang $1$ et en plus
+    c'est un produit de matrices $1\times (n+1)$ par $(m+1)\times 1$.
+\end{rem}
+En fait c'est non trivial le produit projectif mdr. Déjà à faire :
+\begin{exo}
+    Les fermés de $\Pr^n\times \Pr^m$ sont les zéros de polynômes 
+    bihomogènes. Réponse : L'idée c'est que si on prend un polynôme 
+    homogènes en $(X_{ij})$ et qu'on regarde \[X_{ij}\mapsto X_iY_j\]. 
+    On obtient un polynôme bihomogène en les $X_i$ et les $Y_j$ de 
+    mêmes degrés. En fait inversement si on a un polynôme bihomogène
+    $G$ de degré $r$ en $X_i$ et $s$ en $Y_j$ avec $r>s$, on peut 
+    remarquer que $V(G)$ dans $\A^{n+1}\times \A^{m+1}$ est égal à 
+    à \[\bigcap V(Y_j^{r-s} G)\]
+    (à vérifier, ça a l'air de marcher justement parce qu'on regarde
+    dans $\A^{n+1}\times \A^{m+1}$ et pas $\A^{n+1+m+1}$.)
+    \textbf{Meilleure réponse} : Si on regarde $Z(G)\subset \varphi(
+    \Pr^n\times\Pr^m)$ on peut montrer que $G$ est bihomogène de mêmes
+    degré. À l'inverse pour def des fermés de $\Pr^n$ on doit utiliser
+    des générateurs homogènes et donc $\bigcap_i V(Y_j^{r-s}G)$ c'est des
+    générateurs homogènes.
+\end{exo}
+Pour $\Pr^n\times \A^n$ on peut prendre les homogènes pour les premières.
+
+
+\section{Graphes}
+En gros étant donné la structure d'une variété projective $X$ on peut
+se demander si la diagonale dans $X\times X$ est fermée. C'est assez
+clair si on remarque que dire que deux points projectifs 
+$u=[u_0:\ldots:_n]$ et $v=[v_0:\ldots:v_n]$ sont égaux ssi ils sont
+proportionnels. Autrement dit si \[u_i/u_j=v_i/v_j\]
+ou \[u_iv_j=u_jv_i.\] Ensuite étant donné une fonction 
+\[f\colon Y\to X\]
+on peut regarder \[id\times f\colon X\times Y\to X\times X\]
+d'où le graphe est fermé.
+
+\section{Les variétés projectives sont complètes}
+Y'a la preuve de Shafarevich et la preuve de Dat qui a l'air plus 
+parlante et qui dit qu'on peut "compléter" les courbes ponctionnées d'un
+point sur une variété complète.
+
+Pour la preuve de Shafarevich, on peut
+regarder $Z(G)\subset X\times Y\to Y$ et donner des conditions pour que
+$y\in p_2(Z(G))$ pour $G$ un polynôme bihomogène. Déjà on peut se ramener
+à $X=\Pr^n$ car $X$ est projective et $Y=\A^n$. En fait, 
+$y\in p_2(Z(G))$ ça veut juste dire que $G(\bar U, y)$ a un zéro 
+projectif. Autrement dit, $I_s\nsubseteq (G(\bar U,y))$. Par cette 
+condition, en notant $(M_{a})_a$ les monômes de degrés $s$ on obtient
+\[M_a(\bar U)=F_a(\bar U)G(\bar U, y)\]
+avec $\deg(F_a)=s-\deg(G)$. Enfin si on écrit $F_a$ en somme monomes
+de degré $s-\deg(G)$ disons en $N_b$. Alors les $M_a$ sont combinaisons
+linéaires des $N_bG$. Et on obtient une matrices entre la base canonique
+des monômes de degré $s$ et les $N_bG$ à coefficients des polynomes en
+$y$ à coefficient dans $k$! La condition $y\in p_2(Z(G))$ équivaut alors
+au fait que le rang de la matrice soit $<$ au nombre de monôme de 
+degré $s$ en $n$ variables. On prend $y$ qui annule les mineures de 
+taille cette dimension!
+
+\begin{cor}
+    L'image d'une variété projective est fermée.
+\end{cor}
+
+Suffit de factoriser $X\to Y$ en $X\to X\times Y\to Y$, la première 
+flèche est $x\mapsto (x, f(x))$ et envoie $X$ sur son graphe.
+
+
+\section{Un peu de birationnalité (exo 5 (1.3)}
+Si on prend $f_d,f_{d-1}\in k[X_1,\ldots, X_n]$ de degrés $d$ et $d-1$
+tels que $f_d+f_{d-1}$ est irréductible, alors $Z(f_d+f_{d-1})$ est 
+birationnelle à $\A^{n-1}$. 
+
+Mon idée c'est que $f_d/f_{d-1}$ est de degré $1$, d'où 
+$f_d/f_{d-1} + 1$ définit un hyperplan. Ducoup faut trouver un 
+isomorphisme de $k(\bar X_1, \ldots, \bar X_n)$ vers 
+$k(X_1, \ldots, X_{n-1})$. Pour ça deux manières de faire, si $f_d$ 
+a un monôme qui étend $f_{d-1}$ on peut juste le factoriser en haut
+et en haut de la fraction. On obtient une expression de la forme 
+\[F_0.(X_k+F_1)\]
+où $F_0$ est de degré $0$ et $F_1$ de degré $1$ qui a seulement pour 
+dénominateur le monôme. On peut faire le changement de variable
+$X_k\mapsto X_k/F_0 $, on obtient $X_k$ + $F_1(F_0, X_1,\ldots, X_n)$.
+
+\textbf{Meilleure manière :} En fait on peut écrire $f_d/f_{d-1}$ comme
+$1/F_0(f_d/M)$ où $F_0$ est une fraction rationnelle de degré $0$ et
+$M$ un monôme. En gros on a factorisé en bas et en haut par $M$. Ensuite,
+en notant $M(i)=\{M\in S_{d_1}| X_i\mid M\}$ et \[f_{d,i}= f_{d,i-1}-
+X_{i-1}\sum_{M\in M(f_{d,i-1},i-1)} a_{M, i-1}M\] et $M(f_{d,i},i)=\{M\in M(i)| M\in Monome(f_{d,i})\}$
+on peut écrire
+\[f_d/M=\left(\sum_i X_i\sum_{N\in M(f_{d,i}, i)} a_{N, i} N\right)/M\]
+en particulier les $N/M$ ont degré $0$. Enfin si on note $I$ le support 
+de la somme de gauche, on peut déf 
+\[\varphi\colon K[T_1,\ldots,T_n]\to K[Z(f_d+f_{d-1})]_{f_{d-1}, M}\]
+par $T_i\mapsto X_i\sum_{N\in M(f_{d,i}, i)} a_{N, i} N/M$ si $i\in I$
+et $T_i\mapsto X_i$ sinon. On peut remarquer que la flèche préserve la 
+graduation, i.e. $\ker(\varphi)$ est engendré par des polynômes de degré
+$1$. On obtient une flèche rationnelle dominante injective
+\[Z(f_d+f_{d-1})\to Z(\ker(\varphi))\]
+où $\ker(\varphi)$ définit un hyperplan de $\A^n$ d'où le résultat.
+
+\textbf{Bien meilleure manière!} En fait, déjà pour rappel la petite 
+section \ref{trad}. Puis on obtient la preuve suivante.
+
+\subsection{Une nouvelle preuve}
+On peut regarder $\A^n\to \A^n$ la flèche 
+\[(t_1,\ldots,t_n)\mapsto (t_1, t_1t_2,\ldots, t_1t_n)\]
+on obtient un isomorphisme 
+\[k[T_1,\ldots, T_n]_{T_1}\simeq k[T_1,\ldots, T_n]\]
+d'inverse $T_1\mapsto T_1;~T_i\mapsto T_i/T_1$. Maintenant on peut 
+regarder \[f_d(T_1, T_2/T_1, \ldots, T_n/T_1)+f_{d-1}(\ldots)=0\] qu'on
+obtient via l'isomorphisme induit 
+\[k[Z(f_d(T_i,i)+f_{d-1}(T_i,i)]_{T_1}\simeq k[Z(f_d(T_1,T_1T_2,\ldots,T_1T_n)+f_{d-1}(T_1,T_1lT_2,\ldots, T_1T_n))]_{T_1}\]
+Mais le membre de droite est égal à $k[Z(T_1f_d+f_{d-1})_{T_1}]$ en
+particulier $Z(f_d+f_{d-1})$ est birationnel à $Z(T_1f_d+f_{d-1})$.
+Maintenant si $f_{d-1}\ne 0$ on peut définir
+\[k[T_1,\ldots, T_n]\to k[Z(T_1f_d+f_{d-1})]_{f_{d-1}}\]
+via $T_1\mapsto T_1f_d/f_{d-1}$ et $T_i\mapsto T_i$. Le noyau a l'air 
+d'être clairement $T_1+1$ d'où on a fini.
+
+\section{Surjectivité des morphismes finis}
+Ducoup si on regarde la condition $x\in f^{-1}(y)$, ça se traduit par
+$f_*\m_y\subset \m_x$. Inversement, si $f^{-1}(y)$ est vide alors
+$f_*\m_yk[X]=k[X]$ et on applique le lemme de Nakayama car 
+$\m_y\ne k[Y]$. \textbf{Faudrait essayer de voir plus concrètement
+comment trouver une racine.}
+\section{Trouver un ouvert dans $f(X)$}
+L'idée c'est de décomposer $f$ : $f\colon X\to Y\times \A^r\to Y$ 
+défini par $k[Y]\subset k[Y][u_1,\ldots, u_r]\subset k[X]$ où 
+$k(X)=k(Y)(u_1,\ldots, u_r, z)$. La première flèche faut juste 
+choisir $u_i\in k[X]$, rendre l'extension entière avec la 
+technique habituelle puis tout dérouler en utilisant le fait 
+que les morphismes finis sont surjectifs. La deuxième c'est
+juste que la première projection on peut trouver un ouvert dans
+l'image d'un ouvert facilement.
+
+\section{Projections}
+Ça c'était cool, et plus deep que prévu. Ducoup, 
+on considère des "e.v" de $\Pr^n$ (juste les regarder
+dans $\Pr^{n+1}$). Donnés par $E=Z(L_1,\ldots,L_{n-d})$,
+et on déf 
+\[\pi\colon \Pr^n-E\to \Pr^{n-d-1};(\bar x)\mapsto (L_i(\bar x))_i\]
+L'idée géometrique c'est que si on prend 
+$\Pr^{n-d-1}\simeq H\subset \Pr^n-E$, alors $H\cap E=0$ et $H\oplus E=
+\A^{n+1}$ ce qui définit un projecteur. En particulier, si
+$x\in \Pr^{n}-E$ alors 
+\[E\oplus <x>\cap H\textrm{ est de dimension }1.\]
+Donc on a un point d'intersection dans $\Pr^{n}$, et il est donné par 
+$\pi$. C'est pas entièrement clair, mais c'est clair que c'est une 
+projection au sens où $H\oplus E=\A^{n+1}$ a des projecteurs associés.
+
+Maintenant pour prouver que c'est une flèche finie, c'est plutôt cool,
+déjà on regarde $\pi\colon D(L_j)\cap X\to \A^{n-d-1}\cap \pi(X)$ et 
+on veut montrer que $\pi^*\colon k[\A^{n-d-1}]\to k[D(L_j)\cap X]$
+est finie, et $g\in \Or_X(D(L_j))$ est de la forme $g=G/L_i^m$
+($\Pr^n-E=\cup D(L_i)$). Maintenant $\pi^*(T_i)=L_i/L_j$ donc on doit 
+trouver une relation algébrique unitaire entre $g$ est les $\pi^*(T_i)$.
+C'est là que c'est fort. On remarque que l'image de
+\[\pi_m\colon X\to \Pr^{n-d};(\bar x)\mapsto (L_1^m,\ldots,
+L_{n-d}^m,G)\]
+est fermée. On obtient $F_1,\ldots, F_s$ des polynômes qui annulent 
+l'image ! Mais ça suffit pas encore, j'ai l'impression qu'on peut
+montrer au plus qu'on a seulement une relation du type 
+$X\circ(L_i)^{\alpha}G^k -\ldots$ pas unitaire et qu'on devra localiser 
+à trop de $L_i$. Le deuxième point important c'est que
+\[[0:\ldots:0:1]\notin \pi_m(X)\]
+parce que les $L_i$ s'annulent pas simultanément, en particulier, 
+\[V(F_1,\ldots,F_s, z_0,\ldots, z_{n-d-1})=\emptyset\]
+D'où ... il existe $k$ t.q. 
+$z_{n-d}^k\in (F_1(\bar z),\ldots, F_s(\bar z))+(z_i, i) \subset 
+k[z_0,\ldots, z_{n-d}]$. Tu vois le truc venir ? En particulier, 
+si on regarde dans $\pi_m(X)$ on obtient 
+\[\psi(z_1,\ldots,z_{n-d})=z_{n-d}-\sum z_j H_j = 0\mod I(\pi_m(X))\]
+En regardant dans $z_i\ne 0$ on obtient 
+\[k[\A^{n-d}\cap D(z_i)]=k[z_0,\ldots, z_{n-d}]_{z_i}\to 
+\Or_X(D(z_i\circ \pi_m)\cap X)\]
+la flèche $z_j\mapsto L_j^m/L_i^m$ et $z_{n-d}\mapsto G/L_i^m$. De sorte
+que dans $\Or_X(D(z_i\circ \pi_m)\cap X)$ on ait 
+\[\psi(G_i/L_i^m)=0;
+    ~\psi\in k[\pi(X)\cap D(T_{i})][T]\textrm{ unitaire.}
+\]
+
+
+
+
+\chapter{Traductions variétés vers k-algèbres}
+\section{L'équivalence de catégorie de base}
+Quand on a $\varphi\colon k[Y]\to k[X];~(\overline{Y_i})_i\mapsto 
+(g_i(\overline{X_j},j)_i$. Les $Y_i$ vérifient les équations de $Y$
+donc par définition les $g_i(\overline{X}_j,j)$ aussi! D'où, la flèche 
+$\varphi^a\colon X\to Y$ telle que 
+\[(x_j)_{j=1,\ldots,n}\mapsto (g_i(x_j,j))_{j=1,\ldots, m}\]
+est bien définie et régulière! Maintenant, si on regarde $\ker(\varphi)$,
+c'est un idéal qui contient $I(Y)$ et dont les $g_i$ vérifient les 
+équations ! D'où l'image de $\varphi^a$ est contenue dans 
+\[Z(\ker(\varphi))\subset Y\]
+en particulier, $\varphi^a$ \textbf{est dominante} si et seulement si 
+$\varphi$ \textbf{est injective} !
+
+À l'inverse, si $\varphi$ \textbf{est surjective} on obtient un
+isomorphisme et donc une injection 
+\[k[Y]/\ker(\varphi)\simeq k[X]\]
+mais $k[Y]\to k[Y]/\ker(\varphi)$ est par définition l'injection 
+$Z(\ker(\varphi))\subset Y$. En particulier, $X$ \textbf{s'injecte dans}
+$Y$.
+\section{Parler des fibres}
+En fait la fibre $f^{-1}(y)$ vérifie des équations $f^*\m_y$ et 
+$f(x)=y$ veut dire que $f^*\m_y\subset \m_x$. On peut obtenir 
+des conditions de surjectivité.
+
+\section{Nakayama}
+Bon encore et toujours, le Nakayama, j'ai vu une preuve un peu en détail.
+En gros, si $M$ est un $A$-module de type fini. Et si $IM=M$, on peut 
+dire que plusieurs choses : soit $(m_0,\ldots, m_n)$ une base de $M$,
+on a 
+
+\[m_j = \sum_{i=1}^n \alpha_{ij}m_i\]
+avec $\alpha_{ij}\in I$. D'où la matrice $A=(\alpha_{ij})$ vérifie,
+$\ker(A-I_n)=M$ en tant qu'endomorphisme du $A$-module $M$. Ensuite, 
+par la formule de Cramer, on a $\det(A-I_n).M=d.M=0$. Avec $d\in 1+I$, 
+ça ca se vérifie en développant la diagonale. 
+
+On a des objets maintenant il reste juste à trouver des critères sur
+$1+I$ et $d$.
+
+Si $A\subset B=M$ est un sur-anneau de $A$, on a $1_A\in M=B$,
+d'où $aB=0$ seulement si $a=0$. On peut en déduire via 
+$0\in1+I$ ssi $I=(1)$ que 
+\[I\subset A\implies IB\subset B\]
+où les inclusions sont strictes.
+
+Maintenant pareil, si $1+I$ ne contient que des inversibles, on obtient
+le critère avec $I=\bigcap_{\m\in Specm(A)} \m$ que $I.M=M$ implique
+$M=0$, ici car $d$ est inversible. Plus généralement ducoup si $1+I$
+ne contient que des inversible, si $M'+IM=M$ pour un $M'$ quelconque 
+alors $M=M'$, y suffit d'appliquer la méthode à $M/M'$.
+
+\textbf{À faire, le dernier critère : espace vectoriel sur le quotient
+implique générateur d'idéal.}
+
+
+
+
+\printbibliography
+\end{document}
+

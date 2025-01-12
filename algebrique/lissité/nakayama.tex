@@ -1,0 +1,333 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{rep}{Réponse}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Lissité sur les schémas}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\[\ldots\]   
+
+\chapter{Outils}
+ATTENTION : Il faut tout faire avec $I$ radical.
+\section{La définition de base}
+Étant donné un affine $Z(I)=Z(F_1,\ldots, F_m)\subset\A^n$ 
+on peut définir le plan tangent via
+\[(D_PI)^\perp =\{t| D_P(F)(t)=0 \forall F\in I\}\]
+\section{Plan tangent de Zariski}
+\begin{quest}
+    $T_{X,p}\simeq (\m/\m^2)$
+\end{quest}
+Pour rappel on a un diagramme 
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIkkvSVxcY2FwIFxcbWF0aGZyYWsgbl4yIl0sWzIsMCwiXFxtYXRoZnJhayBuL1xcbWF0aGZyYWsgbl4yIl0sWzMsMCwiXFxtYXRoZnJhayBtL1xcbWF0aGZyYWsgbV4yIl0sWzQsMCwiMCJdLFszLDEsIlxcbWF0aGZyYWsgbS9cXG1hdGhmcmFrIG1eMiJdLFs0LDEsIjAiXSxbMiwxLCJFXlxcd2VkZ2UiXSxbMSwxLCJEX1BJIl0sWzAsMSwiMCJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFszLDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2XSxbMiw3LCJEX1AiXSxbMSw4LCJEX1AiXSxbOCw3XSxbOSw4XSxbNyw1XV0=
+\[\begin{tikzcd}
+	0 & {I/I\cap \mathfrak n^2} & {\mathfrak n/\mathfrak n^2} & {\mathfrak m/\mathfrak m^2} & 0 \\
+	0 & {D_PI} & {E^\vee} & {\mathfrak m/\mathfrak m^2} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["{D_P}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["{D_P}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow[no head, from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+qui devient en passant au dual
+% https://q.uiver.app/#q=WzAsNSxbMywwLCIoXFxtYXRoZnJhayBtL1xcbWF0aGZyYWsgbV4yKV5cXHdlZGdlIl0sWzQsMCwiMCJdLFsyLDAsIihFXlxcd2VkZ2UpXlxcd2VkZ2UiXSxbMSwwLCIoRF9QSSleXFx3ZWRnZSJdLFswLDAsIjAiXSxbMSwwXSxbMiwzXSxbMyw0XSxbMCwyXV0=
+\[\begin{tikzcd}
+	0 & {(D_PI)^\vee} & {(E^\vee)^\vee} & {(\mathfrak m/\mathfrak m^2)^\vee} & 0
+	\arrow[from=1-2, to=1-1]
+	\arrow[from=1-3, to=1-2]
+	\arrow[from=1-4, to=1-3]
+	\arrow[from=1-5, to=1-4]
+\end{tikzcd}\]
+mais en regardant $(E^\vee)^\vee$ comme l'ensemble des
+morphismes d'évaluations $ev_Q\colon f\mapsto f(Q)$, le noyau 
+a droite c'est les $ev_Q=g\in(E^\vee)^\vee$ tels que 
+\[g|_{D_PI}=0\] autrement dit tels que $D_P(F)(Q)=0$ pour tout
+$F\in I$.
+
+\begin{rep}
+    Pour conclure le noyau à droite bah c'est exactement 
+    $T_{X,P}$ par l'identification.
+\end{rep}
+
+\section{Cadre de base avec la nouvelle définition}
+\begin{defn}
+    On définit $\dim_P X:=\inf\{\dim U|P\in U\subset X\}$. 
+    En particulier si $X=\cup_i Z_i$,
+    \[\dim_P X=\sup_{P\in Z_i} \dim Z_i\]
+    vu que un ouvert qui croise $Z_i$ est dense dedans.
+\end{defn}
+Maintenant 
+\begin{defn}
+    On définit la lissité de $X$ en $P$ via 
+    $\dim_P X=\dim_P T_{P,X}$.
+\end{defn}
+\begin{note}
+Cette définition est une conséquence de la dernière déf psq 
+on peut dire que 
+\[\dim T_{X,P}\geq \dim T_{Z_X(f),P}-1\]
+en prenant $f\in \m-\m^2$ (d'où une récurrence).
+\end{note}
+\section{Critère jacobien}
+Si on identifie maintenant $E$ a $E^\vee$ par la base 
+canonique, i.e. 
+\[D_P(F_j)\sim \begin{pmatrix} \partial_1F_j\\\vdots\\\partial_n F_j\end{pmatrix}\]
+alors 
+\[J(X)_P=\begin{pmatrix} D_P(F_1)\vert&\ldots&\vert D_P(F_m)\end{pmatrix}.\]
+D'où 
+\[rk(J(X)_P)=\dim_k(D_PI)\]
+et en passant à l'orthogonal
+\[\dim_k(T_{X,P})=n-rk(J(X)_P).\]
+\section{Ouvert des points non singuliers}
+\subsection{Cas d'une hypersurface affine séparable}
+Dans le cas d'une hypersurface $Z(H)$ où $H$ est séparable pour
+l'une des variables :
+\begin{enumerate}
+    \item On peut montrer que $Z(H)$ a un point lisse. On note
+        $H(T_1,\ldots, T_n)(S)$ séparable en $S$.
+    \item $\Delta\in k[T_1,\ldots,T_n]$ le discriminant en $S$.
+    \item $Z(H)\subset \A^n\times A^1$ et si $(q,s)\in D(\Delta)
+        \times p_S(Z(H))$ alors 
+        \[\frac{\partial H}{\partial S}(q,s)=(H(q)')(s)\ne 0\]
+        d'où $H$ est lisse en $(q,s)$. $(D(\Delta)\cap p_T(Z(H))$
+        est non vide.
+\end{enumerate}
+\subsection{Cas général}
+On remarque que sur chaque affine :
+\begin{enumerate}
+    \item Être lisse est une condition ouverte via le jacobien.
+        En particulier l'ensemble des points lisses est ouvert,
+        faut montrer qu'il est non vide et dense partout.
+\end{enumerate}
+Ensuite, toute variété intègre de $\dim = r$ est birationnelle a
+une hypersurface
+de $\Pr^{r+1}$. I.e. \[k(X)\simeq k(T_1,\ldots, T_r, z)\] avec $z$
+séparable sur $k(T_1,\ldots, T_n)$. Comme on doit juste montrer
+que tout les ouverts contiennent un point lisse c'est fini 
+par la section d'avant.
+
+\subsection{Autre approche : via le critère jacobien}
+On se ramène au cas affine irréductible et on montre que l'ensemble
+des points ou le plan tangent est de dim $\geq k$ est fermé via le
+jacobien. Et contient un ouvert, via la birationalité avec 
+l'hypersurface!
+
+\chapter{Utilisations et cadre}
+\section{En résumé}
+De $T_{X,P}\simeq (\m/\m^2)^\vee$ de manière fonctorielle on peut
+faire de l'algèbre pour obtenir des injections/surjections de 
+$T_{X,P}$ dans d'autres espaces tangents. Je pense qu'on a un
+foncteur donc 
+\[k\textrm{-Var}_*\to \textrm{Mod}_k\]
+où à gauche c'est les variétés pointées.
+
+\subsection{Si $\dim X=n$ alors $\dim T_{X,P}\leq n$}
+on peut se ramener au cas affine. Alors $X\hookrightarrow \A^n$
+donne $\n_P/\n_P^2\to \m_P/\m_P^2\to 0$ est exacte avec
+$\m_P\subset A(X)$ et $\n_P\subset A(\A^m)$ ($m\leq n$). Ça donne
+\[0\to T_{X,P}\hookrightarrow T_{\A^m,P}\]
+avec celui de droite de dimension $m\leq n$.
+
+
+\subsection{Singularités aux intersections des composantes}
+Si on a $X=\cup_i Z_i$ alors un point $P$ est non singulier 
+seulement si une seule composante passe par lui. Pour le prouver,
+plusieurs approches :
+\begin{enumerate}
+    \item Via le critère jacobien : On peut supposer $X$ affine
+        $dim_p X= dim X$ et garder que les composantes qui passent
+        par $P$.
+    \item Alors $I(X)=\cap I(Z_i)$. Idée : si on montre que 
+        $X$ pas irred implique son idéal est engendré par des 
+        produits. Alors on a fini car y'a des colonnes nulles en
+        plus sur l'intersection. Problème : c'est faux.
+
+    \item Directement : on se met à nouveau dans le cas affine
+        $Z(I)=Z(\cap_i \p_i)$ :
+        \[\m_{\cap_i\p_i}/\m_{\cap_i\p_i}^2\to \m_{\p_i}/\m_{\p_i}^2\to 0\]
+        qui est exacte et un noyau non trivial : suffit de prendre
+        $Q\in \p_i - \cup_{j\ne i} \p_j$ irréductible, alors 
+        $Q\notin \m_{\cap_i\p_i}^2$ et $Q\in\m_{\cap \p_i}$. Donc
+        dans le noyau. Enfin en passant au dual :
+        \[0\to T_{Z(\p_i),P}\to T_{X,P}\]
+        est une injection stricte ! 
+\end{enumerate}
+\begin{rem}
+    Pas besoin de considérer $T_{P,\cap Z(\p_i)}$.
+\end{rem}
+
+\subsection{Nombre d'équations d'une variété lisse bis.}
+Si $X$ est affine intègre lisse de dimension $d$ dans $\A^n$, 
+alors $X=Z(f_1,\ldots, f_{n-d})$! On peut l'écrire avec exactement
+$n-d$ équations. En fait on regarde
+
+\[0\to I/I\cap \eta^2\to \eta/\eta^2\to \m/\m^2\to 0\]
+la dimension à gauche est $n-d$! La dimension au milieu $n$ et
+la dimension a droite $d$ par lissité. Par Nakayama, 
+\[gI=(f_1,\ldots, f_{n-d})\]
+d'où sur $D(g)$ :
+\[X\cap D(g)=Z(f_1,\ldots, f_{n-d})\cap D(g)\]
+par l'égalité des dimensions et l'intégrité de $X$ :
+\[X\subset Z(f_1,\ldots, f_{n-d})\]
+
+\subsection{Interprétation du Jacobien}
+On peut regarder $J(X)$ dans $M_n(A(X)$ via à nouveau
+\[0\to I/I\cap \n^2\to \n/\n^2\to \m/\m^2\to 0\]
+en complétant $I/I\cap\n^2$ dans $\n/\n^2$ avec $T_1,\ldots,
+T_d$ ou plutôt une base de $\m/\m^2$ ? C'est à dire
+en regardant 
+\[J(X)=\begin{pmatrix}
+    1& 0&\ldots&&0\\
+    0&1&\ldots&& 0\\
+    0&\ldots&1&\dots&0\\
+     &&dF_1&&\\
+     &&\vdots&&\\
+     &&dF_{n-d}&&\\
+    \end{pmatrix}
+\]
+ça a le même rang que celle d'avant sur les lignes. Si on suppose
+que \[I/I\cap \n^2\oplus \bigoplus_i kT_i\] joue le rôle de
+$I/I\cap \n^2$ alors on a remplaçé $X$ par son image dans 
+$\A^{n+d}$.
+
+
+
+\printbibliography
+\end{document}
+

@@ -1,0 +1,233 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Équivalences de catégories en géometrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\section{L'équivalence de catégorie avec les variétés abstraites affines}
+Essentiellement, d'un côté on a une flèche topologique continue 
+\[|f|\colon X\to Y\]
+et une flèche de faisceau localement annelée
+\[f^\sharp\colon \Or_Y\to f_*\Or_X\]
+on a pas forcément une flèche polynomiale encore de $\A^n\to \A^m$.
+On sait quand même que $\Or_Y(Y)\to \Or_X(X)$ correspond à 
+$f_*\colon A(Y)\to A(X)$, faut juste relever en $A(\A^m)\to A(X)$
+et obtenir $X\to \A^m$ comme une restriction $\A^n\to \A^m$! À l'inverse,
+si on a $f\colon X\to Y$ polynomiale, on obtient $A(Y)\to A(X)$. Faut
+juste obtenir $\Or_Y(U)\to \Or_X(f^{-1} U)$, mais c'est clair que le 
+pullback de fonctions marche! Parce que si on a 
+\[g\in \Or_Y(U)\]
+alors $g\circ f\in \Or_X(f^{-1}U)$ est régulière, car localement
+les fractions sont données $f_*P/f_*Q$.
+
+
+
+
+\section{L'équivalence de catégorie avec schémas affines}
+\subsection{L'équivalence}
+On regarde $\Spec\colon Ring\to Aff$, c'est essentiellement surjectif
+par définition et $\Gamma\circ \Spec=id$. Ducoup faut montrer que c'est
+pleinement fidèle. En reprenant les définitions, de 
+\[(f,f^\sharp)\colon \Spec(B)\to \Spec(A)\]
+un morphisme de schémas affines faut montrer que si $\varphi:=\Gamma(f)$
+alors $\Spec(\varphi)$, la flèche de pullback, est égale à $f$. On peut 
+montrer que $\Spec(\varphi)=f$ et $\varphi_x=f^\sharp_x$ pour tout $x$.
+Dire que $f^\sharp(\p_x)=\varphi^{-1}(\p_x)$ on peut le déduire de 
+l'existence de 
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJCIl0sWzAsMCwiQSJdLFswLDEsIkFfe1xccF97Zih4KX19Il0sWzEsMSwiQl97XFxwX3h9Il0sWzAsMiwiXFxrYXBwYShmKHgpKSJdLFsxLDIsIlxca2FwcGEoeCkiXSxbMSwwLCJcXHZhcnBoaSJdLFsxLDIsImlfeCIsMl0sWzIsMywiZl5cXHNoYXJwX3giLDJdLFswLDMsImpfeCJdLFsyLDRdLFszLDVdLFs0LDVdXQ==
+\[\begin{tikzcd}
+	A & B \\
+	{A_{\p_{f(x)}}} & {B_{\p_x}} \\
+	{\kappa(f(x))} & {\kappa(x)}
+	\arrow["\varphi", from=1-1, to=1-2]
+	\arrow["{i_x}"', from=1-1, to=2-1]
+	\arrow["{j_x}", from=1-2, to=2-2]
+	\arrow["{f^\sharp_x}"', from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+non trivial, on peut voir ça en regardant le carré du haut, on a 
+\begin{enumerate}
+    \item $j_x^{-1}(\p_xB_{\p_x})=\p_x$.
+    \item $i_{f(x)}^{-1}(\p_{f(x)}A_{\p_{f(x)}})=\p_{f(x)}$
+\end{enumerate}
+et $(f^\sharp_x)^{-1}(\p_x)\subset \p_{f(x)}$, comme $j_x\circ\varphi=
+f_x^\sharp\circ i_x$. On obtient 
+\[\varphi^{-1}(\p_x)\subset \p_{f(x)}\]
+l'inclusion inverse est conséquence directe du fait que c'est
+localement annelé. Faut quand même montrer que $\Spec(\varphi)^\sharp$
+donné par les flèches induites par $\varphi$ est égale à $f^\sharp$.
+Mais ça c'est clair sur les fibres par unicité donc partout.
+
+
+
+
+
+
+\chapter{Traductions variétés vers k-algèbres}
+\section{L'équivalence de catégorie de base}
+Quand on a $\varphi\colon k[Y]\to k[X];~(\overline{Y_i})_i\mapsto 
+(g_i(\overline{X_j},j)_i$. Les $Y_i$ vérifient les équations de $Y$
+donc par définition les $g_i(\overline{X}_j,j)$ aussi! D'où, la flèche 
+$\varphi^a\colon X\to Y$ telle que 
+\[(x_j)_{j=1,\ldots,n}\mapsto (g_i(x_j,j))_{j=1,\ldots, m}\]
+est bien définie et régulière! Maintenant, si on regarde $\ker(\varphi)$,
+c'est un idéal qui contient $I(Y)$ et dont les $g_i$ vérifient les 
+équations ! D'où l'image de $\varphi^a$ est contenue dans 
+\[Z(\ker(\varphi))\subset Y\]
+en particulier, $\varphi^a$ \textbf{est dominante} si et seulement si 
+$\varphi$ \textbf{est injective} !
+
+À l'inverse, si $\varphi$ \textbf{est surjective} on obtient un
+isomorphisme et donc une injection 
+\[k[Y]/\ker(\varphi)\simeq k[X]\]
+mais $k[Y]\to k[Y]/\ker(\varphi)$ est par définition l'injection 
+$Z(\ker(\varphi))\subset Y$. En particulier, $X$ \textbf{s'injecte dans}
+$Y$.
+\section{Parler des fibres}
+En fait la fibre $f^{-1}(y)$ vérifie des équations $f^*\m_y$ et 
+$f(x)=y$ veut dire que $f^*\m_y\subset \m_x$. On peut obtenir 
+des conditions de surjectivité.
+
+
+
+
+
+\printbibliography
+\end{document}
+

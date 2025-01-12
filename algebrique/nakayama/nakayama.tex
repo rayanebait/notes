@@ -1,0 +1,255 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Notes perso : Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\[\ldots\]   
+
+Bon encore et toujours, le Nakayama, j'ai vu une preuve un peu en détail.
+En gros, si $M$ est un $A$-module de type fini. Et si $IM=M$, on peut 
+dire plusieurs choses : soit $(m_0,\ldots, m_n)$ une famille génératrice
+de $M$, on a 
+\[m_j = \sum_{i=1}^n \alpha_{ij}m_i\]
+avec $\alpha_{ij}\in I$. D'où la matrice $A=(\alpha_{ij})$ vérifie,
+$\ker(A-I_n)=M$ en tant qu'endomorphisme du $A$-module $M$. Maintenant
+on peut faire plusieurs choses.
+
+\section{Avec la formule de Cramer}
+Par la formule de Cramer, on a $\det(A-I_n).M=d.M=0$. Avec $d\in 1+I$, 
+ça ca se vérifie en développant la diagonale. 
+
+\section{Directement mdr}
+En fait la matrice de $M\mapsto IM$ c'est vraiment l'identité ptdr,
+en particulier si on écrit la matrice de l'application, on l'appelle
+$C$, alors $Ce_i=e_i$ pour tout vecteur de la famille génératrice. 
+Juste on le réecrit à coefficients dans $I$. Et on a $C\ne I$ parce que
+$1\notin I$. Bon maintenant avec Cayley-Hamilton :
+\[C^n+a_{n-1}C^{n-1}+\ldots+a_1C+a_0=0\]
+avec $a_i\in I$. Bon on a $\phi_C.v=v$ pour tout $v$, en particulier,
+$\phi_C(\sum a_i + 1)=0$. En particulier, l'endomorphisme 
+$m_x=m_{\sum a_i +1}$ a pour noyau tout $M$ et $\phi_C$ est l'identité.
+D'où $xM=0$ et $\sum a_i \ne -1$ sinon $1\in I$.
+
+\section{Conséquences}
+On a des objets maintenant il reste juste à trouver des critères sur
+$1+I$ et $d$.
+
+\subsection{$M=B$ est un anneau}
+Si $A\subset B=M$ est un sur-anneau de $A$, on a $1_A\in M=B$,
+d'où $aB=0$ seulement si $a=0$. On peut en déduire via 
+$0\in1+I$ ssi $I=(1)$ que 
+\[I\subset A\implies IB\subset B\]
+où les inclusions sont strictes.
+
+\subsection{Radical de Jacobson}
+
+Maintenant pareil, si $1+I$ ne contient que des inversibles. 
+Par exemple si $I$ est le radical de Jacobson, on obtient le critère 
+avec \[I=\bigcap_{\m\in Specm(A)} \m\]
+que $I.M=M$ implique $M=0$, ici car $d$ est inversible.
+\subsection{Cas général : $1+I$ contient que des inversibles}
+Plus généralement ducoup si $1+I$
+ne contient que des inversible, si $M'+IM=M$ pour un $M'$ quelconque 
+alors $M=M'$, y suffit d'appliquer la méthode à $M/M'$.
+
+\subsection{Dimension $d$ en tant que $k$-ev implique généré par
+$d$ éléments}
+L'espace $\m/\m^2$ un $A/\m$ espace-vectoriel. En particulier, si
+\[\m/\m^2=\oplus_{i=1}^d ke_i\]
+alors $\m=(e_1,\ldots,e_d)+\m^2$ dans $A$. En posant $M=\m$ et 
+$N=(e_1,\ldots, e_d)$ on peut regarder
+\[\m/(e_1,\ldots,e_d)=\m.(\m/(e_1,\ldots,e_d))\]
+
+avec $M/N$ un $A$-module et $I=\m$. On obtient $f\in 1+\m$ tel que
+$f\m=(e_1,\ldots,e_d)$. En particulier si on localise en $f$ on a fini.
+Et si $A$ est local y'a égalité.
+
+\section{Morphisme fini implique surjectif}
+En fait la fibre $f^{-1}(y)$ vérifie des équations $f^*\m_y$ et 
+$f(x)=y$ veut dire que $f^*\m_y\subset \m_x$. À l'inverse, 
+$f^{-1}(y)=\emptyset$ implique $f_*\m_y=k[X]$.
+On remarque alors que en identifiant 
+\[k[Y]=f_*k[Y]\]
+\begin{rem}
+    Les flèches finies sont dominantes donc cette identification est pas
+    bizarre, la flèche est injective.
+\end{rem}
+si $X\to Y$ est fini, alors $k[X]$ est un $k[X]$-module de type fini
+et \[\m_yk[X]=k[X]\] via l'identification. En particulier, via le 
+critère où $M$ est un anneau ça peut pas arriver. D'où la surjectivité.
+
+\begin{exo}
+    Preuve constructive ?
+\end{exo}
+\section{Propreté des variétés projectives}
+\begin{note}
+    On utilise seulement l'existence du $f\in 1+I$.
+\end{note}
+
+La preuve de séparation est dans mes notes. Sinon on doit prouver que
+$X\times Z\to Z$ est fermée. On peut se ramener à $\P^n\times \A^m$.
+La condition $y\in \A^m-p_2(Z)$ avec $Z=Z(I)\subset \A^m$ se réecrit
+\[(U_0,\ldots,U_n)^N\subset I+\m_yk[U_0,\ldots, U_n,T_1,\dots T_m]\]
+parce que un fermé du produit est donné par des 
+\[G_i(U_0,\ldots, U_n,T_1,\ldots,T_m)=0\]
+avec les $G_i$ homogènes en $\bar U$. Et en évaluant sur $\A^m$ en $y$,
+on doit pas avoir de solution pour les $G_i(\bar U,y)=0$ dans $\Pr^n$.
+D'où en quotientant par $\m_y$ le résultat. 
+\begin{rem}
+    Penser $A=k[U_0,\ldots, U_n,T_1, \ldots, T_m]\to A/\m_y$ qui 
+    correspond à $\A^m\to \A^{n+1}\times \A^m$.
+\end{rem}
+On peut réecrire ducoup en considérant uniquement les éléments homogènes
+de degré $N$ :
+\[(U_0,\ldots, U_n)^N=B_N\subset I_N+\m_yB_N\]
+avec $I_N=I\cap B_N$. D'où on obtient $P\in 1+\m_y\subset k[T_1,\ldots,
+T_m]$ homogène tel que $PB_n=I_N$ dans 
+$k[\bar U, T_1,\ldots, T_m]$.
+\begin{rem}
+    Là c'est 
+    \[P(\bar T)(U_0,\ldots, U_n)^N\subset I_N\subset k[\bar U,\bar T]\]
+\end{rem}
+En particulier, $y\in D^+(P)$ implique en localisant en $P$ via
+$p_2^{-1}(D(P))$ dans $\Pr^n\times \A^m$ et via $D(P)\cap Z$ dans 
+$\A^m$ on obtient le résultat.
+\begin{exo}
+     Bien écrire les diagrammes et les déductions.
+\end{exo}
+
+
+
+\printbibliography
+\end{document}
+

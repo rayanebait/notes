@@ -1,0 +1,354 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Spm}{\textrm{Spm}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+\newtheorem{strat}{Stratégie}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Produits fibrés}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+\chapter{Produits fibrés et foncteur de points}
+\section{Remarques sur le lemme de Yoneda}
+Le légendaire. Je l'énonce que pour ce qui m'intéresse.
+En gros on a un foncteur $h_{\_}:=(X\mapsto \Hom_C(\_,X))$
+qui est pleinement fidèle, autrement dit les diagrammes :
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJYIl0sWzEsMSwiWSJdLFsyLDAsImhfWDo9XFxIb21fQyhcXF8sWCkiXSxbMiwxLCJoX1k6PVxcSG9tX0MoXFxfLFkpIl0sWzAsMCwiXFxIb21fe0N9KFxcXyxcXF8pIl0sWzAsMSwiXFxIb21fe0N9KFxcXyxcXF8pIl0sWzAsMSwiZiIsMl0sWzIsM10sWzAsMl0sWzEsM10sWzQsMCwiXFxjb2xvbiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDEsIlxcY29sb24iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	{\Hom_{C}(\_,\_)} & X & {h_X:=\Hom_C(\_,X)} \\
+	{\Hom_{C}(\_,\_)} & Y & {h_Y:=\Hom_C(\_,Y)}
+	\arrow["\colon"{description}, draw=none, from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["f"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["\colon"{description}, draw=none, from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+\end{tikzcd}\]
+commutent et 
+\[\Hom_C(X,Y)\to \Hom_{\widehat C}(h_X,h_Y)\]
+est une bijection donnée par 
+\[f\mapsto (W\mapsto (\alpha(W)(g)=f\circ g)).\]
+\begin{rem}
+  L'énoncé général s'écrit plutôt :
+  \[\Hom_{\widehat C}(h_X,h_Y)\ni \alpha\mapsto (\alpha(X)(id_X)\colon X\to Y)\]
+\end{rem}
+\begin{rem}
+  Voir le carnet pour des choses plus deep. Pas oublier
+  que c'est bien grâce à ça les propriétés universelles!
+\end{rem}
+\begin{rem}
+  Pour prouver que $\alpha(E)$ est de la forme $\varphi_*$ on peut
+  noter $\varphi:=\alpha(X)(id_X)$ et étant donnés $f\colon E\to X$
+  regarder le carré
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJoX1goWCkiXSxbMSwwLCJoX1koWCkiXSxbMCwxLCJoX1goRSkiXSxbMSwxLCJoX1koRSkiXSxbMCwxXSxbMCwyXSxbMiwzXSxbMSwzXV0=
+\[\begin{tikzcd}
+	{h_X(X)} & {h_Y(X)} \\
+	{h_X(E)} & {h_Y(E)}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+  en appliquant, on sait calculer la composition du haut en $id_X$
+  et $f_*(id_X)=f$.
+\end{rem}
+
+\section{Point de vue du foncteur de point}
+Essentiellement, avoir un morphisme de schémas
+$X\to Y$ équivaut alors à avoir une flèche 
+$h_X\to h_Y$. Si on traduit sur les schémas, il 
+suffit d'avoir 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX1MoVCkiXSxbMSwwLCJZX1MoVCkiXSxbMCwxLCJYX1MoVCcpIl0sWzEsMSwiWV9TKFQnKSJdLFswLDJdLFsyLDNdLFswLDFdLFsxLDNdXQ==
+\[\begin{tikzcd}
+	{X_S(T)} & {Y_S(T)} \\
+	{X_S(T')} & {Y_S(T')}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+pour tout $T=Spec(B)$ affine. Plusieurs
+choses à debunker : pas oublier comment retrouver le morphisme
+de faisceaux. Pas oublier le morphisme topologique.
+
+
+\section{Propriété universelle et cas $k$-schéma}
+En gros c'est l'unique triplé $(X\times_S Y, p,q)$
+tel que \[\Hom_{Sch/S}(W, X\times_S Y)\to \Hom_{Sch/S}(W,X)\times \Hom_{Sch/S}(W,Y)\]
+donné par $h\mapsto (p\circ h,q\circ h)$ est une bijection.
+\subsection{Étude de la définition}
+À noter, la propriété de composition $W\to (X\to S)=W\to (Y\to S)$
+est bien contenue dans la définition parce que c'est des 
+$S$-morphismes. Donc y'a pas de $\times_S$ c'est juste $\times$.
+Dans le cas des variétés, on a automatiquement des 
+$\bar k$-schémas.
+\begin{quest}
+  Impact ?
+\end{quest}
+
+\begin{rem}
+  Y'a pas encore de lemme de Yoneda explicit là, autre que pour
+  dire que c'est l'unique triplé tel que la propriété universelle.
+\end{rem}
+
+
+\section{Remarques sur le foncteur de points}
+En fait si on a un objet qui représente le produit de foncteurs
+de points alors c'est le produit fibré. C'est pour ça que ça 
+suffit! Ça l'air vachement utile. 
+\begin{strat}
+  \item Identifier l'ensemble $\to$ par exemple
+    $|X\times_k Y|=|X|\times_k|Y|$ dans le cas $k=\bar k$.
+  \item Identifier l'espace topologique. Ça ça a l'air d'être
+    induit.
+  \item Identifier le faisceau : voir comment faire de l'algèbre.
+    (se rappeler de la preuve que les variétés projectives sont
+    propres)
+\end{strat}
+
+\section{Foncteur de points}
+Petite intuition du foncteur de points : en fait sur un $R$-schéma $T$
+on a des $R$-flèches $T\to \Spec(R[T_1,\ldots,T_n])$, essentiellement 
+c'est donné par 
+\[\Hom_R(R[T_1,\ldots,T_n],\Gamma(T,\Or_T))\simeq \Gamma(T,\Or_T)^n\]
+là où c'est marrant c'est que si on regarde le noyau donné par des 
+polynômes (c'est une $R$-flèche) $f_1,\ldots, f_s$ on obtient une 
+flèche dans 
+\[\Hom_R(R[T_1,\ldots, T_n]/(f_1,\ldots, f_s), \Or_T(T))\]
+en particulier des équations pour des sections globales de $T$.
+
+\begin{rem}
+    En toute généralité je sais pas si ça dit grand chose de $T$. Mais
+    ça doit être intéressant de creuser.
+\end{rem}
+
+
+\section{Construction}
+\subsection{Cas affine}
+Étant donné $\Spec(A)$ et $\Spec(B)$ des $C$-schémas affines. Le 
+produit fibré est $\Spec(A\otimes_C B)$ (par l'équivalence de 
+catégorie). Le faisceau a pour fibres ? Via le morphisme 
+topologique 
+\[X\times_Z Y\to |X|\times_{|Z|}|Y|\]
+
+\[(A_\p\otimes_{} B_\q)\]
+\subsection{}
+
+
+
+\chapter{Produits tensoriels}
+Via \href{https://kconrad.math.uconn.edu/blurbs/linmultialg/tensorprod.pdf}{ça}, un petit cours du légendaire Keith Conrad.
+Aussi les exercices de Vakil seraient cools. 
+\section{Commentaire sur le produit d'algèbre et de modules}
+En fait les deux coincident quand on se restreint à la catégorie
+des $R$-algèbre. La propriété universelle pour les modules 
+$R$-modules commutatifs devient la même dans la catégorie des
+$R$-algèbre générales, on ajoute que les commutateurs des images 
+s'annulent. En particulier, on peut montrer la propriété 
+universelle uniquement en regardant $A\times C\to D$ avec $D$
+une $R$-algèbre commutative.
+
+\section{Quand est-ce que $m\otimes n= 0$?}
+Étant donné une application bilinéaire 
+\[f\colon M\times N\to K\]
+on peut la factoriser via $M\times N\to M\otimes N\to K$. Alors
+$f(m,n)=0$ dès que $m\otimes n=0$. L'inverse est aussi vrai parce
+que $M\times N\to M\otimes N$ est bilinéaire!
+
+\begin{rem}
+  Suffit donc de trouver $M\times N\to K$ bilinéaire
+  telle que $(m,n)\mapsto k\ne 0$ pour prouver que 
+  $m\otimes n\ne 0$.
+\end{rem}
+\section{Cas des polynômes}
+J'aimerai montrer que si $k[T_1,\ldots, T_n]\to A$ est injective
+et $k[S_1,\ldots,S_m]\to B$ aussi alors 
+\[k[T_1,\ldots,T_n,S_1,\ldots,S_m]\to A\otimes_k B\]
+aussi. Avec ce morphisme étant celui qui étend
+\[k[T_1,\ldots,T_n]\times k[S_1,\ldots, S_m]\to A\otimes_k B\]
+donné par $(f,g)\mapsto f\otimes g$. 
+\begin{rem}
+  Si on prouve que $A$ et $B$ sont des quotients d'anneaux de 
+  polynômes c'est immédiat.
+\end{rem}
+\subsection{Produits d'anneaux de polynômes}
+On a 
+$k[T_1,\ldots, T_n]\otimes_k k[S_1,\ldots,S_m]=k[T_1,\ldots, T_n,S_1,\ldots, S_m]$.
+Pour le prouver on peut juste remarquer que $(f,g)\mapsto f.g$
+est universelle et bilinéaire. 
+
+\subsection{Injectivité}
+Ducoup clairement $f\otimes g\ne0$  par ce que $f.g\ne 0$ dès
+que $f\ne 0$ ou $g\ne 0$. Ensuite si $\sum_i a_i f_i\otimes g_i=0$
+
+\chapter{Sur les $\bar k$-variétés}
+\section{Construction}
+Donc là 
+\[A(X)\otimes_k A(Y)=k[T_1,\ldots, T_n, S_1,\ldots, S_m]/(I,J)\]
+donc le produit fibré est 
+\[Z(I,J)\subset \A_k^{n+m}\]
+et le faisceau
+\section{Adapter les définitions : la bijection ensembliste}
+Donc en regardant même pas les schémas, les variétés sur $\bar k$
+qu'on regarde correspondent à des $\bar k$-schémas. Mais en 
+fait plus simplement, dans le cas affine on à $X\simeq Spm(A(X))$
+avec la topologie de Zariski ($\{\m|I\subset \m\}=V(I)$), i.e.
+$Spm(A(X))$ est une variété à la Weil! Donc ça fait sens d'écrire :
+\[Y,X\to \Spm(k)\]
+on déduit direct par le produit fibré dans une catégorie $C$ 
+quelconque (donc ici $C=k-$Var) dans la catégorie variétés
+abstraites que
+\[\Hom_{k-Var}(\Spm(k), X\times_k Y)\approx \Hom_{k-Var}(\Spm(k),X)
+\times \Hom_{k-Var}(\Spm(k),Y)\]
+via Yoneda maintenant on obtient 
+\[|X\times_k Y|=|X|\times_k|Y|\]
+une bijection d'ensemble !
+
+\begin{rem}
+  C'est pas un homéomorphisme, Yoneda agit au niveau ensembliste.
+\end{rem}
+\section{Topologie : cas quasi-projectif}
+Essentiellement, on regarde la topologie induite sur $\A^n\times
+\A^m$, donc quand on a $\Pr^n\times \Pr^m$, $Z^+(I)$ donné par 
+la graduation de $\Pr^n$ est la bonne topologie par restriction.
+
+\section{Topologie : cas général}
+On peut remarquer $X\times_k Y$ contient (strictement) la topologie
+produit, sinon dans le cas p
+\section{Faisceau}
+
+\printbibliography
+\end{document}
+

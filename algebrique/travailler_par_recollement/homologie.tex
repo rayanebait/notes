@@ -1,0 +1,278 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Recollements}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Recollements}
+\section{Union disjointe}
+En gros ça va être le recollement selon
+des ouverts vides :
+\[X=\sqcup X_i\]
+
+\subsection{Faisceau}
+Le faisceau est clair via 
+\[0\to \Or_X\to \Or_X|_{X_1}\times\ldots\times \Or_X|_{X_k}\to \prod \Or_X(X_i\cap X_j)\to 0\]
+mais le dernier terme c'est le faisceau nul. 
+\subsection{Topologie}
+Ducoup là la topologie est assez claire, c'est des unions d'ouverts
+des $X_i$. En particulier les $X_i$ sont ouverts.
+
+
+\section{Cas général}
+\begin{enumerate}
+  \item Des variétés affines $(X_i)_{i}$,
+  \item Des ouverts $U_ij\subset X_i$,
+  \item Des isomorphismes 
+    \[\varphi_{ij}\colon U_ij\simeq U_{ji}\]
+    tels que $\varphi_{ij}=\varphi_{kj}\circ \varphi_{ik}$
+    en se restreignant aux bons ouverts, i.e. 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJYX2kiXSxbMiwzLCJYX2siXSxbNCwwLCJYX2oiXSxbMSwxLCJVX3tpan1cXGNhcCBVX3tpa30iXSxbMywxLCJVX3tqaX1cXGNhcCBVX3tqa30iXSxbMiwyLCJVX3traX1cXGNhcCBVX3tran0iXSxbMyw0XSxbMyw1XSxbNSw0XV0=
+\[\begin{tikzcd}
+	{X_i} &&&& {X_j} \\
+	& {U_{ij}\cap U_{ik}} && {U_{ji}\cap U_{jk}} \\
+	&& {U_{ki}\cap U_{kj}} \\
+	&& {X_k}
+	\arrow[from=2-2, to=2-4]
+	\arrow[from=2-2, to=3-3]
+	\arrow[from=3-3, to=2-4]
+\end{tikzcd}\]
+\end{enumerate}
+Ça fait une relation d'équivalence $x_i\sim x_j$
+si $\varphi_{ij}(x_i)=x_j$. En particulier, on peut
+former 
+\[\pi \sqcup_i X_i\to(\sqcup_i X_i)/\sim\]
+maintenant faut décrire le faisceau et la topologie!
+\section{Topologie}
+Donc naturellement on met la topologie quotient. Et
+on regarde le morphisme 
+\[\pi \sqcup_i X_i\to(\sqcup_i X_i)/\sim.\]
+Donc un sous-ensemble $E$ du quotient est ouvert
+ssi $p^{-1}E$ est ouvert. Comme on part d'une union
+disjointe, ça va être une unione disjointe d'ouverts
+et on peut regarder essentiellement (réflechir
+un peu plus à comment les décrire)
+\[p^{-1}p(U)\]
+pour $U\subset X_i$.
+\begin{prop}
+  Pour $U\subset X_i$ on a
+  \[p^{-1}p(U)=U\cup \sqcup_j \varphi_{ij}U\cap U_{ij}.\]
+\end{prop}
+Et ces ouverts sont une base de la topologie. (Faut juste
+intersecter avec les $\bar(X_i)$ qui sont ouverts)
+\section{Faisceau}
+À nouveau on va étudier 
+\[\Or_X\to \pi_*\Or_{\sqcup_i X_i}\]
+sur les intersections.
+
+
+\section{Conditions de recollements explicits}
+\subsection{Cas de deux ouverts $(X_1\sqcup X_2)/\sim_\rho=X$}
+Essentiellement, la surjectivité de $X_1\sqcup X_2\to X$
+induit une injection 
+\[\Or_X\hookrightarrow \Or_{X_1\sqcup X_2}|_{X_1}\times \Or_{X_1\sqcup X_2}|_{X_2}\]
+\begin{rem}
+  En fait plus naturellement, des "fonctions" sur $U\subset X$
+  c'est vraiment des fonctions sur $X_1\sqcup X_2$ qui 
+  passent au quotient.
+\end{rem}
+Ducoup le morphisme on le décrit via 
+\[\Or_{X}(\pi(X_i))\ni g_i\mapsto (g_i\circ \pi|_{X_i},g_i\circ \pi\circ \rho_{ji})\]
+sur $\pi(X_i)$ parce que 
+\[\pi^{-1}(\pi(X_i))=X_i\sqcup \rho_{ij}(X_i\cap U_{ij}=U_{ij}).\]
+Et pour $U\subset X_i$ on écrit 
+\[\Or_{X}(\pi(U))\ni g_i\mapsto (g_i\circ \pi|_{U},g_i\circ \pi\circ \rho_{ji}|_{\rho_{ij}(U\cap U_{ij})})\]
+Bon maintenant les conditions de recollement peuvent s'écrire par
+restriction:
+\[(g_1\circ\pi|_{X_1})|_{U_{12}}=g_2\circ\pi\circ \rho_{12}\]
+et 
+\[g_1\circ\pi\circ \rho_{21}=(g_2\circ\pi|_{X_2})|_{U_{21}}\]
+mais en fait avoir l'un ou l'autre c'est équivalent vu que 
+$\rho_{21}\circ\rho_{12}=id_{U_{21}}$.
+\subsection{Cas général : $X=(\sqcup X_i)/\sim$}
+Cette fois faut noter à nouveau que 
+\[\pi^{-1}\pi X_i=X_i\sqcup\bigsqcup_{j\ne i} U_{ji}\]
+et donc si on a $g_i\in \pi(X_i)$ qu'on voir si on peut les 
+relever on écrit via $\Or_X\hookrightarrow \pi_*\Or_{\sqcup X_i}$:
+\[g_i\mapsto (g_i\circ \pi|_{X_i}, (g_i\circ\pi\circ\rho_{ji})_j)\]
+alors pour $g_{j_1}$ et $g_{j_2}$ on a la condition sur 
+$\pi(U_{j_1j_2})$ :
+\[g_{j_1}\circ\pi|_{U_{j_1j_2}}=g_{j_2}\circ\pi\circ\rho_{j_1j_2}\]
+et les autres conditions sur $\rho_{j_1i}(U_{j_1j_2}\cap U_{j_1i})=
+\rho_{j_2i}(U_{j_2j_1}\cap U_{j_2i})=V$ (Je crois que c'est égal
+mais ça change rien) données par 
+\[g_1\circ\pi\circ\rho_{ij_1}|_V=g_2\circ\pi\circ \rho_{ij_2}|_V\]
+mais $V\subset U_{ij_1}\cap U_{ij_2}$ et on a les deux identités
+\[\rho_{ij_1}\circ\rho_{j_1i}=id\]
+\[\rho_{ij_2}\circ\rho_{j_1i}=\rho_{j_1j_2}\]
+en particulier suffit de vérifier que la première condition.
+
+\section{Sections de $\Pr_k^n$}
+\begin{quest}
+  Étant donné une section sur $\A^n(k)$ non constante est-ce 
+qu'on peut relever à $\Pr^n(k)$?
+\end{quest}
+Donc là $X_i=\A^n(k)$ pour tout $i=0,\ldots, n$ le changement de
+carte 
+$\rho_{ij}\colon U_{ij}\to U_{ji}$ est donnée par 
+\[\rho_{ij}(t_0,\ldots,\hat t_i,\ldots, t_n)\mapsto (t_0/t_j,\ldots,\hat t_j, \ldots, t_{i-1}/t_j,1/t_j,\ldots, t_n/t_j)\]
+d'où la flèche
+\[(\rho_{ij})_*\colon k[T_0,\ldots, \hat T_j, \ldots, T_n]_{T_i}=k[U_{ji}]\to k[U_{ij}] k[T_0,\ldots,\hat T_i,\ldots, T_n]_{T_j}\]
+est donnée \[(\rho_{ij})_*(T_k)=\begin{cases} 1/T_j\textrm{ si $k=i$}\\ T_k/T_j\textrm{ sinon.}\end{cases}\]
+En particulier dès qu'on a un polynôme non trivial $P$ sur $X_i$ et
+que $T_j$ apparaît disons bah via $(\rho_{ji})_*$ on obtient 
+une section \[(\rho_{ji})_*(P)\in k[U_{ji}]\backslash k[X_j]\] donc
+se relève pas (parce que $1/T_i$ apparait et est pas déf 
+globalement).
+\section{Cas de $\Pr_k^1$}
+J'entends souvent Aphelli parler de $k[X,Y]/(XY-1)$ comme de 
+l'intersection de $U_0$ et $U_1$. Faudrait explorer.
+
+
+
+
+\chapter{Propriété explicite de faisceau}
+Quand on a une variété $X$ on peut y penser via un recollement
+d'affines. C'est à dire via (déjà deux ouverts) :
+\[0\to \Or_X(U\cup V)\to \Or_X(U)\times
+\Or_X(V)\to \Or_X(U\cap V)\to 0\]
+donné par 
+
+
+
+
+\printbibliography
+\end{document}
+

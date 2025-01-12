@@ -1,0 +1,11 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Algorithmes}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}$\frac {3}{5}|0>+\frac {4}{5}|1>$}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}$\frac {3}{5}|0>+\frac {4}{5}|1>$ et $\frac {5}{13}|0>-\frac {12}{13}|1>$}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Deutsch-Josza}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Simon}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Transormée de Fourier quantique}{7}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Cas $r=2^d$}{8}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Construire la porte QFT}{9}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Le cas $r$ général}{9}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Factorisation et log discret}{10}{section.1.6}%

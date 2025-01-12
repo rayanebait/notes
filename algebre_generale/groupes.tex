@@ -1,0 +1,257 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{res}{Résumé}
+\newtheorem{rep}{Réponse}
+\newtheorem{cons}{Conséquence}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+Ici on reprends les bases mdr.
+
+\chapter{Relations d'équivalences}
+Étant donné un ensemble $X$, on définit
+$R\subset X\times X$ une relation. C'est
+une relation d'éq si on rajoute les conds
+habituelles. 
+
+\section{Groupe quotient}
+\subsection{Définition directe}
+En fait un groupe quotient $G/H$ par déf donc
+ce sera un quotient par une relation bien 
+spéciale. On pose $G/H$ l'ensemble des
+cosets à gauche (qui sera pareil que les
+cosets à droite) :
+\[gH\subset G\]
+on définit $(xH)(yH):=(xy)H$. C'est bien
+défini ssi $H$ est normal. En gros
+faut que ce soit indépendant du choix
+du représentant. Une manière de voir 
+qu'être normal permet de bien la définir
+c'est que si $(xy)H=(ab)H$ avec $xH=aH$ 
+et $yH=bH$ alors
+\[xyH=x(yH)=xHy=aHy=a(yH)=abH.\]
+À l'inverse l'existence d'une loi de 
+groupe du type $(xH)(yH)=(xy)H$ force
+pour $h\in H$, d'où $H=hH$, que
+\[gH=(eg)H=eHgH=(hg)H\]
+d'où $g^{-1}hg\in H$.
+
+\begin{rem}
+  Composer des ensembles c'est marrant.
+\end{rem}
+
+\subsection{Autre définition}
+On peut quotienter $G$ par la relation
+d'équivalence $g\sim g'$ si $g^{-1}g'\in H$.
+On remarque que pour tout $x\in G$,
+\[g\sim g' \equiv xg\sim xg'\]
+alors la projection $\pi(g)=gH$ qui
+à $g$ associe son orbite est
+un morphisme de groupe si et seulement
+si $H$ est normal.
+
+\subsection{Propriété}
+ Il doit avoir une propriété universelle.
+ Notamment celle de conoyau.
+
+\section{Anneau quotient}
+Cette fois on veut préserver la multiplication
+et l'addition. On définit à nouveau
+$x\sim y \equiv x-y\in I$. C'est une relation
+d'équivalence parce que $I$ est un idéal bilatère.
+(même juste un groupe additif abélien). Maintenant,
+la loi est donnée par \[(x+I)+(y+I):=(x+y)+I\] et
+\[(x+I)(y+I):=(xy+I)\]
+et faut vérifier que l'existence de cette loi
+d'anneau force $I$ un sous-groupe additif à
+être un idéal.
+
+\subsection{Idéal}
+C'est marrant ducoup, on veut montrer
+que si $x\in I$ et $a\in I$ alors $ax\in I$.
+On peut regarder
+\[ax+I=(a+I)(x+I)=(a+I).I\]
+mais $I$ est l'élement nul d'où 
+\[(a+I).I=I\]
+en particulier $ax\in I$.
+
+
+
+
+
+\section{Théorèmes d'isomorphismes}
+Deux choses à mentionner : dans un
+groupe $G$, si $N$ est normal et 
+$S$ quelquoncque. On a 
+\begin{enumerate}
+  \item $N\subset SN$
+est normal.
+  \item $S\cap N\subset S$ est
+normal. 
+  \item Puis $S/S\cap N \simeq SN/N$.
+\end{enumerate}
+de même pour les anneaux dans $R$ 
+un anneau si $S$ est un sous-anneau 
+et $I$ un idéal. On a
+
+\begin{enumerate}
+  \item $S\cap I$ est un idéal de $S$.
+  \item $S+I$ est un anneau et $I$
+    un idéal de $S+I$.
+  \item Puis $(S+I)/I\simeq S/S\cap I$.
+\end{enumerate}
+Pour les modules c'est pareil.
+
+Ça règle mes questionnements d'y a 
+quelques temps du genre ça veut dire quoi
+$"S/I"$. À refaire dans ma tête
+desfois c'est facile.
+
+\section{Lemme chinois et coprimalité d'idéaux}
+Ducoup la coprimalité c'est $I+J=(1)$. On déduit
+de $i+j=1$ que si $d\in I\cap J$ alors $d=di+dj\in IJ$.
+De la même manière pour une famille d'idéaux. 
+Maintenant 
+\[\varphi\colon A\to \prod A/\a_i\]
+est surjective ssi les $\a_i$ sont copremiers deux
+à deux via une relation de Bézout. Et injective si 
+$\cap \a_i=(0)$ c'est pas clair tel quel mais faut
+quotienter ducoup. I.e. remplacer $\a_i$ par
+$\a_i/\prod \a_i$.
+
+
+
+\printbibliography
+\end{document}
+

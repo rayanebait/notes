@@ -1,0 +1,283 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Anneaux de Dedekind}
+\date{}
+
+\begin{document}
+\maketitle
+
+\chapter{Anneaux de valuation discrète et de Dedekind.}
+\section{Anneaux de valuation discrète}
+Pour le contexte, moi je m'intéresse au cas intègre déjà et
+au cas où le DVR est un $A_\p$ pour un anneau noethérien intègre
+de dimension $1$. Sa clôture intégrale dans $\Frac(A)$ devient
+un anneau de Dedekind.
+\subsection{Les 2 définitions.}
+Y'a deux manières de les voir :
+\begin{enumerate}
+    \item Dans un corps $(K,v)$ muni d'une valuation discrète.
+	Avec $A=\{x\in K|v(x)\geq 0\}$. 
+	($v(x)=0\implies v(x^{-1})=0$)
+    \item Comme un anneau principal (donc intègre) ayant un seul
+	idéal premier non nul.
+\end{enumerate}
+L'implication $1.$ implique $2.$ consiste juste à se placer
+dans l'espace ambiant $K$.
+
+L'autre côté consiste à construire une valuation par l'absurde.
+
+\subsection{Première caractérisation}
+\begin{eq}
+    Dans un anneau noethérien, 
+    \begin{center}
+	DVR $\equiv$ local, noethérien, $\m=(\pi)$ non nilpotent.
+    \end{center}
+\end{eq}
+On veut juste écrire $x=\pi^n u$ de manière unique, on peut juste
+utiliser que $t\in A$ implique $t\in \m$ ou $t\in A^\times$.
+
+\subsection{Deuxième caractérisation}
+\begin{eq}
+    \begin{center}
+	DVR $\equiv$ Noethérien, intégralement clos, un seul idéal
+	premier $\ne 0$ (local mais pas un corps ? Non! Tu
+	verras pq.).
+    \end{center}
+\end{eq}
+Là c'est un peu plus dur. Le point c'est de montrer que $\m$ est 
+inversible, alors $\m$ est principal. On note 
+$\m'=\{x\in K|x\m\subset A\}$. On a 
+\begin{center}
+    $\m\m'\subset A$ et $A\subset \m'$ implique 
+    $\m\subset \m\m'$.
+\end{center}
+d'où $\m\m'=\m$ ou $A$. Maintenant en fait
+\begin{center}
+    si $\m\m'=A$ alors $\sum x_iy_i=1$ d'où 
+    $u=x_{i_0}y_{i_0}\in A-\m=A^{\times}$ 
+\end{center}
+par l'absurde. En particulier tout $z\in\m$ se réécrit 
+\[z=x_{i_0}(u^{-1}y_{i_0}z)\]
+parce que $x_{i_0}y_{i_0}u^{-1}=1$ et $y_{i_0}z\in A$!
+
+\subsection{Résumé de preuve}
+On montre en trois temps que 
+\begin{enumerate}
+    \item Si $\m$ est inversible alors il est principal.
+    \item Si $\m\m'=\m$ et $A$ est intégralement clos alors
+	$\m'=A$.
+    \item Si $A$ a un seul idéal non nul (et pas juste local)
+	alors $\m'\ne A$.
+\end{enumerate}
+Le premier je l'ai expliqué avant. Le deuxième c'est que 
+si $z\in \m'$ alors $A[z]\subset \m'$ qui est t.f. D'où le 
+résultat. Le troisème utilise que si $x\in \m-0$, alors 
+\begin{enumerate}
+    \item $A_x=K$
+    \item En faisant varier $x$, $\m^N\subset zA$ pour un $N$
+	minimal et $z\in A-0$.
+    \item Pour $z\in \m$, on a $y\in \m^{N-1}-zA$ puis $y/z\m'-A$.
+\end{enumerate}
+\begin{note}
+Le troisième point se traduit en $\Spec(K)=D(x)\subset \Spec(A)$ et
+    \begin{align*}
+    A_x&=\Or_{D(x)}(D(x))\\
+       &=\Or_{\Spec(A)}(\Spec(A))|_{(0)}\\
+       &=\Or_{\Spec(A),(0)}\\
+       &= (A\backslash 0)^{-1}A\\
+       &=K
+    \end{align*}
+\end{note}
+Aussi, cette histoire de $y\in \m^{n-1}-zA$ et $y\m\subset zA$
+ça fait remarquer de l'arithmétique plus habituelle.
+
+\subsection{But de ces caractérisations}
+Celle qui nous intéresse c'est la deuxième qui permet de montrer
+que $\m$ est principal. Alors on peut utiliser la première
+pour montrer que c'est un DVR.
+
+\section{Anneaux de Dedekind}
+On montre que 
+\begin{eq}
+    \begin{center}
+	$A_\p$ est un dvr pour tout $\p\equiv$ $A$ est
+	noethérien intégralement clos de dimension $1$.
+    \end{center}
+\end{eq}
+On sait que un $DVR\equiv$ noethérien intègre avec un seul
+idéal premier non nul. I.e. de dimension $\leq 1$. Donc faut juste
+Que intégralement clos équivaut à tout les $A_\p$ sont 
+intégralement clos.
+\begin{rem}
+    Gauche à droite c'est l'équivalence habituelle et droite à
+    gauche c'est que le dénominateur est dans aucun idéal maximal.
+    Donc est inversible.
+\end{rem}
+
+
+\subsection{Relever l'inversibilité pour les premiers}
+De l'inversibilité de $\p$ dans $A_\p$ je veux relever dans $A$.
+En fait ça vient du fait que $\_\otimes_A A_\p$ est un morphisme
+de monoides $Mod_{A,\subset K}\to Mod_{A_\p,\subset K}$ additif
+et multiplicatif !
+
+\subsection{$\Spec(A)$ est de dimension $1$, i.e. $V(I)$ est fini
+pour $I\ne (0)$.}
+
+Si on prends $x\in A$, psq si $\p_1,\ldots,\p_k,\ldots$ le
+contiennent alors on a une chaine 
+\[A\subset (A:\p_1)\subset (A:\p_1\cap \p_2)\subset \ldots\subset
+(A:\p_1\cap\ldots\cap \p_k)\subset \ldots\subset x^{-1}A\]
+d'où ça stationne et c'est fini. 
+
+Comme $I$ est de type fini on obtient direct que $V(I)$ est fini.
+\subsection{Valuations et décomposition}
+Étant donné $I\subset A$, on a $I_\p=\p^m$ et on peut définir
+$v_\p(I)=m$, on l'étend à $I\subset K$ par $v_\p(I.(A_\p:I))=0$.
+
+\subsection{Relever l'inversibilité en général}
+
+Il transforme aussi $(I : J)$ en $(I_\p:J_\p)$.
+Concrètement :
+\[(\p.(A:\p))\otimes_A A_\p = (\p A_\p.(A_\p:\p A_\p))=A_\p\]
+sauf que à gauche $\p.(A:\p)\subseteq A$ est un idéal et y'a
+que $A$ qui a pour image $A_\p$.
+\begin{rem}
+    ATTENTION. On a utilisé que $\p \mapsto \p A_\p$ est injectif !
+\end{rem}
+\begin{rem}
+    Ca se généralise à $I$ un idéal fractionnaire car
+    $I\otimes_A A_\p=\p^n$ d'où $(I\p^{-n})_\p=A_\p$. On peut 
+    pas conclure que $\p^{-n}=(A:I)$ parce que si $\p'\mid I$ 
+    alors $\p'\otimes_A A_\p=A_\p$. 
+\end{rem}
+Y faut maintenant remarquer que 
+$(A:\prod \p^{v_\p(I)})_\p=(A:I)_\p$ pour tout $\p$ et conclure.
+
+\begin{note}
+    Le foncteur $\_\otimes_A A_\p$ de $Mod_A$ dans $Mod_{A_\p}$
+    a surement les mêmes propriétés pour les bonnes définitions
+    de produits et sommes.
+\end{note}
+\subsection{Décomposition en idéaux}
+De la même manière que pour l'inversibilité on remarque que 
+$\prod \p^{v_\p(I)}$ coincide avec $I$ dans
+tout les $A_\p$. Faut montrer que donc il est égal à $I$.
+
+\begin{note}
+    Faire une section sur la décomposition en idéaux primaires.
+\end{note}
+
+
+\end{document}
+

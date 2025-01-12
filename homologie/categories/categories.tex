@@ -1,0 +1,919 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Penser avec les catégories}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Yoneda et foncteurs représentables}
+
+
+\chapter{Objets universels dans les catégories abéliennes}
+
+\section{Remarques sur la variance}
+Le bi-foncteur $h_{\_}(\_)$ est celui qu'on a besoin pour
+la cohomologie. Et on a $h_M(A)=h^A(M)$.
+\subsection{Le plongement de Yoneda}
+Le foncteur $I\mapsto h_I$ est covariant et pleinement fidèle,
+via $I\to I'$ et $M\to I$ fournit $M\to I\to I'$. Mais ca c'est Yoneda.
+À l'inverse $P\mapsto h^P$ est contravariant vu que étendre 
+naturellement $P'\to M$ c'est par pullback. 
+
+\subsection{Spécialisation, foncteur représentable}
+Donc une fois $I$ fixé, $h_I$ est contravariant, vu que
+$M\to I$ s'étend par pullback. Et $h^P$ est covariant
+vu que $P\to A$ s'étend par pushforward. Et surtout que 
+$h_I(M)\to h_I(M')=h^M(I)\to h^{M'}(I)$ donc on a la variance
+de $h^{\_}$.
+
+\section{Exactitude du foncteur Hom}
+Ducoup, l'exactitude de $A\to B\to C\to 0$
+via $h_M$ est toujours vraie. On obtient
+\[0\to h_M(C)\to h_M(B)\to h_M(A)\]
+et pour obtenir l'exactitude à droite, il
+faut que $M=I$ soit un injectif.
+
+On a deux suites exactes à traiter
+\[0\to A\to B\to C\]
+et 
+\[A\to B\to C\to 0\]
+c'est la deuxième qui m'interesse pour
+la cohomologie via $h_I$. Je regarde que
+\[A\to B\to C\to 0\]
+On en déduit deux
+suites exactes
+\[0\to h_I(C)\to h_I(B)\to h_I(A)\]
+et
+\[0\to h^C\to h^B\to h^A\]
+la deuxième donne pas la propriété des injectifs.
+L'exactitude de la deuxième se vérifie terme à terme
+donc c'est équivalent l'autre.
+
+\subsection{Preuves du deuxième cas}
+
+\subsubsection{Injectivité et surjectivité sur les
+côtés}
+
+Le cas $0\to h^C\to h^B$ est clair l'injectivité c'est le fait que
+un épi $B\to C\to 0$ vient de $(C\to M)\mapsto (B\to C\to M)$
+est injectif.
+Et ça se traduit en mono dans la catégorie opposée où
+cette fois un mono $0\to A\to B$ fournit un mono
+\[0\to h_A\to h_B\]
+par la variance et $M\to A\mapsto M\to A\to B$ uniquement.
+\begin{rem}
+  Marrant y'a ptet un truc philosophique sur cette
+  asymétrie ?
+\end{rem}
+\subsubsection{Exactitude au milieu où $\ker$ et $\coker$}
+
+\begin{rem}
+Pour rappel un noyau $K$ est donné par une
+injection exacte :
+\[0\to h_K\to h_B\to h_C\]
+et un conoyau par
+\[0\to h^{coK}\to (h^B\to h^A)=\ker(h^B\to h^A)\]
+l'image elle c'est
+\[0\to h_{Im}\to h_{B}\to h_{coK(A\to B)}=\ker(h_B\to h_{coK(A\to B)})\]
+\end{rem}
+Maintenant on veut pas exactement montrer que $h_K=h_{\im}$
+sachant $K=\im$ vu que c'est immédiat. On veut montrer
+que $\ker(h_I(B)\to h_I(A))=\im(h_I(C)\to h_I(B))$ pour tout $I$
+mais le problème c'est que ça se traduit en
+\[\ker(h^B\to h^A)=\im(h^C\to h^B)\]
+et donc on a pas a priori la propriété universelle direct. Le fait
+que ce soit pas intuitif c'est que on demande que de $B\to M$
+on ait 
+$A\to B\to M=0$ ssi $A\to B\to M$ se factorise par $A\to B\to C\to
+M$ i.e.
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJNIl0sWzEsMCwiQiJdLFswLDAsIkEiXSxbMiwwLCJDIl0sWzEsMF0sWzIsMV0sWzEsM10sWzMsMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+  A & B & C \\
+	& M
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[dashed, from=1-3, to=2-2]
+\end{tikzcd}\]
+On dirait que $M$ est un projectif. Ça s'éclaircit en rappelant que
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJNIl0sWzEsMCwiQiJdLFswLDAsIkEiXSxbMiwwLCJDIl0sWzEsMF0sWzIsMV0sWzEsM10sWzMsMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+  A & B & C &0\\
+   & M & 
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-2, to=2-2]
+	\arrow[dashed, from=1-3, to=2-2]
+\end{tikzcd}\]
+et là on peut définir $C\to M$ parce que $B\to C$ est un épi 
+intuitivement. Plus concrètement l'idée c'est une extension de
+celle du théorème d'iso.
+Étant donné $coim$ comment je déf $coim\to im$! Là c'est l'inverse!
+En fait on prouve que \[C=\coker(A\to B)\] via
+$coim(B\to C)\simeq C$ dans la catégorie abélienne et
+\[\coker(A\to B)=\coker(\im(A\to B)\to B)=\coker(\ker(B\to C)\to B)=\coim(B\to C)\] par exactitude au milieu. 
+
+
+\subsubsection{Exactitude au milieu en bref}
+On veut que $\ker(h^B\to h^A)=\im(h^C\to h^B)$, ça revient à dire
+que $C=\coker(A\to B)$. Et on utilise l'exactitude pour voir que
+$\coker(A\to B)=\coim(B\to C)=\im(B\to C)=C$. En termes de 
+foncteurs. La coimage vérifie 
+\[0\to h^{\coim(B\to C)}\to h^B\to h^{\ker(B\to C)}\]
+\[h^{\coim(B\to C)}\]
+et on a un pont $h^{\coim(B\to C)}=h_{\im(B\to C)}$.
+
+\subsubsection{Le théorème d'iso est un pont entre $h^{\_}$ et $h_{\_}$}
+
+
+\subsection{Preuves du premier cas}
+Pour l'exactitude au milieu, on utilise seulement que 
+\[0\to A \to B\]
+exact implique $A\simeq \im(A\to B)$ en particulier, $M\to B$
+tel que $M\to B\to C = 0_{M,C}$ implique 
+$M\to B=M\to \im(A\to B)\to B$ et via l'isomorphisme on obtient
+naturellement $M\to A$ tel que $M\to B$ et $M\to A\to B$.
+
+\section{Injectifs et projectifs}
+Pour rappel $h_I(\_):=\Hom(\_,I)$ et 
+$h^{P}(\_):=\Hom(P,\_)$. Être injectif $I$ ça
+revient à ce que l'exactitude de 
+\[0\to M'\to M\]
+devienne l'exactitude de $h_I(M)\to h_I(M')\to 0$.
+C'est un peu bizarre à intuiter au sens où le
+diagramme est
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNJyJdLFsxLDAsIk0iXSxbMCwxLCJJIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	{M'} & M \\
+	I
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[dashed, from=1-2, to=2-1]
+\end{tikzcd}\]
+et que de $M'\to I$ on a une flèche qui induit l'existence
+de $M\to M$. C'est une condition de surjectivité! I.e.
+$h_I$ est exacte à droite (en passant à la catégorie opposée). 
+À l'inverse pour les projectifs
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNJyJdLFsxLDAsIk0iXSxbMCwxLCJQIl0sWzEsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsMF0sWzIsMSwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	{M'} & M \\
+	P
+	\arrow[two heads, from=1-2, to=1-1]
+	\arrow[from=2-1, to=1-1]
+	\arrow[dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+
+\section{Monomorphismes et épimorphismes}
+
+En résumé $A\to B$ est un mono veut
+dire que 
+\[h_A\to h_B\]
+est injectif via $i_*=h_i:=(M\to A)\mapsto (M\to A\to B)$.
+(ca se vérif bien terme à terme) et pour la remarque, 
+$h_A$ est un foncteur de $\Aat$ dans $Ab$
+dans le cadre des catégories abéliennes donc
+c'est une catégorie abélienne et l'injectivité 
+se traduit en $0\to h_A\to h_B$.
+\subsection{Détail}
+On a $0\to A\to B$ est exacte c'est pareil que
+\[0\to \Hom_{\Cat}(M,A)\to \Hom_{\Cat}(M,B)\]
+est injective via le pushforward : 
+$i\circ f =i\circ g\implies f=g$. En passant à
+la catégorie opposée dans $\Cat$, on obtient les
+épis par $B\to A\to 0$ et les flèches c'est :
+\[\Hom_{\Cat^op}(B,M)\to \Hom_{\Cat^op}(A,M)\to 0\]
+est surjective via $i_*^{op}$. D'où
+\[\Hom_{\Cat}(M,B)\to \Hom_{\Cat}(M,A)\to 0\]
+est surjective.
+\begin{rem}
+  C'est comme ça que les flèches s'inversent!
+  La condition
+\[\Hom_{\Cat}(B,M)\to \Hom_{\Cat}(A,M)\to 0\]
+  via le pullback est bizarre. Ça veut dire que
+  toutes les flèches $A\to M$ proviennent de 
+  $B\to M$ sachant que $A\hookrightarrow B$ 
+  s'injecte dans $B$. C'est pas exactement tout
+  de suite en lien avec les injectifs.
+\end{rem}
+En résumé, 
+\section{Ker et coker}
+Un $\ker$ c'est ça :
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLIl0sWzEsMCwiQSJdLFsyLDAsIkIiXSxbMCwxLCJNIl0sWzAsMV0sWzEsMl0sWzMsMV0sWzMsMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMiwiT197TSxCfSIsMSx7ImN1cnZlIjoxfV1d
+\[\begin{tikzcd}
+	K & A & B \\
+	M
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[dashed, from=2-1, to=1-1]
+	\arrow[from=2-1, to=1-2]
+	\arrow["{O_{M,B}}"{description}, curve={height=6pt}, from=2-1, to=1-3]
+\end{tikzcd}\]
+Maintenant, on peut le traduire en 
+\[h_{K}\to h_A\to h_B\]
+est exacte. En plus, $K\to A$ est un mono par
+le propriété universelle. D'où
+\[0\to h_K\to h_A\to h_B\]
+est exacte. 
+
+
+
+\section{Snake Lemma}
+Avec élément c'est assez clair comment on construit $\delta$ la
+flèche de connexion. Sans élément ça l'es moins. J'ai eu une
+idée et je me suis spoil la suite. On peut faire comme ça, donc
+on regarde $\ker(w)\to C\to B\to B'\to A\to \coker(u)$. Et l'idée
+c'est que on regarde des éléments dans $B$ tels que $B\to C\to C'$
+est nulle, et pour qu'y soient bien définis, on les regarde modulo
+$A$. En résumé, on regarde \[\ker(B\to C\to C')=B''\] on sait que
+$(B''\to B\to B')\to C'=0$ donc on obtient $B''\to A'$. Pour 
+conclure on a clairement $A\to B''$ et ça fournit
+\[B''/A\to A'/A=\coker(u)\] en plus comme
+$B\to C$ est un épi, $B''\to B$ est un mono, et $A\to B\to C$ est
+exacte, on obtient que 
+\[B''/A=B''/\ker(B\to C)\simeq\im( B''\to B\to C)=\ker(w)\] d'où
+\[\ker(w)\to \coker(u)\]
+
+\section{Obtenir des flèches}
+Quelques tricks pour obtenir des flèches. Étant donné
+$A\to B\to C$, on a $\ker(A\to B)\to \ker(A\to B\to C)$.
+Parce que \[\ker( A\to B)\to A\to B\to C=(\ker(A\to B)\to A\to B)\to C\]
+est nulle d'où la flèche. À l'inverse on a 
+\[\coker(A\to B\to C)\to \coker(B\to C)\]
+via 
+\[A\to B\to C\to \coker(B\to C)=A\to (B\to C\to \coker(B\to C))=0\]
+d'où la flèche. Aussi, on a 
+\[\coker(A\to B)\to \coker(A\to B\to C)\]
+via \[A\to B\to (C\to \coker(A\to B\to C))=(A\to B \to C\to \coker(A\to B\to C))=0\]
+d'où la flèche. En particulier on obtient la flèche du théorème
+d'isomorphisme.
+\section{Obtenir des flèches, version 2}
+En fait on peut regarder 
+% https://q.uiver.app/#q=WzAsOSxbMSwwLCJYIl0sWzIsMCwiWSJdLFsyLDEsIloiXSxbMSwxLCJaIl0sWzMsMCwiXFxjb2tlcihmKSJdLFs0LDAsIjAiXSxbMywxLCIwIl0sWzAsMSwiMCJdLFswLDAsIjAiXSxbMCwxLCJmIl0sWzEsMiwiZyJdLFswLDMsImdcXGNpcmMgZiIsMl0sWzMsMiwiaWQiLDJdLFsxLDRdLFs0LDVdLFsyLDZdLFs0LDZdLFs3LDNdLFs4LDBdXQ==
+\[\begin{tikzcd}
+	0 & X & Y & {\coker(f)} & 0 \\
+	0 & Z & Z & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["f", from=1-2, to=1-3]
+	\arrow["{g\circ f}"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["id"', from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+et on obtient d'un coup
+\[0\to \ker(g\circ f)\to \ker(g)\to \coker(f)\to \coker(g\circ f)\to \coker(g)\to 0\]
+
+\section{Théorème d'isomorphisme}
+On regarde $\ker(A\to B)\to A\to B$, alors
+\[\coim(A\to B)=\coker(\ker(A\to B)\to A)\to \coker((\ker(A\to B)\to A)\to B)=\coker(0\to B)=B\]
+et la flèche est bien induite pas $A\to B$.
+
+\chapter{Catégories abéliennes}
+On demande à avoir un objet zéro, les
+produits finis et que les $\Hom$ soient des
+groupes. Ça donne une catégorie additive. Ensuite
+on ajoute les noyaux. Grâce
+
+\section{Codiagonale, produit = coproduit}
+Ducoup juste un point, étant donné les produits
+à deux éléments on a tout les produits finis. Et
+si on des flèches nulles on peut voir $A\times B$
+comme un coproduit via $i_A$ et $i_B$. Puis
+\[\begin{tikzcd}
+	& X \\
+	A & {A\times B} & B
+	\arrow["f"{description}, from=2-1, to=1-2]
+	\arrow["{i_A}"{description}, from=2-1, to=2-2]
+	\arrow["h"{description}, from=2-2, to=1-2]
+	\arrow["g"{description}, from=2-3, to=1-2]
+	\arrow["{i_B}"{description}, from=2-3, to=2-2]
+\end{tikzcd}\]
+où $h=f\circ p_A+g\circ p_B$ fait de $A\times B$ un coproduit.
+On définit ensuite $\delta_B$ la codiagonale
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJCXFx0aW1lcyBCIl0sWzAsMSwiQiJdLFsxLDAsIkIiXSxbMiwxLCJCIl0sWzEsMCwiaV97QiwxfSIsMl0sWzAsMiwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMCwiaV97QiwyfSJdLFsxLDIsImlkX0IiLDFdLFszLDIsImlkX0IiLDFdXQ==
+\[\begin{tikzcd}
+	& B \\
+	B & {B\times B} & B
+	\arrow["{id_B}"{description}, from=2-1, to=1-2]
+	\arrow["{i_{B,1}}"', from=2-1, to=2-2]
+	\arrow[dashed, from=2-2, to=1-2]
+	\arrow["{id_B}"{description}, from=2-3, to=1-2]
+	\arrow["{i_{B,2}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+ça donne une somme de $f\colon A\to B$ via
+% https://q.uiver.app/#q=WzAsNSxbMCwxLCJBIl0sWzIsMSwiQlxcdGltZXMgQiJdLFsyLDAsIkIiXSxbMiwyLCJCIl0sWzQsMSwiQiJdLFswLDEsIihmLGcpIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMywiZyIsMV0sWzAsMiwiZiIsMV0sWzEsMywicF97QiwyfSIsMV0sWzEsMiwicF97QiwxfSIsMV0sWzEsNCwiXFxkZWx0YV9CIiwxXSxbMiw0XSxbMyw0XV0=
+\[\begin{tikzcd}
+	&& B \\
+	A && {B\times B} && B \\
+	&& B
+	\arrow[from=1-3, to=2-5]
+	\arrow["f"{description}, from=2-1, to=1-3]
+	\arrow["{(f,g)}"{description}, dashed, from=2-1, to=2-3]
+	\arrow["g"{description}, from=2-1, to=3-3]
+	\arrow["{p_{B,1}}"{description}, from=2-3, to=1-3]
+	\arrow["{\delta_B}"{description}, from=2-3, to=2-5]
+	\arrow["{p_{B,2}}"{description}, from=2-3, to=3-3]
+	\arrow[from=3-3, to=2-5]
+\end{tikzcd}\]
+Bon ducoup, si on a des produits on a des coproduits. 
+\begin{defn}
+  Une catégorie additive c'est produits finis, coproduits finis,
+  objet $O$, d'où les $\Hom$ sont des monoides abéliens puis 
+  on dit qu'en fait des groupes.
+\end{defn}
+\section{Catégories abéliennes}
+On ajoute les noyaux et conoyaux à une catégorie additive puis
+on dit que $\coim(A\to B)\to \im(A\to B)$ est un isomorphisme.
+\begin{rem}
+  Attention c'est pas évident que $A\to \im(A\to B)$ soit un
+  épi. Mais c'est vrai je crois.
+\end{rem}
+
+\subsection{Splitting}
+Dans une catégorie additive, on a un splitting, ssi 
+$B\simeq A\oplus C$. L'idée c'est que $p_C$ et $p\circ f$ sont
+des flèches universelles $A\oplus C\to C$ donc par unicité puis
+par le five lemma avoir une section implique splitter.
+
+\section{Foncteurs entre catégories abéliennes}
+On veut montrer que préserver les produits à deux éléments
+implique être additif. En gros faut montrer que c'est équivalent
+à préserver les coproduits pour la codiagonale. L'idée c'est
+de montrer que pour $F\colon \Cat\to \Dat$ on a
+\begin{enumerate}
+  \item $F(O_{\Cat}\times A)=F(0_{\Cat})\times F(A)$ d'où 
+    $h_{F(O_{\Cat})}(D)$ est réduit à un point via la prop
+    universelle 
+    $h_{F(O_{\Cat})}\times h_{F(A)}=h_{O_{\Cat}\times F(A)}$.
+  \item Ensuite faut montrer que $i_A\colon A\to A\sqcup B$ est
+    préservée. Parce que préserver un coproduit c'est préserver
+    les flèches avec. Suffit d'utiliser que $id_A$ et $O_{A,B}$
+    sont préservés ! On sait déjà que 
+    $F(A)\times F(B)\simeq F(A)\sqcup F(B)$.
+  \item Maintenant on peut montrer que c'est additif simplement
+    via la codiagonale.
+  \item Additif implique produit c'est juste de montrer directement
+    que c'est un produit.
+\end{enumerate}
+À noter sur additif implique préserve les produits, on cherche
+$D\to F(A\times B)$ et on peut définir $i_A\circ f + i_B\circ g$!
+Tout commute et l'unicité est donnée par 
+\[h=id_{F(A\times B)}h=F(i_A)F(p_A)h+F(i_B)F(p_B)h\]
+
+\section{Foncteurs exacts}
+Y se passe un truc marrant.
+\subsection{Suites exactes splittées}
+C'est clair que $0\to A\to A\oplus B\to B\to 0$ est exacte. Pour à 
+droite on peut regarder $0\to h^C \to h^A\times h^B\to h^B$ 
+qui est exacte dans $Ab$ et 
+$0\to h_A\to h_{A\sqcup B}=h_A\sqcup h_B=h_A\oplus h_B\to h_B$.
+
+\subsection{Foncteurs exacts sont additifs.}
+En gros $F$ exact à gauche implique
+\[0\to F(A)\to F(A\oplus B)\to F(B)\]
+exacte et $F$ préserve la section $F(i_B)$ d'où c'est un épi
+à droite ! Maintenant 
+\[0\to F(A)\to F(A\oplus B)\to F(B)\to 0\]
+split d'où $F(A\oplus B)\simeq F(A)\oplus F(B)$. En particulier,
+la codiagonale est préservée.
+
+
+\section{Injectifs et projectifs}
+Ducoup via la section d'avant on peut montrer que
+$I\oplus J$ est injectif si $I$ et $J$ le sont via
+\[0\to I\to I\oplus J\to J\to 0\]
+en utilisant $h_{I\oplus J}=h_I\oplus h_J$ grâce à la section
+d'avant. Ça devient clair parce que ça traduit la prop universelle
+du produit cet iso.
+\subsection{Adjonctions, exactitude et injectifs/projectifs}
+On regarde $F\colon \Cat\rightleftarrows \Dat \colon G$ des 
+adjoints, pour connaître le sens on regarde
+\[h_{\_}(F(\_))=\Hom_{\Dat}(F(\_),\_)\simeq\Hom_{\Cat}(\_,G(\_))=h_{G(\_)}(\_)\]
+Là, $F$ est adjoint à gauche et $G$ à droite. On a 
+\begin{enumerate}
+  \item $F$ exact à droite implique $G$ exact à gauche. Et
+    inversement.
+  \item $F$ exact implique $G$ préserve les injectifs.
+\end{enumerate}
+On regarde 
+\[0\to G(A)\to G(B)\to G(C)\]
+alors 
+\[0\to h_{G(A)}\to h_{G(B)}\to h_{G(C)}\]
+est exacte car isomorphe à
+\[0\to h_{A}(F(\_))\to h_{B}(F(\_))\to h_{C}(F(\_))\]
+qui exact pour pleins de raisons mdr. Pour préserver
+les injectifs c'est juste que 
+\[h_{G(I)}=h_{I}\circ F\]
+qui sont deux foncteurs exacts.
+
+\subsection{Dans $Mod_R$}
+Je serai bref, en gros on veut que $0\to A\to B$ implique
+$h_I(B)\to h_I(A)\to 0$. Y suffit de le vérifier pour tout 
+les idéaux $A=I\subset R=B$! Maintenant, on montre que
+\begin{itemize}
+  \item Injectif implique divisible.
+  \item $R$ est principal implique l'inverse.
+\end{itemize}
+En particulier dans $\Z$.
+\subsubsection{Ab a assez d'injectifs}
+On prends $A\in Ab$ et $S\subset A$ une famille génératrice.
+Alors $p\colon \bigoplus_{s\in S}s\Z\to A\to 0$ via $s\Z\to A$
+donnée par $s\mapsto s.1_A$. Puis 
+\[(\bigoplus_{s\in S}s\Z)/K\simeq A\]
+et maintenant on regarde
+\[(\bigoplus_{s\in S}s\Z)\hookrightarrow (\bigoplus_{s\in S}s\Q)\]
+puis
+\[(\bigoplus_{s\in S}s\Z)\to (\bigoplus_{s\in S}s\Q)\to (\bigoplus_{s\in S}s\Q)/K\]
+qui passe au quotient et le truc c'est que 
+$K\to (\bigoplus_{s\in S}s\Q)$ c'est bien déf c'est juste
+\[\coker(K\to (\bigoplus_{s\in S}s\Z)\to (\bigoplus_{s\in S}s\Q))\]
+d'où \[A\hookrightarrow (\bigoplus_{s\in S}s\Q)/K\]
+et le truc de droite est divisible donc injectif.
+
+\subsubsection{$Mod_R$ a assez d'injectifs}
+L'idée c'est que 
+\[Res\colon Mod_R\rightleftarrows Ab\colon \Hom_{\Z}(R,\_)\]
+sont adjoints et $Res$ est exact d'où 
+\[\Hom_R(\_,G(I))=h_I\circ Res\] est la
+composition de deux foncteurs exacts. Où $Res$ c'est juste le
+foncteur d'oubli.
+
+\begin{rem}
+  Comme $f^*$ est exact de $Sh(Y)\to Sh(X)$, $f_*$ préserve
+  les injectifs.
+\end{rem}
+
+\chapter{Cohomologie}
+J'écris $A^{n-1}\to A^n\to A^{n+1}$ de manière croissante 
+(cohomologie).
+On déf pour $A^\bullet\in Ch(\Cat)$, $Z^n(A):=\ker(A^n\to A^{n+1})$
+et $I^n(A)=\im(A^{n-1}\to A^n)$. Et on note $d^n=A^n\to A^{n+1}$.
+Comme $d^nd^{n-1}=0$ on obtient $I^n\to Z^n$. Puis on déf
+\[H^n(A^\bullet):=\coker(I^n(A)\to Z^n(A))\]
+\section{Fonctorialité et additivité de $H^n(\_)$}
+\subsection{Construction}
+Ducoup faut commencer par définir $H^n(A^\bullet)$. C'est juste
+qu'on a un carré
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJJXm4oQSkiXSxbMSwwLCJJXm4oQikiXSxbMSwxLCJaXm4oQikiXSxbMCwxLCJaXm4oQSkiXSxbMSwyLCJIXm4oQikiXSxbMCwyLCJIXm4oQSkiXSxbMCwxXSxbMywyXSxbMSwyXSxbMCwzXSxbMiw0XSxbMyw1XSxbNSw0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	{I^n(A)} & {I^n(B)} \\
+	{Z^n(A)} & {Z^n(B)} \\
+	{H^n(A)} & {H^n(B)}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[dashed, from=3-1, to=3-2]
+\end{tikzcd}\]
+d'où les flèches de $\coker$ en bas. Et ce carré c'est comme
+d'hab eux mêmes via
+% https://q.uiver.app/#q=WzAsOCxbMCwyLCJBXm4iXSxbMCwxLCJBXntuLTF9Il0sWzEsMSwiQl57bi0xfSJdLFsxLDIsIkJebiJdLFswLDMsIlxcY29rZXIoZF57bi0xfSkiXSxbMSwzLCJcXGNva2VyKGRee24tMX0pIl0sWzAsMCwiXFxrZXIoZF57bi0xfSkiXSxbMSwwLCJcXGtlcihkXntuLTF9KSJdLFswLDNdLFsxLDBdLFsyLDNdLFsxLDJdLFswLDRdLFszLDVdLFs0LDUsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDFdLFs2LDcsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs3LDJdXQ==
+\[\begin{tikzcd}
+	{\ker(d^{n-1})} & {\ker(d^{n-1})} \\
+	{A^{n-1}} & {B^{n-1}} \\
+	{A^n} & {B^n} \\
+	{\coker(d^{n-1})} & {\coker(d^{n-1})}
+	\arrow[dashed, from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=3-2, to=4-2]
+	\arrow[dashed, from=4-1, to=4-2]
+\end{tikzcd}\]
+pour les $Z^n$, et le $\coker$ on en a besoin pour
+% https://q.uiver.app/#q=WzAsOCxbMCwxLCJJXm4oQSkiXSxbMSwxLCJJXm4oQikiXSxbMSwzLCJcXGNva2VyKEJee24tMX1cXHRvIEJee259KSJdLFswLDMsIlxcY29rZXIoQV57bi0xfVxcdG8gQV57bn0pIl0sWzAsMiwiQV5uIl0sWzEsMiwiQl5uIl0sWzAsMCwiQV57bi0xfSJdLFsxLDAsIkJee24tMX0iXSxbMCwxLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywyXSxbMCw0XSxbMSw1XSxbNSwyXSxbNCwzXSxbNCw1XSxbNiwwXSxbNywxXSxbNiw3XV0=
+\[\begin{tikzcd}
+	{A^{n-1}} & {B^{n-1}} \\
+	{I^n(A)} & {I^n(B)} \\
+	{A^n} & {B^n} \\
+	{\coker(A^{n-1}\to A^{n})} & {\coker(B^{n-1}\to B^{n})}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[dashed, from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=3-2, to=4-2]
+	\arrow[from=4-1, to=4-2]
+\end{tikzcd}\]
+\subsection{Fonctorialité}
+La fonctorialité c'est juste que la construction est induite
+par $A^\bullet\to B^\bullet\to C^\bullet$.
+\subsection{Additivité}
+On montre que $Z^n$ et $I^n$ sont additifs parce qu'y préservent
+les sommes directes! (limites commutent avec les limites et 
+inversement) Ça se fait bien à la main en plus. Maintenant on
+peut montrer que
+\[I^n(A)\oplus I^n(B)=I^n(A\oplus B)\to Z^n(A\oplus B)=Z^n(A)\oplus Z^n(B)\]
+a pour conoyau $(I^n(A)\oplus I^n(B))/(Z^n(A)\oplus Z^n(B))$ et
+on peut montrer la propriété universelle dessus facilement. En
+particulier, $H^n(A\oplus B)\simeq H^n(A)\oplus H^n(B)$ est donnée
+par $Z^n(A)\oplus Z^n(B)\to H^n(A)\oplus H^n(B)$.
+
+\section{Suite exacte longue}
+L'idée c'est d'appliquer le lemme du serpent sur
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJBXntuKzF9L0lee24rMX0oQSkiXSxbMiwwLCJCXntuKzF9L0lee24rMX0oQikiXSxbMywwLCJDXntuKzF9L0lee24rMX0oQykiXSxbNCwwLCIwIl0sWzAsMSwiMCJdLFsxLDEsIlpee24rMX0oQSkiXSxbMiwxLCJaXntuKzF9KEIpIl0sWzMsMSwiWl57bisxfShDKSJdLFswLDFdLFsyLDNdLFs0LDVdLFs1LDZdLFs2LDddLFswLDVdLFsxLDZdLFsyLDddXQ==
+\[\begin{tikzcd}
+	& {A^{n+1}/I^{n+1}(A)} & {B^{n+1}/I^{n+1}(B)} & {C^{n+1}/I^{n+1}(C)} & 0 \\
+	0 & {Z^{n+1}(A)} & {Z^{n+1}(B)} & {Z^{n+1}(C)}
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+et pour montrer que les lignes sont exactes on peut utiliser le
+lemme du serpent sur la rangée du dessus. Les flèches verticales
+c'est pas dur. Ensuite c'est juste que le noyau c'est un $H^n$ 
+et le conoyau c'est un $H^{n+1}$ (ça parait clair).
+
+
+\section{Homotopies}
+Un morphisme $f^\bullet$ tel que on ait $h^n\colon A^n
+\to B^{n-1}$ pour tout $n$ tel que
+\[f^n=d^{n-1}h^n+h^{n+1}d^n\]
+est dit contractile. En gros homotope à zéro. Et deux flèches
+sont homotopes si $f^\bullet -g^\bullet $ est contractile.
+La flèche induite sur les $H^n$ est nulle ! Parce que
+\[d^{n-1}h^n(x)\in I^n.\]
+et 
+\[h^{n+1}d^n(x)\in h^{n+1}d^n((Z^{n})(A))=0.\]
+Le deuxième truc $d^n(x)$ est déjà nul. En termes de catégories
+abéliennes, c'est que on regarde
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIXm4oQSkiXSxbMSwwLCJIXm4oQilcXG9wbHVzIEhebihCKSkiXSxbMiwwLCJIXm4oQikiXSxbMCwxLCIoZF57bi0xfWhebixoXntuKzF9ZF5uKSJdLFsxLDIsIlxcZGVsdGFfQiJdXQ==
+\[\begin{tikzcd}
+	{H^n(A)} & {H^n(B)\oplus H^n(B))} & {H^n(B)}
+	\arrow["{(d^{n-1}h^n,h^{n+1}d^n)}", from=1-1, to=1-2]
+	\arrow["{\delta_B}", from=1-2, to=1-3]
+\end{tikzcd}\]
+d'où onpeut regarder termes à termes. Puis le premier termes
+se factorise en 
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJIXm4oQSkiXSxbMiwwLCJIXm4oQikiXSxbMCwxLCJaXm4oQSkiXSxbMSwxLCJJXm4oQikiXSxbMiwxLCJaXm4oQikiXSxbMCwxXSxbMiwzLCJkXntuLTF9aF5uIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNF0sWzQsMV0sWzIsMF1d
+\[\begin{tikzcd}
+	{H^n(A)} && {H^n(B)} \\
+	{Z^n(A)} & {I^n(B)} & {Z^n(B)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=2-1, to=1-1]
+	\arrow["{d^{n-1}h^n}", dashed, from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=1-3]
+\end{tikzcd}\]
+et le deuxième en 
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJIXm4oQSkiXSxbMiwwLCJIXm4oQikiXSxbMCwxLCJaXm4oQSkiXSxbMiwxLCJaXm4oQikiXSxbMSwxLCJBXntuKzF9Il0sWzAsMV0sWzMsMV0sWzIsMF0sWzQsMywiaF57bisxfSJdLFsyLDQsImRebiJdLFsyLDMsIk9fe1pebihBKSxaXm4oQil9IiwyLHsiY3VydmUiOjN9XV0=
+\[\begin{tikzcd}
+	{H^n(A)} && {H^n(B)} \\
+	{Z^n(A)} & {A^{n+1}} & {Z^n(B)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=2-1, to=1-1]
+	\arrow["{d^n}", from=2-1, to=2-2]
+	\arrow["{O_{Z^n(A),Z^n(B)}}"', curve={height=18pt}, from=2-1, to=2-3]
+	\arrow["{h^{n+1}}", from=2-2, to=2-3]
+	\arrow[from=2-3, to=1-3]
+\end{tikzcd}\]
+d'où le résultat.
+
+\section{Résolutions}
+\subsection{Assez d'injectifs et résolutions}
+Avoir assez d'injectif ça fait que on peut construire 
+$0\to A\to I^0$ puis $0\to I^0/A\ I^1$ d'où 
+$\ker(A\to I^0/A\to I^1)=A$. Et on continue par récurrence. 
+
+\subsection{$H^n(A)$ ne dépend pas de la résolution.}
+En gros le plan c'est de 
+\begin{enumerate}
+  \item $f\colon A\to B$, on obtient une extension $f^\bullet\colon
+    I^\bullet\to J^\bullet$.
+\end{enumerate}
+Pour la construire on utilise la même idée que pour construire
+des résolutions injectives via les conoyaux. 
+\begin{enumerate}
+  \item Elle est unique à homotopie près car $O$ s'étend en
+    un contractile. Ça c'est un poil compliqué, mais intéressant
+    y'a un décalage dans les flèches de la résolution.
+  \item En particulier étant donné deux résolutions $I^\bullet$
+    et $J^\bullet$ et deux extensions $f^\bullet,g^\bullet\colon 
+    I^\bullet\to J^\bullet$ comme $F$ est exact il est additif
+    et donc préserve les homotopies! Pareil $H^n$ est 
+    additif d'où $H^n\circ F$ est additif et le résultat.
+\end{enumerate}
+Enfin, on étend l'identité $id_A$ de deux manières
+\[f\colon I^\bullet \to J^\bullet\]
+et
+\[g\colon J^\bullet \to I^\bullet\]
+en particulier $(g\circ f)^\bullet$ est homotope à $id_{I^\bullet}$
+et $(f\circ g)^\bullet$ est homotope à $id_{J^\bullet}$. D'où 
+l'isomorphisme canonique!
+
+
+\section{Foncteurs dérivés}
+Là on définit $R^nF(A):=H^n(F(I^\bullet))$ pour n'importe quelle
+résolution de $A$. C'est un foncteur additif parce que $H^n$ l'est.
+$R^nF(I)=0$ pour $n>0$ via la résolution triviale. On a une
+suite exacte longue qui est fonctorielle.
+
+\begin{rem}
+  Apparamment dans la preuve pour la suite exacte longue, y faut
+  prendre une résolution somme directe sur $B$. AH, c'est parce
+  que si on a juste une suite exacte courte c'est pas clair
+  que $B$ est un produit d'où $0\to F(I^\bullet)\to F(J^\bullet)\to
+  F(K^\bullet)\to 0$ est exacte!!
+\end{rem}
+
+\chapter{Cohomologie des faisceaux}
+\section{$Sh(X)$ est abélienne.}
+Faut montrer que $Sh(X)$ est abélienne. On peut montrer que
+$PSh(X)$ l'est facilement. Puis si $i$ est le foncteur d'oubli
+on a l'adjonction
+\[\Hom_{Sh(X)}((\F)^\sharp,\G)\simeq \Hom_{PSh(X)}(\F,i(\G))\]
+pas la propriété universelle. Maintenant étant donné un 
+diagramme $(F_i)_i$ dans $Sh(X)$ on le pousse dans $PSh(X)$ et
+là 
+\[0\to i(\F_i)(U\cup V)\to i(\F_i(U))\oplus i(\F_i(V))\to i(\F_i(U\cap V))\]
+passe à la limite ! Vu que les limites commutent avec les
+limites. En particulier la limite est un faisceau. Et on récupère
+tout par faisceautisation en fait. 
+
+\section{Résolution de Godemont 1}
+L'idée c'est que les faisceaux flasques sont acycliques. Pour deux
+raisons, si
+\[0\to \F'\to\F\to \F''\to 0\]
+est exacte alors, si $\F'$ est flasque, $\Gamma_U$ est exact à 
+droite sur cette s.e.s. On en déduit que si $\F'$ et $\F$ sont
+flasques, alors $\F''$ aussi en utilisant la surjection
+\[\F(U)(\to \F(V)\to \F''(V)\to 0\]
+et la surjection $\F(U)\to \F''(U)\to 0$. Maintenant ça permet
+de dire que si on pose
+\[0\to \F\to C^0(\F)\to (Z^1(\F)\to C^0(Z^1(\F))=:C^1(\F))\]
+etc.. $Z^i(\F)=C^{i-1}(\F)/Z^{i-1}(\F)$ et $C^i(\F):=C^0(Z^i(\F))$.
+Alors si $\F$ est flasque $Z^n(\F)$ aussi par récurrence puis 
+$C^n(\F)$. Ensuite la résolution est $\Gamma_U$ acyclique ! Puis
+elle calcule la bonne cohomologie.
+
+\chapter{Hypercohomologie}
+Donc là ça se corse y'a plusieurs défs.
+\section{Résolutions de complexes bornés par le bas}
+Étant donné $f\colon A^\bullet\to B^\bullet $ et deux résolutions
+$A^\bullet\to I^\bullet$, $B^\bullet\to J^\bullet$ on peut
+étendre $f$ en $I^\bullet \to J^\bullet$ de manière unique
+à homotopie près. L'idée c'est de regarder $f$ sur les $H^0$ puis
+de l'étendre comme d'habitude. La commutativité des petits
+carrés est claire et celle des grands est simplement parce
+que celle sur les $H^0(I^\bullet)\to H^0(J^\bullet)$ est celle 
+induite par $f$. En particulier, on a 
+\[[A^\bullet, J^\bullet]\simeq [I^\bullet, J^\bullet]\]
+on a aussi
+\[[A^\bullet, I^\bullet]\simeq [B^\bullet, I^\bullet]\]
+pour tout complexe d'injectif.
+
+\section{Catégories dérivée }
+On remarque que les flèches contractiles forment un sous-groupe!
+En particulier on peut regarder 
+\[K^+(\Cat):= (Ch^+(\Cat),\textrm{flèches modulo homotopies}) \]
+et 
+\[D^+(\Cat):= (Ch^+(\mathbb I),\textrm{flèches modulo homotopies})\]
+où le deuxième c'est des complexes bornés par le bas d'injectifs.
+\section{Et adjonctions dans le cas des faisceaux}
+\subsection{Cadre}
+On définit $Sh(X)\to D^+(X)$ par $\F$ associe une résolution
+injective $I^\bullet$, c'est pleinement fidèle.
+
+Maintenant étant donné $f\colon X\to Y$ et
+$f_*\colon Sh(X)\rightleftarrows Sh(Y)\colon f^*$, on construit
+\[Lf^*\colon D^+(Y)\to D^+(X)\colon Rf_*\]
+la deuxième est facile vu que $f_*$ préserve les injectifs. 
+L'autre faut juste avoir $\rho\colon K^+(X)\to D^+(X)$ ou on
+associe une résolution injective. 
+\begin{rem}
+  C'est bien déf à unique isomorphisme près! Suffit d'étendre 
+  l'identité des deux côtés.
+\end{rem}
+En plus $R(g\circ f)_*=Rg_*Rf_*$. Pareil pour $L$ par adjonction.
+
+
+\section{Adjonctions encore?}
+Étant donné $f_X\colon X\to \{*\}$ on a une adjonction
+\[(f_X)_*\colon Sh(X)\to Sh(\{*\})\colon f_X^*\]
+où dans ce cas particulier $(f_X)_*=\Gamma_X$ et $f_X^*=(A\mapsto
+(A_X))$ le faisceau constant!
+
+\section{Hypercohomologie et complexe total.}
+Étant donné un complexe de faisceaux $\F^\bullet\in Ch^+(Sh(X))$,
+on peut avoir une double résolution
+% https://q.uiver.app/#q=WzAsMTUsWzAsMiwiMCJdLFsxLDIsIkNeMChcXEZeMCkiXSxbMiwyLCJDXjAoXFxGXjEpIl0sWzEsMSwiQ14xKFxcRl4wKSJdLFsxLDAsIkNeMihcXEZeMCkiXSxbMiwxLCJDXjEoXFxGXjEpIl0sWzMsMiwiQ14wKFxcRl4yKSJdLFsxLDMsIjAiXSxbMiwzLCIwIl0sWzMsMywiMCJdLFszLDEsIkNeMShcXEZeMikiXSxbMiwwLCJDXjIoXFxGXjEpIl0sWzMsMCwiQ14yKFxcRl4yKSJdLFswLDEsIjAiXSxbMCwwLCIwIl0sWzcsMV0sWzEsMywiZF97MCwwfSIsMl0sWzMsNCwiZF97MCwxfSIsMl0sWzAsMV0sWzEsMl0sWzIsNl0sWzMsNV0sWzIsNSwiZF97MSwwfSIsMl0sWzgsMl0sWzksNl0sWzUsMTEsImRfezEsMX0iLDJdLFs0LDExXSxbMTEsMTJdLFs1LDEwXSxbMTAsMTIsImRfezIsMX0iLDFdLFs2LDEwLCJkX3syLDB9IiwxXSxbMTQsNF0sWzEzLDNdXQ==
+\[\begin{tikzcd}
+	0 & {C^2(\F^0)} & {C^2(\F^1)} & {C^2(\F^2)} \\
+	0 & {C^1(\F^0)} & {C^1(\F^1)} & {C^1(\F^2)} \\
+	0 & {C^0(\F^0)} & {C^0(\F^1)} & {C^0(\F^2)} \\
+	& 0 & 0 & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{d_{0,1}}"', from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{d_{1,1}}"', from=2-3, to=1-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow["{d_{2,1}}"{description}, from=2-4, to=1-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow["{d_{0,0}}"', from=3-2, to=2-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow["{d_{1,0}}"', from=3-3, to=2-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow["{d_{2,0}}"{description}, from=3-4, to=2-4]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-3, to=3-3]
+	\arrow[from=4-4, to=3-4]
+\end{tikzcd}\]
+où les résolutions verticales c'est les résolutions de Godement
+en dimension $1$. Et les flèches horizontales c'est celles
+\textbf{presque} induites par la fonctorialité de la résolution de
+Godement. On les notes 
+\[\delta^{i,j}:=(-1)^jC^i(\delta^j)\]
+où $\delta^j\colon \F^j\to \F^{j+1}$. Et on considère
+le complexe
+\[Tot^n(C^\bullet(\F^\bullet)):=\bigoplus_{i+j=n}C^i(\F^j)\]
+muni de la différentielle 
+$d_n:=\oplus_{i+j=n}\delta^{i,j}+d^{i,j}$. C'est une différentielle
+grâce à l'anticommutativité de $\delta^{i,j}$. Enfin, on a
+\[\F^j\to Tot^j(C^\bullet(\F^\bullet))\]
+en envoyant dans le premier terme! 
+\begin{thm}
+\[\F^\bullet\to Tot^\bullet(C^\bullet(\F^\bullet))\]
+est une résolution flasque quasi-isomorphe!
+\end{thm}
+\subsection{Définition}
+Maintenant étant donné $\F^\bullet\to I^\bullet$ une résolution
+injective, ou flasque comme avant on déf 
+\[H^n(X,\F^\bullet):=H^n(I^\bullet(X))\]
+
+\begin{rem}
+  C'est bien une cohomologie sur un complexe simple.
+\end{rem}
+
+\section{Application et récap}
+On a
+\[Rf_*\colon D^+(X)\to D^+(Y)\]
+On remplace $\Gamma_X$ par $(f_X)_*$ avec $f_X\colon X\to \{*\}$.
+D'où 
+$R(f_X)_*\F=(f_X)_*I^\bullet=I^\bullet(X)=\Gamma(X,I^\bullet)$.
+\begin{rem}
+  La cohomologie de $I^\bullet(X)$ est pas triviale hein.
+\end{rem}
+Maintenant $R^if_*\F=H^i(Rf_*\F)=H^i(f_*I^\bullet)$.
+
+
+\section{Catégorie dérivées et adjonctions}
+\section{Mayer-Vietoris}
+
+
+
+%\printbibliography
+\end{document}
+

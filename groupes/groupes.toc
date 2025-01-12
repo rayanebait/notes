@@ -1,0 +1,6 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}$S_n$}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Présentations}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Classes de conjugaisons}{5}{section.1.2}%
+\contentsline {chapter}{\numberline {2}$A_n$}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Présentations}{7}{section.2.1}%

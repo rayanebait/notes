@@ -1,0 +1,319 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Extensions de valuation}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Ici, on s'en fout de savoir si $\tilde \Or_K$ est fini
+sur $\Or_K$.
+
+
+
+
+\chapter{Extension via les complétions : cas ultramétrique}
+\section{Unicité sur $(\hat K)^c$}
+Étant donné un corps complet $K$, les extensions
+$L$ de $K$ sont des corps complets et les normes
+sont équivalentes.
+\subsection{Extension pour les corps complets}
+Ce truc 
+\[x\mapsto |N_{L/K}(x)|^{1/[L:K]}\]
+est une valeur absolue qui étend $|.|$ donc l'unique. Pour 
+montrer que c'est ultramétrique on peut par multiplicativité
+étudier si $|x|_L\leq 1$ force $|1+x|_L\leq 1$ ou la norme de 
+$1+x$. Via Le corollaire de Hensel
+et le fait que le polynôme minimal de $1+x$ est $\mu(x-1)$ avec
+$\mu$ celui de $x$ on peut conclure simplement parce que $\mu(-1)
+\in \Or_K$.
+
+\subsection{Détails}
+L'équivalence de normes force l'équivalence de valeur
+absolues (passer par la topologie par exemple mais c'est pas clair
+pourquoi c'est pas bizarre).
+
+\href{https://math.stackexchange.com/questions/4096251/
+equivalence-of-norms-on-valued-fields}{Cette réf} 
+explique bien la nuance entre valeur absolue et norme. En gros
+$|.|_1$ et $|.|_2$ deux valeurs absolues étendant $|.|$ sont
+des $K$-normes pour $|.|$. Le petit truc bizarre sur le fait
+que l'équivalence de valeur absolue est exponentielle et 
+l'équivalence de norme est linéaire c'est que. L'équivalence de
+normes sous entend la même valeur absolue pour laquelle c'est des
+normes donc forcément l'égalité de valeurs absolues.
+
+\subsection{Passer à la clôture algébrique}
+D'une v.a sur $K^c$ suffit de restreindre à $L/K$
+on garde une v.a donc l'unique!
+
+\section{Extensions en général par plongements}
+
+Y'a deux manières de faire. Soit regarder
+$K$ dans $\hat L$. Soit regarder $L$ dans
+$(\hat K)^c$. La première à l'avantage de 
+sous-entendre la valeur absolue.
+\subsection{Deuxième manière}
+On regarde $K^c$ dans $(\hat K)^c$.
+Alors si $|.|_L$ étend $|.|$ et
+\[\tau \colon L\to K^c\] est un plongement.
+On peut étendre $\tau$ à $\hat K.\tau(L)$ un
+corps complet sur $\hat K$ de dimension finie.
+En plus la valeur absolue s'étend aussi 
+directement et étend bien celle de $\hat K$
+par limite. En particulier, pour $x\in L$
+$|\tau(x)|_{\hat K.\tau(L)}=|\tau(x)|_c$ est
+uniquement determinée par $\tau$. À l'inverse
+n'importe quel plongement $L\to K^c$ fournit
+une valeur absolue.
+
+\section{Extensions en général via les idéaux
+maximaux de $L\otimes_K\hat K$ (topologie)}
+On note $B_L=L\otimes_K \hat K$. En tant qu'espace
+vectoriel c'est de dimension 
+\[[L:K]\]
+le produit est sur $K$. C'est un Banach et on a 
+des flèches
+\[L\to B_L\]
+via $x\mapsto x\otimes 1$ et si on a une extension de $|.|_K$ à
+$L$, et qu'on note sa complétion $E$ on a
+$\iota \colon\hat K\to E$ donné par $K\to L\to E$ et
+$L\to E$ donné par l'injection d'où 
+\[B_L\to E\]
+via $x\otimes y\mapsto x\iota(y)$. À gauche ça a une structure
+d'algèbre et donc le noyau est un idéal maximal si c'est
+non nul. C'est clairement non nul par la dimension.
+
+\begin{rem}
+    Je pense qu'un truc intéressant c'est d'utiliser une base
+    normale d'une clôture galoisienne de sorte à ce que des racines
+    soient associées à des valeurs absolues. En fait le cas 
+    séparable est clair et on peut pas se ramener au cas galoisien
+    dans le cas inséparable :c. Mais pour
+     le cas séparable c'est pas
+    mal!
+\end{rem}
+\subsection{À regarder}
+La même chose que $\dim_k \tilde\Or_K/\m_K\tilde\Or_K=[L:K]$
+mais avec $\dim_K (L\otimes \hat K)/\prod\m_i$. 
+
+D'ailleurs c'est quel schéma qui a les deux en même temps ?
+$\Spec(\tilde \Or_K)\to \Spec(\Or_K)$ j'imagine, mais le premier
+quotient c'est pas clair ou il apparaît. Fin c'est 
+$V(\m_K\tilde\Or_K)$ qui est pas un point. Et le produit tensoriel
+c'est la fibre en $(0)$ d'un $\Or_X$-module j'imagine où d'une
+fibre bien choisie.
+
+\subsection{Interprétation : pourquoi on a pas $L_i\to B_L$}
+La norme $|.|_i$ sur $L_i$ mesure que la partie associée
+à $\m_i$ de $L$ sur $K$. Tandis que la norme naturelle sur
+$L\otimes_K \hat K$ est vraiment la norme terme à terme
+sur $K$. En gros, si par exemple $L/K$ est totalement
+décomposée au dessus de $|.|$ et $(x_i)$ est une base
+normale. Alors $|.|_i$ force $|x_j|_i=|x_i|_i$ avec $j\ne i$.
+Tandis qu'une norme sur $B_L$ ne mesure pas les $x_i$. 
+Seulement via $\hat K$.
+
+
+
+\section{Calcul par la deuxième version}
+Comment savoir combien on a d'extension ? Il faut calculer
+$B_L$ explicitement ! Par exemple :
+\[\Q_p\otimes_\Q \Q(\sqrt 2)\simeq \Q_p[X]/(X^2-2)\]
+et $\begin{pmatrix} 2\\ p\end{pmatrix}=1 $ si et 
+seulement si $p^2\equiv 1\mod 8$. Donc $|.|$ a une
+ou deux extensions en fonction de $p$ via Hensel.
+
+\subsection{Lien avec la ramification}
+Je le mentionne ici, mais pour avoir une extension non ramifiée
+en $\p$, faut que $B_L$ soit un produit de corps ducoup! 
+
+
+
+\chapter{Cas archimédien}
+On se place donc en caractéristique $0$ et sur $K=\Q$. Parce
+que un corps archimédien algébriquement clos complet est isométrique
+à $\C$.
+
+\section{Cas complet}
+On est soit $\C$ soit $\R$. 
+
+\section{En général}
+On a $r_1+r_2$ extensions de $|.|_\infty$ de $\Q$ à $L$.
+Avec $r_1+2r_2=[L:\Q]$ et les complétés pour $r_1$ c'est $\R$.
+Pour $r_2$ c'est $\C$. Le point c'est que $|z|=|\bar z|$ pour
+un complexe. Aussi, faut juste montrer que chaque plongement
+différent donne une valeur absolue différente. On doit pouvoir
+le faire avec $B_L$. Parce que 
+\[\dim_{\R=\hat K} L\otimes_K \R=\prod \R[X]/(P_i(X))=\R^{r_1}\times \C^{r_2}\]
+Où $\C$ apparaît dès que $\deg P_i(X)=2$.
+
+\chapter{Extension par les anneaux de valuations discrètes}
+Étant donné un corps $(K,v)$ de valuation discrète. Une 
+extension $(L,w)$ finie de $v$. L'anneau $\tilde\Or_K=\tilde\Or_v$
+est semi-local sur $\Or_K=\Or_v$. Le but c'est de dire
+que $\Or_w=(\tilde\Or_K)_\m$ pour un idéal max de $\Or_K$
+et que chaque idéal maximal de $\tilde\Or_K$ correspond
+à une valuation.
+
+Ici, on s'en fout de savoir si $\tilde \Or_K$ est fini
+sur $\Or_K$.
+\section{Extensions par les idéaux maximaux}
+Étant donné seulement $L-K$ finie. un ideal maximal
+$\m$ de $\tilde\Or_K$ fournit un dvr $(\tilde\Or_K)_\m$
+et une extension de dvrs. Alors
+\[w_\m:=v_\m/v(\pi_K)\]
+étend $v$ et est une valuation discrète sur $L$. C'est
+clair que différents idéaux fournissent des valuations
+différentes.
+\section{Idéal maximal associé à une valuation}
+À l'inverse si $w$ étend $v$. Alors $\Or_w$ contient
+$\tilde\Or_K(w)$ en étudiant la valuation d'une relation.
+Ensuite faut montrer que 
+\[(\tilde\Or_K)_{\m_w\cap \tilde\Or_K}=\Or_w\]
+À faire c'est pas dur.
+
+
+\chapter{Remarques}
+Le but c'est de voir les différentes extension $L_i$ 
+et $k_{L_i}$ associées aux valuations apparaître.
+\section{Cas primitif $L=K[\alpha]$, l'extension}
+J'écris $L=K[X]/(P(X))$. On regarde $B_L$
+\[L\otimes_K \hat K = \prod \hat K[X]/(P_i(X)^{b_i})\]
+où si y'a un $b_i>1$ c'est que l'extension est inséparable,
+parce que $P$ est irréductible donc séparable équivaut à
+racine simple. Maintenant chaque facteur engendre un corps
+qui est associé à une valuation.
+
+\section{Cas primitif $L=K[\alpha]$ et monogène $\tilde \Or_K=\Or_K[\alpha]$, l'extension résiduelle}
+Ça devrait plutôt être dans calculramification un truc comme
+ça mais bon.
+On regarde $\Or_{\hat K}\otimes_{\Or_K}\tilde\Or_K=\prod \Or_{\hat K}[X]/(P_i(X)^{b_i})$.
+On étend via $k_K\simeq \Or_{\hat K}/\m_{\hat K}$ pour obtenir
+la forme résiduelle avec la ramification.
+\[\prod \Or_{\hat K}[X]/(P_i(X)^{b_i})\otimes_{\Or_K}k_K=\prod k_K[X]/(P_i(X)^{e_i})\]
+
+\begin{rem}
+    Pour remarque ducoup, ce produit tensoriel y'a pas de pb
+    le calcul est identique à celui pour les corps. Ça utilise
+    toujours que la prop universelle des anneaux de polynômes
+    et l'exactitude à droite.
+\end{rem}
+Maintenant c'est bien clair que c'est non ramifié ssi la version
+résiduelle est un produit de corps.
+
+
+
+\end{document}
+

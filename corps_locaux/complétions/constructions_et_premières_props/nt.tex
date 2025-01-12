@@ -1,0 +1,332 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Complétions}
+\date{}
+
+\begin{document}
+\maketitle
+
+C'est pas mal du chapitre $10$ de Atiyaah-McDonald.
+
+\chapter{Récap}
+\chapter{Complétions de corps}
+J'prends $K$ un corps.
+\section{Complété de $(K,|.|)$}
+On suppose $\R$ construit (pas dur).
+On peut prendre $C(K)/\m$ où $\m$ définit
+la relation d'équivalence
+\[(x_n)\sim (y_n)\equiv |x_n-y_n|\to 0\]
+alors via 
+\[-|x_n-x_m|\leq |x_n|-|x_m|\leq |x_n-x_m|\]
+on sait que $(|x_n|)$ est de Cauchy dans $\R$
+d'où on déf 
+\[|(x_n)|_{\hat K} := \lim |x_n|\]
+
+\begin{rem}
+    $\m$ est maximal c'est pas si évident,
+    le fait que le quotient est un corps faut
+    définir l'ordre et ça se voit bien.
+\end{rem}
+
+\begin{rem}
+    On peut remarquer que si $|.|$ est ultramétrique et
+    $a=(x_n)_n\in \hat K$, alors $|a-x_n+x_n|=|x_n|$. On a pas 
+    besoin de faire tendre par "au dessus". Mais on pourrait peut
+    être le faire dès qu'il existe 
+    une suite qui tend vers 0 dans $K$ je pense. Par exemple
+    $(p^n)_n$ dans $\Q$, alors si $(x_n)$ tend vers $a$ on prend
+    $(x_n+p^{k_n})$ de sorte que $|x_n+p^{k_n}|>|x|$.
+\end{rem}
+
+\section{Structure d'anneau}
+C'est un quotient d'un sous-anneaux de
+$K^\N$ donc multiplication et addition terme à terme.
+\begin{rm}
+    Tout se passe bien car valeur absolue.
+\end{rm}
+\section{Étude sur $\Z_p$ (inversibles et via Cauchy)}
+Un élément de $\Z_p$ on peut le voir comme une suite 
+$(x_n)_n\in \Z^\N$, parce que si on prends une suite
+$(u_np^{k_n})$, avec $v_p(u_n)=0$. Bah le dénominateur
+de la fraction irréductible est une unité dans $\Z_p$
+au sens de la valuation.
+Y suffit donc de remarquer que si $u\in \Z-p\Z$ alors
+$(1/u)\in \Z_p$ s'écrit comme une série à coeffs
+dans $\Z$. Ça sera la suite.
+
+\begin{rem}
+    Ça éclaircit le flou que $\Z$ est bien dense dans
+    $\Z_p$, pas besoin de $\Z_{(p)}$.
+\end{rem}
+
+\begin{rem}
+    C'est le pont primordial aussi pour parler de la limite
+    projective comme si c'était la complétion. Parce que
+    ducoup ça fait sens de réduire mod $p^n$.
+\end{rem}
+
+\subsection{Densité de $\Z$ dans $\Z_p$}
+Ducoup plus concrètement. On veut approcher
+pour $u\in \Z-p\Z$, la fraction $1/u$. On peut
+prendre \[ua+pv=1\]
+alors $1/u =\frac{a}{1-pv}$ puis 
+\[1/u=a.\sum v^i p^i\]
+où ici la somme est vraiment une somme. Pas une
+écriture du développement. Donc faut étudier la
+convergence de 
+\[\sum_{i=0}^n a(vp)^i\]
+et dans les $p$-adiques il suffit que 
+\[\lim a(vp)^n =0\]
+et ça c'est clair.
+\begin{rem}
+    À LIRE. Ce qui est étonnant c'est que $1/u$ 
+    et $\sum a(vp)^i$ ont a priori rien à voir
+    dans $\Q$. Genre cette somme tend vers l'infini
+    en métrique réel. Mais faut bien se rappeler qu'on
+    est en métrique $p$-adique!!
+\end{rem}
+\begin{rem}
+    Un truc un peu frustrant c'est que là j'utilise
+    le trick que $1=ua+pv$. En fait le $a$ et
+    le $v$ qui apparaissent peuvent provenir
+    de manipulation du
+    développement $p$-adique de $u$.
+\end{rem}
+Je pense qu'une approche plus claire c'est que via
+ce développement $u=\sum_{i=0}^{\log_p(u)} a_ip^i$,
+on multiplie par l'inverse de $u$ modulo $p$, ce sera $a$.
+Et alors 
+\[au=1-pv!\]
+La manière de Borcherds est strictement équivalente.
+Ça veut dire quoi diviser modulo $p$ ? Ou plutôt
+être divisible ? Prendre l'inverse de $1=\sum p^n$
+
+Bon qu'est-ce qu'il s'est passé ? Le point flou
+que j'essaierai de me raisonner c'est de remplacer
+$1/u$ par $1/u =\frac{a}{1-pv}$. 
+
+\begin{rem}
+    On peut le voir comme juste remplacer $1/u \mod p$ par
+    $1 \mod p$.
+\end{rem}
+Pour rappel si
+$S_n=\sum_{i=0}^n q^i$, alors
+\[(1-q)S_n=1-q^{n+1}\]
+
+\section{Les $10$-adiques}
+La vidéo de Borcherds est super instructive 
+\href{https://www.youtube.com/watch?v=VTtBDSWR1Ac}{VIDEO}.
+Il mentionne
+par exemple que pour $x\in \Z$, $x^n$ quand il converge
+peut converger vers $z$ tel que $z^2=z$. Ça montre que la 
+série voit ses premiers termes fixé petits à petit.
+\begin{rem}
+    Attention, le $x$ choisit c'est $5$. Le point clé je
+    pense c'est que $10 \mid 5^2-5$. Puis $100\mid 5^3-25$.
+\end{rem}
+
+\section{Expansion $t$-adique}
+
+Dans le cas $p$-adique en fait dire qu'il existe une
+expansion \[x=\sum a_i p^i\]
+où $0\leq a_i<p$ c'est juste trouver une série qui converge
+vers $x$. 
+
+\section{Densité de $\Or_K$ dans $\Or_{\hat K}$ et corps résiduel.}
+Simplement parce que $(x_n)$ stationne toujours par
+l'inégalité ultramétrique. Ducoup on peut prendre les suites
+dans $\Or_K$. Ensuite réduire modulo $\m$ dans $\Or_{\hat K}$
+ça veut dire quoi ? L'idéal c'est $B(0,1)$ ouvert. On peut
+simplement prendre $x\in \Or_K$ tel que 
+\[|a-x|<1\]
+par densité. En particulier, $x=a\mod B(0,1)$ par définition.
+
+
+\chapter{Groupes abéliens topologiques}
+Les opérations du groupes sont continues de sorte que si
+$U$ est un voisinage de $0$, alors $x+U$ un voisinage de $x$.
+\section{Séparation}
+Étant donné $H=\cap_{0\in U} U$, on a $H=\{0\}$, et si $x\in H$,
+alors 
+\[0\in U-x\]
+pour tout $0\in U$. D'où $-x\in H$. Pareil si $x,y\in H$, alors
+pour tout voisinage de $0$ :
+\[x\in U-y\]
+d'où $x+y\in U$. D'où $H$ est un sous-groupe de $G$.
+On déduit rapidement que $x+H$ est fermé pour tout $x$ d'où
+\[G/H\]
+est séparé. Alors 
+\[G\textrm{ est séparé ssi }H=0\]
+
+
+\chapter{Complétions via les suites de Cauchy}
+On se met dans un groupe abélien topologique.
+Étant donné une base de voisinage dénombrable de $0$. On peut
+construire les suites de Cauchy en disant 
+\[\textrm{Pour tout $U\ni 0$ il existe un entier $s(U)$}\]
+tel que 
+\[x_n-x_m\in U\textrm{ dés que} $n,m\geq s(U)$\]
+\begin{rem}
+    La limite est définie à l'adhérence près!
+\end{rem}
+\section{Complété de $G$}
+Deux suites de Cauchy sont équivalentes si $x_n-y_n$ tend
+vers $0$. Au sens défini d'avant. Maintenant on quotiente comme
+d'hab et la somme est bien définie. On obtient 
+\[\hat G:=C(G)/\m.\]
+
+Maintenant un point intéressant, on a 
+\[i\colon G\to \hat G\]
+donné par les suites constantes. Mais 
+\[\ker i = H\]
+ça c'est rigolo. 
+\begin{rem}
+    Dans le cas d'un corps ou d'un anneau de valuation discrète
+    $H=0$. En fait par le chapitre d'avant, quand $G$ est
+    séparé.
+\end{rem}
+
+\chapter{Complétions algébriques}
+J'aimerai bien aller jusqu'à Artin-Rees.
+\section{Cadre}
+On suppose qu'on a une base de voisinages de $0$ qui sont des
+groupes. Ca évince $\R$ et la topologie habituelle. Par contre
+pas $\Q$ et ses topologies $p$-adiques.
+
+\begin{rem}
+    Automatiquement, les ouverts de la base sont ouverts
+    fermés. Car si $g\in G_n$, comme $g+G_n\subset G_n$ est un
+    ouvert $G_n$ est ouvert. À l'inverse, pour $h\notin G_n$,
+    $h+G_n\cap G_n=\emptyset$ et 
+    $h+G_n$
+    est ouvert d'où
+    \[\cup{h\in G-G_n} h+G_n = G-G_n\]
+    est ouvert puis $G_n$ est fermé.
+\end{rem}
+
+\begin{rem}
+    Je me suis rendu compte de deux trucs vraiment
+    marrant. La condition $G_m\cup G_n=G_m$ c'est la
+    condition ultramétrique ! Aussi, le faisceau
+    associé au préfaisceau tel que $x+G_i\mapsto G/G_i$
+    est flasque! Et sa fibre en $0$ est $\hat G$.
+\end{rem}
+
+\section{}
+
+
+
+
+\[\textrm{}\]
+\end{document}
+

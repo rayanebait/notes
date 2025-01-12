@@ -1,0 +1,254 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Quand est-ce que $\sum e_if_i=[L:K]$?}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Manipuler}
+Le point c'est qu'on a toujours
+\[\sum e_if_i\leq [L:K]\]
+(voir lemme 3.6 vu que dans le cas des dvrs on sait pas si
+$f=\infty$)
+avec égalité ssi $\tilde\Or_K-\Or_K$ est finie ssi 
+$L\otimes_K \hat K$ est réduite. Un gros détail, les transitions
+de dimensions se font entre $k_K-k_L$ et $K-L$. Autrement dit
+on s'en fout de la finitude de $\tilde\Or_K$ sur $\Or_K$. Si
+$[L:K]$ est finie alors $f_i$ aussi pour tout $i$.
+\begin{rem}
+    Cette histoire de $B_L$ réduite vient du fait que
+    \[B_L\to \prod L_i\]
+    a un noyau nilpotent vu que c'est $\cap \m_i$ et qu'on
+    est sur une $\hat K$-algèbre de type fini à gauche (car
+    de dimension finie $\to$) et à gauche c'est de dim
+    $\dim_{\hat K}B_L=[L:K]$ alors qu'à droite c'est 
+    $\sum e_if_i$.
+\end{rem}
+
+\section{Prérequis}
+Quelques prérequis nécessaire à l'étude : si $\Or_K$ est de
+Dedekind, quand est-ce que 
+\begin{enumerate}
+    \item $\tilde\Or_K$ est de Dedekind.
+    \item $\tilde\Or_K$ est fini sur $\Or_K$.
+\end{enumerate}
+Pour la première question :
+\begin{enumerate}
+    \item Si $\Or_K$ est semi-local ca se fait bien parce que 
+	$\tilde\Or_K$ est noethérien sur $\Or_K$ ssi
+	$\tilde\Or_K\otimes\Or_K (\Or_K)_{\m_i}$ est noethérien
+	pour tout les premiers (faut en avoir un nb fini).
+    \item Plus généralement si $L/K$ est finie par Krull-Akizuki.
+\end{enumerate}
+Pour la deuxième : dès que $\sum e_if_i=[L:K]$ d'où si
+\begin{enumerate}
+    \item $K$ est complet, par densité de $\sum_{i,j} e_j\pi_L^i\Or_K$
+	dans $\tilde\Or_K$.
+    \item $L/K$ est séparable via le disriminant non nul et la trace
+	non dégénérée.
+    \item Évidemment si $\tilde\Or_K=\Or_K[\alpha]$ est monogène.
+\end{enumerate}
+
+
+
+\chapter{Cadre}
+\section{Objets}
+On se place \textbf{toujours} dans le cadre où on a $\Or_K$ de valuation 
+\textbf{discrète}. Le cadre en gros c'est 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXE9yX0siXSxbMSwwLCJcXHRpbGRlXFxPcl9LIl0sWzIsMCwiKFxcdGlsZGVcXE9yX0spX3tcXG1faX0iXSxbMywwLCJcXGxlZnQoXFxPcl9MXFxyaWdodCkiXSxbMCwxLCJrX0siXSxbMiwxLCJrX0wiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiXFxzdWJzZXRlcSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIj8iLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDRdLFsyLDVdLFs0LDVdXQ==
+\[\begin{tikzcd}
+	{\Or_K} & {\tilde\Or_K} & {(\tilde\Or_K)_{\m_i}} & {\left(\Or_L\right)} \\
+	{k_K} && {k_L}
+	\arrow[no head, from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\subseteq"{description}, draw=none, from=1-2, to=1-3]
+	\arrow["{?}"{description}, Rightarrow, no head, from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}\]
+C'est à dire qu'on prends la clôture intégrale, on regarde ses idéaux
+maximaux et on obtient des extensions de d.v.r. Quand $K$ est complet 
+ou quand on fixe une valuation (un premier $\m_i$) sur $L$, $\Or_L$ fait
+sens.
+
+\section{Les cadres successifs}
+On regarde d'abord $\Or_K-\Or_L$ une extension de DVR. De sorte
+à montrer que 
+\[e.f=\dim \Or_L/\m_K\Or_L\]
+à l'aide du module $M$. Ensuite on regarde $\Or_K-\tilde\Or_K$.
+Et on montre que 
+\[\dim_{k_K} \tilde\Or_K/\m_K\tilde\Or_K\leq [L:K]\]
+enfin on montre que dans le même cas que
+\[ \dim_{k_K} \tilde\Or_K/\m_K\tilde\Or_K=\sum e_if_i \leq [L:K]\]
+avec égalité quand (de manière équivalente)
+\begin{enumerate}
+    \item $\tilde\Or_K$ est fini sur $\Or_K$.
+    \item $L\otimes_K \hat K$ est réduite.
+\end{enumerate}
+
+\section{Extensions de dvrs.}
+Étant donné une extension $\Or_K-(\tilde\Or_K)_\m=\Or_L$, y'a une 
+inclusion à regarder, si $k_K-k_L$ contient une famille libre et
+génératrice $(e_i)_i$ :
+
+\[\Or_L\subset \sum e_i\Or_K + \pi_L\Or_L\]
+puis en itérant
+\[\Or_L\subset \sum e_i\pi_L^j\Or_K + \pi_K\Or_L\]
+et même pour tout $n\geq 1$ 
+\[\Or_L\subset \sum_i\sum_{j=0,\ldots, e-1} e_i\pi_L^j\Or_K +
+\pi_K^n\Or_L\]
+car $\pi_L^e\in\Or_K$. Donc une densité de $M$ dans $\Or_L$. Je note 
+\[M=\sum_{i=1,\ldots, f}\sum_{j=0,\ldots,e-1} e_i\pi_L^j\Or_K.\]
+
+Ça montre que $\Or_L/\m_K\Or_L$ est de dimension au plus $e.f$.
+L'autre est un peu technique mais pas dur, y s'agit de jouer
+sur la valuation. 
+
+\begin{rem}
+    Là on a juste utilisé que $k_L$ est de dimension finie sur 
+    $k_K$. On peut écrire des doubles inégalités même en général.
+\end{rem}
+On a construit un $\Or_K$-module libre dense dans $\Or_L$.
+
+
+\section{Cas canonique}
+On a directement 
+$\dim_{k_K}\tilde\Or_K/\m_K\tilde\Or_K=\sum e_if_i$. Par le lemme
+chinois et le cas des dvrs.
+\section{Cas complet}
+On se retrouve dans le cas des dvrs. Et on a 
+\[M\otimes_{\Or_K} K=L\]
+parce que dense dans $\Or_L\otimes_{\Or_K}K=L$ et complet donc fermé.
+Donc on obtient le cas d'égalité $e.f\geq[L:K]$.
+\begin{rem}
+    Le fait que $M\otimes_{\Or_K}K$ soit un $K-$e.v dense
+    dans $L$ force pas de même dimension ! Ça peut arriver
+    qu'une ligne soit dense en dimension $2$. Par exemple
+    $\Q$ dans $\Q(\sqrt 2)$ avec la norme infinie, ou toutes
+    les $v_p$ avec $p\ne 2$ je crois.
+\end{rem}
+
+
+
+\section{Équivalences}
+Seulement de "égalité" équivaut à $\tilde\Or_K$ fini sur $\Or_K$.
+De droite à gauche c'est que $\Or_K$ est principal donc fini 
+implique libre ici, la dimension se voit bien d'où l'égalité.
+L'autre côté c'est que on obtient une base de $L$ sur $K$ et
+on fait redescendre les relations.
+
+
+
+\end{document}
+

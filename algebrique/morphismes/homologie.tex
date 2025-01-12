@@ -1,0 +1,501 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{concl}{Conclusion}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Notes perso : Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Morphismes d'espaces localement annelés}
+Le but là c'est de revoir pourquoi dans le cas localement annelé 
+$(f,f^\sharp)\colon X\to Y$ la flèche $f^\sharp$ correspond bien au
+pullback $g\mapsto g\circ f$ (c'est pas tjr défini sur un Schéma affine)
+et l'intuition est exacte dans le cas des variétés. Ensuite de voir
+pourquoi les schémas affines généralisent bien les variétés et ensembles
+algébriques initiales.
+
+\section{Le cas des $k$-algèbre de type fini}
+Dans le cas des variétés abstraites, on prends deux variétés affines
+$X\simeq (Z(I)\subset \A^n, \Or_X)$ et $(Y,\Or_Y)$. Étant donné un
+morphisme d'espaces localement annelés $(f,f^\sharp)\colon X\to Y$ on 
+a
+% https://q.uiver.app/#q=WzAsMTAsWzEsMCwiZl57XFwjfVxcY29sb25cXG1hdGhjYWwgT19ZKFUpIl0sWzIsMCwiXFxtYXRoY2FsIE9fWChmXnstMX1VKSJdLFsxLDEsIlxcbWF0aGNhbCBPX3tZLGYoeCl9Il0sWzIsMSwiXFxtYXRoY2FsIE9fe1gseH0iXSxbMSwyLCJcXGthcHBhKGYoeCkpIl0sWzIsMiwiXFxrYXBwYSh4KSJdLFswLDAsInMiXSxbMCwyLCJzKGYoeCkpIl0sWzMsMCwiZl57XFwjfShzKSJdLFszLDIsImZee1xcI30ocykoeCkiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMiw0XSxbMyw1XSxbNCw1LCJpZCJdLFs2LDcsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbOCw5LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+\[\begin{tikzcd}
+	s & {f^{\#}\colon\mathcal O_Y(U)} & {\mathcal O_X(f^{-1}U)} & {f^{\#}(s)} \\
+	& {\mathcal O_{Y,f(x)}} & {\mathcal O_{X,x}} \\
+	{s(f(x))} & {\kappa(f(x))=k} & {\kappa(x)=k} & {f^{\#}(s)(x)}
+	\arrow[maps to, from=1-1, to=3-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[maps to, from=1-4, to=3-4]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=3-3]
+	\arrow["id", from=3-2, to=3-3]
+\end{tikzcd}\]
+Un truc qui fait tiquer c'est que ça semble pas utiliser le fait que
+c'est localement annelé, déjà c'est pas clair que c'est un morphisme
+de $k$-algèbres les morphismes de corps résiduels. En fait l'endroit
+où ça l'utilise c'est que l'existence de ce morphisme vient du fait que
+\[\Or_{Y,f(x)}\to \Or_{X,x}\to \kappa(x)=\Or_{X,x}/\p_x\]
+passe au quotient parce que $f^\sharp_x(\p_{f(x)})\subseteq \p_x$.
+
+
+\subsection{Le morphisme sur les fibres}
+Retour sur l'adjonction entre $f^{-1}$ et $f_*$ pour un morphisme de 
+faisceaux $f\colon (X,\F)\to (Y,\G)$. On remarque que des deux carrés 
+% https://q.uiver.app/#q=WzAsOSxbMSwwLCJcXE9yX1goZl57LTF9VSkiXSxbMCwwLCJcXE9yX1koVSkiXSxbMCwxLCJcXE9yX3tZLGYoeCl9Il0sWzEsMSwiXFxPcl97WCx4fSJdLFs0LDAsIlxcT3JfWChWKSJdLFs0LDEsIlxcT3Jfe1gseH0iXSxbMywxLCIoZl57LTF9XFxPcl9ZKV97Zih4KX0iXSxbMywwLCIoZl57LTF9XFxPcl9ZKShWKSJdLFszLDIsIlxcT3Jfe1ksZih4KX0iXSxbMSwwXSxbMSwyXSxbMiwzXSxbMCwzXSxbNiw1XSxbNyw2XSxbNiw4LCJcXHNpbWVxIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNF0sWzQsNV1d
+\[\begin{tikzcd}
+	{\Or_Y(U)} & {\Or_X(f^{-1}U)} && {(f^{-1}\Or_Y)(V)} & {\Or_X(V)} \\
+	{\Or_{Y,f(x)}} & {\Or_{X,x}} && {(f^{-1}\Or_Y)_{f(x)}} & {\Or_{X,x}} \\
+	&&& {\Or_{Y,f(x)}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\simeq"{description}, draw=none, from=2-4, to=3-4]
+\end{tikzcd}\]
+C'est étonnamment celui de droite qui est intuitif à prouver. On
+regarde la famille des $f^{-1}\Or_Y(V)\to \Or_X(V)\to \Or_{X,x}$ ça 
+donne une flèche de la limite des $x\in V$ tels que $f(V)\subseteq U$
+d'où la limite des $f(x)\in U$!
+
+
+
+\section{Conséquences}
+Le fait que $f\colon X\to Y$ est un morphisme d'espaces localement
+annelé force $f^\sharp(U)(P)=P\circ f|_U$ ça a tout de suite des 
+conséquences. Par exemple, si $f$ est dominant, à quelle conditions
+\[P\circ f|_U=Q\circ f|_U\] force $(P=Q)|_U$ ? De ça on peut déduire
+des critères pour que le morphisme de faisceau soit surjectif ou 
+injectif.
+
+\subsection{Cas affine}
+
+\section{Utilisation de la caractérisation $f^\sharp(g)=g\circ f$}
+\subsection{Variétés affines vers espaces localement annelés}
+Pour montrer que $Z\mapsto (Z,\Or_Z)$ est un pleinement fidèle
+faut montrer qu'étant donné $f\colon X\to Y$, et $g\in \Or_Y(V)$
+alors $g\circ f\in \Or_X(f^{-1}V)$.
+\begin{rem}
+  C'est bien une \textbf{fonction}, mais c'est pas clair qu'elle
+  est régulière.
+\end{rem}
+Dans notre cas avec la définition faut prouver que $g\circ f$ est
+régulière sachant qu'on a 
+\[f_*\colon A(Y)\to A(X).\]
+Pour $x_0\in f^{-1}V$ on prends $f(x_0)\subset V_0$ tel que 
+$g|_{V_0}=G/H$ avec $H(f(x_0))\ne 0$, alors
+$g|_{V_0}\circ f=f_*G/f_*H$ (comme fonctions) est bien
+une fraction avec $f_*H(x_0)\ne 0$.
+\begin{rem}
+  $f_*$ se définit via $\A^n\to \A^m$.
+\end{rem}
+À l'inverse faut montrer que de $f^\sharp$ on peut trouver une
+fonction polynomiale $X\to Y\subset \A^m$. Typiquement via
+$k[T_1,\ldots, T_m]\to A(X)$ et $f^\sharp(g)=g\circ f$ sur les
+coordonnées.
+
+
+
+\chapter{Immersions}
+La page stacks sur les \href{https://stacks.math.columbia.edu/tag/01IM}{
+immersions}.
+
+\section{Immersions ouvertes}
+C'est un homéomorphisme $f\colon X\to U\subset Y$ de $X$ sur $U$
+d'espaces localement annelés tel que 
+\[f^\flat \colon f^{-1}\Or_Y\to \Or_X\] est un isomorphisme.
+\newline
+
+Dans le cas des variétés c'est pareil. $X$ est isomorphe à un ouvert
+de $Y$.
+
+\section{Immersions fermées}
+On demande à ce que $f(X)$ soit fermé et $X\to f(X)$ soit un 
+isomorphisme. Pour rappel on peut seulement demander à ce que ce soit
+un homéomorphisme et $f^\sharp$ est surjective.
+\begin{rem}
+  Dans le stacks ils disent même qu'on peut dire que c'est un morphisme 
+  affine tel que $f^\sharp$ est surjective. C'est super intuitif ducoup.
+  Et l'équivalence à l'air claire! 
+\end{rem}
+
+\subsection{Rappel sur $f^{-1}$}
+À nouveau, on peut le voir comme un ensemble de classes d'équivalences
+avant de faisceautiser.
+\subsection{À faire}
+Regarder cette co-unité et la préservation des épis/mono.
+Les adjoints ça préserve les limites/colimites finies. Et adjoint
+à gauche préserve toutes les colimites. 
+
+\subsection{Étude de la déf}
+En gros ce qu'on voudrait c'est l'équivalence entre :
+\begin{enumerate}
+  \item Structure donnée par $X$ sur $f(X)$, via $f_*\Or_X$.
+  \item Structure donnée par $Y$ sur $f(X)$, via $i_{f(X)}^{-1}\Or_Y$.
+\end{enumerate}
+pour $i_{f(X)}\colon f(X)\hookrightarrow Y$ l'inclusion. Où la
+deuxième structure est la structure naturelle.
+\newline
+
+Pour un fermé $Z\subset Y$. On peut d'abord regarder si 
+\[\Or_Y\to (i_Z)_*i_Z^{-1}\Or_Y\]
+est surjectif. C'est marrant ça provient de la co-unité.
+À remarquer, 
+\[((i_Z)_*i_Z^{-1}\Or_Y)_y=\begin{cases}(i_Z^{-1}\Or_Y)_{y}=\Or_{Y,y}\textrm{ Si }y\in Z\\
+0\textrm{ sinon, car limite vide}\end{cases}\]
+Maintenant la surjectivité est claire sur les fibres on a 
+\[i_Z^\sharp\begin{cases}\Or_{Y,y}\to \Or_{Y,i_Z(y)}\textrm{ si }y\in Z\\
+  \Or_{Y,y}\to 0\textrm{ sinon.}
+\end{cases}\]
+Maintenant tout se recolle, en posant $f(X)=Z$ alors 
+\[\Or_Y\to (i_{f(X)})_*\Or_{f(X)}\simeq (i_{f(X)})_*i_{f(X)}^{-1}\Or_Y\to 0\]
+est exacte. D'où la surjectivité qu'on voulait. 
+\begin{concl}
+  Pour conclure, la structure naturelle sur $Z\subset Y$ est donnée
+  par $i_Z^{-1}\Or_Y$. Et naturellement, la définition par $X\simeq f(X)$
+  est la bonne. En particulier, on obtient $i_Z^{-1}\Or_Y\simeq f_*\Or_X$
+  pour $Z=f(X)$.
+\end{concl}
+Pour l'inverse, si $\Or_Y\to f_*\Or_X\to 0$ est exacte. On note
+$I$ le noyau, et si $f$ est affine.
+Inversement, si $\Or_Y\to f_*\Or_X\to 0$ est exacte on peut dire quelque
+chose.
+
+\subsection{Cas affine}
+Pour le cas affine c'est plus simple si $f\colon X\to Y$ a une image
+fermée, le morphisme induit
+\[f^\sharp(Y)\colon A(Y)\to A(X)\]
+est surjectif parce que $f(X)=\overline{f(X)}=Z(\ker(f^\sharp(Y)))$
+d'où ça se factorise en
+\[A(Y)\to A(Y)/I(Z(\ker(f^\sharp(Y))))\simeq A(X).\]
+En fait en termes de faisceaux, si on regarde
+
+\[0\to I\to \Or_Y\to f_*\Or_X\to 0\]
+on peut poser $I\colon U\mapsto I(f(X))\Or_Y(U)$.
+
+\subsection{Cas des variétés}
+
+
+\subsection{Avec la définition affine et faisceau surjectif}
+Eh ben c'est super cool parce que localement on obtient clairement
+la tête de l'image via la sous-section d'avant.
+
+
+\chapter{Morphismes affines}
+Y'a un cas qui est évident que je veux traiter celui des 
+variétés quasi-projectives. Et je crois que les variétés
+séparées aussi. Déjà, suffit d'avoir ça
+
+\begin{defn}
+    Un morphisme $f\colon X\to Y$ est affine si $f^{-1}U$
+    est affine dès que $U$ est affine ouvert de $Y$.
+\end{defn}
+\begin{prop}
+    Un morphisme est affine ssi il existe un recouvrement
+    $Y=\cup U_i$ t.q $f^{-1}U_i$ est affine pour chaque $i$.
+\end{prop}
+\subsection{Cas quasi-projectif}
+Si on a $f\colon X\to Y$ entre variétés quasi-projectives, 
+faut remarquer si 
+
+
+\chapter{Morphismes séparés}
+\section{Un critère}
+Séparé ssi il existe un recouvrement affine $\cup_i X_i$ t.q
+\begin{enumerate}
+  \item $X_i\cap X_j$ est affine.
+  \item $X_i\cap X_j\to X_i\times X_j$ est une immersion fermée.
+\end{enumerate}
+\subsection*{Preuve}
+De gauche à droite c'est une section plus tard, de droite à gauche
+c'est que $\Delta_X\cap X_i\times X_j=\Delta_{X_i\cap X_j}$ qui
+est fermé par hypothèse. Et être fermé est une condition locale
+sur la base.
+L'immersion fermée est dû au fait
+que la surjectivité du faisceau se voit sur les fibres.
+\subsection*{Applications}
+Application 1: Produits de variétés séparées sont séparées.
+Application 2 : Variétés projectives sont séparées.
+
+\subsection{Ligne à double point}
+On la construit via $T\mapsto T$ sur $D(T)\subset \A^1$.
+J'appelle $L$ le recollement et ses ouverts c'est clair. Pour 
+le faisceau ses sections globales c'est clair aussi via le critère.
+Pour la séparation, si $O_1,O_2$ c'est
+les deux points du recollement alors $(O_1,O_2)\notin \Delta_L$
+mais tout ouvert qui contient $(O_1,O_2)$ contient un $D(f_1)\times
+D(f_2)$ et $D(f_1)\cap D(f_2)\ne 0$ d'où $\Delta_L$ est pas fermé.
+
+\section{Intersections d'affines est affine}
+Si $X\to k$ est séparé, alors pour tout $U,V$ affines :
+\[U\cap V\to U\cap V\times U\cap V\to U\times V\]
+est une immersion fermée vers un affine! Parce que 
+\[\Delta_X\cap( U\times V) =\Delta_{U\cap V}.\]
+Ça donne une réciproque au truc d'avant.
+
+\section{Sur des $k$-schémas}
+On veut que 
+\[\Delta_S(X)\colon X\to X\times_S X\]
+soit une immersion fermée. Alors $X\to S$ est
+séparé.
+\begin{rem}
+  Pour rappel, on prends $X\times_S Y = (i_X,i_Y)^{-1}(\Delta_k(S))$
+  où $i_X$ et $i_Y$ sont les morphismes structurants.
+\end{rem}
+
+\chapter{Morphismes propres}
+On dit que $X\to S$ est propre si $X$ est
+universellement fermé dans $Sch/S$ et séparé
+(y'a une condition de finitude aussi).
+
+\section{La ligne a point double est universellement fermée
+mais pas séparée}
+Petit exercice. 
+\section{Si $X\to Y$ est fini et $Y$ est propre alors $X$ est propre}
+Pour la séparation : on écrit
+\[X\times_Y X =\cup f^{-1}Y_i\times_{Y_i} f^{-1}Y_i\]
+et $X=\cup f^{-1}Y_i$ est un recouvrement affine. Là $\Delta(f^{-1} f^{-1}Y_i)$ est fermé car affine. Pour montrer que
+$X$ est universellement fermée, on écrit
+\[X\times Z\to Z \leftrightarrow X\times Z\to Y\times Z\to Z\]
+sachant le premier est fini (clair) donc fermé.
+
+\section{Conséquence de la propreté}
+Soit $X$ est propre : 
+\begin{enumerate}
+  \item Si $Y$ est séparée, tout morphisme $X\to Y$ est fermé.
+\end{enumerate}
+
+
+
+
+
+
+\chapter{Morphismes finis}
+\section{Fini implique affine}
+Je crois que c'est pas définition. Pas besoin d'aller chercher
+pourquoi là je pense.
+\section{Surjectivité des morphismes finis}
+Ducoup si on regarde la condition $x\in f^{-1}(y)$, ça se traduit par
+$f_*\m_y\subset \m_x$. Inversement, si $f^{-1}(y)$ est vide alors
+$f_*\m_yk[X]=k[X]$ et on applique le lemme de Nakayama car 
+$\m_y\ne k[Y]$. \textbf{Faudrait essayer de voir plus concrètement
+comment trouver une racine.}
+
+
+\section{Trouver un ouvert dans $f(X)$}
+L'idée c'est de décomposer $f$ : $f\colon X\to Y\times \A^r\to Y$ 
+défini par $k[Y]\subset k[Y][u_1,\ldots, u_r]\subset k[X]$ où 
+$k(X)=k(Y)(u_1,\ldots, u_r, z)$. La première flèche faut juste 
+choisir $u_i\in k[X]$, rendre l'extension entière avec la 
+technique habituelle puis tout dérouler en utilisant le fait 
+que les morphismes finis sont surjectifs. La deuxième c'est
+juste que la première projection on peut trouver un ouvert dans
+l'image d'un ouvert facilement.
+
+\begin{rem}
+  Y'a quand même un petit truc intéressant, le morphisme induit par 
+  l'inclusion
+  \[k[Y][u_1,\ldots, u_r]\subset k[X]\]
+  on l'interprète en $X\to Y\times \A^r$, en disant que 
+  $k[\A^r]=k[u_1,\ldots, u_r]$ sauf que y'a une subtilité pour que ça
+  marche. Vaudrait mieux dire \[k[Y][T_1,\ldots, T_r]\hookrightarrow
+  f_*k[Y][u_1,\ldots, u_r]\]
+  pour que ce soit plus clair. Autrement dit, le statut de 
+  $u_1,\ldots,u_r$ comme fonctions sur $\A^r$ est pas clair, c'est pas 
+  le même que celui de $u_1,\ldots, u_r$ sur $X$ ? Aussi, ça marche 
+  parce que être algébriquement indépendant sur $k(Y)$ implique l'être
+  sur $k$ ! Et ça c'est peut-être non trivial, au sens où on a une
+  flèche dominante $X\supset U\to \A^r$ ($U$ un ouvert de définition
+  des $u_i$).
+\end{rem}
+
+\section{Projections}
+Ça c'était cool, et plus deep que prévu. Ducoup, 
+on considère des "e.v" de $\Pr^n$ (juste les regarder
+dans $\Pr^{n+1}$). Donnés par $E=Z(L_1,\ldots,L_{n-d})$,
+et on déf 
+\[\pi\colon \Pr^n-E\to \Pr^{n-d-1};(\bar x)\mapsto (L_i(\bar x))_i\]
+L'idée géometrique c'est que si on prend 
+$\Pr^{n-d-1}\simeq H\subset \Pr^n-E$, alors $H\cap E=0$ et $H\oplus E=
+\A^{n+1}$ ce qui définit un projecteur. En particulier, si
+$x\in \Pr^{n}-E$ alors 
+\[E\oplus <x>\cap H\textrm{ est de dimension }1.\]
+Donc on a un point d'intersection dans $\Pr^{n}$, et il est donné par 
+$\pi$. C'est pas entièrement clair, mais c'est clair que c'est une 
+projection au sens où $H\oplus E=\A^{n+1}$ a des projecteurs associés.
+
+Maintenant pour prouver que c'est une flèche finie, c'est plutôt cool,
+déjà on regarde $\pi\colon D(L_j)\cap X\to \A^{n-d-1}\cap \pi(X)$ et 
+on veut montrer que $\pi^*\colon k[\A^{n-d-1}]\to k[D(L_j)\cap X]$
+est finie, et $g\in \Or_X(D(L_j))$ est de la forme $g=G/L_i^m$
+($\Pr^n-E=\cup D(L_i)$). Maintenant $\pi^*(T_i)=L_i/L_j$ donc on doit 
+trouver une relation algébrique unitaire entre $g$ est les $\pi^*(T_i)$.
+C'est là que c'est fort. On remarque que l'image de
+\[\pi_m\colon X\to \Pr^{n-d};(\bar x)\mapsto (L_1^m,\ldots,
+L_{n-d}^m,G)\]
+est fermée. On obtient $F_1,\ldots, F_s$ des polynômes qui annulent 
+l'image ! Mais ça suffit pas encore, j'ai l'impression qu'on peut
+montrer au plus qu'on a seulement une relation du type 
+$X\circ(L_i)^{\alpha}G^k -\ldots$ pas unitaire et qu'on devra localiser 
+à trop de $L_i$. Le deuxième point important c'est que
+\[[0:\ldots:0:1]\notin \pi_m(X)\]
+parce que les $L_i$ s'annulent pas simultanément, en particulier, 
+\[V(F_1,\ldots,F_s, z_0,\ldots, z_{n-d-1})=\emptyset\]
+D'où ... il existe $k$ t.q. 
+$z_{n-d}^k\in (F_1(\bar z),\ldots, F_s(\bar z))+(z_i, i) \subset 
+k[z_0,\ldots, z_{n-d}]$. Tu vois le truc venir ? En particulier, 
+si on regarde dans $\pi_m(X)$ on obtient 
+\[\psi(z_1,\ldots,z_{n-d})=z_{n-d}-\sum z_j H_j = 0\mod I(\pi_m(X))\]
+En regardant dans $z_i\ne 0$ on obtient 
+\[k[\A^{n-d}\cap D(z_i)]=k[z_0,\ldots, z_{n-d}]_{z_i}\to 
+\Or_X(D(z_i\circ \pi_m)\cap X)\]
+la flèche $z_j\mapsto L_j^m/L_i^m$ et $z_{n-d}\mapsto G/L_i^m$. De sorte
+que dans $\Or_X(D(z_i\circ \pi_m)\cap X)$ on ait 
+\[\psi(G_i/L_i^m)=0;
+    ~\psi\in k[\pi(X)\cap D(T_{i})][T]\textrm{ unitaire.}
+\]
+
+
+
+
+\printbibliography
+\end{document}
+

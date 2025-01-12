@@ -1,0 +1,214 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{res}{Résumé}
+\newtheorem{rep}{Réponse}
+\newtheorem{cons}{Conséquence}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Géométrie algébrique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+Idées des développements : Cadre $\to$ comment se ramener à ce cadre.
+Aussi comparer le cas quasi-projectif au cas général.
+
+\chapter{Exemples de variétés}
+\section{Quotients}
+Étudier des morphismes $\A^n(k)\to \A^n(k)/G$. Ils sont finis par 
+le cours, le revoir. Aussi $X/G$.
+
+\section{Fibrés et variétés projectives}
+Systèmes linéaires. Variétés ayant des fibrés amples. Diviseur
+canonique ample. Riemann-Roch.
+
+\section{Variétés rationnelles}
+C'est des variétés birationnelles à $\P^n(k)$. On peut en dire 
+beaucoup de choses.
+\subsection*{Le cas de $\P^1(k)$}
+Être birationnel à $\P^1_k$ ça force à être de dimension $1$ et 
+irréductible.
+
+
+\section{Variété de drapeaux}
+\section{Grassmaniennes}
+\section{Variétés abéliennes}
+Ça c'est bcp plus dur, mais on sait qu'elles sont projectives.
+\section{Groupes algébriques}
+
+\chapter{Variétés}
+Ici le but c'est de décrire les propriétés des variétés elles-même,
+une bonne ambition ce serait de décrire aussi comment sont préservées
+ces propriétés.
+\section{Variétés normales et morphismes finis}
+Ici c'est 
+\[f\colon X\to Y\]
+\chapter{Morphismes de variétés}
+
+
+\chapter{Catégories de variétés}
+Le but de cette section c'est de se déplacer dans des catégories 
+de variétés pour voir ce qu'y se passe. 
+
+Les marches aléatoires ça pourrait mdr, dans l'ensemble des coniques
+sur $\Q$ par exemple mdr. Ou sur un corps fini, y'a des probabilités
+claires là!
+\section{Tentative de marches pas aléatoires dans \textbf{k-Var}}
+Une marche aléatoire sur un corps algébriquement clos ca semble assez
+difficile à définir mdr. Par contre y'a des variétés qui sont cooles
+à atteindre. Typiquement les
+\[\A^n_k,\P^n_k.\]
+\subsection*{Diviseurs et fonctions régulières}
+Si on se met dans \textbf{k-Var}, la catégorie des variétés,
+on peut toujours trouver 
+\[X\to \P^1\]
+dominante (sauf si $dim(X)=0$) via l'exemple canonique 
+$f\in \Or_X(U)\ne k$ alors 
+\[\bar f\colon X\to \P^1\]
+par contre 
+\[X\to \A^1\]
+dominante c'est pas toujours possible vu que $X$ peut-être propre par
+exemple. 
+Bon ce qu'on peut faire dans le cas quasi-projectif
+
+
+\section{Variétés rationnelles}
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
+

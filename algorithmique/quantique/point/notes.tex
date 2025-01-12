@@ -1,0 +1,318 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+\usepackage{quantikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\H}{\mathscr{H}}
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+\newtheorem{concl}{Conclusion}
+\newtheorem{res}{Résumé}
+\newtheorem{strat}{Stratégie}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Théorie des nombres algorithmique}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Algorithmes}
+\section{$\frac{3}{5}|0>+\frac{4}{5}|1>$}
+
+C'est un exo à la con mais c'est instructif, on regarde
+\begin{align*}
+    |0>&\to \frac{1}{\sqrt 2}(|0>+|1>)\\
+       &\to \frac{1}{\sqrt 2}(|0>+e^{i\theta}|1>)\\
+       &\to \frac{1}{2}(|0>(1+e^{i\theta})+|1>(1-e^{i\theta}))\\
+       &\to \frac{1}{2}(e^{i\theta /2}(e^{-i\theta /2}+e^{i\theta /2})
+       +e^{i\theta /2}|1>(e^{-i\theta /2}-e^{i\theta /2}))
+\end{align*}
+et là suffit d'ajuster theta puis de refaire des phases shifts.
+
+\section{$\frac{3}{5}|0>+\frac{4}{5}|1>$ et $\frac{5}{13}|0>-\frac{12}{13}|1>$}
+Déjà par rapport à la section d'avant, on aurait juste pu faire
+\[
+\begin{quantikz}
+    &\gate{H}&\gate{R_\theta}&\gate{X}&\gate{R_{-\theta}}&\gate{H}&
+\end{quantikz}
+\]
+est c'est fini, on obtient 
+\[|0>\mapsto cos(\theta)|0>+sin(\theta)|1>\]
+et
+\[|1>\mapsto -sin(\theta)|0>-cos(\theta)|1>\]
+maintenant si $|0>\mapsto \frac{3}{5}|0>+\frac{4}{5}|1>$
+et $|1>\mapsto \frac{5}{13}|0>-\frac{12}{13}|1>$ on peut voir
+que sur $|0>+|1>$ ça préserve pas la norme.
+
+\section{Deutsch-Josza}
+Donc l'algorithme permet de décider si $f\colon 2^n\to 2$ est constante
+ou équilibrée (Comme un morphisme de groupes $(\Z/2\Z)^n\to \F_2$).
+\newline
+
+En gros le point crucial c'est que sur $|0^n>|1>$
+Si on fait $H^{\otimes (n+1)}$, $U_f$ puis $H^{\otimes n}$ on obtient :
+\begin{align*}
+    |0^n>|1>&\to \sum_{x\in 2^n}|x>(|0>-|1>)\\
+            &\to \sum_{x\in 2^n}|x>(|f(x)>-|1\oplus f(x)>\\
+            &\to \sum_{y\in 2^n}|y>\sum_{x\in 2^n}(-1)^{f(x)}(-1)^{x.y}\\
+\end{align*}
+En particulier $||q_{0^n}||=\sum_{x\in 2^n} (-1)^{f(x)}/2^n$. D'où
+si $f$ est constant on obtient $0^n$ avec proba $1$, sinon proba $0$ 
+d'avoir $0^n$.
+
+\section{Simon}
+Cette fois c'est plus fun, si on prends 
+\[f\colon (\Z/2\Z)^n\to X\]
+avec $X$ un ensemble fini, et si $f$ vérifie $f(x)=f(y)$ ssi $x=y$ ou
+$x=y+a$ on aimerait trouver $a$. Essentielemment, si $f$ passe au
+quotient en $<a>$ on veut trouver le "noyau". On regarde
+\begin{center}
+\begin{quantikz}
+    &\gate{H^{\otimes n}}&\gate[2]{Uf}&\gate{H^{\otimes n}}&\meter{}&\\
+    &&&&&
+\end{quantikz}
+\end{center}
+À nouveau on fait rentrer $|0^{n+m}>$, on obtient 
+\begin{align*}
+    |0^{n+m}>&\to \frac{1}{2^{n/2}}\sum_{x\in 2^n} |x>|f(x)>\\
+             &\to \frac{1}{2^n}\sum_{y\in 2^n}|y>\sum_{x\in 2^n}(-1)^{x.y}
+             |f(x)>\\
+\end{align*}
+et on à $q_y=\sum_{x\in 2^n} (-1)^{x.y}|f(x)>$. Le claim c'est qu'on
+obtient un vecteur $v\in \F_2^n$ uniformément distribué orthogonal
+à $a$ en sortie. Ça se voit direct en regardant $y.a\mod 2$ :
+\begin{align*}
+    q_y&=\sum_{\bar x\in (\Z/2\Z)^n/<a>} (1+(-1)^{a.y})((-1)^{x.y}|f(x)>\\
+\end{align*}
+\begin{align*}
+    a.y=1\mod 2 \to q_y&=\sum_{\bar x\in (\Z/2\Z)^n/<a>} (1+(-1)^{a.y})((-1)^{x.y}|f(x)>\\
+                &=0\\
+    a.y=0\mod 2 \to q_y&=\sum_{\bar x\in (\Z/2\Z)^n/<a>} (1+(-1)^{a.y})((-1)^{x.y}|f(x)>\\
+                       &=\sum_{\bar x\in (\Z/2\Z)^n/<a>} ((-1)^{x.y}|f(x)>\\
+\end{align*}
+En particulier, y'a que les $y.a=0\mod 2$ qui ont une proba de sortir.
+L'uniforme distribution est claire.
+
+Pour obtenir $a$, on peut lancer l'algorithme jusqu'à obtenir une base
+de $<a>^T$.
+\begin{rem}
+    La proba d'avoir une base en $m$ étapes se calcule bien, regarder
+    la matrice des $m$ vecteurs colonnes. Calculer sur le rang 
+    sur les lignes! On obtient une proba 
+    $P_{d+k}\geq 1-\frac{1}{q^k(q-1)}=1-\frac{1}{2^k}$ avec $q=2$ ici
+    et $d=n-1=dim <a>^T$.
+\end{rem}
+
+\section{Transormée de Fourier quantique}
+On a une nouvelle porte, \[QFT(|x>)=\frac{1}{2^{n/2}}\sum_{y\in 2^n}
+\zeta_{2^n}^{x.y}|y>.\]
+Et on peut l'utiliser pour trouver la période d'une fonction! Y'a
+une nuance dans la suite :
+\newline
+\begin{center}
+\textbf{On part de $\Z/2^n\Z$ et pas $(\Z/2\Z)^n$, puis
+$xy$ est le produit dans $\Z/2^n\Z$ pas le produit scalaire}.
+\end{center}
+\subsection{Cas $r=2^d$}
+\begin{prob}
+    $f\colon \F_2^n\to X$ telle qu'il existe $d\leq n$ t.q :
+    \begin{enumerate}
+        \item $f$ est $2^d$-périodique.
+        \item $f(x)=f(y)$ ssi $2^d\mid x-y$.
+    \end{enumerate}
+\end{prob}
+Le circuit
+\begin{center}
+\begin{quantikz}
+    &\gate{H^{\otimes n}}&\gate[2]{Uf}&\gate{QFT^{\otimes n}}&\meter{}&\\
+    &&&&&
+\end{quantikz}
+\end{center}
+mesure un $|y>$ uniforme divisible par $2^{n-d}$. En particulier,
+on a une manière de chopper une période de la forme
+$2^d$ en itérant. Donc en gros comme d'hab on regarde :
+\[\sum_{x\in \Z/2^n\Z} |x>|f(x)>\]
+et on applique $QFT$ cette fois pour obtenir :
+\[\sum_{x\in \Z/2^n\Z}\sum_{y\in \Z/2^n\Z}\zeta_{2^n}^{xy}|y>|f(x)>\]
+et on pose
+\[q_y=1/2^n\sum_{x\in \Z/2^n\Z}\zeta_{2^n}^{xy}|f(x)>\]
+puis on écrit $x=a+2^db$, alors $f(x)=f(a)$. On peut montrer que
+\begin{enumerate}
+    \item si $2^{n-d}\mid y$ alors $||q_y||^2=1/2^d$. 
+    \item sinon $||q_y||^2=0$.
+\end{enumerate}
+
+
+\textbf{Fait :} En gros, en prenant la QFT comme boite noire,
+j'ai revu deutsh josza et simon. Puis Shor pour trouver les périodes
+de la forme $2^k$. Ensuite pour une période de la forme $r$ générale,
+on peut l'estimer à partir du circuit du dessus.
+\textbf{À faire :}  Comprendre l'estimation d'abord, via les fractions
+continues. Puis comprendre la QFT sans boite noire mais ca c'est moins
+important. Faut savoir construire $|x>\mapsto |0>+\zeta_{2^n}^{x}|1>$.
+
+\textbf{Finalement :} Ça vaut le coup de comprendre comment marche
+la QFT pour le td ? Ou au moins pour l'algorithmique.
+
+\subsection{Construire la porte QFT}
+En gros on utilise la factorisation :
+\begin{align*}
+    QFT(|x>)&=\frac{1}{2^{n/2}}\sum_{y\in 2^n}\zeta_{2^n}^{xy}|y>\\
+            &=\frac{1}{2^{n/2}}\sum_{y_0,\ldots,y_{n-1}\in \{0,1\}}
+            \prod_{i=0,\ldots,{n-1}}
+        \zeta_{2^n}^{x2^iy_i}|y_i>\\
+            &=\frac{1}{2^{n/2}}\prod_{i=0,\ldots,n-1}(|0>+\zeta_{2^n}^{x2^i}|1>)\\
+\end{align*}
+en particulier, y suffit de savoir construire 
+\[\frac{|0>+\zeta_{2^{n-i}}^{x}|1>}{\sqrt{2}}\]
+Mais ça on peut le faire avec un controlled phase shift :
+\begin{align*}
+    \frac{|0>+\zeta_{2^{n-i}}^{x}|1>}{\sqrt{2}}&=\frac{|0>+\zeta_{2^{n-i}}^{x_0+\ldots+2^{n-i}x_i}|1>}{\sqrt{2}}\\
+                                               &=\frac{|0>+\prod_{j=0}^{n-i}\zeta_{2^{n-i-j}}^{x_j}|1>}{\sqrt{2}}\\
+\end{align*}
+
+
+Au sens où la c'est juste une suite de phase shifts là où 
+$x_j=1$.
+\begin{concl}
+    Là on a construit un circuit $Q_i$ qui créé le qbit du dessus
+    qui agit que sur la $n-i-1$-ème entrée. En particulier pour
+    appliquer la QFT, on fait successivement $Q_0$ puis $Q_1$, $\ldots$.
+\end{concl}
+\subsection{Le cas $r$ général}
+Bon là on savait trouver une période de la forme $2^d$. Maintenant
+on veut trouver une période quelconque. On va faire exactement
+la même chose et voir ce qu'y se passe.
+\begin{res}
+    En gros, la sortie de Shor est une approximation de $k/r$ une 
+    fraction proche à $2^{n+1}$, i.e. :
+    \[|y/2^n - j/r|<1/2^{n+1}\]
+    On connaît par $j/r$ mais on peut montrer avec une telle 
+    approximation que il existe un convergent de $y$, $p_n/q_n$ tel
+    que $p_n/q_n = j/r$!
+\end{res}
+On peut montrer avec des théorèmes sur les fractions continues que 
+pour une sortie de Shor $y$, il existe $j$ tel que 
+$|y/2^n-j/r|<1/2^{n+1}$ et par la théorie des fractions continues, $j/r$
+est un convergent de $y$! I.e. y'a dans la fraction continue on peut
+trouver $p_n/q_n$ t.q $p_n/q_n=j/r$, wow.
+
+\begin{strat}
+    Ducoup la stratégie c'est : 
+    \begin{enumerate}
+        \item Lancer Shor et obtenir $y$.
+        \item Calculer les convergents de $y/2^n$, $(p_i/q_i)$.
+        \item Vérifier si $f(0)=f(q_i)$ pour un $i$, si oui
+            retourner $q_i$.
+    \end{enumerate}
+    À la dernière étape ce sera vrai par la théorie parce que une
+    condition c'est $2^n>r^2$ et on le choisit comme ça.
+\end{strat}
+
+\section{Factorisation et log discret}
+Pour la factorisation, la page wiki explique bien!
+\begin{strat}
+    En gros
+    \begin{enumerate}
+        \item Prendre un entier plus petit que $n$ premier à $N$, 
+    disons $a$ (si il est pas premier on a fini).
+        \item Calculer son ordre avec l'algo de Shor (on a besoin de 
+            l'ordre.
+        \item Si $r$ est pair, alors $N|(a^{r/2}-1)(a^{r/2}+1)$
+            mais peut diviser aucun des deux donc a deux facteurs !
+        \item Il doit y avoir un $r$ pair, parce que sinon $N=2^k$.
+            Donc itérer.
+    \end{enumerate}
+\end{strat}
+\end{document}
+

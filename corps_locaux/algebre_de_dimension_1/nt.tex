@@ -1,0 +1,453 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Algèbre en dimension $1$}
+\date{}
+
+\begin{document}
+\maketitle
+
+\chapter{Annulateurs et idéaux quotients}
+Je veux parler de l'utilisation des annulateurs à coefficients
+dans différents anneaux et quotients d'idéaux dans différents
+anneaux. Par exemple, si j'ai $I,J$ deux idéaux fractionnaires
+de $A$ avec $K=Frac(A)$. Je peux considérer
+\[_A(I:J)\]
+ou
+\[_K(I:J)\]
+ou bien
+\[_K(A:I)\]
+ou encore
+\[_{S^{-1}A}(I:J)\]
+à noter que c'est pas clair $_K(I:J)$ vu que $I$ et $J$ sont pas
+des $K$-modules. Mais cet ensemble fait sens. En général si
+$M,N$ sont des $A$-modules contenus dans un $S^{-1}A$-module $P$,
+alors on peut faire sens de 
+\[_{S^{-1}A}(M:N)\]
+et ici $K$ est un $S^{-1}A$ module pour tout $S$.
+
+\section{Arguments locaux}
+Considérer les $(A:I)$ et $I.(A:I)\subseet A$ permet de ramener
+$I$ dans $A$. Mais aussi d'avoir une manière propre d'écrire des
+arguments communs à plusieurs localisations. Par exemple, 
+écrire
+\[_{A_\p}(IA_\p:JA_\p)=A_\p _{A_\p}(JA_\p:IA_\p)\]
+se traduit en $IA_\p=JA_\p$. Et de cette dernière condition
+on peut montrer que $_A(I:(x))\nsubseteq \p$ pour tout $x\in J$.
+D'où si c'est vrai pour tout $\p$ alors 
+\[_A(I:(x))=A\]
+puis $x\in I$ et inversement.
+\chapter{Balades dans ComRing}
+\section{Localisation et cloture intégrale}
+À savoir que la localisation commute avec clôture intégrale.
+
+
+\subsection{Si $A$ est intégralement clos}
+Pour $S$ une partie multiplicative, si $A$ est intégralement clos,
+et $x^n+\sum a_i x^i=0$ avec $a_i\in S^{-1}A$. Il existe $s$ tel
+que $sx\in A$ puis $x\in S^{-1}A$.
+
+\subsection{Sinon}
+On prends $\tilde A$ sa clôture dans $K$ alors $\varphi(S)$ 
+est multiplicative et $\varphi(S)^{-1}\tilde A$ est intégralement
+clos. Reste à voir que $\tilde{S^{-1}A}$ est intégralement
+close et égale. En gros qu'on a
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMCwiU157LTF9QSJdLFswLDEsIlxcdGlsZGUgQSJdLFsxLDEsIlxcd2lkZXRpbGRle1Neey0xfUF9Il0sWzEsMiwiaShTKV57LTF9XFx0aWxkZSBBIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCI/IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	A & {S^{-1}A} \\
+	{\tilde A} & {\widetilde{S^{-1}A}} \\
+	& {i(S)^{-1}\tilde A}
+	\arrow[no head, from=1-1, to=1-2]
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=1-2, to=2-2]
+	\arrow[no head, from=2-1, to=2-2]
+	\arrow[no head, from=2-1, to=3-2]
+	\arrow["{?}"{description}, draw=none, from=2-2, to=3-2]
+\end{tikzcd}\]
+égalité au niveau du $?$. On a clairement 
+\[S^{-1}A\subset i(S)^{-1}\tilde A\] d'où 
+\[\widetilde{S^{-1}A}\subset {i(S)^{-1}\tilde A}\]
+par minimalité en plus on a 
+$\tilde A\subset \widetilde{S^{-1}A}$ et $i(S)$ est
+clairement inversible par cette flèche d'où l'égalité par propriété
+universelle par exemple.
+
+\section{Extensions entières où transmettre la dimension.}
+Si $A\hookrightarrow B$ est fini. Alors
+\[\Spec(B)\to \Spec(A)\]
+est surjectif et a des fibres finies. En plus $\dim(A)=\dim(B)$.
+On peut isoler deux choses déjà
+\begin{enumerate}
+    \item Si $\m\subset B$ est maximal, $\m\cap A$ aussi. Parce
+	que $A/\m\cap A \to B/\m$ est entière.
+    \item Si $\q\subset A$ est premier. $S=(A-\q)$ est multiplicative
+	dans $B$. Et $A\subset S^{-1}B\ne 0$, d'où un idéal maximal
+	$\p$ vérifie $\p\cap A=\q$. Pour le vérifier, 
+	\[A_\q \to S^{-1}B\]
+	est entière, d'où $\p\cap A_\q$ est maximal puis $\p\cap A_\q= \q A_\q$
+	et le résultat. $\p\cap A$ est pas max parce que $A\to S^{-1}B$ est
+	pas entière.
+\end{enumerate}
+ensuite pour montrer que ça préserve la dimension suffit de montrer 
+que si $(0)\ne \p\in \Spec(B)$ alors $\p\cap A\ne 0$. Suffit de 
+prendre une relation entière minimale $x(\sum a_i x^{i-1})=-a_0$
+avec $x\in \p-0$ d'où $a_0\in \p\cap A$ et par minimalité $a_0\ne 0$.
+
+\subsection{Balades}
+En fait on est dans le cadre de morphismes finis dominants 
+de schémas affines
+\[\Spec(B)\to \Spec(A).\]
+Vu que c'est dominant c'est surjectif et de fibres finies.
+En plus la dimension est toujours préservée.
+
+\subsection{Normalisation}
+Si $A$ est intègre, alors $A\subset \tilde A\subset \Frac(A)$
+est entier et on obtient une normalisation entière dominante
+\[\Spec(\tilde A)\to \Spec(A)\]
+mais pas forcément finie ! Si $A$ est une $k$-algèbre de type
+fini c'est vrai.
+
+
+
+
+\chapter{Algèbre en dimension $1$}
+Je vais quasi-toujours rajouter la noethérianité.
+
+
+\section{Anneaux de valuation discrète}
+Pour le contexte, moi je m'intéresse au cas intègre déjà et
+au cas où le DVR est un $A_\p$ pour un anneau noethérien intègre
+de dimension $1$. Sa clôture intégrale dans $\Frac(A)$ devient
+un anneau de Dedekind.
+\subsection{Les 2 définitions.}
+Y'a deux manières de les voir :
+\begin{enumerate}
+    \item Dans un corps $(K,v)$ muni d'une valuation discrète.
+	Avec $A=\{x\in K|v(x)=0\}$. 
+    \item Comme un anneau principal (donc intègre) ayant un seul
+	idéal premier non nul.
+\end{enumerate}
+L'implication $1.$ implique $2.$ consiste juste à se placer
+dans l'espace ambiant $K$. L'autre côté consiste à construire une
+valuation par l'absurde,
+via $t\in A$ est soit dans $A^\times$ soit dans $\m$. D'où 
+on construit $t^{(i)}=\pi t^{(i+1)}$ puis une suite 
+\[(t^{(i)})\subset (t^{(i+1)})\]
+et ca se déroule en rappelant que $1+\m\subset A^\times$.
+
+\newpage
+\subsection{Première caractérisation}
+\begin{eq}
+    Dans un anneau noethérien, 
+    \begin{center}
+	DVR $\equiv$ local, noethérien, $\m=(\pi)$ non nilpotent.
+    \end{center}
+\end{eq}
+On veut écrire $x=\pi^n u$ de manière unique. On peut faire
+exactement la même chose que la partie d'avant. Dans le cas
+intègre c'est vraiment facile. 
+
+\begin{note}
+    Serre prouve que $\cap \m^n=(0)$ ce qui est un peu plus fort
+    en soi.
+\end{note}
+
+\subsection{Deuxième caractérisation}
+\begin{eq}
+    \begin{center}
+	DVR $\equiv$ Noethérien, intégralement clos, un seul idéal
+	premier $\ne 0$ (local mais pas un corps ? Non! Tu
+	verras pq.).
+    \end{center}
+\end{eq}
+Là c'est un peu plus dur. Le point c'est de montrer que $\m$ est 
+inversible, alors $\m$ est principal. On note 
+$\m'=\{x\in K|x\m\subset A\}$. On a 
+\begin{center}
+    $\m\m'\subset A$ et $A\subset \m'$ implique 
+    $\m\subset \m\m'$.
+\end{center}
+d'où $\m\m'=\m$ ou $A$. Maintenant en fait
+\begin{center}
+    si $\m\m'=A$ alors $\sum x_iy_i=1$ d'où 
+    $u=x_{i_0}y_{i_0}\in A-\m=A^{\times}$ 
+\end{center}
+par l'absurde. En particulier tout $z\in\m$ se réécrit 
+\[z=x_{i_0}(u^{-1}y_{i_0}z)\]
+parce que $x_{i_0}y_{i_0}u^{-1}=1$ et $y_{i_0}z\in A$!
+\subsection{Idées de preuve de la deuxième caractérisation.}
+Donc a une remarque :
+\[\m\subseteq\m\m'\subseteq A\]
+d'où $\m\m'=\m$ ou $\m\m'=A$. On peut montrer que
+\begin{enumerate}
+    \item Dans le cas intégralement clos $\m\m'=\m$ implique 
+	$\m'=A$.
+    \item Dans le cas local, $\m'\ne A$.
+\end{enumerate}
+D'où le résultat. 
+\subsection{Premier point}
+On veut montrer que si $A$ est intégralement clos alors
+$\m'\m=\m$ implique $\m'=A$. On prends $z\in \m'-0$, alors
+\[z\m\subset \m\]
+d'où $z^i\m\subset\m$ en itérant. Puis $\sum_{i=0}^n z^i A\subset
+\m'$ pour tout $n$ et on sait que $\m'$ est noethérien. D'où 
+\[\textrm{$A[z]$ est noethérien}\]
+d'où $z$ est entier sur $A$ et le résultat.
+
+\subsection{Second point}
+On veut montrer que si $A$ a un seul idéal premier non nul alors
+$\m'\ne A$. Un argument c'est
+\begin{enumerate}
+    \item On montre que pour $x\in \m-0$, $A_x=K$ via l'hypothèse.
+    \item En faisant varier $x$, $\m^N\subset zA$ pour un $N$
+	minimal.
+    \item Puis si $y\in \m^{N-1}-zA$ alors $y\m\subset zA$
+	puis \[y/z\in \m'-A\]
+\end{enumerate}
+Plusieurs détails où faut faire attention :
+\begin{enumerate}
+    \item Il faut prendre $z\in \m-0$, sinon on peut pas prendre
+	$y\in \m^{N-1}-zA$. Par exemple si $z\in A^\times$
+	alors $zA=A$ et $\m^{N-1}-zA=\emptyset$. Ducoup dans
+	tout les autres cas c'est bon.
+    \item L'hypothèse c'est un seul idéal premier non nul. 
+	Et pour la première étape c'est nécessaire, pas juste 
+	local. Parce que si $A_x\ne K$, alors on a $\p\in A_x$
+	maximal non nul. Et $\p\cap A\ne \m$ car $x\notin \p$.
+	D'où $\p\cap A\ne \m$ est premier non nul.
+\end{enumerate}
+Voilà ça conclut la preuve !
+
+\subsection{Notes}
+\begin{note}
+Le troisième point se traduit en $\Spec(K)=D(x)\subset \Spec(A)$ et
+    \begin{align*}
+    A_x&=\Or_{D(x)}(D(x))\\
+       &=\Or_{\Spec(A)}(\Spec(A))|_{(0)}\\
+       &=\Or_{\Spec(A),(0)}\\
+       &= (A\backslash 0)^{-1}A\\
+       &=K
+    \end{align*}
+\end{note}
+Aussi, cette histoire de $y\in \m^{n-1}-zA$ et $y\m\subset zA$
+ça fait remarquer de l'arithmétique plus habituelle.
+
+\subsection{But de ces caractérisations}
+Celle qui nous intéresse c'est la deuxième qui permet de montrer
+que $\m$ est principal. Alors on peut utiliser la première
+pour montrer que c'est un DVR.
+
+\section{Idéaux fractionnaires}
+On se met dans un anneau noethérien intègre $A$ et $K=Frac(A)$.
+Y'a l'équivalence $A$-modules $M$ de type fini dans $K$ et 
+$M=y^{-1}I$ avec $I\leq A$ un idéal. Pour gauche à droite
+une manière cool c'est que de $x\in (A : M)$ on obtient $M\leq
+x^{-1}A$. Faut montrer que c'est non vide, bon bah ça c'est que
+$M$ est engendré par des fractions.
+
+\section{Anneaux de Dedekind}
+On montre que 
+\begin{eq}
+    \begin{center}
+	$A_\p$ est un dvr pour tout $\p\equiv$ $A$ est
+	noethérien intégralement clos de dimension $1$.
+    \end{center}
+\end{eq}
+
+On montre que 
+\begin{eq}
+    \begin{center}
+	$A_\p$ est un dvr pour tout $\p\equiv$ $A$ est
+	noethérien intégralement clos de dimension $1$.
+    \end{center}
+\end{eq}
+On sait que un $DVR\equiv$ noethérien intègre avec un seul
+idéal premier non nul. I.e. de dimension $\leq 1$. Donc faut juste
+Que intégralement clos équivaut à tout les $A_\p$ sont 
+intégralement clos.
+
+\subsection{Tout les $A_\p$ sont des DVR implique de Dedekind. (instructif)}
+Si $x\in K$ est entier sur $A$, on le note $x=b/c$. On
+a pour tout $\p$ :
+\[x\in A_\p\]
+d'où $b\in cA_\p$ autrement dit il existe $s\in A-\p$ tel que 
+$sb\in cA$. En particulier $(cA:bA)$ est contenu dans aucun
+idéal premier d'où $1\in (cA:bA)$!!
+
+\subsection{Relever l'inversibilité pour les premiers}
+De l'inversibilité de $\p$ dans $A_\p$ je veux relever dans $A$.
+En fait ça vient du fait que $\_\otimes_A A_\p$ est un morphisme
+de monoides $Mod_{A,\subset K}\to Mod_{A_\p,\subset K}$ additif
+et multiplicatif !
+
+\subsection{$\Spec(A)$ est de dimension $1$, i.e. $V(I)$ est fini
+pour $I\ne (0)$.}
+
+Si on prends $x\in A$, psq si $\p_1,\ldots,\p_k,\ldots$ le
+contiennent alors on a une chaine 
+\[A\subset (A:\p_1)\subset (A:\p_1\cap \p_2)\subset \ldots\subset
+(A:\p_1\cap\ldots\cap \p_k)\subset \ldots\subset x^{-1}A\]
+d'où ça stationne et c'est fini. 
+
+Comme $I$ est de type fini on obtient direct que $V(I)$ est fini.
+\subsection{Valuations et décomposition}
+Étant donné $I\subset A$, on a $I_\p=\p^m$ et on peut définir
+$v_\p(I)=m$, on l'étend à $I\subset K$ par $v_\p(I.(A_\p:I))=0$.
+
+\subsection{Relever l'inversibilité en général}
+
+Il transforme aussi $(I : J)$ en $(I_\p:J_\p)$.
+Concrètement :
+\[(\p.(A:\p))\otimes_A A_\p = (\p A_\p.(A_\p:\p A_\p))=A_\p\]
+sauf que à gauche $\p.(A:\p)\subseteq A$ est un idéal et y'a
+que $A$ qui a pour image $A_\p$.
+\begin{rem}
+    ATTENTION. On a utilisé que $\p \mapsto \p A_\p$ est injectif !
+\end{rem}
+\begin{rem}
+    Ca se généralise à $I$ un idéal fractionnaire car
+    $I\otimes_A A_\p=\p^n$ d'où $(I\p^{-n})_\p=A_\p$. On peut 
+    pas conclure que $\p^{-n}=(A:I)$ parce que si $\p'\mid I$ 
+    alors $\p'\otimes_A A_\p=A_\p$. 
+\end{rem}
+Y faut maintenant remarquer que 
+$(A:\prod \p^{v_\p(I)})_\p=(A:I)_\p$ pour tout $\p$ et conclure.
+On conclut via le fait que $IA_\p=JA_\p$ pour tout $\p$ implique
+\[_A(I:J)=A=_A(J:I)\]
+
+\begin{note}
+Une première manière de le résoudre c'est de dire $I$ et $J$ sont
+des types finis donc suffit de montrer que $(J : (x_i))=A$ pour
+chaque générateur de $I$ et inversement. EN FAIT, on peut
+montrer que pour tout $x\in I$, $_A(J:(x))=A$ d'où $x\in J$ puis
+$I\subset J$! Et inversement.
+\end{note}
+
+\begin{note}
+    Le foncteur $\_\otimes_A A_\p$ de $Mod_A$ dans $Mod_{A_\p}$
+    a surement les mêmes propriétés pour les bonnes définitions
+    de produits et sommes.
+\end{note}
+\subsection{Décomposition en idéaux}
+De la même manière que pour l'inversibilité on remarque que 
+$\prod \p^{v_\p(I)}$ coincide avec $I$ dans
+tout les $A_\p$. Faut montrer que donc il est égal à $I$.
+
+\begin{note}
+    Faire une section sur la décomposition en idéaux primaires.
+\end{note}
+
+
+
+\end{document}
+

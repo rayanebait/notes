@@ -1,0 +1,23 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Produits fibrés et foncteur de points}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Remarques sur le lemme de Yoneda}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Point de vue du foncteur de point}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Propriété universelle et cas $k$-schéma}{6}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Étude de la définition}{6}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Remarques sur le foncteur de points}{7}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Foncteur de points}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Construction}{7}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Cas affine}{7}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}}{7}{subsection.1.6.2}%
+\contentsline {chapter}{\numberline {2}Produits tensoriels}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Commentaire sur le produit d'algèbre et de modules}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Quand est-ce que $m\otimes n= 0$?}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Cas des polynômes}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Produits d'anneaux de polynômes}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Injectivité}{10}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Sur les $\bar k$-variétés}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Construction}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Adapter les définitions : la bijection ensembliste}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Topologie : cas quasi-projectif}{12}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Topologie : cas général}{12}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Faisceau}{12}{section.3.5}%

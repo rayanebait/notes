@@ -1,0 +1,7 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {0.1}Exercice 3)}{3}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}$\dim (X)\geq codim(Z,X)+dim(Z)$}{3}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {0.1.2}$codim(Z,X)=0$ ssi $Z$ contient une composante de $X$}{3}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {0.1.3}$X$ affine, $Z$ fermé irreductible de $X$, $codim(Z,X)=1\leftrightarrow dim A(X)_{I(Z)}=1$}{4}{subsection.0.1.3}%
+\contentsline {subsection}{\numberline {0.1.4}$X$ affine intégre et $Z$ irred, $codim(Z,X)=1$}{4}{subsection.0.1.4}%
+\contentsline {subsection}{\numberline {0.1.5}$X$ intègre, $Z$ irred fermé, $codim(Z,X)=dim(X)-dim(Z)$}{4}{subsection.0.1.5}%

@@ -1,0 +1,178 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\H}{\mathscr{H}}
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{avanc}{Avancée(s)}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Factorisation classique}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Petits critères}
+\section{Méthode $p-1$}
+En gros, si $n=\prod p_i^{e_i}$ et que l'un des $p_i$
+est petit alors $p_i-1$ est probablement lisse. En 
+particulier, si on prends $a\mod n$ aléatoire et
+\[a_k:=a^{k!}\]
+on peut tester si $a_k-1\wedge n\ne 1$ car $k!$
+contiendra les facteurs de $p_i-1$ a un moment donné.
+
+\begin{rem}
+    $a$ aléatoire sans choix précis est optimal. 
+    $k!$ et pas autre chose a l'air optimal. Peut-être
+    qu'il y a d'autres cribles de nombres plus 
+    intéressants?
+\end{rem}
+
+
+\chapter{La méthode de fermat et extensions}
+\section{Méthode de Fermat}
+Une idée, calcul successif des : 
+\[issquare(n+k^2)?\]
+si oui, alors \[n=(\sqrt{n+k^2}-k)(\sqrt{n+k^2}+k)\]
+et on a une factorisation :
+\begin{avanc}
+    On a un algorithme en prenant $k$ petit, l'algo est
+    naif et marche que si $k$ petit.
+\end{avanc}
+\begin{rem}
+    L'ordre de l'autre carré est de $\sqrt n$.
+\end{rem}
+
+En fait, si on obtient un multiple de $n$ comme différence de 
+deux carrés, i.e. :
+\[x^2\equiv y^2\mod n\]
+alors faut calculer en plus $n\wedge x-y$. Grande probabilité
+que y'ai un facteur commun.
+\begin{avanc}
+    On peut faire la méthode d'avant, en travaillant $\mod n$.
+    Marche toujours que si $k$ est petit.
+\end{avanc}
+
+\section{Méthode de Dixon}
+Maintenant, on peut utiliser la technique d'avant de la manière
+suivante :
+\begin{center}
+    Choisir une base de premiers $P_B:=\{p\in\mathbb P|p\leq B\}$
+    et ajouter $-1$.
+\end{center}
+Ensuite on choisit aléatoirement $a\mod n$ et on calcule
+\[a^2\equiv b\mod n\]
+puis on regarde si il est $B$-lisse. Si oui on stocke 
+\[a^2=\prod_i p_i^{e_i}\mod n\]
+On obtient un ensemble de congruences $C$, on peut en chopper
+$\# P_B$ et on forme 
+
+\section{Crible quadratique}
+
+
+
+
+
+
+
+\printbibliography
+
+\end{document}
+

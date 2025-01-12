@@ -1,0 +1,9 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'geometrie.blg'
+[93] biber:340> INFO - === Sun Sep 15, 2024, 22:21:34
+[111] Biber.pm:419> INFO - Reading 'geometrie.bcf'
+[180] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[200] bbl.pm:660> INFO - Writing 'geometrie.bbl' with encoding 'UTF-8'
+[200] bbl.pm:763> INFO - Output to geometrie.bbl
+[200] Biber.pm:131> WARN - The file 'geometrie.bcf' does not contain any citations!
+[200] Biber.pm:133> INFO - WARNINGS: 1

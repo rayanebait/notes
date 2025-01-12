@@ -1,0 +1,7 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {0.1}L'équivalence de catégorie avec les variétés abstraites affines}{3}{section.0.1}%
+\contentsline {section}{\numberline {0.2}L'équivalence de catégorie avec schémas affines}{4}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}L'équivalence}{4}{subsection.0.2.1}%
+\contentsline {chapter}{\numberline {1}Traductions variétés vers k-algèbres}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}L'équivalence de catégorie de base}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Parler des fibres}{5}{section.1.2}%
