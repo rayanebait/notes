@@ -6,7 +6,7 @@
 \contentsline {section}{\numberline {1.2}Cas général}{5}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Topologie}{6}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Faisceau}{6}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Conditions de recollements explicits}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.5}Conditions de recollements explicites}{7}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Cas de deux ouverts $(X_1\sqcup X_2)/\sim _\rho =X$}{7}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Cas général : $X=(\sqcup X_i)/\sim $}{7}{subsection.1.5.2}%
 \contentsline {section}{\numberline {1.6}Sections de $\mathbb {P}_k^n$}{8}{section.1.6}%
