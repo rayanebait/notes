@@ -1,2 +1,8 @@
 \babel@toc {french}{}\relax 
-\contentsline {chapter}{\numberline {1}}{5}{chapter.1}%
+\contentsline {section}{\numberline {0.1}Clôture algébrique}{3}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Bases normales}{3}{section.0.2}%
+\contentsline {chapter}{\numberline {1}Théorie de Galois}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Plongements et séparabilité}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Cadre}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Existence de prolongements}{5}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Nombre de plongements}{5}{subsection.1.1.3}%

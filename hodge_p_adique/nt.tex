@@ -1,0 +1,308 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Théorie de Hodge $p$-adique}
+\date{}
+
+\begin{document}
+\maketitle
+Programme: 1. ramification 2. corps perfectoides, extensions
+profondément ramifiées, extensions arithmétiquement profinies.
+3. corps des normes 4. représentation $p$-adiques des corps locaux.
+
+Fontaine 1970-1980. Généralisation par Scholze.
+
+\chapter{Préliminaires}
+\section{Corps non-archimédien}
+
+\section{Lemme de Krasner}
+Soit $\alpha\in \bar K$ et $f=\mu_\alpha$. Soit aussi
+$\alpha_1,...,\alpha_n$ ses racines avec $\alpha=\alpha_1$.
+On note $d_\alpha:=min_{i>1}\{|\alpha-\alpha_i|\}$.
+Supposons que pour $\beta\in \bar K$ on ait
+\[|\beta-\alpha|_K<d_\alpha|\]
+alors $K(\alpha)\subset K(\beta)$.
+\section{Plus petit corps algébriquement clos complet}
+Étant donné $K$ non archimédien complet. On a
+\[\widehat{\hat K}=:\C_K\]
+est complet et algébriquement clos. Grâce à Krasner.
+
+\section{Action de $G_K=Gal(\bar K/K)$}
+Avec la topologie discrète sur $G_K$. On a
+pour tout $g,x$, $|gx|=|x|$!
+On peut l'étendre à $\C_K$. Question :
+\[\C_K^{G_K}=K?\]
+Pas trivial mais oui. On le prouve plus tard.
+C'est un théorème d'Ax-Tate.
+
+\section{Corps locaux}
+Un corps local est un corps complet de valuation
+discrète et de corps résiduel fini.
+\begin{rem}
+    On sera souvent dans ce cas. Mais les théorèmes
+    seront souvent vrai si le corps résiduel est seulement
+    parfait.
+\end{rem}
+Maintenant $K$ est local et $|k_K|=q$.
+\begin{prop}
+    Pour tout $x\in k_K$ il existe un unique $[x]$
+    t.q $[x]^q=[x]$. En plus la flèche, $k_K^*\to K^*$
+    $x\mapsto [x]$ est un iso de $k_K^*\simeq \mu_{q-1}$.
+\end{prop}
+
+\subsection{Classification, vecteurs de Witt?}
+Soit $K$ un corps local. Si $\char(K)=0$, alors
+$K$ est une extension finie (à iso près) de $\Q_p$.
+Si $\char(K)=p$ alors $K\simeq k_K((X))$ avec la
+valuation $X$-adique. Sachant que $k_K=\F_q$ ducoup.
+
+\section{Filtration}
+Étant donné $K$ local, on note
+\[U_K^{(i)}=\begin{cases}U_K,~i=0\\ 1+\pi_K^i\Or_K,~\geq 1\end{cases}\]
+C'est juste $U_K^{(i)}=\bar B(1,i)$. On a
+\[U_K^{(i)}/U_K^{(i+1)}=\begin{cases}k_K^*,~i=0\\ k_K^+~i\geq 0\end{cases}\]
+
+\section{Vocabulaire dans le cas des corps locaux.}
+Si $L/K$ est finie de corps locaux. On dit qu'elle est
+\begin{itemize}
+    \item Non ramifiée si $e=1$. (les corps résiduels sont finis!)
+    \item Totalement ramifiée si $e=[L:K]$.
+    \item Totalement modérément ramifiée si $e=[L:K]$ et
+        $p\nmid e$.
+    \item Totalement sauvagement ramifiée si $e=[L:K]$ et
+        $e=p^k=[L:K]$.
+\end{itemize}
+Dans $K-\bar K$ on peut prendre $K^{un}$ l'union/le compositum
+(?) des sous extensions non ramifiées. Maintenant, 
+\[Gal(K^{un}/K)\simeq Gal(\bar k_K/k_K)\simeq \hat \Z\]
+est engendré par le Frobenius (ça c'est bizarre y me semble
+que c'est faux, neukirch class field theory première page mdr,
+bah c'était faux mdr).
+En particulier, on a $Frob_K\in Gal(K^{un}/K)$ t.q
+\[Frob_K(x)=x^q\mod m_K\]
+pour tout $x\in \Or_L$ t.q $L/K$ non ramifiée. 
+On se restreint donc à $\bar K-K^{un}$ et on note
+$I_K=Gal(\bar K/K^{un})$.
+
+\begin{rem}
+    Exercice, si $\char K=0$, alors y'a qu'un nb fini
+    d'extensions de degré $\leq n$. En caractérstique 
+    positive c'est faux, faut ajouter séparable de degré
+    $\leq n$ (apparemment c dur).
+\end{rem}
+
+\section{La différente}
+Étant donné $L/K$ finie séparable de corps locaux. On regarde
+la forme trace $L\times L\to K$. Donnée par $tr(x,y)=Tr_{L/K}(xy)$.
+On note
+\[\Or_L'=\{x\in L| tr(x,y)\in\Or_K,\forall y\in \Or_L\}\]
+c'est un idéal fractionnaire de $L$ qui contient $\Or_L$.
+On note $\D_{L/K}=(\Or_L')^{-1}$, c'est un idéal de $\Or_L$.
+Ca se définit bien dans des anneaux de Dedekind généraux.
+On a 
+\[\D_{L/K}=\D_{L/F}\D_{F/K}\]
+et on déf/a
+\[v_L(\D_{L/K})=\min\{\ldots\}\]
+et c'est simple vu que $\D_{L/K}=(\pi_L^m)$.
+On a 
+\begin{prop}
+    On a 
+    \begin{enumerate}
+        \item Si $\Or_L=\Or_K[\alpha]$ et $f=\mu_\alpha$.
+    On a $\D_{L/K}=(f'(\alpha))$!
+        \item $\D_{L/K}=\Or_L$ si et seulement si $L/K$ est
+    non ramifiée.
+        \item $v_L(\D_{L/K})\geq e-1$, $e=e(L/K)$.
+        \item $v_L(\D_{L/K})=e-1$ ssi $p\nmid e$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}[1.]
+    Étant donné $\alpha_i$ les racs de $f$. Claim :
+    $\sum \frac{f(X)}{(X-\alpha_i)}\frac{ \alpha_i^r}{f'(\alpha_i)}=X^r$
+    pour $0\leq r\leq n-1$ (c'est presque la dérivée). Pour le prouver,
+    on peut évaluer en $n$ points. On évalue en les $\alpha_i$ et c'est clair.
+    Pour une racine fixée $\alpha=\alpha_1$, on a 
+    \[f(X)/(X-\alpha)=\sum_{i=0}^{n-1} b_i X^i\]
+    avec $b_i\in \Or_L=\Or_K[\alpha]$. Maintenant on remarque
+    que les termes de
+    $\sum \frac{f(X)}{(X-\alpha_i)}\frac{ \alpha_i^r}{f'(\alpha_i)}=X^r$
+    sont conjugués sous l'action de $G_{L/K}$ d'où on peut calculer
+    \[\sum_{k=0}^{n-1} X^kTr_{L/K}(b_k\alpha^r/f'(\alpha))=X^r\]
+    puis
+    \[Tr_{L/K}(b_k\alpha^r/f'(\alpha))=\begin{cases}1,~k=r\\0,~sinon\end{cases}\]
+    en particulier, on a une base duale de $(\alpha^i)_{i=1,\ldots,n-1}$ pour
+    la trace : $(b_k/f'(\alpha))_k$. Deuxième claim : $(b_k)_k$ engendre $\Or_L$
+    sur $\Or_K$. On peut le faire en comparant les coefficients de
+    \[f(X)=(X-\alpha)(\sum b_i X^i)\]
+    et par induction(?). Du claim on déduit que $\Or_L'=1/f'(\alpha)\Or_L$ puis
+    le résultat.
+\end{proof}
+\begin{proof}[2.]
+    On montre non ramifiée implique $\D_{L/K}=\Or_L$. On peut prendre
+    $\alpha$ tq $k_K(\bar \alpha)=k_L$. Avec $f=\mu_\alpha$. On a 
+    $\bar f'(\bar \alpha)\ne 0$, d'où $f'(\alpha)\in \Or_L^\times$
+    et le résultat. L'inverse est clair, on prouve que $[L:K]=f$.
+\end{proof}
+\begin{proof}[3.]
+    On a $\Or_L=\Or_K[\pi_L]$. Et $\mu_{\pi_L}=f$ Eisenstein.
+    D'où $f'(\pi_L)=\sum (e-i)\pi_L^{e-i-1}$ et $v_L(e\pi_L^{e-1})=
+    v_L(e)+(e-1)$ plus $v_L(a_i)\geq e$ d'où $v_L(f'(\pi_L))\geq e-1$.
+    
+\end{proof}
+\begin{proof}[4.]
+    Si $p\nmid e$ on a $v_L(e\pi_L^{e-1})=e-1<v_L(a_i)$. Si $p\mid e$
+    on a $v_L(f'(\pi_L))\geq e$.
+\end{proof}
+\begin{proof}[5. (?)]
+    Si $K-L_0-L$ est tq $L_0=K^{un}$ alors $\D_{L/K}=\D_{L/L_0}\D_{L_0/K}=\D_{L/L_0}$.
+    Alors $\D_{L/K}\Or_L\equiv L=L_0\equiv L/K$ est non ramifiée.
+\end{proof}
+\section{Filtration de ramification}
+On regarde $L/K$ galoisienne ($G$) de corps locaux. Alors
+pour $i\geq -1$, $G_i=\{g\in G|\forall x\in \Or_L,~v_L(g(x)-x)\geq i+1\}$.
+On voit facilement que c'est des sous groupes distingués de $G$.
+On a en plus $G_{-1}=G$ et $G_0=I_K$. Puis pour $i\geq 0$, on a 
+\[G_i=\{g\in G|v_L((g(\pi_L)/\pi_L)-1)\geq i\}\]
+(ca marche psq $i\geq 0$)
+on écrit, $\sum a_i\pi_L^i=x\in \Or_L$ avec
+$a_i\in \Or_{L_0}$ ($L-L_0$ tot ram!) d'où $g(a_j)=a_j$ pour $g\in G_i$
+vu que $G_i\subset I_K$. Ensuite c'est comme d'hab.
+Maintenant on a 
+\[G_i\to U_L^{(i)}/U_L^{(i+1)}\]
+via $g\mapsto g(\pi_L)/\pi_L$ qui induit un morphisme
+injectif $G_i/G_{i+1}$. En particulier 
+\[G_i/G_{i+1}\textrm{ est abélien.}\]
+on en déduit que les extensions galoisiennes de corps
+locaux sont résolubles.
+\begin{prop}
+    $v_L(\D_{L/K})=\sum_{i=0}^\infty(|G_i|-1)$.
+\end{prop}
+\begin{proof}
+    On prend $\alpha\in \Or_L$ tq $\Or_L=\Or_K[\alpha]$ et $f=\mu_\alpha$.
+    On déf $i_G(g)=v_L(g\alpha-\alpha)$. On a 
+    \[i_G(g)=i+1\equiv g\in G_i\]
+    puis
+    \begin{align*}
+    v_L(\D_{L/K})=v_L(f'(\alpha))&=\sum_{i=2}^nv_L(\alpha-\alpha_i)\\
+                                 &=\sum_{g\in G-id}v_L(\alpha-g\alpha)\\
+                                 &=\sum_{g\in G-id}i_G(g)\\
+                                 &=\sum_{i=0}^\infty (|G_i|-|G_{i+1}|)(i+1)\\
+                                 &=\sum_{i=0}^\infty(|G_i|-1)
+    \end{align*}
+\end{proof}
+
+
+
+
+
+\end{document}
+

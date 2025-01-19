@@ -1,18 +1,20 @@
 # Fdb version 4
-["biber groupes"] 0 "groupes.bcf" "groupes.bbl" "groupes" 0 0
+["biber groupes"] 0 "groupes.bcf" "groupes.bbl" "groupes" 1737100868.83004 0
   "bib.bib" 0 -1 0 ""
   "groupes.bcf" 0 -1 0 "pdflatex"
   (generated)
   "groupes.bbl"
   "groupes.blg"
   (rewritten before read)
-["pdflatex"] 1733001300.55216 "groupes.tex" "groupes.pdf" "groupes" 1733001302.2922 0
+["pdflatex"] 1737100867.11466 "groupes.tex" "groupes.pdf" "groupes" 1737100868.83055 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1727349926 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1727349926 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1727349926 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1727349926 916 f87d7c45f9c908e672703b83b72241a3 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1727349926 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1727349926 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1727349926 908 2921f8a10601f252058503cc6570e581 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1727349926 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1727349926 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1727349926 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1727349926 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
@@ -35,10 +37,8 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1727349926 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1727349926 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1727349926 32362 179c33bbf43f19adbb3825bb4e36e57a ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1727349926 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1727349926 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1727349926 36118 fad905eba93cff5bce1e185fe980a177 ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1727349926 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1727349926 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1727349926 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/share/texmf-dist/tex/generic/babel/babel.sty" 1727349926 146276 10a40dabec03ce18494af0c3a51bcbdc ""
@@ -199,14 +199,14 @@
   "/usr/share/texmf-dist/tex/latex/url/url.sty" 1727349926 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727349926 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1727349926 41588 b43d3e860a4f94167ee1e725ff526a72 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1732175331.65648 5312047 b07fcd2a9090df96fc745b92a3db793b ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1732175312 7113015 9d9568c643641c7157949420f513395a ""
-  "groupes.aux" 1733001302.01602 500 068be2fec3ad8e3b9facac577d412410 "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1734138070.76283 5312047 b07fcd2a9090df96fc745b92a3db793b ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1734138058 7113013 9f79dde3fcd46c5618501cc550ad55c9 ""
+  "groupes.aux" 1737100868.57999 1269 9639564b54949ac08e7ab1444e392d7d "pdflatex"
   "groupes.bbl" 0 -1 0 "biber groupes"
-  "groupes.out" 1733001302.01935 35 7e968e9cbba756cf2bf22c7c5377cf78 "pdflatex"
-  "groupes.run.xml" 1733001302.02268 2324 6d889d07fabb0ad168a5eb7fefb756a3 "pdflatex"
-  "groupes.tex" 1733001300.18614 3727 6e2e21a778347d0906a7faf5fb1a66a7 ""
-  "groupes.toc" 1733001302.02268 85 d1edeff196b06edad0e6364e24451cc8 "pdflatex"
+  "groupes.out" 1737100868.58333 1055 49e9c5dd396ceb56c6aec63e1f1813ae "pdflatex"
+  "groupes.run.xml" 1737100868.58666 2324 6d889d07fabb0ad168a5eb7fefb756a3 "pdflatex"
+  "groupes.tex" 1737100868.30666 4856 b2adfff600a96afd4c870f307e881b25 ""
+  "groupes.toc" 1737100868.58666 608 eb603eb4a076aa93a8e8d1112bcce8d4 "pdflatex"
   (generated)
   "groupes.aux"
   "groupes.bcf"
