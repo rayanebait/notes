@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  23 DEC 2024 19:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  21 JAN 2025 00:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -885,25 +885,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 \bbl@ensure@french {Chapitre} 1.
-./nt.tex:140: Undefined control sequence.
-l.140 Considérer les $(A:I)$ et $I.(A:I)\subseet
-                                                  A$ permet de ramener
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 LaTeX Font Info:    Trying to load font information for U+euf on input line 144.
 (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-./nt.tex:144: Double subscript.
-l.144 \[_{A_\p}(IA_\p:JA_\p)=A_\p _
-                                   {A_\p}(JA_\p:IA_\p)\]
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-[3]
+) [3]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1051,7 +1036,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  131i,17n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on nt.pdf (12 pages, 190158 bytes).
+Output written on nt.pdf (12 pages, 190172 bytes).
 PDF statistics:
  283 PDF objects out of 1000 (max. 8388607)
  234 compressed objects within 3 object streams

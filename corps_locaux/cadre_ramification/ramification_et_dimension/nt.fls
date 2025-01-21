@@ -1,4 +1,4 @@
-PWD /home/docus/files/primaire/AGTN/nt/misc/cadre_ramification/ramification_et_dimension
+PWD /home/docus/files/present/?/corps_locaux/cadre_ramification/ramification_et_dimension
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT nt.tex

@@ -1,4 +1,4 @@
-PWD /home/docus/files/primaire/AGTN/nt/misc/algebre_de_dimension_1
+PWD /home/docus/files/present/?/corps_locaux/algebre_de_dimension_1
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT nt.tex

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  23 DEC 2024 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  21 JAN 2025 13:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -886,12 +886,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 \bbl@ensure@french {Chapitre} 1.
 
-Overfull \hbox (21.95963pt too wide) in paragraph at lines 132--135
+Overfull \hbox (11.48473pt too wide) in paragraph at lines 121--128
+\OT1/cmr/m/n/12 int^^Segrales. La premi^^Rere on mon-tre comme trans-met-tre la di-men-sion, la deuxi^^Reme
+ []
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 128.
+
+[3]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4
+
+]
+\bbl@ensure@french {Chapitre} 2.
+
+Overfull \hbox (21.95963pt too wide) in paragraph at lines 149--152
 \OT1/cmr/m/n/12 est une ex-ten-sion d'an-neaux de Dedekind. La ques-tion se r^^Seduit syst^^Sematiquement
  []
 
-[3]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 153.
+[5]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 170.
  (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
@@ -902,45 +923,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 193.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 193.
+(hyperref)                removing `math shift' on input line 211.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 193.
+(hyperref)                removing `subscript' on input line 211.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 193.
+(hyperref)                removing `math shift' on input line 211.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 193.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 193.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 198.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 198.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 198.
-
-
-Overfull \hbox (13.76698pt too wide) in paragraph at lines 217--219
+Overfull \hbox (13.76698pt too wide) in paragraph at lines 230--232
 []\OT1/cmr/m/n/12 D'o^^Ru $\OMS/cmsy/m/n/12 O[]$ \OT1/cmr/m/n/12 est un sous $\OMS/cmsy/m/n/12 O[]$\OT1/cmr/m/n/12 -module d'un mod-ule de type fini donc noeth^^Serien. 
  []
 
@@ -951,30 +948,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5] (./nt.aux)
+[7] (./nt.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `nt.out' has not changed.
-(rerunfilecheck)             Checksum: BCDCFA1AFD156414E83299F40D0F6AF5;1833.
+(rerunfilecheck)             Checksum: 098D3BD0B8AE593DF2F679D91BC5C6FD;2191.
 Package logreq Info: Writing requests to 'nt.run.xml'.
 \openout1 = `nt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31523 strings out of 476076
- 605815 string characters out of 5793774
+ 31529 strings out of 476076
+ 605901 string characters out of 5793774
  1937187 words of memory out of 5000000
- 53129 multiletter control sequences out of 15000+600000
+ 53131 multiletter control sequences out of 15000+600000
  572412 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  131i,11n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on nt.pdf (5 pages, 130430 bytes).
+Output written on nt.pdf (7 pages, 136093 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 163 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
