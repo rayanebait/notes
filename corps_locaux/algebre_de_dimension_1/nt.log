@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  21 JAN 2025 00:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  21 JAN 2025 15:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1029,7 +1029,7 @@ Package logreq Info: Writing requests to 'nt.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  31727 strings out of 476076
- 610021 string characters out of 5793774
+ 610021 string characters out of 5793775
  1937187 words of memory out of 5000000
  53296 multiletter control sequences out of 15000+600000
  577499 words of font info for 115 fonts, out of 8000000 for 9000

@@ -1,4 +1,4 @@
-PWD /home/docus/files/primaire/M2AGTN/geometrie/geom
+PWD /home/docus/files/present/?/riemannienne_differentielle/geom
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT geometrie.tex
