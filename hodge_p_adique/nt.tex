@@ -160,9 +160,9 @@ Maintenant $K$ est local et $|k_K|=q$.
 \end{prop}
 
 \subsection{Classification, vecteurs de Witt?}
-Soit $K$ un corps local. Si $\char(K)=0$, alors
+Soit $K$ un corps local. Si $char(K)=0$, alors
 $K$ est une extension finie (à iso près) de $\Q_p$.
-Si $\char(K)=p$ alors $K\simeq k_K((X))$ avec la
+Si $char(K)=p$ alors $K\simeq k_K((X))$ avec la
 valuation $X$-adique. Sachant que $k_K=\F_q$ ducoup.
 
 \section{Filtration}
@@ -194,7 +194,7 @@ On se restreint donc à $\bar K-K^{un}$ et on note
 $I_K=Gal(\bar K/K^{un})$.
 
 \begin{rem}
-    Exercice, si $\char K=0$, alors y'a qu'un nb fini
+    Exercice, si $char K=0$, alors y'a qu'un nb fini
     d'extensions de degré $\leq n$. En caractérstique 
     positive c'est faux, faut ajouter séparable de degré
     $\leq n$ (apparemment c dur).
@@ -300,9 +300,208 @@ locaux sont résolubles.
     \end{align*}
 \end{proof}
 
+\begin{lem}
+    Sur $L/K$ galoisienne de corps locaux, avec 
+    $\Or_L=\Or_K[\alpha]$. On a 
+    \begin{enumerate}
+        \item $i_{L/K}(g_1g_2)\geq min(i_{L/K}(g_1),i_{L/K}(g_2))$
+        \item $i_{L/K}(g_2g_1g_2^{-1})=i_{L/K}(g_1)$
+        \item $g\in G_i\Leftrightarrow i_{L/K}(g)\geq 1+i$
+        \item $v_L(\D_{L/K})=\sum_{i=0}^\infty (|G_i|-1)=\sum_{g\ne id} i_{L/K}(g)$
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    Pour $1.$ on écrit juste
+    $g_1g_2(\alpha)-\alpha=
+    g_1(g_2\alpha-\alpha)+g_1(\alpha)-\alpha$. Le $2.$ est
+    clair.
+\end{proof}
 
+\section{Ramification dans les tours d'extensions}
+On regarde $L-F-K$ avec $H=Gal(L/F)\leq G$ normal. On a 
+$H_i=G_i\cap H$ directement vu que $i_{L/E}$ dépend de $v_L$.
+On a en plus $\D_{L/K}=\D_{L/F}\D_{F/K}$ d'où $v_L(\D_{L/K})=v_L(
+\D_{L/F})+v_L(\D_{F/E})=v_L(\D_{L/F})+e_{L/F}v_F(\D_{F/K})$
+où à droite on prends $v_L,v_F$ normalisées. Maintenant
+\begin{align*}
+    v_L(\D_{L/F})&=\sum_{h\ne 1,h\in H}i_{L/F}(h)\\
+                 &=\sum_{h\ne 1,h\in H} i_{L/K}(h)\\
+\end{align*}
+en corollaire et via $v_L(\D_{L/K})=\sum_{g\ne id} i_{L/K}(g)$ :
+\begin{align*}
+    e_{L/F}v_F(\D_{F/K})&=\sum_{g\in G-H}i_{L/K}(g)\\
+\end{align*}
+\begin{prop}
+    Pour tout $s\in G/H$, $e_{L/F}i_{F/K}(s)=\sum_{g\in sH} i_{L/K}(g)$.
+\end{prop}
+\begin{proof}
+    On note $\Or_L=\Or_F[\alpha]$ et $\mu_\alpha=f\in\Or_F[X]$.
+    On regarde $s(f)(X)-f(X)$, on a 
+    $s(f)-f=0\mod \pi_F^{i_{F/K}(s)}$. D'où 
+    \[v_L(s(f)(\alpha))\geq e_{L/F}i_{F/K}(s)\]
+    maintenant si $f(X)=\prod_{h\in H}(X-h(\alpha))$ alors
+    $s(f)(X)=\prod_{g\in sH}(X-g(\alpha))$ puis 
+    $s(f)(\alpha)=\prod_{g\in sH}(\alpha-g(\alpha))$. On en dduit
+    que 
+    \[\sum_{g\in sH}v_L(g(\alpha)-\alpha)\geq e_{L/K}i_{F/K}(s)\]
+    et on utilise le dernier corollaire pour obtenir :
+    \begin{align*}
+        \sum_{s\ne 1}(\sum_{g\in\pi^{-1}s=sH}i_{L/K}(g))&=\sum_{g\in G-H} i_{L/K}(g)\\
+                                                        &=e_{L/F}v_F(\D_{F/K})\\
+                                                        &=e_{L/F}\sum_{s\ne 1}i_{F/K}(s)
+    \end{align*}
+    et on en déduit l'autre inégalité grâce à la première.
+\end{proof}
+Maintenant, on considère $j(s)=\max(i_{L/K}(g);\bar g=s)$.
+Il existe $\tilde g\in G$ tel que $j(s)=i_{L/K}(\tilde g)$.
+Maintenant $s=\tilde gH$ d'où $g=\tilde g.h$ pour $g\in sH$. 
+On peut en déduire que
+\[i_{L/K}(g)\geq \min\{i_{L/K}(\tilde g),i_{L/K}(h)\}\]
+et 
+\[i_{L/K}(g)\geq \min\{i_{L/K}(\tilde g^{-1})=i_{L/K}(\tilde g),i_{L/K}(g)\}\]
+puis comme $i_{L/K}(\tilde g)\geq i_{L/K}(g)$ on a
+\[\min\{i_{L/K}(\tilde g),i_{L/K}(h)\}\geq i_{L/K}(g)\]
+d'où $i_{L/K}(g)=\min\{i_{L/K}(\tilde g),i_{L/K}(h)\}$.
+\begin{cor}
+    $e_{L/K}i_{F/K}(s)=\sum_{h\in H}\min\{j(s),i_{L/F}(h)\}$.
+\end{cor}
+On note $G_x=G_{[x]+1}$ pour $x\in [-1,+\infty[$. Puis
+\[\varphi_{L/K}(x)=\begin{cases} x,~x\in [-1,0]\\
+    \int_0^x \frac{dt}{(G_0:G_t)},~x\geq 0
+\end{cases}\]
+qui est la première fonction de Herbrand. En notant $g_m=|G_m|$
+on a 
+\[\varphi_{L/K}(x)=\frac{1}{g_0}(g_1+\ldots+g_m+g_{m+1}(x-m))\]
+pour $m<x\leq m+1$.
+
+\begin{lem}
+    $\varphi_{L/K}(x)=\frac{1}{g_0}\sum_{g\in G,g\ne 1}\min\{i_{L/K}(g),x+1\}-1$
+\end{lem}
+\begin{proof}
+    La fonction à droite est continue et vaut 
+    \[\frac{1}{g_0}\sum_{g\ne 1}\min\{i_{L/K}(g),0\}-1=-1\]
+    en $-1$ donc coincide avec $\varphi_{L/K}(-1)$. En plus en
+    comparant leurs dérivées on voit qu'elles sont égales. À
+    gauche on a $\varphi_{L/K}'(x)=\frac{1}{(G_0:G_x)}$ et
+    si $m<x<m+1$ alors $\varphi_{L/K}(x)=g_{m+1}/g_0$. Et
+    à droite la dérivée c'est $1$ ou $0$ en fonction de $g$,
+    et surtout $i_{L/K}(g)\geq m+2$ implique $g\in G_{m+1}$ donc
+    via la somme on est bon. La dérivée compte les $g$ dans 
+    $G_{m+1}$ entre $m+1<x+1<m+2$.
+\end{proof}
+
+\begin{lem}
+    Pour tout $s\in G/H - id$, 
+    $\varphi_{L/F}(j(s)-1)=i_{F/K}(s)-1$.
+\end{lem}
+\begin{proof}
+    On a $e_{L/F}i_{F/K}(s)=\sum_{h\in H}\min\{j(s),i_{L/K}(h)\}$
+    et 
+\[\varphi_{L/F}(j(s)-1)=\frac{1}{h_0=e_{L/F}}\sum_{h\in H-\{id\}} \min\{i_{L/K}(h),j(s)\}-1\]
+    d'où le résultat en comparant.
+\end{proof}
+
+\begin{thm}[Théorème de Herbrand]
+    Pour tout $x\geq 1$ on a $(G/H)_{\varphi_{L/K}(x)}=G_xH/H(=
+    G_x/H\cap G_x=G_x/H_x)$.
+\end{thm}
+\begin{rem}
+    Au sens des groupes de ramifications pas des coinvariants mdr.
+\end{rem}
+\begin{proof}
+    Pour $s\in (G/H)_{\varphi_{L/K}(x)}$ équivaut à 
+    $i_{F/K}(s)\geq \varphi_{L/F}(x)+1$ d'où par le dernier
+    lemme ça équivaut à
+    \[\varphi_{L/F}(j(s)-1)\geq \varphi_{L/F}(x)\]
+    mais la fonction de herbrand est strictement croissante d'où
+    $j(s)\geq x+1$, i.e. $\max\{i_{L/K}(g)|\bar g=s\}$, et
+    il existe $\tilde g$ qui atteint le max. Ça se traduit en
+    $i_{L/K}(\tilde g)\in G_x$ et $\overline{\tilde g}=s$. D'où
+    le résultat.
+\end{proof}
+On note maintenant $\psi_{L/K}\colon [-1,\infty[\to \R$ ($[-1,\infty[\to [-1,\infty[$ même) l'inverse de $\varphi_{L/K}$.
+\begin{thm}
+    $\varphi_{L/K}=\varphi_{F/K}\circ\varphi_{L/F}$ et
+    $\psi_{L/K}=\psi_{L/F}\circ\psi_{F/K}$.
+\end{thm}
+\begin{proof}
+    On montre que la première. Elles ont la même valeur à gauche
+    et à droite. On calcule la dérivée. On a
+    \begin{align*}
+        \varphi_{F/K}\circ\varphi_{L/F}'(x)&=\varphi_{F/K}'(x).\varphi'_{L/F}(x)\\
+                                           &=\frac{1}{((G/H)_0\colon (G/H)_{\varphi_{L/F}(x)})}.\frac{1}{(H_0:H_x)}\\
+                                           &=\frac{1}{((G/H)_0:(G_x/H_x))}.\frac{1}{(H_0:H_x)}\\
+                                           &=\frac{1}{(G_0:G_x)}\\
+                                           &=\varphi_{L/K}'(x)
+    \end{align*}
+
+\end{proof}
+\begin{defn}
+    On définit les groupes d'énumération supérieurs comme
+    \[G^{(x)}=G_{\psi_{L/K}=(x)}\]
+    de manière équivalente 
+    \[G^{(\varphi_{L/K}(x))}=G_x\]
+\end{defn}
+\begin{thm}[Hasse-Herbrand]
+    On a $(G/H)^{(x)}=G^{(x)}H/H$.
+\end{thm}
+\begin{proof}
+    La preuve est directe : $(G/H)^{(x)}=(G/H)_{\psi_{F/K}}(x)$.
+    Comme $(G/H)_{\varphi_{L/F}(x)}=G_xH/H$ on remplace $x$
+    par
+    $\varphi^{-1}_{L/F}\circ \psi_{F/K}(x)=\psi_{L/F}\circ\psi_{F/K}(x)=\psi_{L/K}(x)$. D'où le résultat. On a utilisé
+    le théorème 2!
+\end{proof}
+
+On a $G_K=Gal(K^{sep}/K)=\varprojlim_{L/K~finie}Gal(L/K)$. 
+Maintenant le théorème de Hasse-Herbrand la projection
+\[Gal(L/K)\to Gal(F/K)\]
+induit une surjection $Gal(L/K)^{(x)}\to Gal(F/K)^{(x)}$. Et
+même \[G_K^{(x)}=\varprojlim_{L/K}Gal(L/K)^{(x)}\] une filtration
+de $G_K$!! On définit maintenant les sauts de ramification.
+\begin{defn}
+    La filtration de ramification a un saut en $v\geq -1$ si
+    $G_K^{v+\epsilon}\subsetneq G_K^{(v)}$ pour tout 
+    $\epsilon \geq 0$.
+\end{defn}
+\begin{rem}
+    Dans cette notation $v$ est rationnel aux sauts. Et apparemment
+    en fait y'a des sauts à TOUT les rationnels ptdr. Donc la
+    filtration est très compliquée.
+\end{rem}
+\begin{ex}
+    On regarde
+% https://q.uiver.app/#q=WzAsMixbMCwxLCJcXFFfcCJdLFswLDAsIks6PVxcUV9wKFxcemV0YV97cF5ufSkiXSxbMCwxXSxbMSwwLCJHPUdhbChLL1xcUV9wKSIsMCx7Im9mZnNldCI6LTMsImN1cnZlIjotNX1dXQ==
+\[\begin{tikzcd}
+	{K:=\Q_p(\zeta_{p^n})} \\
+	{\Q_p}
+	\arrow["{G=Gal(K/\Q_p)}", shift left=3, curve={height=-30pt}, from=1-1, to=2-1]
+	\arrow[from=2-1, to=1-1]
+\end{tikzcd}\]
+    et on a $\chi\colon G\simeq(\Z/p^n\Z)^\times$ via le
+    caractère cyclotomique, donné par 
+    $g(\zeta_{p^n})=\zeta_{p^n}^{\chi(g)}$. On a une filtration
+    naturelle 
+    $\Gamma[m]=\ker((\Z/p^n\Z)^\times\to(\Z/p^m\Z)^\times)$.
+    On sait que $K/\Q_p$ est totalement ramifiée et 
+    $\pi=\zeta_{p^n}-1$ est une uniformisante de $K$ car racine
+    d'un polynôme d'eisenstein (!!!). On a 
+\[g\pi-\pi=g\zeta_{p^n}-\zeta_{p^n}=\zeta_{p^n}(\zeta_{p^n}^{\chi(g)-1}-1)\]
+d'où $g\in G_m$ ssi $v_K(\zeta_{p^n}^{\chi(g)-1}-1)\geq m+1$.
+En traduisant : via 
+\[\chi(g)\equiv 1\mod p^m\Leftrightarrow \chi(g)\in \Gamma[m]\]
+    on a \[\zeta_{p^n}^{\chi(g)-1}-1=\zeta_{p^n}^{p^m.u}-1\equiv 
+    v((\zeta_{p^n}-1)^{p^m})=0\mod (\zeta_{p^{n-m}}-1)\]
+    pour des unités $u,v$. En particulier
+    $\chi(G_m)=\Gamma(k]$
+    tel que $p^{k-1}\leq m< p^k$. On peut maintenant calculer
+    la fonction de Hasse-Herbrand : on a des sauts en $p^i-1$
+    et elle vaut $\varphi_{K/\Q_p}(p^i-1)=i$. En énumération
+    supèrieure on a $G^{(x)}=\Gamma[x]$!
+\end{ex}
 
 
 
 \end{document}
+
 

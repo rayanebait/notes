@@ -309,8 +309,14 @@ INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/graphics/color.sty
-OUTPUT nt.out
+INPUT ./nt.out
+INPUT ./nt.out
+INPUT nt.out
+INPUT nt.out
 OUTPUT nt.pdf
+INPUT ./nt.out
+INPUT ./nt.out
+OUTPUT nt.out
 INPUT /usr/share/texmf-dist/tex/latex/biblatex/lbx/french.lbx
 INPUT /usr/share/texmf-dist/tex/latex/biblatex/lbx/french.lbx
 INPUT /usr/share/texmf-dist/tex/latex/biblatex/lbx/french.lbx
@@ -384,6 +390,7 @@ INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT nt.aux
 INPUT ./nt.out
 INPUT ./nt.out
+INPUT nt.run.xml
 OUTPUT nt.run.xml
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
