@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{book}
 \usepackage{amsmath,  amsthm,enumerate}
 \usepackage{csquotes}
 \usepackage[provide=*,french]{babel}
@@ -19,21 +19,21 @@
   \makeatother
 \usepackage{fancyhdr}
 
-%
-%\pagestyle{fancy}
-%\addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-%\fancyhf{}
-%\fancyfoot[C]{\thepage}
-%\fancyhead[LO]{\textit \leftmark}
-%\fancyhead[RE]{\textit \rightmark}
-%\renewcommand{\headrulewidth}{0pt} % and the line
-%\fancypagestyle{plain}{%
-%\fancyhead{} % get rid of headers
-%}
-%
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers
+}
+
 
 %bibliographie
 \usepackage[
@@ -290,6 +290,48 @@ C'est le produit fibré.
     structure d'anneau via celle de $A$) j'ai
     l'impression.
 \end{rem}
+
+\chapter{Revisite}
+\href{https://kconrad.math.uconn.edu/blurbs/linmultialg/tensorprod.pdf}{Cette réf}
+de Conrad est super claire. Ducoup je note ce que j'ai vu.
+
+\section{Construction}
+On prend $\bigoplus_{(m,n)\in M\times N}\delta_{(m,n)}/D$ où
+$D$ est le module de relations. C'est un produit libre qui vérifie
+la même adjonction que d'habitude. Et on note 
+$m\otimes n:=\delta_{(m,n)}\mod D$.
+
+\section{Familles génératrices et libres}
+La flèche $M\times N\to M\otimes N$ est surjective sur les tenseurs
+purs. I.e. $\{m\otimes n|(m,n)\}$ est une famille génératrice.
+Quand on a deux familles libres $(e_i)_i$ et $(v_j)_j$ de 
+$M$ et $N$ respectivement, on peut considérer 
+\[\delta_i\delta_j\colon M\times N\to R\]
+les produits de deux dirac qui est alors bilinéaire! Je galérais
+car je considérais que les projections. Mais ça suffit pas.
+Ça permet de prouver que $(e_i\otimes v_j)$ est libre.
+
+\section{Techniques}
+Donc un truc qui m'embête à chaque fois que je reviens c'est que
+je sais pas comment traiter les sommes de tenseurs. En fait 
+c'est vraiment situationnel.
+\subsection{$R/I\otimes M$}
+Pour montrer que $R/I\otimes M\simeq M/IM$ on ramène tout
+dans $M$ : On a $R/I\times M\to M/IM$ surjective d'où 
+$R/I\otimes M\to M/IM$ aussi. Maintenant si 
+$\sum \bar r_i\otimes m_i\mapsto 0$, on a $\sum r_im_i\in IM$.
+Et le truc de gauche vit dans $M$. En fait $\sum r_i\otimes m_i
+=1\otimes \sum r_im_i$. 
+Mais là c'est particulièrement facile vu qu'on a qu'une droite
+dans $R/I$ en temps que $R$-module.
+
+\subsection{Différents morphismes $M\otimes N$}
+J'voulais juste mentionner les projections $M\times N\to M$ et
+$M\times N\to N$ avec aussi 
+$\delta_i\delta_j\colon M\times N\to R$ quand on a des bases
+de $M$ et $N$.
+
+
 
 \end{document}
 

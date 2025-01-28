@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  16 JAN 2025 22:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  27 JAN 2025 17:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -895,33 +895,29 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 127.
 
+
+Overfull \hbox (28.62375pt too wide) in paragraph at lines 158--162
+\OT1/cmr/m/it/12 (elles ^^Setendent $\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 :\OMS/cmsy/m/n/12 j[]$\OT1/cmr/m/it/12 ) au-toma-tique-ment elles sont \OT1/cmr/bx/it/12 ^^Segales \OT1/cmr/m/it/12 pas seule-ment ^^Sequivalentes. 
+ []
+
 [3
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 182.
+(hyperref)                removing `math shift' on input line 189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\otimes' on input line 182.
+(hyperref)                removing `\otimes' on input line 189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 182.
+(hyperref)                removing `subscript' on input line 189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 182.
-
-LaTeX Font Info:    Trying to load font information for U+euf on input line 208.
-(/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-Overfull \hbox (0.99059pt too wide) in paragraph at lines 208--210
-\OT1/cmr/m/n/12 La m^eme chose que $[][] []\OML/cmm/m/it/12 =\U/euf/m/n/12 m[][] \OT1/cmr/m/n/12 = [\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 K\OT1/cmr/m/n/12 ]$ mais avec $[][](\OML/cmm/m/it/12 L \OMS/cmsy/m/n/12 
- []\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [] \U/euf/m/n/12 m[]$\OT1/cmr/m/n/12 . 
- []
+(hyperref)                removing `math shift' on input line 189.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -931,25 +927,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 218.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 218.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 218.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 215.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Overfull \hbox (0.99059pt too wide) in paragraph at lines 215--217
+\OT1/cmr/m/n/12 La m^eme chose que $[][] []\OML/cmm/m/it/12 =\U/euf/m/n/12 m[][] \OT1/cmr/m/n/12 = [\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 K\OT1/cmr/m/n/12 ]$ mais avec $[][](\OML/cmm/m/it/12 L \OMS/cmsy/m/n/12 
+ []\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [] \U/euf/m/n/12 m[]$\OT1/cmr/m/n/12 . 
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 218.
+(hyperref)                removing `math shift' on input line 225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 218.
+(hyperref)                removing `subscript' on input line 225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\to' on input line 225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 225.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -996,47 +1001,47 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \bbl@ensure@french {Chapitre} 4.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 291.
+(hyperref)                removing `math shift' on input line 298.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 291.
+(hyperref)                removing `\alpha' on input line 298.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 291.
+(hyperref)                removing `math shift' on input line 298.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 299.
+(hyperref)                removing `\alpha' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 299.
+(hyperref)                removing `subscript' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 299.
+(hyperref)                removing `subscript' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 299.
+(hyperref)                removing `\alpha' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 306.
 
 [11] (./nt.aux)
  ***********
@@ -1050,18 +1055,18 @@ Package logreq Info: Writing requests to 'nt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31541 strings out of 476076
- 606104 string characters out of 5793774
+ 31544 strings out of 476076
+ 606133 string characters out of 5793775
  1936187 words of memory out of 5000000
- 53140 multiletter control sequences out of 15000+600000
- 571839 words of font info for 92 fonts, out of 8000000 for 9000
+ 53141 multiletter control sequences out of 15000+600000
+ 572198 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 131i,13n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on nt.pdf (11 pages, 177279 bytes).
+ 131i,12n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on nt.pdf (11 pages, 187246 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 183 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 234 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

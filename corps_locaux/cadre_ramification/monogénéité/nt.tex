@@ -256,15 +256,16 @@ En caractéristique $0$, $L/K$ finie implique séparable implique
 $L$ est monogène sur $K$.
 
 \section{Cas $p$-adique}
-Dans le cas $p$-adique, les corps finis sont parfaits et on a toujours
-des extensions séparables (c'est immédiat de la déf)! En particulier,
+Dans le cas $p$-adique, les corps finis sont parfaits et on a
+toujours des extensions séparables (c'est immédiat de la déf)!
+En particulier,
 si $\bar P$ est inséparable c'est qu'il est scindé. Ça se voit bien
 par Hensel :
 \begin{enumerate}
     \item On a toujours $\bar P=F^d$ et en réécrivant $d\deg F=
-	\deg P=e.f$ sachant que $\deg F\mid f$ (à vérifier mais ça se
-	voit) on obtient $e\mid d$. (l'égalité c'est qu'on suppose $P$ 
-	unitaire)
+	\deg P=e.f$ sachant que $\deg F\mid f$
+	(à vérifier mais ça se voit) on obtient $e\mid d$.
+	(l'égalité c'est qu'on suppose $P$ unitaire)
 \end{enumerate}
 
 En fait on a beaucoup mieux mais j'en parlerai dans une autre note.
@@ -357,12 +358,11 @@ Dans le cas $L/K$ est modérément ramifiée, si
 $K$ est complet alors $\tilde\Or_K=\Or_L$ est local et on a 
 l'hypothèse, si $k_K$ est infini alors $\prod k_i$ est monogène
 et on a l'hypothèse.
-
 \begin{rem}
     On est pas dans le cas $\bar P$ séparable là. Pas exactement.
 \end{rem}
 
-\section{Cas totalement ramifié}
+\section{Cas totalement modérément ramifié}
 On a $k_{L_i}=k_L=k_K$ est finie séparable, puis on suppose 
 par définition que $[L:K]=e$ donc $\Or_L$ est fini sur $\Or_K$.
 Alors on a toute les hypothèses.
@@ -391,7 +391,10 @@ L'idée est claire, $\pi_L^e.u=\pi_K$ donc y suffit d'avoir
 une racine a $X^e-u$, mais le fait que $X^e-u$ est 
 séparable mod $\m_K$ ça suffit pas y faut une racine. Comme
 $f=1$ on a $u=v(1+\epsilon)$ avec $v\in \Or_K^\times$ et 
-$\epsilon\in \m_K$ ($0\ne u=v\mod\m_K$).
+$\epsilon\in \m_K$ ($0\ne u=v\mod\m_K$). Via 
+\[\Or_K^\times\to \Or_L^\times \to k_L^\times\]
+maintenant $1+\epsilon$ a une racine $e$-ème par Hensel, c'est
+là l'hypothèse modérée. D'où on remplace $\pi_K$ par $\pi_K/v$.
 
 
 \section{Corps de fonctions}

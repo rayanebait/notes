@@ -3,11 +3,11 @@ INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT produits_tensoriels.tex
 OUTPUT produits_tensoriels.log
-INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
-INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
-INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
-INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
-INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
+INPUT /usr/share/texmf-dist/tex/latex/base/book.cls
+INPUT /usr/share/texmf-dist/tex/latex/base/book.cls
+INPUT /usr/share/texmf-dist/tex/latex/base/bk12.clo
+INPUT /usr/share/texmf-dist/tex/latex/base/bk12.clo
+INPUT /usr/share/texmf-dist/tex/latex/base/bk12.clo
 INPUT /usr/share/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -345,6 +345,7 @@ INPUT /usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -369,7 +370,8 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT produits_tensoriels.aux
 INPUT ./produits_tensoriels.out

@@ -139,7 +139,11 @@ sorting=ynt
 Quelques notes et notes de lecture sur le Douady!
 
 \section{Clôture algébrique}
-C'est sombre mdr.
+C'est sombre mdr dans le Douady. Y'a une construction explicite
+dans le pdf de Benois par induction sur des gros anneaux de 
+polynomes. En gros prendre $K[X_f]$
+
+
 \section{Bases normales}
 Représentations régulière isomorphe à
 représentation de $Gal(L/K)$ naturelle,
@@ -158,15 +162,21 @@ induits de $\varphi\colon K\to L$ à
 naturellement.
 \subsection{Cadre}
 Maintenant si $L=K[\alpha]/K$ est monogène,
-$K\to E$ et $E\to M$ des extensions. Y'a la bij pour $P$ annulateur
-minimal de $\alpha$ :
-\[\{\textrm{extensions de $\varphi$ en $L\to M$}\}\leftrightarrow
-\{\textrm{racines simples de $\varphi(P)$ dans }\}\]
-donné par $\hat\varphi\mapsto \hat\varphi(\alpha)$. L'injectivité
-est claire. La surjectivité on prends $\varphi(P)(\beta)=0$ et on
-déf \[\hat\varphi(x)=\hat\varphi(f(\alpha))=\varphi(f)(\beta)\]
-pour $f(\alpha)=x$. L'écriture est unique vue que $f$ est vu modulo
-$P(\alpha)$. 
+$K\to E$ et $f\colon E\to M$ des extensions. Y'a la bij pour $P$
+annulateur minimal de $\alpha$ :
+\[\{\textrm{extensions de $f$ en $L\to M$}\}\leftrightarrow
+\{\textrm{racines simples de $f(P)$ dans $M$}\}\]
+donné par $\hat f\mapsto \hat f(\alpha)$. L'injectivité
+est claire. La surjectivité on prends $f(P)(\beta)=0$ et on
+déf \[\hat f(x)=\hat f(Q(\alpha))= f(Q)(\beta)\]
+pour $Q(\alpha)=x$. L'écriture est unique vue que $Q$ est vu modulo
+$P(X)$. 
+\begin{rem}
+  C'est là qu'on utilise $P$ irréductible. Ca explique que
+  si on regarde $\hat L/\hat K$ via $L=K[\alpha]$ et $P=\mu_\alpha$
+  sur $K$ alors le nombre de plongements qui étendent $K$,
+  $\hat L\to (\hat K)^c$ est pas $[L:K]$, y faut un générateur.
+\end{rem}
 \subsection{Existence de prolongements}
 Quand on a juste $K-L=K(\alpha)$ monogène et $K-E$. On peut étendre
 $K\to L$ en $E\to F$ simplement en prenant $F=$ un corps de
