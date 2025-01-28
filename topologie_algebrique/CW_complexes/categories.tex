@@ -1,0 +1,454 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{CW-complexes}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{CW-complexes}
+\section{Construction relative}
+On recolle des $n$-cellules selon $X^{(n-1)}$ en fait.
+Autrement dit $X=\cup X^{(n)}$ et 
+\[\sqcup_\alpha e_{\alpha,n}\bigsqcup X^{(n-1)}\simeq X^{(n)}\]
+\subsection{Vocabulaire}
+Étant donnés $A\to (f\colon X\to Y)$ on note 
+\[Z:=X\cup_f Y:=(X\sqcup Y)/<x\sim f(x), x\in A>\]
+muni de la topologie quotient. Si $A$ est fermé
+(ce qui nous intéresse)
+alors $Y\hookrightarrow \bar Y$ est un homéo sur un fermé. Vu
+que $\pi^{-1}Y=Y\sqcup A$.
+En tant qu'ensemble si on regarde $\bar x\in Z$, on a 
+\[\pi^{-1} \bar x=\begin{cases} \{x\}~si~x\in (X-A)\sqcup (Y-f(A))
+\\ f^{-1}f(x)\sqcup \{f(x)\}~sinon\end{cases}\]
+Ducoup la séparation dépend de plusieurs facteurs, je le fais 
+pour les recollements.
+
+\subsection{Décomposition cellulaire relative}
+Ducoup, $e_\alpha$ c'est la notation pour une $n$-cellule ($B^n$)
+(j'identifie $\mathring B^n$ et son image dans $X$).
+et $\partial e_\alpha = \partial B^n=S^{n-1}$. Pas oublier que
+c'est compact. 
+
+Maintenant étant donnés $g_\alpha\colon \partial e_\alpha\to Y$.
+On a $\sqcup g_\alpha=:g\colon \sqcup \partial e_\alpha \to Y$ et
+on peut recoller $(\sqcup e_\alpha)\cup_g Y)=C$. Si $X\simeq C$
+alors $C$ est une décomposition cellulaire de $X$ relative à $Y$.
+
+\begin{rem}
+  On peut recoller successivement, $(e_1\sqcup e_2)\cup_{g} Y=
+  e_1\cup_{g_1}(e_2\cup_{g_2}Y)$. Ça doit se prouver directement
+  au niveau des relations d'équivalences.
+\end{rem}
+
+\subsection{Détail}
+Les cellules sont compactes, si $Y$ est séparé, $im(g)$ est compact
+donc fermé dans $Y$. Ensuite, est-ce que 
+$X:=\sqcup_\alpha e_\alpha\cup_g Y$ est séparé ? Faut séparer
+les trois types de points :
+\begin{enumerate}
+  \item Quand $x\in X-Y$, i.e. $x\in \mathring e_\alpha$ c'est
+    toujours facile vu que on peut prendre
+    $Y\cup \cup \partial e_\alpha\times ]1-\epsilon,1]$.
+  \item Quand $x\in X\cap Y$ et $y\in X\cap Y$, si y ont même
+    image y sont égaux, donc on sépare les images dans $Y$.
+  \item Quand $x\in X\cap Y$ et $y\in Y$, on sépare $f(x)$ et $y$.
+\end{enumerate}
+
+
+\subsection{Se ramener au bouquet}
+Si on quotiente $C$ par $Y$, on a 
+$\sqcup e_\alpha/\sqcup \partial e_\alpha$.
+Si les $e_\alpha$ sont tous des $n$-cellules, on obtient un bouquet
+de
+sphères ! Ou au moins un bouquet de cellules. Ensuite, si $X=C$
+alors $X-Y$ est une union disjointe de boules ouvertes.
+
+
+\section{Construction par le squelette}
+Maintenant, on dit que $X$ est obtenu par recollement de 
+$n$-sphères sur $Y$ si on a une famille $(e_\alpha)$ de dimension
+$n$ (potentiellement vide !) etc etc..
+
+Maintenant $X$ est un CW-complexe si $X=\cup_n X^{(n)}$ avec
+la topologie faible et 
+$X^{(n)}$ est obtenu par recollement de $n$-cellules sur 
+$X^{(n-1)}$. Un sous-CW-complexe c'est un $Y$ tel que sa 
+décomposition est donnée par $Y^{(n)}=Y\cap X^{(n)}$.
+
+\begin{rem}
+Ducoup $X^{(0)}$ c'est juste des points. Et
+on peut avoir $X^{(i)}=X^{(i-1)}$ en recollant rien. En
+particulier on peut obtenir la sphère via $X^{(0)}=X^{(1)}=\{*\}$
+et $X^{(2)}=B^2\cup_{\{*\}} X^{(1)}$.
+\end{rem}
+
+\subsection{Se ramener au bouquet, partie 2}
+Si on quotiente $X^{(n)}$ par $X^{n-1}$ on obtient un bouquet
+de $n$-sphères! J'imagine que ça écrase tout ce qu'y a au dessus
+de $X^{(n)}$ ? Non du tout en fait.
+
+\subsection{Séparation et locale contractilité.}
+Si c'est de dimension finie, $X^{(0)}$ est séparé donc par
+récurrence $X^{(n)}$ aussi pour tout $n$. Pour généraliser, d'abord
+la locale contractilité. On veut m.q que tout point $x$ et tout 
+voisinage $V$ de $x$, il existe $x\in V_\infty\subset V$ 
+contractile. Y suffit d'avoir $x\in V_n\subset X^{(n)}\cap V$
+contractile via $h_n$ et $V_{n+1}\cap X^{(n)}=V_n$ pareil 
+$h_{n+1}|_{X^{(n)}\times [0,1]}=h_n$. En fait y'a un $n_0$
+et une $n_0$-cellule $e$ telle que $x\in \mathring e$ et on
+peut prendre $V_{n_0}$ une petite boule autour dans $V$ qui
+est clairement contractile. Ensuite
+si on a construit jusqu'à $n$, pour chaque $n+1$-cellule on regarde
+$f_i\colon e_i\to X$ et on déf 
+\[V_{n+1}=V_n\cup \bigcup_i \partial f_i^{-1}(V_n)\times [0\times \epsilon_i]\]
+par la topologie faible $V_{n+1}$ est ouvert et on peut déf
+$h_{n+1}(f_i(x,t),s):=f_i(h_n(\partial f_i(x),st))$ dans 
+l'intérieur des cellules c'est malin et $h_{n+1}=h_n$ dans 
+$X^{(n)}$.
+
+\begin{rem}
+  Le seul détail bizarre c'est que $f_i^{-1} V$ contient pas
+  forcément $\partial f_i^{-1} V_n \times [0,\epsilon_i[$ si ?
+  J'imagine qu'on peut réduire $V_n$ pour que ce soit ok ?
+\end{rem}
+
+Maintenant $h_\infty$ et $V_\infty$ se définissent bien. Et pour
+la séparation, on peut séparer dans $X^{(n)}$ d'abord puis
+prendre des $V_\infty$, par construction y seront disjoints.
+
+
+
+\subsection{Compacité des $CW$-complexes finis}
+
+Par déf on recolle qu'un nombre fini de cellules à chaque étapes.
+En particulier, $X=X^{(n)}$ est l'image de $\sqcup e_{\alpha,n}
+\sqcup X^{(n-1)}$ qui est compact si $X^{(n-1)}$ est compact
+ce qui est le cas par récurrence et l'hypothèse.
+
+\section{Groupes fondamentaux de CW-complexes}
+Là c'est fun, si $(K_i)_i$ est une famille de sous CW-complexes
+stable par union de $X$ qui le recouvre alors 
+$\pi_1(X,x)=\varinjlim \pi_1(K_i,x)$ pour le diagramme des 
+inclusions. L'idée c'est qu'on a clairement une flèche canonique
+$\varinjlim \pi_1(K_i,x)\to \pi_1(X,x)$. Maintenant un petit
+résultat : un lacet de $\pi_1(X,x)$ est un CW-complexe fini et
+est donc contenu dans un $K_i$ vu que c'est stable par union
+et recouvrant. D'où la flèche est surjective! Ensuite, 
+$X\times [0,1]$ est un CW-complexe et les $K_i\times [0,1]$ le 
+recouvrent. En particulier, toute homotopie est d'image
+un CW-complexe fini donc contenu dans un $K_i\times [0,1]$ d'où
+la flèche est injective lol. Trop beau.
+
+\subsection{Compacts et sous CW-complexes finis.}
+Étant donné un compact $K\subset X$ et $X$ un CW-complexe. $K$
+ne croise qu'un nombre fini de cellules de $K$ et est contenu
+dans un nombre fini de cellules. L'idée est simple, déjà
+$K\subset X^{(n)}$ pour un $n$, j'arrive pas à le prouver 
+mdr Benoist a triché :sob:. J'aimerai dire que
+$K\subset \sqcup X^{(n+1)}-X^{(n)}$ mais c'est pas des ouverts.
+Et $K\subset \cup_n X-X^{(n)}$ on peut pas en dire grand chose,
+en plus c'est pas vrai faut prendre $n=-1$. Bon sinon si $K\subset
+X^{(n+1)}$, $K\cap X^{(n)}$ est compact donc récurrence et si
+$K$ croise une infinité de $n+1$-cellules on peut facilement
+trouver un recouvrement ouvert (!) infini de $K$ sans 
+sous-recouvrement.
+
+\begin{rem}
+  Le twist à la fin c'est que les cellules maximales
+sont bien ouvertes, alors que si $X$ est pas fini les cellules
+sont pas forcément ouvertes.
+\end{rem}
+
+\subsection{Corollaire}
+
+On a $\pi_1(X,x)=\varinjlim_i \pi_1(X^{(i)},x)$ (!).
+
+\section{Van Kampen sur les CW-complexes}
+Donc si $K_1\cup K_2=X$ pour deux sous CW-complexes connexes tels
+que $K_0=K_1\cap K_2$ est connexe alors 
+\[\pi_1(K_1,x)*_{\pi_1(K_0,x)}\pi_1(K_2,x)\]
+\subsection{Lemme}
+Étant donné deux sous CW-complexes $K,K'$ de $X$ un CW-complexe,
+on peut trouver $V(K),V(K')$ des voisinages respectifs qui
+se contractent par déformation fortes sur $K,K'$ respectivements
+et tels que $V(K\cap K')=V(K)\cap V(K')$. Pour ça on peut
+construire des voisinages de proche en proche comme avant, ça
+se fait très bien. Faut juste bien remarquer que $K\cap \sqcup_{\alpha\in A} e_\alpha = \sqcup_{\alpha\in B} e_\alpha$ avec
+$B\subset A$. Ducoup, suffit d'ajouter $\partial e_{\alpha}\times
+[0,\epsilon[$ pour tout $\alpha\in A-B$.
+
+\subsection{Preuve}
+On a $\pi_1(K_i,x)=\pi_1(V(K_i),x)$ et 
+$V(K_1\cap K_2)=V(K_1)\cap V(K_2)$ comme c'est rétractions par
+déformation fortes ça reste connexe!
+
+
+\section{Remarques sur la topologie}
+\subsection{Union disjointe de cellules ouvertes}
+J'avais du mal à remarquer, $X$ est l'union disjointe (!) de ses
+cellules ouvertes, disjointe parce que on recolle les 
+$n+1$-cellules selon leur bord, en particulier l'intérieur de
+$e_\alpha^{n}$ croise $\partial e_\alpha^{n+1}$ mais pas 
+$\mathring e_\alpha^{n+1}$. En particulier si $x\in X^{(n)}$
+soit $x\in \mathring e_\alpha^n$ soit $x\in X^{(n-1)}$ etc..
+de manière disjointe. Sauf les $0$-cellules, ou là y'a pas
+d'intérieur.
+
+\begin{rem}
+  Mais Hatcher aussi dit que $X$ est l'union des cellules ouvertes.
+  J'ai l'impression que c'est juste que, AH, $\{*\}$ est ouvert
+  dans lui même donc $\mathring e_\alpha^0=e_\alpha^0$. C'est
+  pour ça :E.
+\end{rem}
+
+
+\subsection{Compacts et sous-CW-complexes}
+
+\subsubsection{Croiser un nombre fini de cellules ouvertes}
+Si $K\subset X$ alors $K\subset X^{(n)}$. En montrant d'abord que
+$K$ croise qu'un nombre fini de cellules ouvertes. Sinon on prend
+$(x_i)\in K^\N$ tels que $x_i\in \mathring e_{\alpha_i}$ et 
+$\mathring e_{\alpha_i}\cap \mathring e_{\alpha_j}=\emptyset$. EN
+particulier, $S=\{x_i\}_i$ est compact car fermé dans $K$. Pour
+voir que c'est fermé, on fait par récurrence pour dire que
+$S\cap X^{(n-1)}$ est fermé puis en $n$, on regarde la topologie
+sur $(\sqcup e_\alpha^n \bigsqcup X^{(n-1)})/\sim$, comme $S$ 
+est dans l'union disjointe de gauche. Et que dans la topologie
+de l'union disjointe, l'union disjointe de points est fermée?
+Oui c'est con en fait, donc les points sont strictements dans
+$\sqcup \mathring e_\alpha$ et y'a un point par cellule. Maintenant
+$(\sqcup \mathring e_\alpha)-S=\sqcup \mathring (e_\alpha-\{*\})$
+qui est une union d'ouverts. D'où $S$ est fermé $X^{(n)}$ pour tout
+$n$ et dans $K$ donc compact. Maintenant sa topologie est discrète
+parce que chaque sous-ensemble de $S$ est fermé dans $X^{(n)}$.
+Donc $S$ est fini (!!).
+
+\subsubsection{$K\subset X\implies K\subset X^{(n)}$}
+Maintenant si on note $e$ la cellule de plus grande dimension
+($n$) bah $e\subset X^{(n)}$ d'où $K\subset X^{(n)}$.
+
+\subsubsection{$K\subset X$ implique $K$ contenu dans un CW-complexe fini}
+Y suffit de monter que un nombre fini de cellules est contenu
+dans un sous-CW-complex fini. Par induction, si $e$ une cellule
+de dimension $n$ alors $\partial e$ est dans un sous-CW-complexe
+fini de dimension $n-1$, $A$. Maintenant $e\subset A\cup e$!
+
+\chapter{Graphes}
+En fait on aura que 
+\[\pi_1(X,x)=\pi_1(X^{(2)},x)=N((r_\alpha)_\alpha)\backslash \pi_1(X^{(1)},x)\]
+avec $x\in X^{(0)}$ (on suppose $X$ connexe) et ou on note
+$\partial g_\alpha\colon \partial e_\alpha\to X^{(1)}$
+chaque recollement de $2$-cellules et $r_\alpha=[cg_\alpha\bar c]$
+la classe de $cg_\alpha\bar c$ dans $\pi_1(X^{(1)},x)$ pour $c$
+un chemin entre $x$ et $g_\alpha(1)$. Ensuite $N(\ldots)$ est
+le normalisateur. Parce que $r_\alpha$ est défini qu'à conjugaison
+et inverse près (voir dans homotopie 1 pourquoi).
+
+\section{Définitions}
+Un graphe topologique c'est un CW-complexe de dimension $\leq 1$.
+Un cycle c'est un plongement de $S^1$ (pas exactement un lacet). Un
+chemin c'est un chemin topologique.
+\section{Groupe fondamental d'un graphe}
+\subsection{Limites de groupes libres}
+Si on prendre $(S_i)_i$ une famille de partie de $S$ un
+ensemble stable par union telles que $S=\cup S_i$. Alors
+\[\varinjlim_i L(S_i)=L(\sqcup S_i)/<s_is_j^{-1},~s_i,s_j\in S_i\cap S_j>\]
+d'où la flèche canonique $\varinjlim_i L(S_i)\to L(S)$ est
+injective. La surjectivité c'est que $\cup S_i=S$.
+
+\subsection{Arbres}
+Y'a quelques conditions équivalentes à être un arbre $X$ :
+\begin{enumerate}
+  \item Pas de plongements de $S^1$.
+  \item $X-\mathring e$ est pas connexe pour toute $1$-cellule $e$.
+  \item $X$ est simplement connexe.
+  \item $X$ est contractile.
+\end{enumerate}
+La connexité implique la connexité par arc ici. Si $X-\mathring e$
+est connexe on prend un chemin injectif entre les extremités de 
+$e$. Ça fait un plongement de $S^1$. Son existence on peut le
+faire de proche en proche, le chemin est de taille finie par
+définition, et entre deux $0$-cellules y'a un chemin injectif,
+cqfd. À l'inverse, si y'a un plongement de $S^1$ bah 
+$S^1-\mathring e$ est connexe. Pour $2.$ implique $3.$, si 
+c'est pas simplement connexe on peut trouver un lacet injectif.
+$3.$ implique $4.$ c'est parce que de dimension $\leq 1$. $4.$
+implique $3.$ c'est vrai en général.
+
+\subsection{Groupe fondamental d'un graphe}
+On peut utiliser la famille des sous-graphes finis et $2.2.1$
+pour se ramener à un graphe fini. Ensuite par la dernière 
+sous-section soit $X$ est un arbre donc contractile et on est
+bon soit $X$ contient $S^1=C$. Puis $X=X-\mathring e\cup C$
+d'intersections $C-\mathring e$ connexe par arc. D'où
+\[\pi_1(X,x)=\pi_1(X-\mathring e,x)*\Z\]
+\begin{note}
+  Wouah.
+\end{note}
+
+\subsection{$c(X)=1-\chi(X)$, $rk(\pi_1(X,x))=c(X)$}
+La connectivité de $X$ : plus grand $n$ tel que 
+$X-\cup \mathring e$ est connexe. Et $\chi(X)=n_0-n_1$ le
+nombre de sommets moins le nombre d'arrête (caractéristique
+d'Euler). En enlevant une arrête, si c'est plus connexe alors
+on a deux sous-graphes et $c(X)=c(X_1)+c(X_2)$. En plus 
+$n_{01}+n_{02}=n_0$ et $n_{11}+n_{12}=n_1-1$. Si $c(X_i)=0$ alors
+$X_i$ est un point d'où $n_{11}=n_1-1$ et $n_{01}=n_0-1$. Et on
+peut faire une double récurrence sur le nombre d'arrête et de
+sommets. Sinon on fait une récurrence sur la connectivité?
+
+
+\section{Application des graphes aux groupes fondamentaux de
+CW-complexes}
+Donc maintenant on peut prouver que $\pi_1(X,x)=\pi_1(X^{(2)},x)$
+et $\pi_1(X,x)=N(r_\alpha,\alpha)\backslash\pi_1(X^{(1)},x)$.
+
+\section{Applications en théorie des groupes}
+\subsection{Sous groupes des groupes libres}
+Étant donné un groupe libre on a un graphe $X$. Et un sous-groupe
+est donné par un revêtement $B\to X$. Sauf qu'un revêtement d'un
+graphe est un graphe et $\pi_1(B,b)$ est le sous-groupe.
+
+
+
+
+
+
+
+
+
+
+%\printbibliography
+\end{document}
+

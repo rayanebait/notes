@@ -1,0 +1,453 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Homotopie et homologies}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Homologie singulière et cohomologie des faisceaux}
+\href{Cette ref}{https://math.stackexchange.com/questions/1794725/detail-in-the-proof-that-sheaf-cohomology-singular-cohomology}
+dit qu'en gros sur des espaces localement contractile (ceux qui
+m'intéressent) le complexe d'homologie singulière à coefficients
+entiers est acyclique et une résolution de $\Z$ d'où calcule
+\[H^i(X,\Z)=H^i(X,\Z_X)\]
+l'homologie du faisceau constant.
+
+\section{Homotopie, connexité et faisceau constant.}
+Petite étude du faisceau constant $A_X$ sur un $X$ tel que les
+composantes connexes soient ouvertes.
+
+
+\section{Cadre de base de l'homotopie}
+On se place sur $C(X,Y)$ les fonctions continues munies
+de la topologie compacte-ouverte. 
+\begin{rem}
+  C'est donné par la base d'ouverts $V(K,U)$ t.q
+  $f\in V(K,U):=\{f(K)\subset U\}$.
+\end{rem}
+Alors une homotopie
+c'est un $H\colon [0,1]\to C(X,Y)$. Parce que
+\[h\colon C([0,1]\times X,Y)\simeq C([0,1],C(X,Y))\]
+canonique via 
+\[H\mapsto (a\mapsto H(a,\_))\]
+C'est injectif et continu mais pour que ce soit
+un surjectif faut demander que $X$ soit localement
+compact et séparé. Ce qui est pas évident
+à montrer c'est que $H$ est continue ssi
+$h(H)$ est continue, on utilise la locale compacité
+pour comparer la continuité de $h(H)$ à la continuité
+de $h$ (ça revient à montrer la surjectivité aussi!
+Tu peux regarder que c'est pas clair! Je suis
+soulagé d'avoir compris mdr.
+
+Une fois qu'on sait ça c'est clair que 
+\[h(V(K_1\times K_2,U))=V(K_1,V(K_2,U))\]
+et inversement comme c'est bijectif.
+Y'a une preuve
+\href{https://www.youtube.com/watch?v=N1shTZiP_pA&list=PLKnx70LRf21eSXaawNhiCCPrzsbLdT5do&index=25&t=83s}{là}.
+
+\chapter{CW-complexes}
+
+\chapter{Groupes d'homotopies}
+\section{Homotopies}
+Faudra toujours penser à une homotopie de plusieurs points de vues.
+De $H\colon [0,1]\times X\to Y$ on remarque que 
+$h^x:=(t\mapsto H(t,x))$ est un chemin entre $f(x)$ et $g(x)$. Et
+si $X$ est un segment. Alors $h_t:=s\mapsto H(t,s)$ est aussi
+un chemin. On peut se balader sur $[0,1]^2$.
+\subsection{Défs}
+\subsubsection{$\sim$ sur $C(X,Y)$}
+On déf $\sim$ sur $C(X,Y)$ par
+$f\sim g$ si y sont homotopes. C'est facilement
+une relation d'équivalences!
+\begin{rem}
+  Montrer que la composée d'homotopies est
+  continue. C'est facile quand on prend la déf
+  $[0,1]\to C(X,Y)$!! En fait c'est juste 
+  $H_3^{-1}(U)=H_2^{-1}U\cup H_1^{-1}U$ vraiment.
+\end{rem}
+\subsubsection{Par rapport à une partie}
+Si $f,g$ coincident sur $A$, on peut demander à
+ce que l'homotopie fixe $A$. I.e. $H(\_,A)$ un point et on note
+$f\sim_A g$.
+\subsubsection{Contractile}
+On est contractile si $id_X\sim (x\mapsto x_0)$ (plus non vide).
+
+\subsubsection{Équivalence d'homotopie}
+C'est $f\colon X\rightleftarrows Y\colon g$ t.q. 
+$f\circ g\sim id_Y$ et $g\circ f\sim id_X$.
+
+\subsubsection{Rétract}
+$i\colon Z\subset X$ est un rétract si on a $r\colon X\to Z$
+t.q $r\circ i= id_Z$. 
+
+\subsubsection{Rétract par déformation}
+En plus $i\circ r\sim id_X$. En particulier 
+$X$ et $Z$ sont homotopiquement équivalents.
+\subsubsection{Rétract par déformation forte}
+En plus $i\circ r\sim_Z id_X$.
+
+
+\subsection{Étendre $S^1$ en $B^2$, topologie quotient et finale.}
+Là d'un coup y'a plusieurs notions. La simple connexité c'est
+que tout les lacets s'étendent en $B^2$. Donc y'a pas de trous.
+La contractilité implique la simple connexité via le fait que
+si $id_X\sim x_0$ par $H$ et $S^1\to X$ est un lacet alors on
+obtient 
+\[[0,1]\times S^1\to [0,1]\times X\to X\]
+et que $\{1\}\times S^1\mapsto x_0$. D'où ça passe au quotient
+en $B_2\to X$.
+\subsection{La continuité}
+Donc la propriété universelle de $X/\sim_A$ ca doit être que
+pour tout $X\to Y$ continue t.q. $f(A)=\{*\}$ alors on a une
+unique $X/\sim_A\to Y$ continue pour la topologie quotient à
+gauche qui fait commuter. En particulier, 
+\[[0,1]\times S^1\to X\]
+est continue. Plus en détail, si on a 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzAsMSwiWC9BIl0sWzEsMCwiWSJdLFswLDEsIlxccGkiXSxbMCwyLCJmIl0sWzEsMiwiXFxiYXIgZiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	X & Y \\
+	{X/A}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["\pi", from=1-1, to=2-1]
+	\arrow["{\bar f}"', dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+alors $\bar f$ est continue vu que $\bar f^{-1}V$ est ouvert
+ssi $\pi^{-1}\bar f^{-1} V=f^{-1}V$ l'est.
+
+\subsubsection{Commentaire sur la topologie quotient}
+C'est le petit twist sur l'incertitude de $\pi^{-1}\pi U=U$ ou
+$U\cup A$ et $A$ par forcément ouvert. Là, $f^{-1} V$ est ouvert
+et contient $A$ OU ne contient pas $A$. Alors que $U\cup A$
+ca peut déborder.
+
+
+\section{Groupe fondamental}
+Le lemme 2.1 donne toutes les homotopies pour que $\pi_1(X,x)$ 
+soit un groupe (composition, associativité, inverse,...). Y'a 
+plusieurs points de vues à retenir.
+
+\subsection{Homotopies de chemins}
+On est dans le cas où une homotopie c'est un chemin dans 
+\[C([0,1],X)\]
+On peut écrire les homotopies de chemins/lacets : 
+\[H\colon [0,1]\times [0,1]\to X\]
+comme pour l'associativité, où par déf $(\alpha.\beta).\gamma$
+on va $4$ fois plus vite sur les deux premiers et $2$ fois
+plus vite sur $\gamma$. Et faut aller vers $\alpha.(\beta.\gamma)$
+où ça va $4$ fois plus vite sur les deux derniers.
+Conseil :
+\[\textrm{Faire ce qui marche au niveau des bords mdr}\]
+\subsection{$\pi_1$ est un groupe}
+Faut juste vérifier que tout est vrai à homotopie près
+\subsection{Propriétés du foncteur}
+Dans une composante connexe par arc on peut changer à isomorphisme
+près le point base par 
+\[\phi_l\colon \pi_1(X,x)\to \pi_1(X,y);[c]\mapsto [\bar l.c.l]\] avec $l(0)=x$
+et $l(1)=y$. C'est un isomorphisme unique à homotopie relative de
+$l$ près. Et si $l'$ est un autre chemin,
+alors $\phi_l$ et $\phi_l'$ sont conjugués via $[l.\bar l']$ (dans
+ce sens).
+\begin{rem}
+  Ça veut dire quoi que le $\pi_1$ est abélien ?! Genre le tore.
+\end{rem}
+Étant donné $f\colon X\to Y$, $[c]\mapsto [f\circ c]$
+est bien déf, i.e. préserve les homotopies par $H\mapsto f\circ H$,
+et préserve les compositions (par définition des compos! écrire)
+donc est un m.d.g. En plus
+$\pi_1$ est additif via $c\times c'$ (c'est clairement un lacet,
+pas de pb de continuité ni de définition). On obtient
+un foncteur covariant additif
+\[Top_*\to Grp\]
+donné par $(X,x)\mapsto \pi_1(X,x)$. Et pour $(X,x)\to (Y,y)$ on
+a
+\[\pi_1(f)\colon \pi_1(X,x)\to \pi_1(Y,f(x)=y)\]
+
+\section{Homotopie et $\pi_1$}
+Si $f,g\colon X\to Y$ sont homotopes, on obtient un chemin
+$f(x)\to g(x)$ via $c(t):=h_x(t):=H(t,x)$. D'où un iso
+$u\colon \pi_1(Y,g(x))\to \pi_1(Y,f(x))$. Et en fait
+\[f_*=ug_*\]
+faut montrer que $[f\circ a]=[\bar c.(g\circ a).c]$. Et pour ça,
+par déf de $c$, on peut redéfinir $c=c_1$ et $c_s(t):=h_x(st)$.
+En particulier $(s,t)\mapsto \bar c_s.(h_s\circ a).c_s(t)$
+c'est une homotopie entre les deux classes. En détail
+$c_s$ c'est un chemin entre $f(x)$ et $H(s,x)$, puis $h_s\circ a$
+c'est un lacet en $h_s(x)$ puis $\bar c_s$ c'est un chemin entre
+$h_s(x)$ et $f(x)$. Ça fixe bien les extremités. 
+\begin{rem}
+  Pour chaque $x$, $t\mapsto h_t(x)=H(t,x)$
+  est un chemin entre $f(x)$ et $g(x)$.
+\end{rem}
+\section{Invariance de $\pi_1$}
+Ducoup on en déduit direct que $\pi_1$ est invariant par 
+équivalence d'homotopie.
+\section{Indice à Van Kampen}
+\subsection{Découper des chemins}
+Étant donné $X=U\cup V$, on peut découper un chemin $a=\prod a_i$
+de telle sorte à ce que $a_i$ soit dans $U$ ou $V$. On peut
+regarder $a^{-1}U\cup a^{-1}V=[0,1]$, le piège c'est que c'est
+des ouverts mais pas connexes nécessairemment. Donc c'est une 
+union infinie d'intervalles. On peut écrire 
+\[\cup ]u_{i1},u_{i2}[\cup ]v_{i1},v_{i2}[\]
+et par compacité on a une union finie de trucs soit dans $a^{-1}U$
+soit dans $a^{-1}V$. Ensuite 
+$a(]u_{i1},u_{i2}[)\subset a(a^{-1}(U))\subset U$. Maintenant on
+peut raffiner dans $[0,1]$ en une union type $\cup ]i/n,(i+1)/n[$.
+
+\subsection{Lemme}
+Étant donné $X=U\cup V$ avec $U,V,U\cap V$ connexes par arcs, alors
+pour tout $x\in U\cap V$, 
+\[<\pi_1(U,x),\pi_1(V,x)>=\pi_1(X,x)\]
+En particulier si $U$ et $V$ sont simplements connexes, $X$ aussi.
+La différence avec Van Kampen c'est la précision de l'énoncé. 
+Donc concrètement, on découpe $a$ en $\prod a_i$ avec 
+\[a_i(t)=a((i+t)/n)\]
+ensuite on prends $c_i$ un chemin entre $x$ et $a_i(0)$ contenu
+dans $U,V,U\cap V$ en fonction de $a_i(0)$. Alors
+\[\bar c_i.a_i.c_{i+1}\in \pi_1(W,x)\]
+(!) avec $W=U,V$ ou $U\cap V$ en fonction de $a_i(0),a_i(1)$.
+Enfin
+\[a=\prod_{i=0}^n \bar c_i.a_i.c_{i+1}\]
+D'où \[<\pi_1(U,x),\pi_1(V,x)>=\pi_1(X,x)\]
+
+
+\chapter{Exemples}
+\section{Exemples de contractions/rétractions}
+\subsection{Convexe métrique}
+Dans un espace vectoriel topologique $V$ si on 
+a un convexe non vide $C$ :
+\[(s,x)\mapsto (1-s)x+sx_0\]
+contracte $C$ sur $x_0$. C'est vraiment agréable!
+\subsection{$n-1$-sphère et $R^n-0$}
+On regarde $(s,x)\mapsto (1-s)x+sx/||x||$. En 
+particulier $x\mapsto x/||x||$ est
+un rétract par déformation forte!
+\subsection{Tore privé d'un point et cercles}
+Je peux pas faire de desseins, mais l'idée c'est de regarde le
+tore comme le recollement de côtés opposés dans le même sens 
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXGJ1bGxldCJdLFswLDAsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMSwxLCJcXGJ1bGxldCJdLFswLDFdLFsxLDJdLFswLDNdLFszLDJdXQ==
+\[\begin{tikzcd}
+	\bullet & \bullet \\
+	\bullet & \bullet
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-2]
+\end{tikzcd}\]
+et si au lieu de regarder le carré on écrit un cercle à $4$-points,
+on a un rétract par déformation forte via $x/||x||$. Ensuite, 
+on obtient juste les bords du carrés avec les côtés opposés 
+identifiés. Ça c'est pareil que
+
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXGJ1bGxldCJdLFswLDAsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMCwxXSxbMSwyXV0=
+\[\begin{tikzcd}
+	\bullet & \bullet \\
+	\bullet
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=1-1]
+\end{tikzcd}\]
+où on identifie les $3$ points. D'où le bouquet de deux cercles.
+
+\subsection{Ruban de moebius et $S^1$}
+On définit $[0,1]^2\to ([0,1]/(1\sim 0))\times \{1/2\}$, ça passe
+au quotient pour $(0,s)\sim (1,1-s)$. Plus précisément
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJbMCwxXV4yLygoMCxzKVxcc2ltKDEsMS1zKSkiXSxbMCwwLCJbMCwxXV4yIl0sWzEsMCwiWzAsMV1cXHRpbWVzXFx7MS8yXFx9Il0sWzEsMSwiWzAsMV0vKDFcXHNpbSAwKVxcdGltZXNcXHsxLzJcXH0iXSxbMSwwXSxbMSwyXSxbMCwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMiwzXV0=
+\[\begin{tikzcd}
+	{[0,1]^2} & {[0,1]\times\{1/2\}} \\
+	{[0,1]^2/((0,s)\sim(1,1-s))} & {[0,1]/(1\sim 0)\times\{1/2\}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[dashed, from=2-1, to=2-2]
+\end{tikzcd}\]
+Ensuite, en haut c'est un rétract par déformation forte et 
+l'homotopie descend en bas, on le voit par propriété universelle.
+En particulier ça reste un rétract par déformation forte. D'où
+un isomorphisme de $\pi_1$.
+
+\section{Peigne, pas de rétract par déformation forte}
+Si on regarde 
+\[P=[0,1]\times 0\bigcup 0\times [0,1]\bigcup\cup_i 2^{-i}\times [0,1]\]
+dans $\R^2$ avec la \textbf{topologie induite} (c'est tout le pb)
+c'est contractile parce que y'a un rétract par déformation
+forte sur $[0,1]\times 0$. Par contre $(0,1)$ est pas un
+rétract par déformation forte. Et ça je pense que c'est parce que
+pour converger de manière connexe par arc vers $(0,1)$ on peut pas
+facilement vu que $B(x_0,1/2)$ est une union disjointe infinie.
+Mais j'arrive pas à le prouver
+\section{Bouquet de $n$-Sphère et plan moins $n$-points}
+On peut prendre $x_i=(i,0)$. Et on sépare le plan en $n$-bandes
+verticales. À homotopie près on peut couper le reste. Ensuite
+en gros on définit 
+\[(s,x)\mapsto (1-s)(x-x_i)+s(x-x_i)/||x-x_i||+x_i\]
+si $x$ est dans la $i$-ème bande. Le fait de faire $-x_i$ ça
+pousse dans la première bande. Ensuite, ça met sur le cercle,
+comme la bande est convexe et contient pas $0$ c'est bon. Ensuite
+on renvoie sur la $i$-ème sphère. Pour que ce soit continu faut
+que les bords des sphères soient collées intuitivement. D'où
+$n$-sphères collées, puis ça c'est homotope au bouquet.
+
+\begin{rem}
+  Pour le faire formellement dans $\R^n$ ça a l'air faisable. Faut
+  juste revoir la définition avec les suites convergentes je pense.
+\end{rem}
+
+\subsection{Groupe fondamentaux de groupes topologiques}
+Là y se passe un truc vraiment drôle. Si on déf sur $G$ un
+groupe topologique $fg\colon t\mapsto f(t)g(t)$ ça fait
+un lacet pour $f,g\in \pi_1(G,e)$. Et maintenant on peut montrer
+que 
+\[fg\sim f.g\]
+sauf que ducoup on peut en déduire que le $\pi_1$ est abélien!!
+En fait l'idée c'est que
+\[[fg]=[(f.c_e)(c_e.g)]=[f.g]\]
+et
+\[[fg]=[(c_e.f)(g.c_e)]=[g.f]\]
+et ça c'est drôle (et vrai par définition en fait). Attention
+$f(g.c_e)\ne fg.f$ à cause des
+vitesses! On aurait que $f$ de $0$ à $1/2$ sur la première partie
+en fait.
+
+\section{Variétés topologiques et locale contractilité}
+En gros tout ce qu'on regarde et l'endroit où la cohomologie
+des faisceaux est la cohomologie singulière c'est sur les
+espaces localements contractiles.
+
+\chapter{Revêtements}
+
+%\printbibliography
+\end{document}
+

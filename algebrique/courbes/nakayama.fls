@@ -1,4 +1,4 @@
-PWD /home/docus/files/primaire/AGTN/geoalg/misc/courbes
+PWD /home/docus/files/present/?/algebrique/courbes
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT nakayama.tex

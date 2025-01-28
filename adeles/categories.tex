@@ -1,0 +1,341 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Adèles et idèles}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Cas des corps locaux}
+J'ai trouvé ça : \href{https://math.mit.edu/classes/18.785/2015fa/LectureNotes12.pdf}{lien}.
+Apparemment $p^{v_p(.)}$ c'est la valeur absolue naturelle grâce
+à la mesure de Haar! Wah en fait c'est joli proposition 12.14. ET
+c'est Weil qui a fait la preuve générale sur les groupes localement
+compacts de l'existence et unicité de la mesure de Haar.
+\section{Mesure de Haar, valuations discrètes et modules}
+Ce que Weil définit comme un module, en fait c'est une valeur
+absolue lol. Genre d'après le lien 
+$\mu(xS)=(\card k_K)^{v(x)}\mu(S)$. Et l'argument clé qui me
+paraissait mystique c'est qu'on normalise $\mu$ avec $\mu(\Or_K)=1$
+comme c'est compact puis :
+\[\mu(\Or_K)=[\Or_K:x\Or_K]\mu(x\Or_K)=(\card k_K)^{v(x)}\mu(x\Or_K)\]
+vu que $\Or_K=\sqcup y\Or_K$ sur un système de représentants de
+$k_K$ c'est ouf mdr. D'où $\mu(x\Or_K)=(1/\card k_K)^{v(x)}$!!
+DOnc y'a qu'une valeur absolue compatible avec la mesure de Haar.
+
+
+\chapter{Théorie de la mesure et mesures de Haar}
+Je fais un petit chap sur ça juste parce que ça me branche.
+La source c'est \href{https://terrytao.wordpress.com/wp-content/uploads/2012/12/gsm-126-tao5-measure-book.pdf}{ça}.
+Le cours de tao! Je regarde aussi le cours de Villani qui est très
+bien.
+\section{Résumé après lectures}
+Concrètement pour les constructions et théorèmes d'existences 
+Villani utilise le théorème de Carathéodory à gogo à partir
+de constructions naturelles! Il construit la mesure de Lebesgue
+et la mesure produit facilement grâce à ça.
+
+\section{Mesures de Jordan et intégrale de Riemann}
+On a les boites $:=\prod I_i$ des produits d'intervalles. 
+Les ensembles élémentaires qui en sont des unions finies.
+Puis la mesure de Jordan ceux ci défini de manière évidente.
+On dit que $E\subset \R^d$ est jordan mesurable si 
+\begin{enumerate}
+  \item $m_o(E):=inf_{B\supset E \textrm{élémentaire}} m(B)<\infty$.
+  \item $m_i(E):=sup_{B\subset E \textrm{élémentaire}} m(B)<\infty$.
+  \item $m_o(E)=m_i(E)=: m(E)$.
+\end{enumerate}
+\subsection{Exemples}
+Maintenant deux bons exemples peut-être c'est les rationnels t.q :
+\begin{enumerate}
+  \item $m_o(\Q)=\infty$. Alros que la mesure de Lebesgue est nulle.
+  \item $m_i(\Q)=0$ car on l'approche par unions finies de points.
+\end{enumerate}
+et le graphe de $f\colon B\subset \R^d\to \R$ continue avec $B$ une boite fermée, alors
+\begin{enumerate}
+  \item $m_o(E)=0$ parce que $f$ est uniformément continue sur $B$.
+  \item La preuve c'est qu' on a un $\delta$ et $\epsilon$ t.q 
+    $\Gamma\subset \cup B_\delta\times B_\epsilon$
+    un nombre linéaire de copies du truc de droite d'où
+    \[m(B_\delta\times B_\epsilon).m(B)/\delta\geq m(\Gamma)\]
+    en particulier $\delta\epsilon.m(B)/\delta\geq m(\Gamma)$ d'où
+    le résultat. Le point c'est que $B_\delta$ bouge en même temps
+    que $B_\epsilon$ vu que c'est pas pointé. Penser aux recouvrements
+    de $X\times_Y X$ recouverts diagonalement! Ca fait une dépendance 
+    linéaire sur le nombre de multiple de $B_\delta\times B_\epsilon$
+    nécessaires.
+\end{enumerate}
+\subsection{Critère}
+Être Jordan mesurable c'est facilement équivalent à ce que
+pour tout $\epsilon >0$ on puisse trouver $A\subset E\subset B$
+tels que $m(B-A)\leq \epsilon$. Parce que
+\[m(A)\leq m_i(E)\leq m_o(E)\leq m(B)\leq m(A)+\epsilon\]
+
+\subsection{Lien avec l'intégrale de Riemann}
+Pour le lien avec l'intégrale de Riemann. On prends $f\colon [a,b]\to \R$
+et une partition pointée $P=((x_0,\ldots,x_n),(x_1^*,\ldots, x_n^*))$ avec
+$x_i^*\subset [x_{i-1},x_i]$. Ensuite on définit
+\[R(f,P):=\sum f(x_i^*)(x_i-x_{i-1})\]
+et $\Delta(P):=sup_i |x_i-x_{i-1}|$ puis
+\[\int_a^b f(x)dx:=\lim_{\Delta(P)\to 0} R(f,P)\]
+On peut maintenant définir l'intégrale comme une aire via
+la mesure de Jordan. On regarde
+\[E^+=\{(x,t)|x\in [a,b],0\leq t\leq f(x)\}\]
+la partie au dessus de $0\times \R$ 
+et 
+\[E^-=\{(x,t)|x\in [a,b],f(x)\leq t\leq 0\}\]
+la partie en dessous. Alors $f$ est Riemann intégrable
+si et seulement si $E^+$ et $E^-$ sont Jordan mesurables. Alors
+$\int_a^b f=E^+-E^-$!
+\subsection{Preuve}
+En prenant $f$ positive, le point c'est que si $E^+$ est
+Jordan mesurable on peut construire $R(f,P)$ comme suit :
+On regarde une union disjointe de boites qui tend vers 
+$E^+$. C'est des rectangles donc on peut supposer qu'elle
+collent $0\times \R$. Ensuite elle contiennent les $(x,f(x))$
+en particulier $(x,\sup(f(x')))$ dans une petite boule. Puis
+on enchaine...
+\subsection{Unicité de l'intégrale de Riemann comme Fonctionnelle}
+Une fonctionnelle c'est une application linéaire de $C(X,\R)$ dans
+$\R$. Les propriétés c'est la valeur en les indicatrices est la
+mesure.
+
+
+\section{Mesure de Lebesgue sur $\R^d$}
+On peut redéfinir l'intégration habituelle. La mesure est 
+pas si facile à construire. C'est la complétion de celle donnée
+sur les intervalles par la longueur en dimension $1$. Et la mesure
+produit en dimension $d$.
+\section{Mesure de Lebesgue abstraite}
+Page 93, il y parle de choses familières, convergence
+d'ensembles! Via la convergence de $1_{E_n}$ en tout
+point. Intersections et unions d'ensembles imbriqués
+et convergence de mesure (si mesure finie).
+\subsection{Catégorie des espaces mesurés}
+Une fonction mesurable $f\colon (X,\tau)\to (Y,\theta)$
+est telle que $f^{-1}(E)$ est $\theta$-mesurable si
+$E$ est $\theta$-mesurable. Et ca se compose! 
+\subsection{$f_*\mu$ et changement de variable!}
+Étant donné $\varphi\colon X\to Y$ mesurable on peut définir
+$\varphi_*\mu(E):=\mu(\varphi^{-1}E)$! En particulier
+si on a aussi $f\colon Y\to \R$ on peut montrer que
+\[\int_X f\circ \varphi d\mu=\int_Yfd\varphi_*\mu!\]
+Apparemment faut un théorème de convergence dominée.
+\subsection{$\mu|_E$}
+On peut restreindre la mesure à un espace mesurable $E$!
+Par exemple $GL_n(K)\subset K^{n^2}$ avec $K$ muni d'une
+valeur absolue par exemple d'où une mesure. À l'inverse
+si $K$ est muni d'une mesure de Haar, on peut définir une valeur absolue
+à la Weil. Ensuite $GL_n(K)$ est ouvert dans $K^{n^2}$
+d'où on peut restreindre $\mu$.
+
+\subsection{$\sigma$-algèbres finies}
+Si $(X,\tau,\mu)$ est mesuré et $\tau$ est finie, 
+$X$ est partitionné en un nombre fini d'atomes
+(simplement union disjointe de trucs mesurables $X=\cup A_i$,
+via l'indicatrice, l'union,... Ça donne une algèbre booléenne).
+Maintenant là dessus une fonction mesurable $f\colon X\to [0,+\infty]$
+c'est juste une somme finie d'indicatrices :
+\[f:=\sum_{i=1}^n c_i 1_{A_i}\]
+On peut définir ensuite l'intégrale via
+\[\int_X f:=\sum_i c_i\mu(A_i)\]
+Inversement, si $f$ est une somme finie d'indicatrice
+\[f=\sum_{i=1}^n c_i 1_{A_i}\]
+Alors on peut prendre la $\sigma$-algèbre engendrée par
+les $f^{-1}(c_i)$.
+\subsection{Engendrer, étendre, comparer des $\sigma$-algèbres}
+C'est juste indicatif cette section, en fait on peut prendre
+des $\sigma$-algèbres plus fines et ça laisse invariantes
+les intégrales de fonctions simples!
+
+\subsection{Théorème de Carathéodory}
+Y'a un certain Théorème de Carathéodory (généralisé) qui permet
+de construire des mesures à partir d'une fonction 
+$\mu\colon \F\to [0,+\infty]$ où $F\subset P(X)$ est une famille de
+partie stable par intersection (faut des conditions sur $\F$, $\mu$
+et $X$). C'est intéressant. En particulier
+on peut prendre les pavés $A\times B$ par exemple.
+
+L'extension $\mu^*$ est complète! Avec complet qui veut dire
+$A\subset B$ et $\mu(B)=0$ implique $A$ mesurable.
+
+\subsection{Construction de la mesure de lebesgue et les mesurables}
+On utilise le théorème du dessus à plusieurs reprises sur
+les pavés pour construire la mesure sur $\R$ puis les mesures
+produits.  En particulier, la mesure de lebesgue est une complétion
+et un truc mesurable c'est un $E$ tel que $A\subset E\subset B$
+avec $A,B$ boréliens tels que $\mu(A)=\mu(B)$.
+\subsection{Intégrale de Lebesgue}
+Étant donné $f\colon X\to [0,+\infty]$ mesurable.
+On peut définir
+\[\int_X fd\mu:=\sup_{0\leq g\leq f;g~simple}\int_X gd\mu\]
+\begin{rem}
+  Si on a une mesure sur $GL_n$, par exemple celle de lebesgue
+  sur $GL_n(\R)\subset \R^{n^2}$ la continuité du déterminant
+  rend mesurable $GL_n(\R)$ et le det. D'où on peut calculer
+  des intégrales là dessus. 
+\end{rem}
+Pour l'étendre à $f\colon X\to \R$ mesurable on doit avoir 
+l'absolue intégrabilité
+\[||f||_{L^1(X,f,\mu)}:=\int_X |f|d\mu\]
+ensuite on peut définir $f^\pm:=\max(0,\pm f)$. 
+Puis si $f$ est absolument intégrable :
+\[\int_X f:=||f^+||-||f^-||\]
+Enfin, pour $f\colon X\to \C$ on déf via la partie imaginaire
+et réelle. Page $100$ y'a pleins de propriétés de l'intégrale.
+Notamment les
+propriétés vraies $\mu$-presque partout. Vu que les ensembles
+de mesures $0$ sont invisible du point de vue de l'intégrale.
+Aussi des découpages via $f.1_{E_n}$. 
+
+\section{Théorème de convergence (page 105)}
+
+\section{Ou regarder}
+Page $100$-$103$ y'a pleins de choses très cool et intuitives
+sur le calcul d'intégrales!
+
+\section{Formes volumes}
+Woh, le cours de variété algébrique va me servir.
+
+\chapter{à faire}
+
+\section{Mesures}
+Continuité sur un compact métrique implique uniforme continuité.
+\subsection{Lien mesure et $f$ mesurable}
+Étant donné $X$ et une mesure finie. La mesurabilité de $f$
+force des choses sur $f$ ? Étant donné des tribus particulières?
+
+%\printbibliography
+\end{document}
+

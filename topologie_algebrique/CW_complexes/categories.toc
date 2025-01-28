@@ -1,0 +1,33 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}CW-complexes}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Construction relative}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Vocabulaire}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Décomposition cellulaire relative}{5}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Détail}{6}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Se ramener au bouquet}{6}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}Construction par le squelette}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Se ramener au bouquet, partie 2}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Séparation et locale contractilité.}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Compacité des $CW$-complexes finis}{7}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Groupes fondamentaux de CW-complexes}{7}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Compacts et sous CW-complexes finis.}{8}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Corollaire}{8}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Van Kampen sur les CW-complexes}{8}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Lemme}{8}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Preuve}{8}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Remarques sur la topologie}{9}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Union disjointe de cellules ouvertes}{9}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Compacts et sous-CW-complexes}{9}{subsection.1.5.2}%
+\contentsline {subsubsection}{Croiser un nombre fini de cellules ouvertes}{9}{section*.2}%
+\contentsline {subsubsection}{$K\subset X\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}K\subset X^{(n)}$}{9}{section*.3}%
+\contentsline {subsubsection}{$K\subset X$ implique $K$ contenu dans un CW-complexe fini}{9}{section*.4}%
+\contentsline {chapter}{\numberline {2}Graphes}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Définitions}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Groupe fondamental d'un graphe}{11}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Limites de groupes libres}{11}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Arbres}{12}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Groupe fondamental d'un graphe}{12}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}$c(X)=1-\chi (X)$, $rk(\pi _1(X,x))=c(X)$}{12}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Application des graphes aux groupes fondamentaux de CW-complexes}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Applications en théorie des groupes}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Sous groupes des groupes libres}{13}{subsection.2.4.1}%

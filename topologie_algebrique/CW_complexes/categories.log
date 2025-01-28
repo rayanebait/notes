@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  28 JAN 2025 23:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  26 JAN 2025 20:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**nakayama.tex
-(./nakayama.tex
+**categories.tex
+(./categories.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -772,52 +772,61 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \c@@ppsavesec=\count454
 \c@@ppsaveapp=\count455
 )
-\c@heur=\count456
-\c@rem=\count457
-\c@note=\count458
-\c@conj=\count459
-\c@prob=\count460
-\c@quest=\count461
-\c@prot=\count462
-\c@algo=\count463
-Package hyperref Info: Option `colorlinks' set `true' on input line 130.
+\c@thm=\count456
+\c@lem=\count457
+\c@prop=\count458
+\c@cor=\count459
+\c@heur=\count460
+\c@rem=\count461
+\c@note=\count462
+\c@conj=\count463
+\c@prob=\count464
+\c@quest=\count465
+\c@prot=\count466
+\c@algo=\count467
+\c@defn=\count468
+\c@exmp=\count469
+\c@exo=\count470
+\c@ex=\count471
+\c@exs=\count472
+Package hyperref Info: Option `colorlinks' set `true' on input line 131.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'french'.
- (./nakayama.aux)
-\openout1 = `nakayama.aux'.
+ (./categories.aux)
+\openout1 = `categories.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count464
+\scratchcounter=\count473
 \scratchdimen=\dimen274
 \scratchbox=\box68
-\nofMPsegments=\count465
-\nofMParguments=\count466
+\nofMPsegments=\count474
+\nofMParguments=\count475
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count467
+\MPscratchCnt=\count476
 \MPscratchDim=\dimen275
-\MPnumerator=\count468
-\makeMPintoPDFobject=\count469
+\MPnumerator=\count477
+\makeMPintoPDFobject=\count478
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -825,10 +834,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 135.
- (./nakayama.out) (./nakayama.out)
+Package hyperref Info: Link coloring ON on input line 136.
+ (./categories.out) (./categories.out)
 \@outlinefile=\write5
-\openout5 = `nakayama.out'.
+\openout5 = `categories.out'.
 
 Package biblatex Info: Trying to load language 'french'...
 Package biblatex Info: ... file 'french.lbx' found.
@@ -838,23 +847,23 @@ File: french.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout4 = `nakayama.bcf'.
+\openout4 = `categories.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'nakayama.bbl' not found.
+Package biblatex Info: ... file 'categories.bbl' not found.
 
-No file nakayama.bbl.
-Package biblatex Info: Reference section=0 on input line 135.
-Package biblatex Info: Reference segment=0 on input line 135.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 137.
+No file categories.bbl.
+Package biblatex Info: Reference section=0 on input line 136.
+Package biblatex Info: Reference segment=0 on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 138.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 137.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 138.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 137.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 138.
  (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
@@ -874,9 +883,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2
 
-] (./nakayama.toc)
+] (./categories.toc)
 \tf@toc=\write6
-\openout6 = `nakayama.toc'.
+\openout6 = `categories.toc'.
 
  [3]
 
@@ -890,24 +899,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 \bbl@ensure@french {Chapitre} 1.
-
-Overfull \hbox (11.8028pt too wide) in paragraph at lines 158--161
-[]\OT1/cmr/m/n/12 Si on prends deux familles alg^^Sebriquement ind^^Sependantes et $\OML/cmm/m/it/12 K$ \OT1/cmr/m/n/12 alg^^Sebriques
- []
-
 [5]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.71667pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
-\bbl@ensure@french {Chapitre} 2.
-[7
 
-]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 252.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 252.
+
+
+Overfull \hbox (5.66576pt too wide) in paragraph at lines 259--259
+[]\OT1/cmr/bx/n/17.28 Groupes fon-da-men-taux de CW-complexes 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -916,48 +937,93 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 242.
- (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-Overfull \hbox (16.54018pt too wide) in paragraph at lines 245--247
-[]\OT1/cmr/m/n/12 pour l'ou-vert, fac-toriser un mor-phisme fini et l^^Ra c'est clair que $\OML/cmm/m/it/12 dimf[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Z\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 : \OT1/cmr/m/n/12 =
- []
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[10
+
+]
+\bbl@ensure@french {Chapitre} 2.
+[11]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 420.
 
 
-LaTeX Warning: Empty bibliography on input line 248.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\chi' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\pi' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 420.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.71667pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9] (./nakayama.aux)
+[12]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[13] (./categories.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `nakayama.out' has not changed.
-(rerunfilecheck)             Checksum: 587206DDD1508D571791970D77B1293A;1886.
-Package logreq Info: Writing requests to 'nakayama.run.xml'.
-\openout1 = `nakayama.run.xml'.
+Package rerunfilecheck Info: File `categories.out' has not changed.
+(rerunfilecheck)             Checksum: 1FF85A650EBE4E57FBB07DD03C504777;5496.
+Package logreq Info: Writing requests to 'categories.run.xml'.
+\openout1 = `categories.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31497 strings out of 476076
- 605772 string characters out of 5793775
- 1938187 words of memory out of 5000000
- 53090 multiletter control sequences out of 15000+600000
- 569483 words of font info for 82 fonts, out of 8000000 for 9000
+ 31567 strings out of 476076
+ 606506 string characters out of 5793775
+ 1940187 words of memory out of 5000000
+ 53143 multiletter control sequences out of 15000+600000
+ 568775 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 131i,13n,135p,681b,1776s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on nakayama.pdf (9 pages, 152746 bytes).
+ 131i,15n,135p,683b,1776s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on categories.pdf (13 pages, 200462 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
