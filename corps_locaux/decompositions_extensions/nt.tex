@@ -1,0 +1,257 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Décompositions d'extensions}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Non ramifiée, modérément, sauvagement, totalement ramifié}
+Pour le vocabulaire : Avec $L/K$ extension de corps de valuations
+discrètes, i.e. $v_K$ discrète fixée.
+\begin{enumerate}
+    \item Non ramifié : Pour chaque $i$, $e_i=1$ et $k_{L_i}/k_K$
+        est séparable.
+    \item Modérément ramifié : pour chaque $i$, $p\nmid e_i$ et 
+        $k_{L_i}/k_K$ est séparable.
+    \item Sauvagement ramifié : il existe un $i$ tq $p\mid e_i$
+        ou $k_{L_i}/k_K$ inséparable.
+    \item Totalement ramiifié : $[L:K]=e$ et $\tilde\Or_K=\Or_L$.
+        (On a la condition de finitude)
+\end{enumerate}
+
+Attention y'a pas toujours l'égalité $\sum e_if_i=[L:K]$, dans la
+plupart des cas qui m'intéressent si quand même.
+
+\section{Lien entre liberté dans $k_K,k_L$ et dans $L/K$}
+On regarde $L=K(\alpha)$ et $P=\mu_\alpha$ unitaire dans 
+$\Or_K[X]$. Si $\overline{Q(\alpha)}=0$ (liberté de $(\alpha^i)$)
+on a $Q(\alpha)\in \m_L$ et pas dans $\m_K$. D'où on peut pas
+directement comparer les libertés dans ce sens ! À l'inverse,
+si $(\bar e_i)_i$ est libre dans $k_L-k_K$ et qu'on a 
+$\sum a_ie_i=0\mod \m_L$ alors $a_i\in \m_L\cap \Or_K=\m_K$. Si
+y sont tous non nuls $0<|(\sum a_ie_i)|<1$ on a un problème.
+
+\section{Factorisation de $\bar P$ et $e.f$}
+Même contexte, dans le cas complet c'est plus simple : Par Hensel
+$\bar P=F^d$ et $\deg(F)\mid f$ parce que $F$ se scinde dans
+$k_L$ vu que $P$ se scinde dans $\Or_L$. En particulier on peut
+faire descendre la racine. On déduit
+\[e.f=\deg(P)=d.\deg(F)\]
+d'où $e\mid d$ et $\deg(F)\mid f$.
+
+\begin{rem}
+    Comme Vincent m'a fait remarquer pas d'égalité vu que par
+    exemple si $K[\alpha]/K$ est non ramifiée et $\alpha$ engendre 
+    l'extension résiduelle alors $\pi_L^dP(X/\pi_L)$ annule
+    $\pi_L\alpha$ mais $F=X^d$, donc on est dans le pire cas.
+\end{rem}
+
+\section{Polynômes d'eisenstein et extensions totalement ramifiées}
+\begin{center}\textbf{(1)}\end{center}
+Si $P(X)=X^d+\sum a_iX^i$ avec $v_K(a_0)=1$ et $v_K(a_i)\geq 1$
+alors $L=K[X]/(P(X))$ est totalement ramifiée et $X$ est une 
+uniformisante. Si $\alpha$ est une racine dans $L$ de $P$ :
+
+Y'a deux points, $B=\Or_K[\alpha]$ a un seul idéal maximal car
+$a_0$ et $\alpha$ sont dans le même idéal maximal et y contiennent
+tous $a_0$ (!) puis $(a_0,\alpha)=\alpha B$ est maximal
+(via le quotient!). Ça prouve que $B$ est local et principal donc
+un DVR, i.e. $\tilde\Or_K=B$. Pour la valuation $e = d=[L:K]$
+directement, d'où le résultat.
+
+\begin{center}\textbf{(2)}\end{center}
+Si $L/K$ est totalement ramifiée, alors $\pi_L$ est annulé par
+un Eisenstein. L'idée c'est que si $P$ l'annule, alors
+si $a_{i_0}\notin \m_K$ alors :
+\[\pi_L^{i_0}(a_{i_0}/\pi_L^{i_0}+\sum_{i=i_0}^n a_i\pi_L^{i-i_0})\]
+est de valuation $i_0$. Si $v_K(a_j)>0$ pour $j<i_0$ alors la
+valuation est strictement plus grande que $e=v_L(\pi_K)$. Sauf
+que
+\[\sum_{i=0}^{i_0-1}a_i\pi_L^i=\pi_L^{i_0}(a_{i_0}/\pi_L^{i_0}+\sum_{i=i_0}^n a_i\pi_L^{i-i_0})\]
+d'où c'est eisenstein. En plus
+\[a_0/\pi_L^n=-1+\sum a_i\pi_L^i/\pi_L^n\]
+d'où $v_L(a_0/\pi_L^n)=0$ vu que $v_L(a_i)\geq e$ et $n=e$.
+
+\chapter{Cas complet}
+\section{Extension totalement modérément ramifiée}
+Cette fois on peut trouver $\pi_L$ et $\pi_K$ tels que 
+$P(X)=X^e-\pi_K$. Déjà
+\[\Or_K/\m_K\to \Or_L/\m_L\]
+est un iso et donc si $u\pi_L^e=\pi_K$, on regarde $u=v$ dans
+$k_L$ (car c'est là que $u$ vit) avec $v\in\Or_K$. D'où
+$u=v+\epsilon$, $\epsilon\in \m_L$ 
+(car c'est dans $k_L$ l'égalité). Ensuite $u=v(1+v^{-1}\epsilon)$.
+Sauf que $1+v^{-1}\epsilon$ a une racine $e$-ème par Hensel, 
+$\zeta$. D'où $(\pi_L\zeta)^e=\pi_K/v$.
+\section{Trouver les extensions totalement modérement ramifiées}
+En gros dans $L/K$ finie complète telle que $k_K-k_L$
+est purement inséparable (c'est juste une généralisation), 
+On regarde presque le corps engendré par $\pi_L^{e/e'}$.
+On choisit $e'\mid e/p^v_p(e)$, il existe $k_L^{p^r}\subset k_K$
+alors $ap^r+be'=1$ et
+\[\bar u=(\bar u^{p^r})^a(\bar u^b)^{e'}\mod \m_L\]
+et ducoup on relève $u=\lambda^a(\bar u^b)^{e'}(1+\epsilon)$
+avec $\lambda\in \Or_K^\times $ puis comme d'hab le truc à droite
+a une racine $e'$-ème par hensel, disons $\zeta$. D'où en notant
+$\pi_{e'}=u^b\zeta\pi_L^{e/e'}$ c'est une racine $e'$-ème de 
+$\pi_K/\lambda^a$. Alors
+\[K(\pi_{e'})\]
+est totalement ramifiée vu que 
+\textbf{engendrée par un eisenstein.}
+
+\subsection{Unicité}
+C'est pas très satisfaisant.
+\subsubsection{Apparté}
+Si on regarde $\Or_K\to\Or_L/\m_L$ ça induit $i\colon k_K\to k_L$.
+En particulier dire que $u\in k_L$ est en fait dans $k_K$ 
+\textbf{ça veut dire que $u+\m_L=v+\m_L$ avec $v\in \Or_K$.}
+\subsubsection{Preuve}
+Concrètement, $\lambda=(\pi_1\pi_2^{-1})^{e'}\in \Or_K^\times$ et
+en regardant dans $k_L$ ça engendrerait une sous-extension de 
+degré premier à $p^r$, i.e $1$. D'où $\bar u=\bar v\in k_K$ et
+$(\bar v)^{e'}(1+\epsilon)=\lambda$ sauf que 
+$(1+\epsilon)=\lambda/(\bar v)^{e'}$ d'où est dans $\Or_K$ puis
+$1+\m_K$ c'est que des puissances $e'$-ème. On obtient que
+$(\pi_1\pi_2^{-1})^{e'}=(v')^{e'}$ avec $v'\in \Or_K\times$.
+En particulier comme les racines $e'$-ème de l'unité sont dans
+$\Or_K$ $\pi_1=u\pi_2$ avec $u\in\Or_K^\times$ d'où unicité.
+
+
+\begin{rem}
+    En résumé, pour tout $e'\mid e/p^{v_p(e)}$, on a une 
+    sous-extension $K-L_{e'}-L$, dans le cas complet sous
+    l'hypothèse d'extension résiduelle purement inséparable.
+\end{rem}
+\section{Trouver les sous-extensions non ramifiée}
+En dessous de $K-L$ on regarde $k_K-k-k_L$ avec $k_K-k$ séparable.
+On a une correspondance entre $k$ et $K-K_k-L$ où la première est
+non ramifiée.
+\subsection{Existence}
+$k_K^{sep}=k_K(\bar\theta)$. Comme \textbf{tout se passe dans} 
+$k_L$ on lift un polynôme $P\in\Or_L[X]$ de même degré. 
+\textbf{Par hensel},
+$\theta$ en est une racine et il est \textbf{scindé séparable} dans
+$L$. On regarde $K(\theta)$, c'est séparable vu que $\bar P$ est
+séparable \textbf{via la dérivée} $\mod \m_L$ (!). Et c'est non
+ramifié vu que $f=\deg(\bar P)=\deg(P)=[K(\theta):K]$.
+\subsection{Unicité}
+Donc le détail encore c'est qu'on plonge $k$ dans $k_L$. I.e.
+on peut faire Hensel QUE dans $\Or_L[X]$. D'où si $F$ est
+une autre sous-extension de $L$
+
+\chapter{Cas galoisien}
+
+
+
+
+\end{document}
+
