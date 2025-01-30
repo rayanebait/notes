@@ -138,7 +138,7 @@ on a $Q(\alpha)\in \m_L$ et pas dans $\m_K$. D'où on peut pas
 directement comparer les libertés dans ce sens ! À l'inverse,
 si $(\bar e_i)_i$ est libre dans $k_L-k_K$ et qu'on a 
 $\sum a_ie_i=0\mod \m_L$ alors $a_i\in \m_L\cap \Or_K=\m_K$. Si
-y sont tous non nuls $0<|(\sum a_ie_i)|<1$ on a un problème.
+y sont tous non nuls $0<|(\sum a_ie_i)|$ on a un problème.
 
 \section{Factorisation de $\bar P$ et $e.f$}
 Même contexte, dans le cas complet c'est plus simple : Par Hensel
@@ -219,7 +219,7 @@ Concrètement, $\lambda=(\pi_1\pi_2^{-1})^{e'}\in \Or_K^\times$ et
 en regardant dans $k_L$ ça engendrerait une sous-extension de 
 degré premier à $p^r$, i.e $1$. D'où $\bar u=\bar v\in k_K$ et
 $(\bar v)^{e'}(1+\epsilon)=\lambda$ sauf que 
-$(1+\epsilon)=\lambda/(\bar v)^{e'}$ d'où est dans $\Or_K$ puis
+$(1+\epsilon)=\lambda/(v)^{e'}$ d'où est dans $\Or_K$ puis
 $1+\m_K$ c'est que des puissances $e'$-ème. On obtient que
 $(\pi_1\pi_2^{-1})^{e'}=(v')^{e'}$ avec $v'\in \Or_K\times$.
 En particulier comme les racines $e'$-ème de l'unité sont dans
@@ -245,12 +245,179 @@ séparable \textbf{via la dérivée} $\mod \m_L$ (!). Et c'est non
 ramifié vu que $f=\deg(\bar P)=\deg(P)=[K(\theta):K]$.
 \subsection{Unicité}
 Donc le détail encore c'est qu'on plonge $k$ dans $k_L$. I.e.
-on peut faire Hensel QUE dans $\Or_L[X]$. D'où si $F$ est
-une autre sous-extension de $L$
+on peut faire Hensel QUE dans $\Or_L[X]$ en gros (c'est presque
+pas un abus). Donc dire qu'on a un sous-corps $F'$ de $L$ ou on
+lift $\bar theta$ en $\alpha$. En fait $\alpha=\theta$ par unicité
+dans $L$. Parce que par définition le sous-corps $k$ est considéré
+dans $k_L$. D'où dans $\Or_L$.
+
+\subsection{Extension non ramifiée maximale}
+On prend $k=k_K^{sep}$ et un générateur $\bar \theta$ fournit
+$K(\theta)=:K^{un}$ puis pour n'importe quelle sous-extension non
+ramifiée de $L$, $F$, on applique la partie d'avant dans $K^{un}/K$
+à $k_F$ pour obtenir $F'\subset K^{un}$, sauf que $k_F=k_{F'}$
+dans $k_L$ d'où $F=F'$.
+
+\section{Extensions modérément ramifiée maximale}
+On prend $K^{tam}$ qui correspond à $e/p^v_p(e)$ dans $L-K^{un}$.
+Pour prouver que c'est maximal on prend une extension modérement
+ramifiée $L-F-K$, on peut considérer $F-F^un-L$. Et on a
+$k_{F^{un}}=k_K^{sep}$, ducoup on remplace $F$ par $F^{un}$. Et
+on a $K^{un}\subset F^{un}$ en regardant dans $F^{un}-K$ puis
+$L-K$. Ensuite, $K^{un}-F^{un}$ est totalement modérément ramifiée,
+d'où par construction dans l'autre section $F^{un}\subset K^{tam}$.
+
+\begin{rem}
+    $K-F-F^{un}$ est modérement ramifiée! Et $k_{F^{un}}-k_F-k_K$
+    est séparable car les deux intermédiaires sont séparable.
+\end{rem}
+
+\section{Résumé}
+On a un premier découpage 
+\[K\to K^{un}\to K^{tam}\to L\]
+dans le cas complet et $L/K$ finie. On peut aussi facilement 
+regarder les extensions intérmédiaires des deux premières 
+sous-extensions.
+
 
 \chapter{Cas galoisien}
+\section{Un peu de théorie de Galois}
+Peut-être la chose la plus importante. Quand on a une extension
+normale finie $L/K$, on a 
+\[Aut(L/K)=Gal(K^{sep}/K)\]
+
+ÉTant donné $K-L^H=F-L$ galoisienne, $F/K$ est galoisienne si et
+seulement si $ H\leq G:=Gal(L/K)$ est distingué. Ou $F$ est stable
+par l'action de $Gal(L/K)$.
+
+\section{Groupe de décomposiiton et groupe de Galois résiduel}
+Étant donné $L/K$ finie galoisienne, et $\m$ un idéal max.
+On regarde $D=D_\m$ et $I=I_\m$. Avec pour rappel
+\[D_\m=\{\sigma\in Gal(L/K)|\sigma(\m)=\m\}\]
+et $I_\m=\ker(D_\m\to Aut(k_L/k_K))=Gal(k_K^{sep}/k_K)$. 
+
+\subsection{$1\to I_\m\to D_\m\to Aut_k(k_\m)\to 1$ et
+$k-k_\m$ est normale}
+L'idée c'est de voir que dans $\Or_K[X]$ on a 
+$P(X)=\prod (X-\sigma(x))$ et si $\bar x\in k_\m$ de pol min
+$p(X)$ alors $\bar P(\bar x)=\overline{P(x)}=0$ d'où
+\[p\mid \bar P\]
+et le deuxième est scindé dans $L$ donc dans $k_\m$. Ensuite
+faut montrer que $D_\m\to Aut_k(k_\m)=Gal(k_\m^s/k)$ est 
+surjectif. L'idée c'est de lift un générateur 
+\[k(\bar\theta)=k_\m^s\]
+alors si $\tau\in Gal(k_\m^s/k)$ on peut trouver $\sigma\in G$
+tel que $\overline{\sigma(\theta)}=\tau(\bar\theta)$ parce
+que $p\mid P$!!! Ensuite faut juste lift $\theta$ intelligemment
+pour que $\sigma\in D_\m$. On lift de
+\[\ker(\prod \tilde\Or_K/\m'\to \tilde\Or_K/\m)\]
+i.e. $\theta \in \prod_{\m\ne\m'} \m'-\m$
+alors $\sigma^{-1}\m=\m'$ force $\sigma(\theta)\in \m$ d'où
+\[\tau(\bar\theta)=0\]
+puis $k_\m^s=k$. Suffit d'exclure ce cas
+(où le résultat est clair).
 
 
+\section{Résumé bref}
+\begin{rem}
+    On a des nouvelles formules : $e.f.g=[L:K]$. ET $|G|=
+    |Gal(L/K)|=[L:K]$. Faut utiliser ça exhaustivement.
+\end{rem}
+Si $L/K$ est galoisienne, pas forcément complète, on a une
+décomposition similaire, on fixe $\m=\m_L$ et $|.|_D,|.|_I$ les
+restriction de $|.|_\m$ on a:
+\[K-L^D-L^I-L\]
+où $D=D_\m$ et $I=I_\m$. Maintenant $L^D-K$ est inerte en $\m$
+($e=1=f$, d'où $\hat K=\hat{L^D}$!) et non ramifiée
+($k_{L^D}-k_K$ est séparable). La raison 
+\begin{itemize}
+    \item $(|G|/|D|)e_{L/K}f_{L/K}=[L:K]$ et $|D|=e_{L/L^D}f_{L/L^D}$.
+\end{itemize}
+Le dernier argument c'est quon a une unique extension de 
+$|.|_D$ à $|.|_L$ vu que le groupe de galois (ici $D$)agit
+transitivement. En plus, $L\otimes_{L^D}\hat{L^D}$ est galoisienne
+sur $\hat{L^D}$ de même groupe de galois. 
+Maintenant
+\[L^D-L^I\]
+est non ramifiée, $k_D=k_K$ et $k_I=k_\m^s$ la clôture séparable
+de $k_K$ dans $k_L=k_\m$. Et $L^I-L$ est totalement ramifiée
+(elle a toute la ramification), en plus $k_\m^s=k_I-k_\m$ est
+purement inséparable. L'argument pour les deux consiste à utiliser
+exhaustivement l'exactitude de
+\[1\to I_\m\to D_\m\to Aut_{k}(k_L)\]
+et le fait que $k_L-k$ est normale dans le cas où $L/K$ galois 
+(ca se montre bien en liftant etc..).
+
+
+
+
+\section{Résumé très bref}
+L'extension $K-L^D$ est immédiate car 
+$\#\{\m|\m_K\}=|G/D|=[L^D:K]$, et $efg=|G/D||D|=|G/D|e_Df_D$.
+Maintenant $k_L/k_I$ est purement inséparable car $Aut(k_L/k_I)=
+I/I=1$ par la suite exacte sur $L/L^I$. Enfin, 
+\[[k_\m^s:k]\leq [k_I:k]=[k_I:k_D]\leq |D/I|\]
+sauf que le truc de gauche c'est $|D/I|$ par la suite exacte car
+$L/K$ est galoisienne d'où $k_L/k$ est normale et 
+$|Gal(k_\m/k)|=k_\m^s$. Et là $f_{sep}=[L^I:L^D]$. En conclusion
+$k_L/k_I$ contient $f_{insep}$, $L/L^I$ contient
+$e$, et $L^I/L^D$ contient $f_{sep}$. Enfin, on regarde $L^I-L$,
+on peut supposer $L^I$ complet, et $E=(L^I)^{tam}$. D'où la tour
+\[L^I-(L^I)^{tam}-L\]
+Là $(L^I)^{tam}-L^I$ est totalement modérément ramifiée et
+fixée par $I$, d'où galoisienne de groupe de Galois $T=I/P$ avec
+$P$ le (car normal) $p$-sylow. Vu que 
+$e_{L/(L^I)^{tam}}=p^{v_p(e)}$ et 
+$k_L-k_{L^{I^{tam}}}=k_{L^I}$ est purement inséparable. Enfin,
+$T$ est cyclique car $L^I$ contient les racines $e/p^{v_p(e)}$-eme
+de l'unité. Le groupe $T$ est donné par $T\to \mu_{e/p^{v_p(e)}}$.
+Alors on a
+\[K-L^D-L^I-L^P-L\]
+
+\section{Groupes de ramification}
+On se place dans le cas complet, alors $G=D$.
+On regarde les 
+\[G_i=\ker(Gal(L/K)\to \Or_L/\m_L^{i+1})\]
+qu'on peut traduire en $v_L(\sigma(x)-x)\geq i+1$ pour tout 
+$x\in \Or_L$. Si $\Or_L=\Or_K[\alpha]$ on peut juste regarder
+sur $\alpha$. On déf \[i_G(\sigma):=v_L(\sigma(\alpha)-\alpha)\]
+\begin{rem}
+    On pourrait probablement le définir comme un min sinon.
+    On a aussi $I=G_0$ et $P=G_1$ (c'est pas trivial le deuxième).
+\end{rem}
+
+\subsection{Quotients des groupes de ramifications}
+On regarde les $G_i/G_{i+1}$, le cas $i=-1$ c'est $D/I=Gal(k_L/k)$
+donc on le saute. Le cas $i=0$ est un peu différent. On note
+$U^{(i)}=\ker(\Or_L^\times\to (\Or_L/\m_L^i)^\times)$. On a
+$U^{(i)}=1+\m_L^i$ pour $i>0$ et $U^{(0)}=\Or_L^\times$. On a (!)
+\[\begin{cases}
+    U^{(i)}/U^{(i+1)}\simeq k,~i\ne 0\\
+    U^{(0)}/U^{(1)}\simeq k^\times,~i=0
+\end{cases}\]
+le premier donné par $1+\pi_L^iu\mapsto u$ le deuxième par
+$x\mapsto x$ (oui ca marche). L'isomorphisme est une question
+de cardinalité. Maintenant on a 
+\[G_{i}/G_{i+1}\to U^{(i)}/U^{(i+1)}\]
+donné par $\sigma \mapsto \sigma(\pi_L)/\pi_L$. En particulier,
+$G_{i}/G_{i+1}$ est cyclique pour tout $i\geq 0$. Et dès que
+$i>0$ c'est un $p$-groupe! 
+\begin{rem}
+    $\sigma\mapsto \sigma(\pi_L)/\pi_L$ c'est l'ami de toujours,
+    c'est un super morphisme de groupes injectifs. Injectif c'est
+    facile mais morphisme de groupe c'est pas évident.
+\end{rem}
+Plusieurs idées dans cette partie : L'idée c'est que 
+$\sigma(x)-x\in \m_L^{i+1}$ se traduit en 
+$\sigma(x)/x-1\m_L^{i+1}/x$. Ducoup avec $x=\pi_L$, 
+\[\sigma(\pi_L)/\pi_L\in 1+\m_L^i=U^{(i)}\]
+et avec $x=u\in U^{(i)}$ (!)
+\[\sigma(u)/u\in 1+\m_L^{i+1}=U^{(i+1)}\]
+trop cool. Ducoup en notant $\sigma(\pi_L)=\pi_Lu$ avec 
+$u\in U^{(i)}$ on a 
+\[\sigma_1(\sigma(\pi_L))/\pi_L=\sigma_1(\pi_L)\sigma_1(u)/\pi_L\]
+et $\sigma_1(u)=(\sigma_2(\pi_L)/\pi_L)\sigma_1(u)/u$. Ducoup 
+modulo $U^{(i+1)}$ c'est un morphisme de groupe (!).
 
 
 \end{document}
