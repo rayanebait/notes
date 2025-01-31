@@ -283,6 +283,10 @@ injectif $G_i/G_{i+1}$. En particulier
 \[G_i/G_{i+1}\textrm{ est abélien.}\]
 on en déduit que les extensions galoisiennes de corps
 locaux sont résolubles.
+\begin{rem}
+    Dans la somme, le $-1$ apparaît car quand $|G_{i_0}|=1$,
+    on fait $-i_0-1$ et y'a $i_0$ termes jusqu'ici.
+\end{rem}
 \begin{prop}
     $v_L(\D_{L/K})=\sum_{i=0}^\infty(|G_i|-1)$.
 \end{prop}
@@ -317,6 +321,7 @@ locaux sont résolubles.
     clair.
 \end{proof}
 
+\chapter{Ramification en tours}
 \section{Ramification dans les tours d'extensions}
 On regarde $L-F-K$ avec $H=Gal(L/F)\leq G$ normal. On a 
 $H_i=G_i\cap H$ directement vu que $i_{L/E}$ dépend de $v_L$.
@@ -500,8 +505,219 @@ En traduisant : via
     supèrieure on a $G^{(x)}=\Gamma[x]$!
 \end{ex}
 
+\begin{prop}
+    $v_K(\D_{L/K})=\int_{-1}^{+\infty}(1-\frac{1}{|G^{(v)}|})dv$
+    avec $v_K$ normalisée.
+\end{prop}
+\begin{proof}
+    Preuve formelle.
+\end{proof}
+
+Étant donné $G_K$ le groupe de galois absolu de $K$, on définit
+pour $L/K$ tq $Gal(\bar K/L)=H$: $G^{(v)}:=G_K^{(v)}H/H$ puis
+$\bar K^{(v)}=(\bar K)^{G^{(v)}}$. Pour $L/K$, on définit
+$L^{(v)}=L\cap \bar K^{(v)}=L^{G^{(v)}}$. Alors 
+$|G^{(v)}|=[L:L^{(v)}]$ et on a
+\[v_K(\D_{L/K})=\int_{-1}^{\infty}(1-\frac{1}{[L:L^{(v)}]})dv\]
+qui fait sens même si $L/K$ est pas galoisienne, on utilise 
+seulement que $\bar K/L$ est galoisienne.
+\begin{rem}
+    C'est vrai pour toute extension séparable $L/K$.
+\end{rem}
+
+\chapter{Groupes de galois de corps locaux}
+On étudie toujours $Gal(\bar K/K)$ pour $K$ local. On a une
+correspondance groupes corps pour certains groupes/corps. 
+En premier $K^{un}/K$ tq 
+$Gal(K^{un}/K)\simeq Gal(\bar k_K/k_K)\simeq \hat Z$. Aussi,
+$K^{tam}=\cup_{e\wedge p=1} K^{un}[\pi_K^{1/e}]$. Et on a 
+via la théorie de Kummer que 
+\[Gal(K^{tam}/K^{un})\simeq \varprojlim_{e\wedge p=1}(\Z/e\Z)\simeq
+\prod_{l\ne p} \Z_l\]
+maintenant $Gal(\bar K/K^{tam})=P_K$ est une limite projective
+de $p$-groupes finis. On sait apparemment donner générateurs et
+relations. Mais ça définit pas le corps uniqument.
+\begin{thm}[Mochizuki,Abrashkin]
+    $K$ équivaut à $G_K$ muni de la filtration de ramification.
+\end{thm}
+\begin{exo}
+    Montrer que
+    \[P_K=Gal(\bar K/K^{tam})=\overline{\cup_{\epsilon>0}G_K^{(\epsilon)}}\]
+\end{exo}
+\section{Corps de classe local (Hasse, Artin-Tate)}
+Une extension $L/K$ est abélienne si galoisienne de groupe de 
+galois abélien. On note $K^{ab}$ le compositum des extensions
+abéliennes finies. On a 
+\[Gal(K^{ab}/K)=G_K/[G_K:G_K]\]
+l'abéllianisé topologique (faut prendre la clôture des 
+commutateurs).
+\begin{thm}
+    Il existe un morphisme injectif
+    \[\theta_K\colon K^\times\to Gal(K^{ab}/K)\]
+    de groupes topologiques tel que
+    \begin{enumerate}
+        \item $\theta_K$ est continu d'image dense. Pour remarque,
+            ça peut pas être surj car compact à droite et pas
+            compact à gauche.
+        \item Soit $L/K$ une extension finie abélienne et
+            soit $N_{L/K}\colon L^\times\to K^\times$ la norme.
+            On a un carré (!)
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXlxcdGltZXMiXSxbMSwwLCJHYWwoS157YWJ9L0spIl0sWzEsMSwiR2FsKEwvSykiXSxbMCwxLCJLXlxcdGltZXMvTl97TC9LfShMXlxcdGltZXMpIl0sWzAsMSwiXFx0aGV0YV9LIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMywyLCJcXHNpbWVxIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	{K^\times} & {Gal(K^{ab}/K)} \\
+	{K^\times/N_{L/K}(L^\times)} & {Gal(L/K)}
+	\arrow["{\theta_K}", hook, from=1-1, to=1-2]
+	\arrow[two heads, from=1-1, to=2-1]
+	\arrow[two heads, from=1-2, to=2-2]
+	\arrow["\simeq"{description}, draw=none, from=2-1, to=2-2]
+\end{tikzcd}\]
+        \item Le carré
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXlxcdGltZXMiXSxbMSwwLCJHYWwoS157YWJ9L0spIl0sWzEsMSwiR2FsKEtee3VufS9LKSJdLFswLDEsIlxcWiJdLFswLDIsIjEiXSxbMSwyLCJGcm9iX0siXSxbMCwxLCJcXHRoZXRhX0siLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsInZfSyIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFszLDIsIlxcc2ltZXEiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+\[\begin{tikzcd}
+	{K^\times} & {Gal(K^{ab}/K)} \\
+	\Z & {Gal(K^{un}/K)} \\
+	1 & {Frob_K}
+	\arrow["{\theta_K}", hook, from=1-1, to=1-2]
+	\arrow["{v_K}"', two heads, from=1-1, to=2-1]
+	\arrow[two heads, from=1-2, to=2-2]
+	\arrow["\simeq"{description}, draw=none, from=2-1, to=2-2]
+	\arrow[maps to, from=3-1, to=3-2]
+\end{tikzcd}\]
+    \end{enumerate}
+    commute.
+\end{thm}
+On avait définit 
+$U_K^{(i)}=\ker(\Or_K^\times\to (\Or_K/\m_K^i)^\times)$. On définit
+\[U_K^{(x)}:=U_K^{(x)}=U_K^{(i)},i-1<x\leq i\]
+alors (!)
+\[\theta_K(U_K^{(x)})=Gal(K^{ab}/K)^{(x)}\]
+\begin{rem}
+il y'a 3 preuves apparemment :
+\begin{enumerate}
+    \item via les corps globaux (?!) et le corps de classe global.
+    \item preuves locales difficiles. (dwork)
+    \item Lubin-Tate theory (!). (donne explicitement une 
+        construction $K^{ab}$)
+\end{enumerate}
+\end{rem}
+
+Si $L/K$ est abélienne (potentiellement infinie) alors $G=Gal(L/K)
+\simeq G_K^{ab}/H$ et $G^{(x)}\simeq (G_K^{ab})^{(x)}H/H$. 
+Maintenant $G$ a un saut de ramification en $v$ si pour tout 
+$\epsilon>0$, $G^{(v+\epsilon)}\ne G^{(v)}$. La filtration
+$U_K^{(i)}$ sur $U_K$ a des sauts a tout entiers $i\geq 0$ d'où
+$G_K^{ab}$ aussi par le théorème. En particulier, $G^{(x)}$
+saute aussi qu'aux entiers (Hasse-Arf). Maintenant, 
+\[U_K^{(i)}/U_K^{(i+1)}\]
+est $p$-élémentaire pour $i\geq 1$, d'où pareil pour
+$(G_K^{ab})^{(i)}/(G_K^{ab})^{(i+1)}$ (!) pour $i\geq 1$.
+On note $v_0,v_1,\ldots$ les sauts de ramifications de $G=Gal(L/K)$
+alors $G=G^{(v_0)}\supset G^{(v_1)}\supset\ldots$
+et $G^{(v_i)}/G^{(v_{i+1})}$ sont $p$-élementaires.
+
+\section{Ramification dans les $\Z_p$-extensions}
+\begin{defn}
+    Une $\Z_p$-extension est galoisienne de groupe de galois
+    $\Z_p$.
+\end{defn}
+\begin{note}
+    On note $K_\infty/K$ une $\Z_p$-extension totalement ramifiée
+    de corps locaux de caractéristique $0$. Et 
+    $\Gamma=Gal(K_\infty/K)\simeq\Z_p$. On note $\Gamma(n)\simeq
+    p^n\Z_p$. On note $K_n=K_\infty^{\Gamma(n)}$.
+\end{note}
+\begin{thm}[Tate]
+    Soit $e_K=e(K/\Q_p)$
+    \begin{enumerate}
+        \item Il existe $i_0\in \Z$ tq $v_{i+1}=v_i+e_K$ pour
+            $i\geq i_0$.
+        \item Il existe $c$ tq pour tout $n\geq 1$
+            \[v_K(\D_{K_n/K})=c+e_Kn+\frac{a_n}{p^n}\]
+            où $(a_n)_n$ est bornée.
+    \end{enumerate}
+\end{thm}
+\begin{lem}
+    Dans $K/\Q_p$, $e_K=e(K/\Q_p)$. On note
+    \begin{enumerate}
+        \item $\log(1+x):=\sum_{m\geq 1} (-1)^{m+1}\frac{x^m}{m}$
+            converge si $x\in \m_K$ et a valeur dans $K$ (!).
+        \item $\exp(x):=\sum_{n\geq 1} \frac{x^n}{n!}$ converge
+            sur $\m_K^r$ avec $r>e_K/(p-1)$ entier. 
+        \item Pour tout $r$ comme avant, $\log(1+x)$ et $\exp(x)$
+            sont des homomorphismes 
+            \[\log\colon U_K^{(r)}\to \m_K^r\]
+            et \[\exp\colon \m_K^r\to U_K^{(r)}\]
+            inverses l'un de l'autre.
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    Exercice (!).
+\end{proof}
+\begin{cor}
+    Pour tout $r>\frac{e_K}{p-1}$, 
+    \[(U_K^{(r)})^p=U_K^{(r+e_K)}\]
+\end{cor}
+\begin{proof}
+    $\log((U_K^{(r)})^p)=p\m_K^r=\m_K^{r+e_K}=\log(U_K^{(r+e_K)})$.
+    (!)
+\end{proof}
+\begin{proof}[Théorème 6, (i)]
+    Cours. Dans
+    % https://q.uiver.app/#q=WzAsNyxbMCwzLCJLIl0sWzAsMiwiS157dW59Il0sWzAsMSwiS157YWIsdGFtfSJdLFswLDAsIktee2FifSJdLFszLDEsIktfXFxpbmZ0eSJdLFszLDIsIksiXSxbMywwLCJLXnthYn0iXSxbMiwzXSxbMSwyXSxbMCwxXSxbMywyLCJVX0teeygxKX0iLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTMsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwxLCJVX0svVV9LXnsoMSl9IiwwLHsib2Zmc2V0IjotMywiY3VydmUiOi0zfV0sWzEsMCwiXFxoYXQgXFxaIiwwLHsib2Zmc2V0IjotMywiY3VydmUiOi0yfV0sWzUsNF0sWzQsNl0sWzQsNSwiXFxaX3AiLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCJHIiwwLHsib2Zmc2V0IjotMywiY3VydmUiOi0yfV1d
+\[\begin{tikzcd}
+	{K^{ab}} &&& {K^{ab}} \\
+	{K^{ab,tam}} &&& {K_\infty} \\
+	{K^{un}} &&& K \\
+	K
+	\arrow["{U_K^{(1)}}", shift left=3, curve={height=-18pt}, no head, from=1-1, to=2-1]
+	\arrow["G", shift left=3, curve={height=-12pt}, from=1-4, to=2-4]
+	\arrow[from=2-1, to=1-1]
+	\arrow["{U_K/U_K^{(1)}}", shift left=3, curve={height=-18pt}, from=2-1, to=3-1]
+	\arrow[from=2-4, to=1-4]
+	\arrow["{\Z_p}", shift left=3, curve={height=-12pt}, no head, from=2-4, to=3-4]
+	\arrow[from=3-1, to=2-1]
+	\arrow["{\hat \Z}", shift left=3, curve={height=-12pt}, from=3-1, to=4-1]
+	\arrow[from=3-4, to=2-4]
+	\arrow[from=4-1, to=3-1]
+\end{tikzcd}\]
+    et $K_\infty\cap K^{ab,tam}=K$ (wild a gauche). L'idée pour
+    les groupes de galois : via $\theta_K$, $U_K^{(0)}$ correspond
+    à l'inertie (car $K^un$ correspond à l'inertie), et $U_K^{(1)}$
+    est maximal pro-$p$ via les 
+    quotients :
+% https://q.uiver.app/#q=WzAsMTAsWzAsMSwiMCJdLFsxLDEsIkdhbChLXnthYn0vS157YWIsdGFtfSkiXSxbMSwwLCJVX0teeygxKX0iXSxbMiwxLCJHX0tee2FifSJdLFszLDEsIkdhbChLXnthYix0YW19KS9LIl0sWzIsMiwiXFxHYW1tYSJdLFszLDIsIjEiXSxbNCwxLCIwIl0sWzAsMiwiXFxleGlzdHMgIE5cXHN1YnNldCBVX0teeygxKX06Il0sWzEsMiwiVV9LXnsoMSl9L04iXSxbMCwxXSxbMSwyLCJcXHNpbWVxIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsM10sWzMsNF0sWzUsNl0sWzQsN10sWzMsNV0sWzksNV0sWzEsOV0sWzYsNCwiXFxiaWdjdXAiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	& {U_K^{(1)}} \\
+	0 & {Gal(K^{ab}/K^{ab,tam})} & {G_K^{ab}} & {Gal(K^{ab,tam})/K} & 0 \\
+	{\exists  N\subset U_K^{(1)}:} & {U_K^{(1)}/N} & \Gamma & 1
+	\arrow[from=2-1, to=2-2]
+	\arrow["\simeq"{description}, draw=none, from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\simeq",from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow["\bigcup"{description}, draw=none, from=3-4, to=2-4]
+\end{tikzcd}\]
+ensuite $\Gamma^{(v)}$ correspond à 
+$U_K^{(v)}N/N\simeq U_K^{(v)}/(U_K^{(v)}\cap H)$. La suite on 
+prends $\overline{<\gamma>}=\Gamma$ et $i_0$ tq 
+$\gamma^{p^{i_0}}\in \Gamma(i_0)$ s'envoie dans 
+$U_K^{(m)}/(U_K^{(m)}\cap H)$ pour $m>e_K/(p-1)$(!). On prends
+le plus petit $m=m_0$. Alors $\gamma_0:=\gamma^{p^{i_0}}$ engendre 
+$\Gamma^{(m_0)}$, d'où $\Gamma(i_0)=\Gamma^{(m_0)}$. Maintenant
+$\overline{<\gamma_0^{p^n}>}=\Gamma(i_0+n)$, aussi $\gamma_0^{p^n}$
+s'envoie dans $(U_K^{(m_0)})^{p^n}/(U_K^{(m_0)})^{p^n}\cap H$
+qui est $U_K^{(m_0+e_Kn)}/U_K^{(m_0+e_Kn)}\cap H$ par le 
+corollaire. Le résultat tombe ensuite via $\Gamma^{(v_{i_0}+n)}=
+\Gamma^{(m_0+e_Kn)}$ d'où $v_i-v_{i_0}=e_K(i-i_0)$ pour 
+$i\geq i_0$.
+\end{proof}
+
+
+
 
 
 \end{document}
-
-

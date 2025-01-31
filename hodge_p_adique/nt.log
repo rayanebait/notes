@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  27 JAN 2025 11:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  31 JAN 2025 16:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -956,6 +956,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
+\bbl@ensure@french {Chapitre} 2.
+[9
+
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -963,13 +967,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]
-Overfull \hbox (3.33177pt too wide) in paragraph at lines 405--407
+[10]
+Overfull \hbox (3.33177pt too wide) in paragraph at lines 410--412
 [][]\OT1/cmr/bx/n/12 Th^^Seoreme 1 \OT1/cmr/m/n/12 (Th^^Seor^^Reme de Her-brand)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 Pour tout $\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^U \OT1/cmr/m/n/12 1$ \OT1/cmr/m/it/12 on a $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 G=H\OT1/cmr/m/n/12 )[] =
  []
 
 
-Overfull \hbox (2.96492pt too wide) in paragraph at lines 449--454
+Overfull \hbox (2.96492pt too wide) in paragraph at lines 454--459
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 G=H\OT1/cmr/m/n/12 )[] = \OML/cmm/m/it/12 G[]H=H$ \OT1/cmr/m/n/12 on rem-place $\OML/cmm/m/it/12 x$ \OT1/cmr/m/n/12 par $\OML/cmm/m/it/12 '[] \OMS/cmsy/m/n/12 ^^N \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12  [] \OMS/cmsy/m/n/12 ^^N \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) =
  []
 
@@ -980,8 +984,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10]
-Overfull \hbox (17.53333pt too wide) in paragraph at lines 456--458
+[11]
+Overfull \hbox (17.53333pt too wide) in paragraph at lines 461--463
 []\OT1/cmr/m/n/12 On a $\OML/cmm/m/it/12 G[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 Gal\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 K[]=K\OT1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 Gal\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L=K\OT1/cmr/m/n/12 )$. Main-tenant le th^^Seor^^Reme
  []
 
@@ -992,7 +996,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11]
+[12]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1000,30 +1004,91 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12] (./nt.aux)
+[13]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[14
+
+]
+\bbl@ensure@french {Chapitre} 3.
+
+Overfull \hbox (3.69629pt too wide) in paragraph at lines 529--535
+\OT1/cmr/m/n/12 On ^^Setudie tou-jours $\OML/cmm/m/it/12 Gal\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 =K\OT1/cmr/m/n/12 )$ pour $\OML/cmm/m/it/12 K$ \OT1/cmr/m/n/12 lo-cal. On a une cor-re-spon-dance groupes
+ []
+
+[15]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 590.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 618.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 618.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 618.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[17]
+Overfull \hbox (31.52249pt too wide) detected at line 703
+[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18] (./nt.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `nt.out' has not changed.
-(rerunfilecheck)             Checksum: 6DE9D8A885161B12554615105E068485;2192.
+(rerunfilecheck)             Checksum: A4FF5C617AAC3FF848C9C880FEB7B267;3090.
 Package logreq Info: Writing requests to 'nt.run.xml'.
 \openout1 = `nt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31711 strings out of 476076
- 609888 string characters out of 5793775
- 1941187 words of memory out of 5000000
- 53297 multiletter control sequences out of 15000+600000
- 571936 words of font info for 92 fonts, out of 8000000 for 9000
+ 32118 strings out of 476076
+ 619203 string characters out of 5793775
+ 1957187 words of memory out of 5000000
+ 53666 multiletter control sequences out of 15000+600000
+ 573116 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  131i,15n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on nt.pdf (12 pages, 216058 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on nt.pdf (18 pages, 251840 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
