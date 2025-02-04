@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  31 JAN 2025 14:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  4 FEB 2025 16:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -975,7 +975,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
-Overfull \hbox (13.3358pt too wide) in paragraph at lines 261--261
+Overfull \hbox (13.3358pt too wide) in paragraph at lines 264--264
 []\OT1/cmr/bx/n/17.28 Extensions mod^^Ser^^Sement ram-ifi^^See max-i-male 
  []
 
@@ -1000,55 +1000,55 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \bbl@ensure@french {Chapitre} 2.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 300.
+(hyperref)                removing `math shift' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 300.
+(hyperref)                removing `\to' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 300.
+(hyperref)                removing `subscript' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 300.
+(hyperref)                removing `\to' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 300.
+(hyperref)                removing `subscript' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 300.
+(hyperref)                removing `\to' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 300.
+(hyperref)                removing `subscript' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 300.
+(hyperref)                removing `subscript' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 300.
+(hyperref)                removing `\to' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 300.
+(hyperref)                removing `math shift' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 300.
+(hyperref)                removing `math shift' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 300.
+(hyperref)                removing `subscript' on input line 303.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 300.
+(hyperref)                removing `math shift' on input line 303.
 
 [9]
 
@@ -1086,18 +1086,18 @@ Package logreq Info: Writing requests to 'nt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31561 strings out of 476076
- 606367 string characters out of 5793775
- 1939187 words of memory out of 5000000
+ 31563 strings out of 476076
+ 606377 string characters out of 5793775
+ 1940187 words of memory out of 5000000
  53146 multiletter control sequences out of 15000+600000
  572176 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  131i,13n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on nt.pdf (12 pages, 213225 bytes).
+Output written on nt.pdf (12 pages, 215153 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
  189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

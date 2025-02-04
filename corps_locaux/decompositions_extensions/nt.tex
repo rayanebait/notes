@@ -250,6 +250,9 @@ pas un abus). Donc dire qu'on a un sous-corps $F'$ de $L$ ou on
 lift $\bar theta$ en $\alpha$. En fait $\alpha=\theta$ par unicité
 dans $L$. Parce que par définition le sous-corps $k$ est considéré
 dans $k_L$. D'où dans $\Or_L$.
+\begin{rem}
+    Le seul détail là c'est $k^{sep}\subset k_L$ par déf.
+\end{rem}
 
 \subsection{Extension non ramifiée maximale}
 On prend $k=k_K^{sep}$ et un générateur $\bar \theta$ fournit
@@ -395,8 +398,13 @@ $U^{(i)}=1+\m_L^i$ pour $i>0$ et $U^{(0)}=\Or_L^\times$. On a (!)
     U^{(i)}/U^{(i+1)}\simeq k,~i\ne 0\\
     U^{(0)}/U^{(1)}\simeq k^\times,~i=0
 \end{cases}\]
-le premier donné par $1+\pi_L^iu\mapsto u$ le deuxième par
-$x\mapsto x$ (oui ca marche). L'isomorphisme est une question
+le premier donné par $1+\pi_L^ix\mapsto x$ le deuxième par
+$x\mapsto x$ (oui ca marche). Pour le premier, la multiplicativité
+modulo $U^{(i+1)}$ on écrit 
+$y=1+\pi_L^i(x_1+x_2)+\pi_L^{2i}(x_1x_2)$ et 
+$x^{-1}=(1+\pi_L^{2i}(x_1x_2))\in U^{(2i)}$. Alors $x^{-1}y=1+
+\pi_L^i(x^{-1}(x_1+x_2)\mapsto x^{-1}(x_1+x_2)=x_2+x_2\mod\m_L$
+car $x^{-1}\in 1+\m_L$. L'isomorphisme est une question
 de cardinalité. Maintenant on a 
 \[G_{i}/G_{i+1}\to U^{(i)}/U^{(i+1)}\]
 donné par $\sigma \mapsto \sigma(\pi_L)/\pi_L$. En particulier,
@@ -419,6 +427,10 @@ $u\in U^{(i)}$ on a
 et $\sigma_1(u)=(\sigma_2(\pi_L)/\pi_L)\sigma_1(u)/u$. Ducoup 
 modulo $U^{(i+1)}$ c'est un morphisme de groupe (!).
 
-
+\begin{rem}
+    Pour rappel, on se restreint bien à $i\geq 0$. Quand $i=-1$
+    $\sigma\mapsto \sigma(\pi_L)/\pi_L$ est pas à valeur dans
+    $U^{(i)}$, y'a pas de $U^{(-1)}$.
+\end{rem}
 \end{document}
 
