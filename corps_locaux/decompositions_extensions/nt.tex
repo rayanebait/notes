@@ -223,8 +223,8 @@ $(1+\epsilon)=\lambda/(v)^{e'}$ d'où est dans $\Or_K$ puis
 $1+\m_K$ c'est que des puissances $e'$-ème. On obtient que
 $(\pi_1\pi_2^{-1})^{e'}=(v')^{e'}$ avec $v'\in \Or_K\times$.
 En particulier comme les racines $e'$-ème de l'unité sont dans
-$\Or_K$ $\pi_1=u\pi_2$ avec $u\in\Or_K^\times$ d'où unicité.
-
+$\Or_K$ (pas toute en fait, celle qui nous faut)
+$\pi_1=u\pi_2$ avec $u\in\Or_K^\times$ d'où unicité.
 
 \begin{rem}
     En résumé, pour tout $e'\mid e/p^{v_p(e)}$, on a une 
@@ -237,21 +237,22 @@ On a une correspondance entre $k$ et $K-K_k-L$ où la première est
 non ramifiée.
 \subsection{Existence}
 $k_K^{sep}=k_K(\bar\theta)$. Comme \textbf{tout se passe dans} 
-$k_L$ on lift un polynôme $P\in\Or_L[X]$ de même degré. 
-\textbf{Par hensel},
+$k_L$ on lift un polynôme $P\in\Or_K[X]$ de même degré qui a une
+racine dans $\Or_L$ \textbf{Par hensel},
 $\theta$ en est une racine et il est \textbf{scindé séparable} dans
 $L$. On regarde $K(\theta)$, c'est séparable vu que $\bar P$ est
 séparable \textbf{via la dérivée} $\mod \m_L$ (!). Et c'est non
 ramifié vu que $f=\deg(\bar P)=\deg(P)=[K(\theta):K]$.
 \subsection{Unicité}
-Donc le détail encore c'est qu'on plonge $k$ dans $k_L$. I.e.
-on peut faire Hensel QUE dans $\Or_L[X]$ en gros (c'est presque
-pas un abus). Donc dire qu'on a un sous-corps $F'$ de $L$ ou on
-lift $\bar theta$ en $\alpha$. En fait $\alpha=\theta$ par unicité
-dans $L$. Parce que par définition le sous-corps $k$ est considéré
-dans $k_L$. D'où dans $\Or_L$.
+Le détail en fait c'est qu'on prend un lift $P$ dans $\Or_K[X]$ du
+pol min de $\theta\in k_{F'}=k=k_F$. Et on a $P\in \Or_{F'}[X]$
+donc on applique hensel pour celui là, on obtient 
+$\theta'\in F'\subset L$, d'où par l'uncité dans $L$, 
+$\theta=\theta'$. Ça dit que $F\subset F'$ puis dimension.
+
 \begin{rem}
-    Le seul détail là c'est $k^{sep}\subset k_L$ par déf.
+    On aurait pu imaginer un lift différent de $P$ pour $F$ et
+    $F'$.
 \end{rem}
 
 \subsection{Extension non ramifiée maximale}
@@ -261,13 +262,18 @@ ramifiée de $L$, $F$, on applique la partie d'avant dans $K^{un}/K$
 à $k_F$ pour obtenir $F'\subset K^{un}$, sauf que $k_F=k_{F'}$
 dans $k_L$ d'où $F=F'$.
 
+\subsection{Remarque sur la fonctorialité de Hensel}
+Hensel fournit une convergence de normes de Gauss d'un facteur
+$f$ de $p$ en un $F$ de $P$. Et les normes de Gauss s'étendent
+naturellement de $K[X]$ à $L[X]$. D'où la compatibilité.
+
 \section{Extensions modérément ramifiée maximale}
 On prend $K^{tam}$ qui correspond à $e/p^v_p(e)$ dans $L-K^{un}$.
 Pour prouver que c'est maximal on prend une extension modérement
 ramifiée $L-F-K$, on peut considérer $F-F^un-L$. Et on a
 $k_{F^{un}}=k_K^{sep}$, ducoup on remplace $F$ par $F^{un}$. Et
-on a $K^{un}\subset F^{un}$ en regardant dans $F^{un}-K$ puis
-$L-K$. Ensuite, $K^{un}-F^{un}$ est totalement modérément ramifiée,
+on a $K^{un}\subset F^{un}$ par le trick de l'unicité non ramifiée.
+Ensuite, $K^{un}-F^{un}$ est totalement modérément ramifiée,
 d'où par construction dans l'autre section $F^{un}\subset K^{tam}$.
 
 \begin{rem}
@@ -432,5 +438,55 @@ modulo $U^{(i+1)}$ c'est un morphisme de groupe (!).
     $\sigma\mapsto \sigma(\pi_L)/\pi_L$ est pas à valeur dans
     $U^{(i)}$, y'a pas de $U^{(-1)}$.
 \end{rem}
+
+\chapter{Remarques}
+\section{Le cas complet où $k_L-k_K$ est purement inséparable.}
+On s'y en retrouve fait souvent : $L^I-L$ pour le cas galoisien
+complet, $K^{un}-L$, $K^{tam}-L$. 
+\section{Descriptions des $G_i$}
+On a pour $g\in G_i$ la déf générale : pour tout $x$ : 
+$v_L(gx-x)\geq i+1$, pour $\Or_L=\Or_K[\alpha]$, 
+$v_L(g\alpha-\alpha)\geq i+1 $, et sinon pour $i\geq 0$ dans
+le cas des corps locaux ma préf :
+\[v_L(g(\pi_L)/\pi_L-1)\geq i\]
+pour la troisième $g$ fixe $L^I$ et $L-L^I$ est totalement ramifiée
+(hypothèse corps local, $k_I-k_L$ est purement inséparable donc
+triviale) d'où $\Or_L=\Or_{L^I}[\pi_L]$, puis $x=\sum a_i\pi_L^i$
+et (!)
+\[gx-x=\sum a_i((g\pi_L)^i -\pi_L)\]
+et $i_{L/K}(g)=i_{L/L^I}(g)$.
+
+\section{Comparaison avec les $U^{(i)}$}
+On regarde $i\geq 0$!!
+Donc la troisième description est plus claire là. On regarde 
+\[U_K^{(i)}=\ker(\Or_K^\times\to (\Or_K/\m_K^i)\times)\]
+on a 
+$U_K^{(i)}=\begin{cases} \Or_K^\times,~i=0\\ 1+\m_K^i~sinon\end{cases}$.
+on a $g\in G_i\equiv g(\pi_L)/\pi_L\in U^{(i)}$. Et en plus
+\[G_i\to U^{(i)}/U^{(i+1)}\]
+via $g\mapsto g(\pi_L)/\pi_L$ est un m.g. L'idée clé c'est que
+$\sigma(x)/x\in 1+x^{-1}\m_K^{(i+1)}$ d'où $U^{(i+1)}$ si
+$x=u\in \Or_K^\times$ et $U^{(i)}$ si $x=\pi_K$ (!).
+
+
+\section{Les $U^{(i)}$ et $k_K$}
+On a $U^{(i)}/U^{(i+1)}\to
+\begin{cases}k_K^\times,~i=0\\ k_K,~i>0\end{cases}$. Donnés par
+$x\mapsto x$ et $1+\pi_K^ix\mapsto x$. En particulier
+$G_0/G_1=I/P\hookrightarrow k_K^\times$ d'où d'ordre $\wedge p=1$
+et $G_i/G_{i+1}\hookrightarrow k_K$ d'où un $p$-groupe. En 
+particulier 
+$|I|=|I/P|.\prod_{i=1}^\infty |G_i/G_{i+1}|=t.p^{v_p(|I|)}$.
+Enfin, $L^I-L^P$ a pour groupe de galois $G_0/G_1$ est totalement
+ramifiée et cyclique vu que sous-groupe fini multiplicatif d'un
+corps. Ou sinon, vu que tame et a les racines de l'unité. 
+\begin{rem}
+    Penser que pour $g\ne g'$, $g(\pi_L)/\pi_L\ne g'(\pi_L)/\pi_L$
+    d'où des racines de l'unité différente quand
+    $\pi_L^e=\pi_K$.
+\end{rem}
+
+
 \end{document}
+
 
