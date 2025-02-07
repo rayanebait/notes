@@ -796,11 +796,37 @@ On pose $L_n=K_n[\alpha]$, on obtient
         \item $\D_{L_\infty/K_\infty}= \cup_{n=0}^\infty(\D_{L_n/K_n}\Or_{L_\infty})$
     \end{enumerate}
 \end{prop}
+\begin{proof}[1]
 En terme de valuation on a 
 $v_K(\D_{L_n/K_n})\geq v_K(\D_{L_m/K_m})$ et 
-$v_K(\D_{L_\infty/K_\infty})=\inf\{v_L(\D_{L_n/K_n})\}$.
-
-
-
+$v_K(\D_{L_\infty/K_\infty})=\inf\{v_L(\D_{L_n/K_n})\}$. On a
+$|\Hom_{K_n}(L_n,\bar K)|=|\Hom_{K_m}(L_m,\bar K)|$ d'où 
+$Tr_{L_m/K_m}|_{L_n}=Tr_{L_n/K_n}$. On prends 
+$(e_i)_{i=1,\ldots N}$ une base de $\Or_{L_n}$ en tant que 
+$\Or_{K_n}$-module et $(e_i^*)$ la base duale pour la trace, ie
+$Tr_{L_n/K_n}(e_ie_j^*)=\delta_{ij}$. On a 
+\[\D^{-1}_{L_n/K_n}=\Or_{K_n}e_1^*+\ldots +\Or_{K_n}e_N^*\]
+et soit $x\in \D_{L_m/K_m}^{-1}$, pour $m>n$, $(e_i^*)$ est
+toujours une base de $\Or_{L_m}$ sur $\Or_{K_m}$. On a 
+$Tr_{L_m/K_m}(x.e_j)=\sum_{i=1}^N a_i Tr_{L_m/K_m}(e_i^*e_j)\in \Or_{K_m}$ et par l'observation on peut prendre la trace sur 
+$L_n/K_n$, où $(e_i^*)$ est la base duale, d'où
+\[Tr_{L_m/K_m}(x.e_j)=a_j\in \Or_{K_m}\]
+maintenant $x\in \D^{-1}_{L_m/K_m}$ implique $x=\sum a_ie_i^*$
+avec $a_i\in \Or_{K_m}$ d'où $x\in \D^{-1}_{L_n/K_n}\Or_{L_m}$
+et $\D^{-1}_{L_m/K_m}\subset \D^{-1}_{L_n/K_n}\Or_{L_m}$ implique
+que $\D_{L_n/K_n}\subset \D_{L_m/K_m}$ qui est le résultat voulu.
+\end{proof}
+\begin{proof}[2]
+    Déjà par $1.$ c'est bien un idéal, on regarde $\subset$. On
+    prouve que \[(\cup \D_{L_n/K_n}\Or_{L_\infty})^{-1}=\cap(\D^{-1}_{L_n/K_n}\Or_{L_\infty})\subset \D^{-1}_{L_\infty/K_\infty}\]
+    la première égalité c'est un exo. Soit $x$ dans l'intersection.
+    Et $y\in\Or_{L_\infty}$, on veut prouver que 
+    $Tr_{L_\infty/K_\infty}(xy)\in\Or_{K_\infty}$. C'est immédiat
+    car y'a un $n$ tel que $x\in \D^{-1}_{L_n/K_n}$ et 
+    $y\in\Or_{L_n}$ d'où la trace est dans 
+    $\Or_{K_n}\subset\Or_{K_\infty}$. De l'autre côté c'est pareil.
+    Si $x\in \D^{-1}_{L_\infty/K_\infty}$ alors 
+    $x\in \D^{-1}_{L_n/K_n}$, etc...
+\end{proof}
 
 \end{document}

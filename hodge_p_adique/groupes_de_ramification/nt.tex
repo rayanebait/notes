@@ -1,0 +1,185 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Groupes de ramification}
+\date{}
+
+\begin{document}
+\maketitle
+Mes notes dans celles de corps\_locaux/decomposition\_extensions
+sont vraiment bien. 
+
+\section{Résumé}
+On se place sur $L/K$ galoisienne de corps complets avec 
+$Gal(L/K)=G$, en particulier $G=D_{\m_L}$. On déf $G_i$ via 
+\[G_i=\ker(Gal(L/K)\to \Or_L/\m_L^{i+1})\]
+i.e. $G_{-1}=G$ et $G_0=I_{\m_L}$, et $G_i\supset G_{i+1}$ ça se
+traduit en
+$v_L(g(x)-x)\geq i+1$ pour tout $x\in \Or_L$. Si
+$\Or_L=\Or_K[\alpha]$, dans le cas des corps locaux de car $0$ 
+c'est vrai, on peut juste regarder sur $\alpha$. On déf
+\[i_G(g):=v_L(g(\alpha)-\alpha)\]
+pour $g\in G_0$, on a $\Or_L=\Or_{L^{G_0}}[\pi_L]$ d'où 
+\[i_G(g):=v_L(g(\pi_L)-\pi_L)\]
+et même $g(\pi_L)/\pi_L\in U_L^{(i_G(g))}$
+
+
+\chapter{Remarques}
+\section{Le cas complet où $k_L-k_K$ est purement inséparable.}
+On s'y en retrouve fait souvent : $L^I-L$ pour le cas galoisien
+complet, $K^{un}-L$, $K^{tam}-L$. 
+\section{Descriptions des $G_i$}
+On a pour $g\in G_i$ la déf générale : pour tout $x$ : 
+$v_L(gx-x)\geq i+1$, pour $\Or_L=\Or_K[\alpha]$, 
+$v_L(g\alpha-\alpha)\geq i+1 $, et sinon pour $i\geq 0$ dans
+le cas des corps locaux ma préf :
+\[v_L(g(\pi_L)/\pi_L-1)\geq i\]
+pour la troisième $g$ fixe $L^I$ et $L-L^I$ est totalement ramifiée
+(hypothèse corps local, $k_I-k_L$ est purement inséparable donc
+triviale) d'où $\Or_L=\Or_{L^I}[\pi_L]$, puis $x=\sum a_i\pi_L^i$
+et (!)
+\[gx-x=\sum a_i((g\pi_L)^i -\pi_L)\]
+et $i_{L/K}(g)=i_{L/L^I}(g)$.
+
+\section{Comparaison avec les $U^{(i)}$}
+On regarde $i\geq 0$!!
+Donc la troisième description est plus claire là. On regarde 
+\[U_K^{(i)}=\ker(\Or_K^\times\to (\Or_K/\m_K^i)\times)\]
+on a 
+$U_K^{(i)}=\begin{cases} \Or_K^\times,~i=0\\ 1+\m_K^i~sinon\end{cases}$.
+on a $g\in G_i\equiv g(\pi_L)/\pi_L\in U^{(i)}$. Et en plus
+\[G_i\to U^{(i)}/U^{(i+1)}\]
+via $g\mapsto g(\pi_L)/\pi_L$ est un m.g. L'idée clé c'est que
+$\sigma(x)/x\in 1+x^{-1}\m_K^{(i+1)}$ d'où $U^{(i+1)}$ si
+$x=u\in \Or_K^\times$ et $U^{(i)}$ si $x=\pi_K$ (!).
+
+
+\section{Les $U^{(i)}$ et $k_K$}
+On a $U^{(i)}/U^{(i+1)}\to
+\begin{cases}k_K^\times,~i=0\\ k_K,~i>0\end{cases}$. Donnés par
+$x\mapsto x$ et $1+\pi_K^ix\mapsto x$. En particulier
+$G_0/G_1=I/P\hookrightarrow k_K^\times$ d'où d'ordre $\wedge p=1$
+et $G_i/G_{i+1}\hookrightarrow k_K$ d'où un $p$-groupe. En 
+particulier 
+$|I|=|I/P|.\prod_{i=1}^\infty |G_i/G_{i+1}|=t.p^{v_p(|I|)}$.
+Enfin, $L^I-L^P$ a pour groupe de galois $G_0/G_1$ est totalement
+ramifiée et cyclique vu que sous-groupe fini multiplicatif d'un
+corps. Ou sinon, vu que tame et a les racines de l'unité. 
+\begin{rem}
+    Penser que pour $g\ne g'$, $g(\pi_L)/\pi_L\ne g'(\pi_L)/\pi_L$
+    d'où des racines de l'unité différente quand
+    $\pi_L^e=\pi_K$.
+\end{rem}
+
+
+
+\end{document}
