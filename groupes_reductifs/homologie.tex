@@ -1,0 +1,353 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\Gr}{\mathbb{G}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Spm}{\textrm{Spm}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+\newtheorem{strat}{Stratégie}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Groupes réductifs}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\[\ldots\]
+Soit $k$ algébriquement clos. Un groupe algébrique sur $k$ est
+une $k$-variété avec une structure de groupe telle que $m\colon
+G\times G\to G$ et $i\colon G\to G$ sont algébriques. 
+\begin{rem}[Cartier]
+  Les groupes algébriques en caractéristique $0$ sont réduits.
+  (si on prends des variétés pas forcément réduites)
+\end{rem}
+\begin{rem}
+  La même définition avec des variétés complexes donne les
+  groupes de Lie complexe.
+\end{rem}
+\begin{exs}
+  $\Gr_a$ le groupe additif sur $\A^1_k$ et $\Gr_m$ sur $\A^1_k-0$.
+  C'est les seuls connexes de dimension $1$.
+\end{exs}
+Les sous-groupes fermés sont canoniquements des groupes algébriques
+pour $n\geq 1$.
+\begin{exs}
+  $SL_n/K\subset GL_n/k\subset M_n/k$. Et aussi $T_n\subset GL_n$
+  les triangulaires supèrieures et $U_n$ telles que $M-I_n$ sont
+  nilpotentes dans $T_n\cap SL_n$. $\Gr_m^n\simeq D_n\subset GL_n$.
+  Aussi $O(n)\subset GL_n$ tq $^tgg=I_n$. Et $Sp(2n)\subset GL_n/k$
+  telles que $^tgJg=J$ avec 
+  $J=\begin{pmatrix}0& I_n\\-I_n&0\end{pmatrix}$. Aussi, $A$
+  une $k$-algèbre de dimension finie 
+  (possiblement non commutative). Alors, $Aut(A)\subset GL(A)$
+  est fermé! Pour $A=M_n$, on a $GL_n\to GL(M_n)$ donné par
+  la conjugaison et ca passe au quotient en $PGL_n$! D'où
+  $PGL_n=Aut(M_n)$ et celui de gauche est un groupe algébrique
+  donc, c'est non trivial à priori mdr.
+\end{exs}
+\begin{thm}[Chevalley]
+  Tout groupe algébrique connexe est uniquement une extension
+  d'une variété abélienne (lisse connexe propre) par un groupe
+  algébrique affine.
+\end{thm}
+Autrement dit une unique s.e.c
+\[1\to H\to G\to A\to 1\]
+dans Grp donnée par des morphismees algébriques.
+
+\begin{thm}
+  Tout les groupes algébriques affines sont linéaires.
+\end{thm}
+
+\begin{thm}
+  Soit $G/\C$ un groupe algébrique affine connexe. Alors 
+  les props suivantes sont équivalentes :
+  \begin{enumerate}
+    \item $G$ est isomorphe à un sous-groupe auto-adjoint
+      d'un $GL_n(\C)$, i.e. un sous-groupe fermé algébrique
+      stable par $g\mapsto ^t\bar g$.
+    \item $G$ est linéairement réductif : toute représentation
+      linéaire de $G$ se décompose en somme directe de 
+      représentations irréductibles. (la catégorie des 
+      représentations est semi-simple)
+    \item $G$ est réductif : admet pas de sous-groupe fermé
+      distingué tels que tout ses éléments nilpotents sont
+      unipotents.
+    \item $G$ admet une forme compacte réelle.
+    \item $G$ admet un sous-groupe compact Zariski-dense.
+    \item $\C[X]^G$ est de type fini sur $\C$ pour toute action
+      algébrique de $G$ sur une variété affine $X$.
+  \end{enumerate}
+\end{thm}
+\begin{exo}
+  Prouver qu'être réductif est stable sur les sous-groupes
+  distingués fermés ou quotients.
+\end{exo}
+\chapter{Groupes algébriques affines réductifs}
+On prend tjr $k$ algébriquement clos.
+\section{Les bases}
+\subsection{La composante neutre}
+\begin{prop}
+  Soit $G$ un groupe algébrique.
+  \begin{enumerate}
+    \item L'élément neutre est contenue dans une unique
+      composante irréductible de $G$, $G^0$, la composante neutre.
+    \item $G^0$ est fermé normal dans $G$ d'indice fini.
+    \item Les classes à gauche de $G^0$ dans $G$ sont les
+      composantes connexes ainsi que irréductibles de $G$.
+    \item Tout sous-groupe d'indice fini fermé contient $G^0$
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  $1.$ il existe un point dans une unique composante puis par
+  translation (l'image isomorphe d'un truc irréd est irréd). Sinon
+  juste psq c'est lisse. \\
+
+  $2.$ c'est un sous-groupe irréd via l'image de 
+  $G^0\times G^0\to G$. Ça contient $G^0$ donc c'est $G^0$,
+  l'inversion envoie une c.c
+  sur une c.c, et $e$ sur $e$. La conjugaison est un automorphisme
+  et envoie $e$ sur $e$.
+\end{proof}
+
+\subsection{Noyau et image}
+\begin{thm}
+  Étant donné $f\colon G\to H$ un morphisme de groupes algébriques.
+  \begin{enumerate}
+    \item Le noyau est fermé normal.
+    \item l'image est fermée.
+    \item $f(G^0)=f(G)^0$.
+    \item $f$ est un iso ssi c'est une bijection.
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  $1.$ est facile.\\
+  \begin{thm}[Chevalley]
+    Les images de flèches algébriques contiennent des ouverts
+    dense.
+  \end{thm}
+  \begin{lem}
+    Si $U,V$ sont deux ouverts denses distincts de $G$.
+  \end{lem}
+  \begin{proof}
+    On a pour tout $g$, $U\cap g.i(V)\ne \emptyset$ d'où le
+    résultat lol. En particulier $U^2=G$ lol.
+  \end{proof}
+  \begin{prop}
+    Si $H$ est un sous-groupe (abstrait) de $G$ alors 
+    $\bar H$ est un sous-groupe fermé de $G$. Si en plus $H$
+    contenait un ouvert dense de $\bar H$ alors $H$ était fermé.
+  \end{prop}
+  \begin{proof}
+    On a direct que $i(\bar H)=\bar{i(H)}=\bar H$ lol. En plus
+    $h.\bar H=\bar{hH}=\bar H$ car $L_h$ est un automorphisme
+    d'où $H.\bar H=\bar H$, maintenant pour $h\in \bar H$ on a
+    $\bar H.h=\bar{H.h}$ car le truc de gauche est fermé d'où
+    $\bar H.h\subset \bar H$. I.e. $\bar H.\bar H\subset\bar H$.
+    Si $H$ contient $U$ dense ouvert, $H\supset U^2=\bar H$ par le
+    lemme (omg).
+  \end{proof}
+  \begin{rem}
+    Les localement fermés sont fermés.
+  \end{rem}
+  $2.$ Grâce à Chevalley, $f(G)$ contient un ouvert dense d'où
+  $\bar(f(G))=f(G)$ vu que $f(G)$ est un groupe.
+\end{proof}
+
+\section{Actions et représentations}
+\begin{defn}
+  Une action d'un groupe algébrique $G$ sur une variété algébrique
+  $X$ est un morphisme $G\times X\to X$ tel que $G\to Aut(X)$
+  (à droite les bijections) est un morphisme de groupe.
+\end{defn}
+\begin{defn}
+  Soit $G\curvearrowright X$. Et $Y$ un fermé de $X$. Le 
+  normalisateur de $Y$ dans $G$, $N_G(Y)$ est le groupe
+  des $g$ qui préservent $Y$. Le centralisateur fixe $Y$, $C_G(Y)$.
+  Le noyau de l'action de $N_G(Y)\curvearrowright Y$ est $C_G(Y)$.
+  L'action est fidèle si $G\to Aut(X)$ est injective, $C_G(X)=e$.
+  $X^G\subset X$ les points fixes par $G$. Quand $Y=\{x\}$,
+  $N_G(x)=C_G(x)=G_x$ est la ifbre en $x$ de $G\to X$.
+\end{defn}
+\begin{prop}[$G\curvearrowright X$]
+  On a 
+  \begin{enumerate}
+    \item Toutes les orbites sont localement fermés et lisses.
+    \item Toute les orbites de dimension minimale sont fermées.
+      (donc il en existe)
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  Soit $O=G.x=im(G\times\{x\}\to X)$, ça contient un ouvert dense
+  de $\bar O$. Comme $O$ est $\bar O$ sont stable par $G$ et
+  via $U\subset O\subset \bar O$, pour $o\in O$ on a un $g.o\in U$
+  d'où $g^{-1}U\cap O$ est un ouvert qui contient $o$ dans $O$.
+  En plus $\bar O- O$ est $G$-stable d'où une union de $G$-orbites
+  de même dimension plus petite que $\bar O$ pas forcément un nb
+  fini.
+  \begin{ex}
+    $GL_n\curvearrowright k^n\times k^n$ via l'action diagonale
+    a une infinité d'orbites.
+  \end{ex}
+\end{proof}
+\begin{defn}
+  Soit $G$ un groupe algébrique. Un $G$-module (rationnel) est un
+  $k$-ev $V$ muni d'une action linéaire de $G$, $G\to GL(V)$
+  algébrique, tel que tout $v\in V$ est contenu dans un $G$-sous
+  module de dimension finie stable par l'action induite.
+\end{defn}
+\begin{ex}
+  Toute action algébrique $G\curvearrowright X$ fournit une
+  action de $G$ sur $k[X]$ donné par $(g.f)(x)=f(g^{-1}(x))$
+  pour $g\in G$, $f\in k[X]$ et $x\in X$ lisse.
+\end{ex}
+\begin{prop}
+  Soit $G$ un groupe affine agissant sur une variété algébrique 
+  $X$ via la définition précédente. Alors $k[X]$ est un $G$-module.
+\end{prop}
+\begin{proof}
+  Soit $f\in k[X]$, on a $a\colon G\times X\to X$ d'où 
+  $a^*\colon k[X]\to k[G\times X]=k[G]\otimes_k k[X]$. On a
+  $a^*(f)(g,x)=\sum a_i(g)f_i(x)$, par déf c'est
+  $f(g^{-1}.x)$. L'espace vectoriel engendré par les $x\mapsto
+  f_i(g^{-1}.x)$ est de dimension finie. D'où les $g.f_i$ aussi
+  pour tout $g\in G$ qui est le résultat.
+\end{proof}
+\begin{ex}
+  L'action par translation à gauche $G\times G\to G$ si $G$
+  est affine donne un $G$-module $k[G]$ qui est appelé la
+  représentation régulière.
+\end{ex}
+\begin{ex}
+  On a $\C[\Gr_m]=\C[T,T^{-1}]$ un $\Gr_m$-module qui se décompose
+  en modules irreductibles.
+\end{ex}
+
+\printbibliography
+\end{document}
+

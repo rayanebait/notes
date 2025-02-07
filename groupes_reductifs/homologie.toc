@@ -1,0 +1,6 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Groupes algébriques affines réductifs}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Les bases}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}La composante neutre}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.3}Noyau et image}{6}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Actions et représentations}{6}{section.1.2}%

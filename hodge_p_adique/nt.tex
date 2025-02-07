@@ -717,6 +717,89 @@ $i\geq i_0$.
 \end{proof}
 
 
+\chapter{Extensions presque étales}
+Corps locaux de char $0$.
+\section{Normes et traces}
+\begin{lem}
+    $Tr_{L/K}(\m_L^n)=\m_K^r$ avec $r=[(v_L(\D_{L/K})+n)/e_{L/K}]$.
+\end{lem}
+On prends $L/K$ galois avec $[L:K]=p$ et $G=\Z/p\Z$ et $t$ le
+seul saut de ramification : $G_t=G$ et $G_{t+1}=\{e\}$. On a
+\[v_L(\D_{L/K})=\sum (|G_i|-1)=(t+1)(p-1)\]
+\begin{lem}
+    Pour $x\in \m_L^n$ on a 
+    \[N_{L/K}(1+x)=1+N_{L/K}(x)+Tr_{L/K}(x)\mod \m_K^s\]
+    avec $s=[\frac{(p-1)(t+1)+2n}{p}]$.
+\end{lem}
+\begin{proof}
+    On a 
+    \begin{align*}
+        N_{L/K}(1+x)&=\prod_{g\in G}(1+g.x)\\
+                    &=1+N_{L/K}(x)+Tr_{L/K}(x)+\sum_{g_1\ne g_2}g_1(x)g_2(x)+\ldots+\sum_{g_1\ne\ldots\ne g_{p-1}}\prod g_i(x)\\
+    \end{align*}
+    Dans chaque somme, on prend des éléments dans 
+    $C_j=\{K\subset G;|K|=j\}$ (en prenant $i<j$ c'est pas trivial
+    l'action de $G$). Maintenant $G$
+    agit terme à terme sur $C_j$ qu'on décompose en orbites
+    de tailles $p$. Omg, on peut écrire les sommes comme sommes
+    de traces (chaque orbite (!!!)) d'éléments de $\m_L^{jn}$ par
+    hypothèse, on peut prendre $j=2$. Pour tout $y\in \Or_L$,
+    le premier lemme donne $Tr_{L/K}(y)\in \m_K^r$ et
+    le résultat suit.
+\end{proof}
+\begin{cor}
+    Pour tout $x\in \Or_L$, 
+    $v_K(N_{L/K}(1+x)-1-N_{L/K}(x))\geq t(p-1)/p$
+\end{cor}
+\begin{proof}
+    Si $x\in \Or_L$, par le deuxième lemme $N_{L/K}(1+x)=1+N_{L/K}(x)+Tr_{L/K}(x)\mod \m_K^{\frac{(p-1)(t+1)}{p}}$.
+    Maintenant $(p-1)(t+1)/p=\frac{t(p-1)}{p}+1-1/p$ et
+    $[(p-1)(t+1)/p]\geq t(p-1)/p$ d'où par le premier lemme 
+    $Tr_{L/K}(x)\in \m_K^{t(p-1)/p}$.
+\end{proof}
+
+\section{Extensions profondément (deeply) ramifiées}
+On prends $K_\infty/K$ une extensions infinie de corps locaux
+de caractéristique $0$ et $K_\infty=\cup_{n=0}^\infty K_n$,
+$K_n\subset K_{n+1}$, $[K_n:K]<\infty$. À
+l'inverse on peut écrire toute extension infinie de cette manière
+(exo). On veut définir $\D_{K_\infty/K}$ moralement on veut
+définir comme $\cap \D_{K_n/K}$. L'anneau $\Or_{K_\infty}$ est
+bien défini et c'est $\cup \Or_{K_n}$. On pose
+\[\D_{K_\infty/K}:=\cap (\D_{K_n/K}\Or_{K_\infty})\]
+et on a $v_K(\D_{K_\infty/K})=\sup_n\{v_K(\D_{K_n/K})\}$ (étendre
+à $\bar K$ ?).
+
+Soit $L_\infty/K_\infty$ une extension finie avec 
+$L_\infty=K_\infty(\alpha)$. En particulier, 
+$f=\mu_\alpha\in K_{n_0}[X]$! On pose $n_0=0$ pour simplifier.
+On pose $L_n=K_n[\alpha]$, on obtient 
+% https://q.uiver.app/#q=WzAsNixbMCwyLCJMXzA9S18wW1xcYWxwaGFdIl0sWzEsMSwiTF9uPUtfbltcXGFscGhhXSJdLFsxLDMsIktfMCJdLFsyLDIsIlxcYnVsbGV0Il0sWzIsMCwiTF9cXGluZnR5Il0sWzMsMSwiS19cXGluZnR5Il0sWzAsMV0sWzIsMF0sWzIsM10sWzMsMV0sWzEsNF0sWzMsNV0sWzUsNF1d
+\[\begin{tikzcd}
+	&& {L_\infty} \\
+	& {L_n} && {K_\infty} \\
+	{L_0} && K_n \\
+	& {K_0}
+	\arrow[from=2-2, to=1-3]
+	\arrow[from=2-4, to=1-3]
+	\arrow[from=3-1, to=2-2]
+	\arrow[from=3-3, to=2-2]
+	\arrow[from=3-3, to=2-4]
+	\arrow[from=4-2, to=3-1]
+	\arrow[from=4-2, to=3-3]
+\end{tikzcd}\]
+\begin{prop}
+    On a
+    \begin{enumerate}
+        \item Si $m\geq n$, alors
+            $\D_{L_n/K_n}\subset \D_{L_m/K_m}$
+        \item $\D_{L_\infty/K_\infty}= \cup_{n=0}^\infty(\D_{L_n/K_n}\Or_{L_\infty})$
+    \end{enumerate}
+\end{prop}
+En terme de valuation on a 
+$v_K(\D_{L_n/K_n})\geq v_K(\D_{L_m/K_m})$ et 
+$v_K(\D_{L_\infty/K_\infty})=\inf\{v_L(\D_{L_n/K_n})\}$.
+
 
 
 
