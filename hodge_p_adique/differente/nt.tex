@@ -1,0 +1,183 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{La différente}
+\date{}
+
+\begin{document}
+\maketitle
+Cet article de Keith est cool : \href{https://kconrad.math.uconn.edu/blurbs/gradnumthy/different.pdf}.
+
+\section{Remarques}
+Ducoup y'a des nouvelles définitions : les duaux relatifs à
+une fonctionnelle (linéaire, i.e. $f\colon M\to M^\wedge$), comme 
+$\{x\in L|Tr(xL)\subset \Or_K\}$. Et les opérateurs semi-simple.
+I.e. les fonctionnelles qui se comportent comme on le voudrait.
+
+\section{Duaux}
+Cet autre article de Keith est cool :\href{https://kconrad.math.uconn.edu/blurbs/linmultialg/dualmod.pdf}.
+
+\subsection{Cas de $M\subset K$, et $(\_\mapsto (m\mapsto \_.m)\colon M\to M^\wedge$}
+Étant donné un anneau intègre $R$, $K$ le corps de fractions de
+$R$ et $M\subset K$ un $R$-module. On définit
+\[\Hom_R(M,R)=M^\wedge\]
+alors $M^\wedge\simeq _K(R,M)$ via $\varphi\mapsto \varphi(1)$
+et $c\mapsto (m\mapsto c.m)$. C'est simplement que $\varphi(b/b)=
+b\varphi(1/b)=\varphi(1)$ d'où $\varphi(1/b)=\varphi(1)/b$. On dit
+que $M$ a un dénominateur commun dans $R$ si y'a un $c\in R$ tel
+que $M\subset c^{-1}R$.
+En gros si c'est un idéal fractionnaire.
+
+Si $R$ est noethérien alors $M$ est de type fini ssi il a un
+dénominateur commun dans $R$ (i.e. idéal fractionnaire).
+Maintenant $M^\wedge\ne 0$ ssi $_K(R,M)\ne 0$ i.e. $M$ a un
+dénominateur commun dans $R$, c'est pas immédiat $\varphi(1)\in K$.
+Mais $a/bM\subset R$ équivaut à $aM\subset bR\subset R$.
+\subsection{Cas général}
+Si $M$ est un $R$-module et $f\colon M\to M^\wedge$ une fonctionnelle
+on peut définir $M^\wedge:=\{x\in M\otimes_R K| f(x,M)\subset R\}$
+quand ça fait sens. Dans le cas où $M=\Or_L$, $R=\Or_K$ et $f=Tr_{L/K}(\_.\_)$
+on obtient
+\[\Or_L^\wedge=\{x\in L| Tr_{L/K}(x\Or_L)\subset \Or_K\}\]
+
+\section{Calcul}
+Si $M$ est libre de rang $n$ alors $M^\wedge$ aussi via 
+l'existence de la base duale (le point clé c'est qu'on peut
+définir le morphisme entier sur la base de $M$ et qu'on a toujours
+les projections). Quand on est dans le cas $L/K$, $\Or_L/\Or_K$ 
+et que $\Or_K$ est principal on se retrouve dans le cas libre et
+on peut expliciter les calculs. Dans pour un peu plus de généralités
+je prends $R$ principal et $M$ libre de rang $n$. Puis $M\otimes K=K^n$.
+Si $f\colon (K^n)^2\times K^n$ est bilinéaire on cherche une base de
+$M^\wedge=\{x\in M\otimes K=K^n|f(x,M)\subset R\}$, en écrivant ça plus
+explicitement avec $M=\oplus Re_i$. On veut résoudre, avec $x=\sum x_ie_i$,
+pour tout $j$ : $f(x,e_j)\in R$. Ça suffit parce qu'alors $f(x,M)\subset R$.
+Et donc il suffit de résoudre 
+\[\begin{cases}x_1f(e_1,e_1)+x_2f_(e_1,e_2)+&\ldots+x_nf(e_1,e_n)\in R\\
+x_1f(e_2,e_1)+x_2f_(e_2,e_2)+&\ldots+x_nf(e_2,e_n)\in R\\
+                             &\vdots\\
+x_1f(e_n,e_1)+x_2f_(e_n,e_2)+&\ldots+x_nf(e_n,e_n)\in R\\
+\end{cases}\]
+en écrivant $A=(f(e_i,e_j))_{i,j}$ on résoud $A.X\in R^n$ et ça
+c'est juste $X\in A^{-1}R^n$ terme à terme on obtient un système
+comme d'hab.
+
+\subsection{Calcul d'inverse}
+Si $I$ est un idéal fractionnaire de $K$ et $I=\sum Rx_i$, on veut calculer
+$_K(R:I)$, on résoud $yI\subset R$. Autrement dit $yx_i\subset R$.
+
+\section{La différente}
+Elle est donnée par 
+\[\D_{L/K}:=(\Or_L^\wedge)^{-1}=(\{x\in L| Tr_{L/K}(x\Or_L)\subset \Or_K\})^{-1}\]
+avec $I^{-1}=_L(\Or_L:I)$.
+
+\end{document}

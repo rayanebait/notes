@@ -64,7 +64,6 @@ sorting=ynt
 \renewcommand{\b}{\mathfrak b}
 \renewcommand{\a}{\mathfrak a}
 \newcommand{\p}{\mathfrak p}
-\newcommand{\q}{\mathfrak q}
 \newcommand{\I}{\mathfrak I}
 \newcommand{\Hom}{\textrm{Hom}}
 \newcommand{\disc}{\textrm{disc}}
@@ -111,16 +110,28 @@ sorting=ynt
     filecolor=wgrey
 }
 
-\title{Algèbre en dimension $1$}
-\date{}
+\title{Polynômes et algèbre linéaire}
 
 \begin{document}
 \maketitle
 
-\chapter{un peu de catégories}
-\chapter{produit tensoriel bis}
-
-
+\section{Interpolation}
+Étant donnés $n+1$-couples $(x_i,y_i)$ on veut un
+polynôme qui vaut $y_i$ en $x_i$. On peut prendre
+$P(X)=\prod_{i=0}^n (X-x_i)$. Ensuite
+\[P'(X)=\sum_{i=0}^n(\prod_{j\ne i}(X-x_j))=\sum l_i(X)\]
+d'où
+\[P'(x_i)=\prod_{j\ne i}(x_i-x_j)=l_i(x_i)\]
+maintenant $l_i(x_j)=\delta_{ij}$ ca fait un genre de
+base d'interpolation. Le polynôme d'interpolation est
+par déf
+\[L(X,(x_i),(y_j)):=\sum_{i=0}^n y_i \frac{P(X)}{P'(x_i)(X-x_i)}\]
+qui vaut $y_i$ en $x_i$ et est de degré $n$. 
+\section{Identités}
+Si on prends $y_j=1$ pour tout $j$ alors $L(X,(x_i),(1))-1$ a
+$n+1$-racines et est de degré $n$ d'où est nul. Pareil, en prenant
+$y_i=\alpha_i^k$ pour $k\leq n$, $L(X,(x_i),(x_i^k))-X^k$ à 
+$n+1$-racines. Pour tout polynôme $Q$ de degré $\leq n$ :
+\[L(X,(x_i),(Q(x_i)))-Q(X)=0\]
 
 \end{document}
-
