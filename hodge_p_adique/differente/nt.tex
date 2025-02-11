@@ -149,6 +149,27 @@ quand ça fait sens. Dans le cas où $M=\Or_L$, $R=\Or_K$ et $f=Tr_{L/K}(\_.\_)$
 on obtient
 \[\Or_L^\wedge=\{x\in L| Tr_{L/K}(x\Or_L)\subset \Or_K\}\]
 
+\subsection{Base duale}
+Étant donné $f\colon M\to M^\wedge$ qui s'étend à $M\otimes_R K$
+et $(e_i)_{i=1,\ldots,n}$ une base de $M$ sur $R$ on peut trouver
+$e_i^\wedge$ une base de $M^\wedge$ telle que
+$f(e_i,e_j^\wedge)=\delta_{ij}$. En plus elle est de taille 
+$n$ aussi. Si elle existe elle est libre vu que
+$\sum a_ie_i^\wedge=0$ implique $a_j=\sum a_if(e_j,e_i^\wedge)=0$
+pour chaque $j$. Ensuite si on a $v\in M^\wedge$ t.q 
+$f(e_i,v)=a_i\in R$ alors $v-\sum a_ie_i^\wedge\in \ker(f(e_j,\_))$
+pour chaque $j$. Sauf que par hypothèse d'existence de $(e_i^\wedge)_i$,
+$\ker(f(e_j,\_))=\oplus_{i\ne j} e_i^\wedge$. Et leur intersection 
+est $0$. 
+
+Pour l'existence il faut une hypothèse de non dégénérescence je pense.
+En fait il faut plus ?! \href{https://en.wikipedia.org/wiki/Bilinear_form#Non-degenerate_bilinear_forms}{Le wiki}
+dit que il faut ajouter hypothèse d'unimodularité. En gros 
+non dégénéré au sens des corps implique pas que $M\to M^\wedge$
+est un iso. Par ex $B(x,y)=2xy$ sur $\Z$. Mais je pense qu'il
+suffit que $M\otimes_R K\to (M\otimes_R K)^\wedge$ soit non
+dégénérée. Vu que notre base duale est dans $M\otimes_R K$.
+
 \section{Calcul}
 Si $M$ est libre de rang $n$ alors $M^\wedge$ aussi via 
 l'existence de la base duale (le point clé c'est qu'on peut
@@ -173,11 +194,60 @@ comme d'hab.
 
 \subsection{Calcul d'inverse}
 Si $I$ est un idéal fractionnaire de $K$ et $I=\sum Rx_i$, on veut calculer
-$_K(R:I)$, on résoud $yI\subset R$. Autrement dit $yx_i\subset R$.
+$_K(R:I)$, on résoud $yI\subset R$. Autrement dit $yx_i\subset R$ pour
+chaque $i$, i.e. $y\in \cap_i x_i^{-1}R$.
 
 \section{La différente}
 Elle est donnée par 
 \[\D_{L/K}:=(\Or_L^\wedge)^{-1}=(\{x\in L| Tr_{L/K}(x\Or_L)\subset \Or_K\})^{-1}\]
 avec $I^{-1}=_L(\Or_L:I)$.
+
+\subsection{Base duale pour la trace}
+Pour trouver la base duale de $\D_{L/K}^{-1}$
+avec $L=K[\alpha]$ et $\alpha\in \Or_L$ on a en notant 
+$P(T)=(T-\alpha)(\sum_{i=1}^{n-1} c_i(\alpha)T^i)$ que 
+\[\sum_i \alpha_i^k\frac{P(T)}{P'(\alpha_i)(T-\alpha_i)}=T^k\]
+d'où en développant 
+$\sum_i \alpha_i^k\frac{c_j(\alpha_i)}{P'(\alpha_i)}=\delta_{ij}$.
+Et ça c'est $Tr_{L/K}(\alpha\frac{c_j(\alpha)}{P'(\alpha)})$ d'où
+$(\frac{c_j(\alpha)}{P'(\alpha)})_j$ est duale pour $(\alpha^k)_k$.
+En plus vu que on peut réécrire 
+\[([P(T)-P(\alpha))/(T-\alpha)=\sum_{i=1}^n a_i\frac{(T^i-\alpha^i)}{T-\alpha}\]
+et en développant on trouve $\sum_{i=j+1}^n a_i\alpha_{i-1-j}=c_j(\alpha)$.
+De $\alpha\in\Or_L$ on a $a_n=1$ d'où la matrice de transition de 
+$1,\alpha,\ldots,\alpha^{n-1}$ vers $(c_j(\alpha))_j$ est triangulaire
+inférieure avec une diagonale faite de $1$ d'où inversible dans 
+$\Or_K$.
+
+En conclusion la base duale
+pour la trace de $(\alpha^i)_i$ est $(c_j(\alpha)/f'(\alpha))_j$.
+Mais quand $\alpha\in\Or_L$, 
+$\Or_K[\alpha]^\wedge=\frac{1}{P'(\alpha)}\Or_K[\alpha]$.
+\subsection{La différente quand $\Or_L=\Or_K[\alpha]$}
+Par exemple dans des corps locaux de caractéristique $0$ un tel
+$\alpha$ existe toujours via $\Or_L=\Or_K[\theta,\pi_L]$ et
+le fait que l'extension résiduelle est séparable.
+
+Maintenant $\D_{L/K}=((\Or_L)^\wedge)^{-1}=\frac{1}{P'(\alpha)}\Or_L$.
+
+\begin{rem}
+    Directement si $L=K[\alpha]/K$ est non ramifiée, $P'(\alpha)\in \Or_L^\times$
+    car $\bar P'(\bar \alpha)\ne 0\mod \pi_L$.
+    d'où $\D_{L/K}=\Or_L$.
+\end{rem}
+
+\section{Transitivité}
+Étant donné $L/F/K$, on a $\D_{L/K}=\D_{L/F}\D_{F/K}$. Suffit de montrer
+que, $\Or_{L/K}^\wedge=\Or_{L/F}^\wedge(\Or_{F/K}^\wedge)$ vu que 
+$(IJ)^{-1}=I^{-1}J^{-1}$ c'est un calcul terme à terme. Et pour ça 
+le seul cas pas évident c'est $x\in \Or_{L/K}^\wedge$ implique est
+un produit. Si $\Or_K$ est un dvr ça va. 
+
+
+
+
+
+
+
 
 \end{document}
