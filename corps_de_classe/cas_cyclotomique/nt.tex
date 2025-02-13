@@ -110,49 +110,46 @@ sorting=ynt
     filecolor=wgrey
 }
 
-\title{Trucs à faire}
+\title{Extensions cyclotomiques de $\Q/\Q_p$}
 \date{}
 
 \begin{document}
 \maketitle
-\section{Formules de binômes, valeur absolue de factorielles}
-Quand on définit les logs et exponentielles $p$-adiques on les
-définit uniquement via leurs séries. Et pour montrer que c'est
-bien des morphismes de groupes c'est des preuves directes (:sob:)
-j'aimerai bien savoir faire. Aussi, pour la convergence on a
-besoin de connaître la valeur absolue $p$-adique de $n!$.
+\chapter{Réduction au cas $\zeta_{p^r}$}
+Avec $m=\prod p_i^{r_i}$ dans l'ordre, calcul successif
+de $\zeta_m$ de l'anneau d'entier, du groupe de Galois
+et peut-être de la ramification.
+\section{$\zeta_m=\prod\zeta_{p_i^{r_i}}$}
+Étant donné $m=\prod p_i^{r_i}$, on a
+$|z=\prod\zeta_{p_i^{r_i}}|=m$ via $z^a=1$
+implique $z^a/\zeta_{p_i^{r_i}}^a=\zeta_{p_i^{r_i}}^a$
+et en mettant à la puissance $p_i^{r_i}$ des deux 
+côtés on obtient $p_i^{r_i}\mid a\prod_{j\ne i}p_j^{r_j}$
+d'où $p_i^{r_i}\mid a$ pour tout $i$ et le résultat.
+\section{$\Z[\zeta_m]=\Or_{\Q(\zeta_m)}$}
+On remarque que $\zeta_{p_i^k}\in\Z[\zeta_m]$ pour
+tout $k$. En plus $\prod_i\Z[\zeta_{p_i^{r_i}}]=\Z[\zeta_m]$
+ducoup si $\Or_{\Q(\zeta_{p_i^{r_i}})}=\Z[\zeta_{p_i^{r_i}}]$
+il suffit de vérifier que 
+$\prod_i \Or_{\Q(\zeta_{p_i^{r_i}})}=\Or_{\Q(\zeta_m)}$. Pareil,
+il suffit de le vérifier à tout les premiers localement. Sauf que
 
-\section{Théorie de galois infinie}
-J'ai compris pas mal de choses sur le pdf de milne mais ce serait
-bien d'en faire des notes. Notamment, la correspondance
-groupe corps. Et le fait qu'un sous-groupe quelconque $H$
-vérifie $\Omega^H=\Omega^{\bar H}$ et 
-$\bar H=Gal(\Omega, (\Omega)^H)$. 
-\section{Théorie de galois tout court}
-Simplement voir un peu mieux que de $E\to\Omega$ on peut
-toujours étendre en $\Omega\to \Omega$, par exemple quand 
-$\Omega= \bar K$ est algébriquement clos. Aussi les extensions
-linéairement indéps et $[LM:M]=[L:K]$ quand $L\cap M=K$ et le
-cas général. Aussi la fonctorialité de galois, la transitivité
-des trucs normaux et séparables. Et pleins d'autres choses,
-le pdf de Milne est génial pour ça.
-\section{Théorie de Lubin-Tate}
-Pour comprendre un poil la réciprocité, ça peut-être pratique
-d'y comprendre quelque chose.
-\section{Action de groupes}
-Cet argument m'a trop intrigué, agir sur les sous ensembles de
-$Gal(L/K)=G$ pour agir sur les coeffs de $P(X)\in K[X]$ et
-les écrire comme somme de traces!!
 
-\section{Polynômes et algèbre linéaire}
-Exploiter l'analogie entre linéaire -> degré $1$, 
-bilinéaire -> degré $2$, trilinéaire -> degré $3$. Aussi,
-les espaces caractéristiques et la décomposition de Jordan pour
-l'étude du groupe de Galois via ses représentations.
+\chapter{Cas $\zeta_{p^r}$}
+Le but c'est de trouver la ramification, montrer
+que $\Or_K[\zeta_p]=\Or_L$ pour $K=\Q$ et $\Q_p$.
+Calculer le groupe de Galois, Trouver les groupes
+de décompositions en lower et upper, écrire la
+fonction de Herbrand.
 
-\section{Différente 2}
-Je l'ai fais dans le cas des corps locaux ou on est dans le 
-meilleur des cas. Mais dans le cas général on a probablement aussi
-une base explicite.
+\section{Polynôme minimal et groupe de galois.}
+Étant donné $l\ne 1\mod p$, $1+X+\ldots+X^{p-1}\mod l$ est
+irréductible. 
+
+\section{Anneau d'entier}
+
+
+
+
 
 \end{document}
