@@ -1,0 +1,171 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Le Discriminant}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Matrice de Vandermonde}
+Deux trucs que j'ai fais à l'instant : 
+\[V((\alpha_i)_{i=1,\ldots,m},n):=\begin{pmatrix}1&\alpha_1&\ldots&\alpha_1^{n-1}\\
+    1&\alpha_2&\ldots&\alpha_2^{n-1}\\
+    \vdots&\vdots&&\vdots\\
+    1&\alpha_m&\ldots&\alpha_m^{n-1}\\
+\end{pmatrix}\]
+alors $\det(V)=\prod_{1\leq i<j\leq n} (\alpha_i-\alpha_j)$.
+\section{Inversibilité}
+Quand $n=m$, on regarde $X=(x_i)^t$ et $P(Y)=\sum x_iY^i$.
+Alors $V.X=0$ veut dire que $P(\alpha_i)=0$ pour chaque $i$.
+Sauf que le polynôme est de degré $n-1$ et y'a $n$ racines.
+D'où $x_i=0$ pour chaque $i$ dès que les $\alpha_i$ sont 
+distincts et l'inversibilité.
+
+\subsection{Preuve magique}
+Une preuve rapide, en mettant comme indeterminée les $\alpha_i$,
+le déterminant est de degré $n(n-1)/2$ et le produit en
+question aussi. Y'a une divisibilité via la section d'avant d'où
+le résultat!
+
+\subsection{Autre preuve}
+On soustrait $L_1$ la première aux autres. Et là on a
+$V((\alpha_i)_{i=1,\ldots,n},n)\leftarrow(\sum \alpha_i^j-\alpha_1^j)$,
+et la première colonne c'est juste un $1$ au début. Donc on peut
+regarder la sous matrice. On peut factoriser $\prod_{1<i} (\alpha_i-\alpha_1)$
+en factorisant le terme à chaque ligne. Maintenant la nouvelle
+matrice (faudra l'écrire), c'est $V'=(\sum_{k=1}\alpha_i^{j-k}\alpha_1^k)$. 
+Et là on remarque en notant 
+    \[T=\begin{pmatrix}1&\alpha_1&\alpha_1^2&\ldots&\alpha_1^{n-1}\\
+        0&1&\alpha_1&\ldots&\alpha_1^{n-2}\\
+        \vdots&\ldots&\ldots&\ldots&\vdots\\
+        0&0&\ldots&\ldots&1\\
+    \end{pmatrix}
+    \]
+que la matrice restante c'est $T.V((\alpha_i)_{i=2,\ldots,n-1},n-1)$
+et $\det(T)$ est de déterminant $1$ d'où on peut faire une récurrence.
+
+\begin{rem}
+    Non le $n-1$ est pas embêtant dans $V$, les $\alpha_m-\alpha_i$ 
+    apparaissent bien c'est pas le même indexage.
+\end{rem}
+
+\section{Discriminant}
+C'est défini comme $\det(Tr_{L/K}(x_ix_j))$. On a
+$\det(Tr_{L/K}(x_ix_j))=\det(\sum_{k} g_kx_ig_kx_j)=\det(g_kx_i)\det(g_ix_k)$.
+\begin{rem}
+    L'égalité de droite est bien vraie, la somme vient du produit de celle
+    de droite et sa transposée!
+\end{rem}
+
+
+
+\end{document}
