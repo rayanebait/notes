@@ -1,0 +1,171 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{$\Z_p$-extensions, $L\leq \Z_p^n$-extensions}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Filtration de ramification}
+On se met dans le cadre totalement ramifié et $G=Gal(K_\infty/K)=\Z_p$
+avec $K$ local. Par exemple $\Q_p(\zeta_{p^\infty})/\Q_p(\zeta_p)$.
+\subsection{Cadre}
+On a $G=G_K^{ab}/H$ et si $\theta_K(N)=H\cap P_{ab,K}$ via la réciprocité
+alors 
+\[G^{(\nu)}=(G_K^{ab})^{(\nu)}/(G_K^{ab})^{(\nu)}\cap H=U_K^{(\nu)}/N\cap U_K^{(\nu)}\]
+\subsection{Sauts de ramification}
+Si les $(\nu_i)$ sont les sauts de ramifications 
+c'est des entiers via ceux de $G_K^{ab}$ puis comme $G^{\nu_i}/G^{\nu_{i+1}}$
+est $p$-élémentaire (ça se fait bien) bah
+\[G^{(\nu_i)}\simeq p^i\Z_p\]
+pour chaque $i\geq 1$.
+
+\section{Sauts asymptotiques et différentes}
+Si $i_0$ est le premier $i$ tel que $\nu_{i}>e_K/(p-1)$ alors
+pour tout $i\geq i_0$ (!)
+\[\nu_{i+n}=\nu_i+ne_K\]
+et si $K_n=K_\infty^{p^n\Z_p}$ alors $v_K(\D_{K_n/K})=c+ne_K+a_n/p^n$
+avec $c$ une constante et $a_n$ bornée. 
+\subsection{Sauts asymptotiques}
+On a trois identification, $U^{(\nu_i)}\simeq G^{(\nu_i)}\simeq p^i\Z_p$.
+Maintenant on a $U_K^{(i+e_k)}=(U_K^{(i)})^p$ quand $i>e_K/(p-1)$ simplement
+en appliquant $\exp\circ\log$. Via un générateur $g$ topologique
+et $\rho\colon G^{(\nu)}\to \U^{(\nu)}$ $\rho(g)$ engendre $\U$.
+Maintenant $g^{p^i}$ est un générateur de $p^i\Z_p$ (additif) d'où $\rho(g^{p^i})$ de
+$\U^{(\nu_i)}$. On prend $n=i_0$ tel que $\nu_{i_0}>e_K/(p-1)$.
+Alors $(\U^{(\nu_{i_0})})^p=\U^{(\nu_{i_0}+e_K)}$.
+
+Maintenant faut regarder dans $\Z_p$, $(\U^{(\nu_{i_0})})^p$ correspond à
+$p^{i_0+1}\Z_p$ qui correspond à $G^{(\nu_{i_0+1})}$.
+
+\subsection{Différente}
+En notant $G(n)=G/G^{\nu_n}\cap G=\Z_p/p^n\Z_p$ puis on a 
+\[G(n)^{(\nu_i)}=G^{(\nu_i)}/G(n)\cap G^{(\nu_i)}=p^i\Z_p/p^n\Z_p\simeq \Z_p/p^{n-i}\Z_p\]
+d'où \[|G(n)^{(\nu)}|=\begin{cases} p^{n-i},~\nu_{i-1}<\nu\leq \nu_i\\ 1,~\nu>\nu_{n-1}\end{cases}\]
+Maintenant on coupe 
+\[v_K(\D_{K_n/K})=\int_{-1}^\infty\left(1-1/|G(n)^{(\nu)}|\right)d\nu\]
+en $A_n=\int_{-1}^{i_0}\ldots$ avec $i_0>e_K/(p-1)$ et
+$B_n=\int_{i_0}^\infty \left(1-1/|G(n)^{(\nu)}|\right)d\nu$.
+Vu qu'on connait $\nu_{i+1}-\nu_i$ à partir de $i_0$ on a
+\[B_n=\sum_{i=i_0}^{n-1} e_K(1-1/p^{n-i})=e_k(n-i_0-1)-e_k(p-1)/p^{n-i_0}\]
+d'où le résultat en arreangeant un peu.
+
+
+
+
+\section{Remarques}
+
+
+
+
+\end{document}
