@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.14)  26 DEC 2024 15:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  11 MAR 2025 12:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -835,6 +835,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 116.
+ (./nt.out) (./nt.out)
 \@outlinefile=\write5
 \openout5 = `nt.out'.
 
@@ -882,52 +883,64 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2]
 \bbl@ensure@french {Chapitre} 1.
+[3
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4
+
+]
+\bbl@ensure@french {Chapitre} 2.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 123.
+(hyperref)                removing `math shift' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 123.
+(hyperref)                removing `math shift' on input line 124.
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 125.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 126.
 (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 157.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 146.
+(hyperref)                removing `subscript' on input line 157.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 157.
 
-[3
-
-]
+[5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 178.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 178.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 178.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 166.
+(hyperref)                removing `subscript' on input line 178.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 178.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -936,14 +949,46 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[4]
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 212.
+(hyperref)                removing `math shift' on input line 226.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 212.
+(hyperref)                removing `math shift' on input line 226.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 238.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 238.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 245.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 245.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 245.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 245.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 245.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 245.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -952,18 +997,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6
-
-]
-\bbl@ensure@french {Chapitre} 2.
 [7]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -976,62 +1009,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 \bbl@ensure@french {Chapitre} 3.
-./nt.tex:246: Display math should end with $$.
-<to be read again> 
-                   n
-l.246 \[x_n-x_m\in U\textrm{ dés que} $n
-                                         ,m\geq s(U)$\]
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./nt.tex:246: Missing $ inserted.
-<inserted text> 
-                $
-l.246 \[x_n-x_m\in U\textrm{ dés que} $n,m\geq
-                                                s(U)$\]
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-./nt.tex:246: LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.246 ...m\in U\textrm{ dés que} $n,m\geq s(U)$\]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-./nt.tex:246: Missing $ inserted.
-<inserted text> 
-                $
-l.246 ...m\in U\textrm{ dés que} $n,m\geq s(U)$\]
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./nt.tex:246: Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.246 ...m\in U\textrm{ dés que} $n,m\geq s(U)$\]
-                                                  
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 250.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 250.
-
 [9]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1040,49 +1017,54 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10]
-\bbl@ensure@french {Chapitre} 4.
-[11
+[10
 
-] (./nt.aux)
+]
+\bbl@ensure@french {Chapitre} 4.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 282.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 282.
+
+[11]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12
+
+]
+\bbl@ensure@french {Chapitre} 5.
+[13] (./nt.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package rerunfilecheck Warning: File `nt.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `nt.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  6ED2FC83DB044E8F603D48188BE76B0D;2022.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                nt
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `nt.out' has not changed.
+(rerunfilecheck)             Checksum: 130381ED3C825FA25E0294807664C56F;2519.
 Package logreq Info: Writing requests to 'nt.run.xml'.
 \openout1 = `nt.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31520 strings out of 476076
- 605727 string characters out of 5793774
+ 31551 strings out of 476076
+ 606047 string characters out of 5793775
  1936187 words of memory out of 5000000
- 53122 multiletter control sequences out of 15000+600000
+ 53140 multiletter control sequences out of 15000+600000
  572884 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 131i,14n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 131i,15n,135p,675b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on nt.pdf (11 pages, 161949 bytes).
+Output written on nt.pdf (13 pages, 169271 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

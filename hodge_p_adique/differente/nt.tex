@@ -110,13 +110,14 @@ sorting=ynt
     filecolor=wgrey
 }
 
-\title{La différente}
+\title{La différente, À REORGANISER}
 \date{}
 
 \begin{document}
 \maketitle
 Cet article de Keith est cool : \href{https://kconrad.math.uconn.edu/blurbs/gradnumthy/different.pdf}.
 
+À REORGANISER
 \section{Remarques}
 Ducoup y'a des nouvelles définitions : les duaux relatifs à
 une fonctionnelle (linéaire, i.e. $f\colon M\to M^\wedge$), comme 
@@ -237,7 +238,8 @@ Maintenant $\D_{L/K}=((\Or_L)^\wedge)^{-1}=\frac{1}{P'(\alpha)}\Or_L$.
 \end{rem}
 
 \section{Transitivité}
-Étant donné $L/F/K$, on a $\D_{L/K}=\D_{L/F}\D_{F/K}$. Suffit de montrer
+Étant donné $L/F/K$, on a $\D_{L/K}=\D_{L/F}\D_{F/K}$. Suffit de
+montrer
 que, $\Or_{L/K}^\wedge=\Or_{L/F}^\wedge(\Or_{F/K}^\wedge)$ vu que 
 $(IJ)^{-1}=I^{-1}J^{-1}$ c'est un calcul terme à terme. Et pour ça 
 le seul cas pas évident c'est $x\in \Or_{L/K}^\wedge$ implique est
@@ -246,6 +248,25 @@ un produit.
 Dans le cas complet ça va, c'est que des dvrs d'où
 on a une base produit. 
 
+\section{Caractérisation}
+On a $Tr(D_{L/K}^{-1})=\Or_K$ et c'est le plus grand idéal 
+fractionnaire tel que c'est vrai. Faut penser à la base
+duale pour le voir! 
+
+\chapter{Résumé}
+On a $Tr_{L/K}(D_{L/K}^{-1})=\Or_K$, la surjectivité vient de
+la base duale. L'autre inclusion est par déf. 
+
+La transitivité on peut prouver que 
+$Tr_{L/F}(D_{L/K}^{-1})=D_{F/K}^{-1}$ sachant que si $x\in F$
+et $v_i^*$ est dans la base duale de $L$ sur $F$ alors $xv_i^*$ 
+est dans $D_{L/K}^{-1}$, la raison c'est que $Tr_{F/K}(x)\in\Or_K$.Par déf.
+
+L'autre côté est simple.
+
+L'existence de la base duale c'est que $Hom(L,K)$ est de
+dimension $\leq [L:K]$ et $x\mapsto Tr(\_x)$ est injective par non
+dégénérescence.
 
 
 
