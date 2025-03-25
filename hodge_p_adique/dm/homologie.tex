@@ -1,0 +1,213 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{slog}{Slogan}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Devoir maison de théorie de Hodge p-adique}
+\author{Rayane Bait}
+\date{ }
+
+\begin{document}
+\maketitle
+
+\section*{Exercice 1}
+\subsection*{1)}
+On note $R:=\{\alpha\zeta_p^i\}_{i=0,\ldots, p-1}$. Alors
+$R$ est l'ensemble des racines de $f$. En effet,
+\[(\alpha\zeta_p^i)^p=\alpha^p(\zeta_p^p)^i=p\] et
+$\alpha\zeta_i\ne\alpha\zeta_p^j$ pour $i\ne j\mod p$ car
+dans ce cas $\frac{\alpha\zeta_p^i}{\alpha\zeta_p^j}=\zeta_p^{i-j}
+\ne 1$,
+d'où $|R|=p=\deg(f)$ et l'assertion sur $R$.
+
+En particulier, on en déduit que
+$K\subset Q(\alpha,\zeta_p^i)$. En plus, $\zeta_p=\alpha\zeta_p/
+\alpha\in K$
+d'où $\Q_p(\zeta_p,\alpha)\subset K$.
+
+\subsection*{2)}
+On assume pour l'instant que $\Q_p(\zeta_p)/\Q_p$ est 
+galoisienne de degré 
+$p-1$ et que $\Q_p(\alpha)/\Q_p$ est de degré $p$. On remarque 
+alors que
+$\Q_p(\alpha)/\Q_p$ et $\Q_p(\zeta_p)/\Q_p$ sont linéairement
+disjointes car $p\wedge p-1=1$. En particulier 
+\begin{align*}
+	[K:\Q_p]&=[K:\Q_p(\zeta_p)][\Q_p(\zeta_p):\Q_p]\\
+		&=[\Q_p(\alpha):\Q_p][\Q_p(\zeta_p):\Q_p]\\
+		&=p(p-1)
+\end{align*}
+et $H=Gal(K/\Q_p(\zeta_p))$ est normal dans $G$ car 
+$\Q_p(\zeta_p)/\Q_p$ est galoisienne. Enfin $H$ est d'indice 
+$|G/H|=|Gal(\Q_p(\zeta_p)/\Q_p)|=p-1$ qui est le résultat voulu. 
+
+On prouve maintenant les assertions. On note $X^p-1=(X-1)\phi_p(X)$
+et on a 
+\[(X+1)^p-1=X(\sum_{k=1}^{p-1}\begin{pmatrix}p\\ k+1\end{pmatrix}
+X^k +p)=X\phi_p(X+1)\]
+d'où on déduit que $\phi_p(X+1)$ est $p\Z_p$-Eisenstein donc
+irréductible dans $\Z_p[X]$. Maintenant $\Q_p(\zeta_p)$ est le
+corps de décomposition de $\phi_p(X)$ sur $\Q_p$ d'où 
+$\Q_p(\zeta_p)/\Q_p$ est galoisienne de degré
+$[\Q_p(\zeta_p):\Q_p]=\deg(\phi_p)=p-1$. De même $X^p-p$ est
+$p\Z_p$-Eisenstein de degré $p$ et $\Q_p(\alpha)$ en est un
+corps de rupture d'où le résultat.
+
+\subsection*{3)}
+Dans la partie $2)$ on a montré que $\phi_p(X+1)$ est 
+$p\Z_p$-Eisenstein. On en déduit directement que 
+$\Q_p(\zeta_p-1)/\Q_p$ est totalement ramifiée et que $\zeta_p-1$
+,qui est une racine de $\phi_p(X+1)$, en est une uniformisante.
+De la même manière, $\Q_p(\alpha)/\Q_p$ est totalement ramifiée
+et $\alpha$ en est une uniformisante. Enfin on a 
+\[e_{K/\Q_p}=e_{K/\Q_p(\zeta_p)}e_{\Q_p(\zeta_p)/\Q_p}=e_{\Q_p(\alpha)/\Q_p}e_{\Q_p(\zeta_p)/\Q_p}=p(p-1)\]
+ce qui prouve que $K/\Q_p$ est totalement ramifiée et 
+\[v_p(\frac{\alpha}{\zeta_p-1})=\frac{1}{p}-\frac{1}{p-1}=\frac{p-(p-1)}{p(p-1)}=\frac{1}{p(p-1)}\]
+si on note $v_p$ la valuation sur $K$ qui étend la valuation 
+$p$-adique normalisée. On a prouvé que $\frac{\alpha}{\zeta_p-1}$
+est une uniformisante de $K/\Q_p$. 
+
+
+\subsection*{4) A REFAIRE YA ERREUR}
+Le groupe de Galois $G$ est formé des automorphismes 
+\[\{s_{ij}\}_{i=1,\ldots,p-1;j=0,\ldots,p-1}\]
+définis par $s_{ij}(\zeta_p)=\zeta_p^i$ et 
+$s_{ij}(\alpha)=\alpha\zeta_p^j$. De la ramification totale de 
+$K/\Q_p$ on déduit que $\Z_p[\lambda]=\Or_K$ si l'on pose
+$\lambda=\frac{\alpha}{\zeta_p-1}$. Soit maintenant $s_{ij}$ un
+élément de $G$. Pour $g\in G$ si $i_G(g)$ désigne le plus
+grand entier $i$ tel que $g\in G_{i-1}$, on a
+\[i_G(g)=e_{K/\Q_p}v_p(g\lambda -\lambda).\]
+Pour $g=s_{ij}$ on distingue deux cas, le cas $i=j$ et $i\ne j$.
+En général on a
+\begin{align*}
+	s_{ij}\lambda-\lambda&=\frac{\alpha\zeta_p^j}{\zeta_p^i-1}
+	-\frac{\alpha}{\zeta_p-1}\\
+			     &=\frac{\alpha(\zeta_p^j-\zeta_p^i+1)}{(\zeta_p^i-1)(\zeta_p-1)}
+\end{align*}
+et dans tout les cas, $i>0$ assure que
+\[v_p(\frac{\alpha}{(\zeta_p^i-1)(\zeta_p-1)})
+=\frac{1}{p(p-1)}-\frac{1}{p-1}=\frac{-(p-1)}{p(p-1)}
+=\frac{-1}{p}.\]
+Il reste à déterminer $v_p(\zeta_p^j-\zeta_p^i+1)$. Si $i=j$,
+alors $v_p(\zeta_p^j-\zeta_p^i+1)=v_p(1)=0$ et si $i\ne j$, alors
+$v_p(\zeta_p^j-(1-\zeta_p^i))=\min(v_p(\zeta_p^j),v_p(\zeta_p^i-1))=0$. 
+On déduit dans tout les cas $i_G(s_{ij})=p(p-1)
+
+
+\section*{Exercice 2}
+
+
+
+\end{document}
+
+
