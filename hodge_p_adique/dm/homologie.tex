@@ -54,6 +54,7 @@ sorting=ynt
 \newcommand{\coim}{\textrm{coim}}
 
 
+\newcommand{\m}{\mathfrak m}
 \newcommand{\cL}{\mathscr{L}}
 \newcommand{\G}{\mathscr{G}}
 \newcommand{\D}{\mathscr{D}}
@@ -168,45 +169,355 @@ $p\Z_p$-Eisenstein. On en déduit directement que
 $\Q_p(\zeta_p-1)/\Q_p$ est totalement ramifiée et que $\zeta_p-1$
 ,qui est une racine de $\phi_p(X+1)$, en est une uniformisante.
 De la même manière, $\Q_p(\alpha)/\Q_p$ est totalement ramifiée
-et $\alpha$ en est une uniformisante. Enfin on a 
-\[e_{K/\Q_p}=e_{K/\Q_p(\zeta_p)}e_{\Q_p(\zeta_p)/\Q_p}=e_{\Q_p(\alpha)/\Q_p}e_{\Q_p(\zeta_p)/\Q_p}=p(p-1)\]
-ce qui prouve que $K/\Q_p$ est totalement ramifiée et 
-\[v_p(\frac{\alpha}{\zeta_p-1})=\frac{1}{p}-\frac{1}{p-1}=\frac{p-(p-1)}{p(p-1)}=\frac{1}{p(p-1)}\]
+et $\alpha$ en est une uniformisante. Via 
+\[e_{K/\Q_p}=e_{K/\Q_p(\alpha)}e_{\Q_p(\alpha)/\Q_p}\]
+on obtient $p\mid e_{K/\Q_p}$ et via 
+\[e_{K/\Q_p}=e_{K/\Q_p(\zeta_p)}e_{\Q_p(\zeta_p)/\Q_p}\]
+on obtient $p-1\mid e_{K/\Q_p}$ ce qui prouve que $K/\Q_p$ est
+totalement ramifiée car $e_{K/\Q_p}\leq[K:\Q_p]=p(p-1)$. Enfin 
+\[v_p(\frac{\zeta_p-1}{\alpha})=\frac{1}{p-1}-\frac{1}{p}=\frac{p-(p-1)}{p(p-1)}=\frac{1}{p(p-1)}\]
 si on note $v_p$ la valuation sur $K$ qui étend la valuation 
-$p$-adique normalisée. On a prouvé que $\frac{\alpha}{\zeta_p-1}$
+$p$-adique normalisée. On a prouvé que $\frac{\zeta_p-1}{\alpha}$
 est une uniformisante de $K/\Q_p$. 
 
-
-\subsection*{4) A REFAIRE YA ERREUR}
+\subsection*{4)}
 Le groupe de Galois $G$ est formé des automorphismes 
 \[\{s_{ij}\}_{i=1,\ldots,p-1;j=0,\ldots,p-1}\]
 définis par $s_{ij}(\zeta_p)=\zeta_p^i$ et 
 $s_{ij}(\alpha)=\alpha\zeta_p^j$. De la ramification totale de 
-$K/\Q_p$ on déduit que $\Z_p[\lambda]=\Or_K$ si l'on pose
-$\lambda=\frac{\alpha}{\zeta_p-1}$. Soit maintenant $s_{ij}$ un
-élément de $G$. Pour $g\in G$ si $i_G(g)$ désigne le plus
+$K/\Q_p$ on déduit que $\Z_p[\lambda]=\Or_K$ et $G=G_0$ si l'on
+pose $\lambda=\frac{\zeta_p-1}{\alpha}$. Soit maintenant $s_{ij}$
+un élément de $G$. Pour $g\in G$ si $i_G(g)$ désigne le plus
 grand entier $i$ tel que $g\in G_{i-1}$, on a
-\[i_G(g)=e_{K/\Q_p}v_p(g\lambda -\lambda).\]
-Pour $g=s_{ij}$ on distingue deux cas, le cas $i=j$ et $i\ne j$.
-En général on a
+\[i_G(g)-1=e_{K/\Q_p}v_p(\frac{g\lambda}{\lambda} -1).\]
+ou $i_G(g)-1=v_K(\frac{g\lambda}{\lambda}-1)$ si $v_K$ est 
+normalisée. Maintenant on calcule
 \begin{align*}
-	s_{ij}\lambda-\lambda&=\frac{\alpha\zeta_p^j}{\zeta_p^i-1}
-	-\frac{\alpha}{\zeta_p-1}\\
-			     &=\frac{\alpha(\zeta_p^j-\zeta_p^i+1)}{(\zeta_p^i-1)(\zeta_p-1)}
+  \frac{s_{ij}\lambda}{\lambda}-1&=\frac{\zeta_p^i-1}{\alpha\zeta_p^j}.\frac{\alpha}{\zeta_p-1}-1\\
+				 &=\frac{\zeta_p^i-1}{\zeta_p^j(\zeta_p-1)}-1\\
+				 &=\zeta_p^{-j}\left(\sum_{k=0}^{k-1}\zeta_p^k\right)-1\\
 \end{align*}
-et dans tout les cas, $i>0$ assure que
-\[v_p(\frac{\alpha}{(\zeta_p^i-1)(\zeta_p-1)})
-=\frac{1}{p(p-1)}-\frac{1}{p-1}=\frac{-(p-1)}{p(p-1)}
-=\frac{-1}{p}.\]
-Il reste à déterminer $v_p(\zeta_p^j-\zeta_p^i+1)$. Si $i=j$,
-alors $v_p(\zeta_p^j-\zeta_p^i+1)=v_p(1)=0$ et si $i\ne j$, alors
-$v_p(\zeta_p^j-(1-\zeta_p^i))=\min(v_p(\zeta_p^j),v_p(\zeta_p^i-1))=0$. 
-On déduit dans tout les cas $i_G(s_{ij})=p(p-1)
-
+On remarque que $ \zeta_p=1\mod \m_K$ de sorte que  
+\[\zeta_p^{-j}\left(\sum_{k=0}^{k-1}\zeta_p^k\right)-1=1.i-1\mod \m_K\]
+ce qui fait sens car 
+$\zeta_p^{-j}\left(\sum_{k=0}^{k-1}\zeta_p^k\right)-1$ est dans 
+$\Or_K$. On obtient deux cas : d'abord si $i\ne 1$ alors 
+pour tout $0\leq j\leq p-1$  on a 
+\[i_G(s_{ij})-1=v_K(\frac{s_{ij}\lambda}{\lambda}-1)=0\]
+d'où $i_G(s_{ij})=1$. Ensuite si $i=1$ alors on calcule pour
+$1\leq j\leq p-1$,
+\begin{align*}
+v_K\left(\frac{s_{ij}(\lambda)}{\lambda}-1\right)&=v_K\left(\zeta_p^{-j}-1\right)\\
+				      &=v_K\left(\zeta_p-1\right)\\
+				      &=p(p-1).v_p\left(\zeta_p-1\right)\\
+				      &=p
+\end{align*}
+d'où $i_G(s_{ij})-1=p$. On remarque que $\{s_{ij}|i=1,0\leq j\leq p-1\}=H$. En particulier, pour $k=-1,0$ on a 
+$G_k=G$ puis pour $1\leq k\leq p$ on a $\Z/p\Z\simeq G_k=G_1=H$
+et enfin pour $p<k$ on a $G_k=\{id_K\}$.
 
 \section*{Exercice 2}
+\subsection*{1)}
+Pour tout élément $h$ de $H$, on note $(a_{ij}(h))_{i,j}=A(h)$.
+Alors pour $1\leq j\leq n$ et $h_1,h_2\in H$ on a 
+\[h_2v_j=\sum_{i=1}^na_{ij}(h_2)v_i\]
+puis 
+\begin{align*}
+  h_1h_2v_j&=\sum_{i=1}^nh_1(a_{ij}(h_2)v_i)\\
+	   &=\sum_{i=1}^nh_1(a_{ij}(h_2))h_1v_i\\
+\end{align*}
+d'où
+\begin{align*}
+  (v_j)_{j=1,\ldots,n}A(h_1h_2)&=(h_1h_2v_j)_{j=1,\ldots,n}\\
+			       &=(h_1v_j)_{j=1,\ldots,n}h_1A(h_2)\\
+			       &=(v_j)_{j=1,\ldots,n}A(h_1)h_1A(h_2)
+\end{align*}
+Puis par unicité de $A(h_1h_2)$ on obtient 
+$A(h_1h_2)=A(h_1)h_1A(h_2)$.
+
+\subsection*{2)}
+On prouve $a)$ implique $b)$. Soit $(w_j)_j$ une base de $V$
+dont les vecteurs sont invariants par $H$. Et soit $P$ la matrice
+de changement de base de $(v_j)_j$ à $(w_j)_j$, on montre que $B=P$
+convient. On a 
+\begin{align*}
+  (v_j)_j.P&=(w_j)_j\\
+	   &=(h.w_j)_j\\
+           &=h.((v_j)_j.P)\\
+	   &=h.(\sum_ip_{ij}v_i)_j\\
+	   &=(\sum_ihp_{ij}hv_i)_j\\
+	   &=(hv_j)_jhP\\
+	   &=(v_j)_jA(h)hP\\
+\end{align*}
+d'où $P=A(h)hP$ puis $A(h)=P.h(P)^{-1}$.
+
+Maintenant si $A(h)=Bh(B)^{-1}$ pour $(b_{ij})_{ij}=B\in GL_n(\C)$
+alors 
+on pose $(w_j)_j=(v_j)_j.B$. C'est une base de $V$ par hypothèse
+sur $B$ et on calcule de la même manière que précédemment
+\begin{align*}
+  h.(w_j)_j&=h.(\sum_i b_{ij}v_i)_j\\
+	   &=(\sum_i h(b_{ij})h(v_i))_j\\
+	   &=(v_j)_jA(h)h(B)\\
+	   &=(v_j)_jB.h(B)^{-1}h(B)\\
+	   &=(v_j)_jB\\
+	   &=(w_j)_j
+\end{align*}
+d'où $(w_j)_j$ est une base formée de vecteurs invariants par
+$h$ qui est le résultat voulu.
+
+\subsection*{3)}
+Soit $f\colon H\to GL_n(\C)$ un cocycle. On remarque que 
+\[f(id)=f(id.id)=f(id)id(f(id))=f(id)^2.\] Comme $f$ est à valeurs
+dans des matrices inversibles on obtient que \[f(id)=I_n.\] 
+On munit maintenant $GL_n(\C)$ de la norme donnée par 
+\[||(a_{ij})_{i,j}||:=\max_{i,j}|a_{ij}|_\C\] où $|.|_\C$ est
+l'unique valeur absolue sur $\C$ étendant la valeur
+absolue $p$-adique normalisée par $|p|_\C=1/p$. Alors la topologie
+de $||.||$ coincide avec la topologie produit de $M_n(\C)$ et on
+a 
+\[B(I_n,1/p^2)\subsetneq\overline{B(I_n,1/p^2)}=1+p^2M_n(\Or_\C)\]
+par définition si $B(a,r)$ désigne la boule ouverte centrée en
+$a$ et de rayon $r$. Puis $f^{-1}(1+p^2M_n(\Or_C))$ contient 
+$f^{-1}(B(I_n,1/p^2))$ qui est ouvert par continuité de $f$ et
+non vide car il contient $id$ par la première remarque. Maintenant
+une base de voisinage de $id$ est donnée par les groupes de galois 
+$Gal(\bar K, M)$ tels que $M$ est de dimension finie sur $L$. Il
+existe donc $F_1$ tel que 
+\[id\in Gal(\bar K,F_1)\subset f^{-1}(B(I_n,1/p^2))\]
+et $[F_1:L]<+\infty$. On pose alors $F$ la clôture galoisienne de
+$F_1$ dans $\bar K$ puis $H'=Gal(\bar K, F)$, $H'$ est 
+d'indice fini dans $H$ car $F/L$ est de dimension finie et on a
+\[f(H')\subset f(Gal(\bar K,F_1))\subset f(f^{-1}(B(I_n,1/p^2)))\subset 1+p^2M_n(\Or_C)\]
+qui est bien le résultat voulu.
+
+\subsection*{4)}
+\subsection*{4a)}
+Par le même argument que dans 3) en remplaçant $1+p^2M_n(\Or_C)$
+par $1+p^{m+2}M_n(\Or_\C)$ et $f$ par $f|_{H'}$, on remarque que 
+$f|_{H'}$ est bien un cocycle et on obtient $H_1=Gal(\bar K,F_1)$
+un sous-groupe d'indice fini de $H'$ tel que \[f|_{H'}(H_1)\subset
+1+p^{m+2}M_n(\Or_C).\]
+On pose $E$ la clôture galoisienne
+de $F_1$ dans $\bar K$. Alors $N=Gal(\bar K,E)$ est d'indice fini
+dans $H'$ car $(H':H_1)=[E:F]=[E:F_1][F_1:F]<+\infty$. En
+plus \[f|_{H'}(N)=f(N)\subset f(H_1)\subset 1+p^{m+2}M_n(\Or_\C)\]
+qui est le premier résultat voulu.
+
+Pour le second on remarque que $E/F$ est presque étale. Pour le
+voir on remarque que $F/K$ n'est pas de conducteur fini, par le
+théorème de Coates-Greenberg $F/K$ est alors profondément ramifiée
+d'où $E/F$ est presque étale car $[E:F]<+\infty$ par construction.
+Si $F/K$ était de conducteur fini
+on aurait $L\subset F\subset \bar K^{(\nu)}$ pour un $\nu\geq 0$
+d'où $L/K$ serait de conducteur fini ce qui contredit le fait
+que $L/K$ est profondément ramifiée.
+
+En particulier, $Tr_{E/F} \colon \m_E\to \m_F$ est surjective et 
+on peut prendre $y\in \m_E$ tel que 
+\[p=Tr_{E/F}(y)=\sum_{\sigma\in Gal(E/F)}\sigma(y)\]
+qui est le résultat voulu.
+
+\subsection*{4b)}
+Si l'on note $f(\hat\sigma)=1+p^mM_\sigma$ alors on a 
+\begin{align*}
+  B_m&=\frac{1}{p}\left(\sum_{\sigma\in Gal(E/F)}f(\hat\sigma)\hat\sigma(y)\right)\\
+     &=\frac{1}{p}\left(\sum_{\sigma\in Gal(E/F)}(1+p^mM_\sigma)\hat\sigma(y)\right)\\
+     &=\frac{1}{p}\left(\sum_{\sigma\in Gal(E/F)}\hat\sigma(y)+p^m\left(\sum_{\sigma\in Gal(E/F)}M_\sigma\hat\sigma(y)\right)\right)\\
+     &=1+p^{m-1}\left(\sum_{\sigma\in Gal(E/F)}M_\sigma\hat\sigma(y)\right)
+\end{align*}
+et le résultat car $\hat\sigma(y)=\sigma(y)$ est dans $\Or_E$.
+
+\subsection*{4c)}
+On prouve que pour tout $h\in H'$ on a 
+\[f(h)h(B_m)\equiv B_m\mod p^{m+1}.\]
+Soit $h\in H'$, pour tout $\sigma\in Gal(E/F)$, il existe
+$\sigma'\in Gal(E/F)$ et $h'\in N$ tel que 
+$h\hat\sigma=\hat\sigma'h'$.
+En effet si $\pi\colon H'\to Gal(E/F)$ est la projection canonique
+alors on pose $\sigma'=\pi(h\hat\sigma)$ d'où 
+\[(h\hat\sigma)^{-1}\hat\sigma'=h'^{-1}\in \ker(\pi)\]
+par construction puis l'assertion car $\ker(\pi)=N$. Maintenant
+on calcule
+\begin{align*}
+  f(h)h(B_m)&=\frac{1}{p}f(h)h.\sum_{\sigma\in Gal(E/F)}f(\hat\sigma)\hat\sigma(y)\\
+	    &=\frac{1}{p}\sum_{\sigma\in Gal(E/F)}f(h\hat\sigma)h\hat\sigma(y)\\
+	    &=\frac{1}{p}\sum_{\sigma\in Gal(E/F)}f(\hat\sigma'h')\hat\sigma'h'(y)\\
+	    &=\frac{1}{p}\sum_{\sigma\in Gal(E/F)}f(\hat\sigma'h')\hat\sigma'(y)\\
+\end{align*}
+puis en notant $f(h')=I_n+p^{m+2}M_{h'}$ on trouve
+\begin{align*}
+  f(h)h(B_m)-B_m&=\frac{1}{p}(\sum_{\sigma\in Gal(E/F)}(f(\hat\sigma')\hat\sigma'f(h')).(\hat\sigma')(y)-f(\hat\sigma').(\hat\sigma')(y))\\
+		&=\frac{1}{p}(\sum_{\sigma\in Gal(E/F)}\left(f(\hat\sigma')(\hat\sigma'(y))(\hat\sigma'f(h')-I_n)\right)\\
+		&=(\sum_{\sigma\in Gal(E/F)}\left(f(\hat\sigma')(\hat\sigma'(y))(p^{m+1}\hat\sigma' M_{h'})\right))\\
+		&=p^{m+1}(\sum_{\sigma\in Gal(E/F)}\left(f(\hat\sigma')(\hat\sigma'(y))(\hat\sigma'M_{h'})\right))\\
+\end{align*}
+où la première égalité provient du fait que $h'$ fixe $y$. 
+Maintenant le terme de droite est dans $M_n(\Or_\C)$ d'où le
+résultat.
+
+\subsection*{5)}
+Soit $f\colon H\to GL_n(\C)$ un cocycle. On construit un 
+sous-groupe distingué $H'$ de $H$, des
+cocycles $(f_i)_{i\geq 2}$ et des matrices $(B_i)_{i\geq 2}$ tels
+que pour $2\leq i$ on ait
+\begin{itemize}
+  \item $f_i(H')\subset 1+p^mM_n(\Or_C)$,
+  \item $B_i\in 1+p^{i-1}M_n(\Or_C)$,
+  \item Pour tout $h\in H$, $f_{i+1}(h):=B_{i+1}^{-1}f_i(h)h(B_{i+1})^{-1}$.
+  \item Pour tout $h'\in H'$, $f_{i+1}(h')\equiv 1\mod p^{i+1}$.
+\end{itemize}
+Alors la suite $(\prod_{i=2}^m B_i)_{m\geq 2}$ converge dans 
+$1+pM_n(\Or_\C)\subset GL_n(\Or_\C)$ en un $B$ vérifiant pour tout
+$h\in H'$ l'identité
+\[f(h)\equiv Bh(B)^{-1}\]
+qui est le résultat voulu.
+
+\subsection*{Preuve de la convergence}
+Sous les hypothèses précédentes on montre que la suite 
+$(A_m)_{m\geq 2}:=(\prod_{i=2}^mB_i)_{m\geq 2}$ converge dans
+$1+pM_n(\Or_\C)$
+muni de la norme présentée en 3). On remarque d'abord que 
+$1+pM_n(\Or_\C)=\overline{B(I_n,1/p)}$ est fermé dans 
+$M_n(\Or_\C)$ qui est complet pour $||.||$ d'où est lui même
+complet. Enfin par l'annexe $0.1$, $A_m$ est dans 
+$1+pM_n(\Or_\C)$ d'où sa limite, si elle existe, est dans 
+$1+pM_n(\Or_\C)$. Il suffit donc de montrer que $(A_m)_m$ est de
+Cauchy.
+Soit $\epsilon>0$ et $m\geq 2$ tel que $(1/p)^m<\epsilon$. Alors
+si $u\geq v\geq m$ on a 
+\begin{align*}
+||A_u-A_v||&=||\prod_{i=2}^vB_i(\prod_{k=v+1}^uB_k-1)||\\
+	   &\leq ||\prod_{i=2}^vB_i||.||\prod_{k=v+1}^uB_k-1||\\
+	   &\leq (1/p)^{v+1}\leq (1/p)^m<\epsilon
+\end{align*}
+et l'inégalité des normes étant une majoration naive utilisant
+l'inégalité ultramétrique pour $|.|_\C$. D'où $(A_m)_m$ converge
+en un $B$ et de $B\equiv A_m \mod m$ pour tout $h\in H'$ l'identité
+\[f_{m+1}(h)\equiv 1\mod m+1\]
+montre que $f(h)\equiv Bh(B)^{-1}\mod m$ pour tout $m\geq 2$
+d'où $A_mh(A_m)^{-1}$ converge vers $f(h)$
+et le résultat en découle.
+
+\subsection*{Initialisation}
+On pose $f_1=f$, par
+la question $3)$ il existe $H'$ un sous-groupe distingué de $H$
+d'indice fini tel que $f(H')\subset 1+p^2M_n(\Or_\C)$ et on peut
+construire $B_2$ telle que 
+\[f(h)\equiv B_2h(B_2)^{-1}\mod p^3.\]
+On pose alors $f_2:h\mapsto B_2^{-1}f_1(h)h(B_2)$. On prouve 
+maintenant que $f_2$ est un cocycle. Pour tout $h_1,h_2\in H$
+on a 
+\begin{align*}
+  f_2(h_1h_2)&=B_2^{-1}f(h_1h_2)h_1h_2(B_2)\\
+	     &=B_2^{-1}f(h_1).h_1f(h_2)(h_1h_2)(B_2)\\
+	     &=B_2^{-1}f(h_1)h_1(B_2)h_1(B_2)^{-1}h_1f(h_2)(h_1h_2)(B_2)\\
+	     &=f_2(h_1)h_1(B_2^{-1}f(h_2)h_2(B_2)\\
+	     &=f_2(h_1)h_1f_2(h_2)
+\end{align*}
+où la quatrième égalité est dûe au fait que $h(P^{-1})=h(P)^{-1}$
+pour toute matrice $P\in GL_n(\Or_C)$, d'où $f_2$ vérifie la 
+condition de cocycle. En plus $f_2$ est 
+continue car $h\mapsto h.B_2$ et $h\mapsto B_2f(h)$ sont continues
+d'où si on écrit $f_2$ comme la composée
+\[H\to GL_n(\Or_C)^2\to GL_n(\Or_C)\]
+où la première application est l'application produit et la deuxième
+la multiplication on obtient sa continuité.
+\subsection*{Hérédité}
+On suppose maintenant $(f_i)_{i=2,\ldots, m}$ et 
+$(B_i)_{i=2,\ldots,m}$ construits pour $m\geq 2$. Par les questions
+$4a)$ et $4b)$ on trouve $B_{m+1}$ vérifiant les hypothèses 
+voulues. On pose ensuite 
+$f_{m+1}:h\mapsto B_{m+1}^{-1}f_m(h)h(B_{m+1})$. Alors par la
+même preuve que pour l'initialisation
+$f_{m+1}$ est un cocycle et donc vérifie nos hypothèses ce qui
+conclut la preuve.
+
+\subsection*{6)}
+On note $(v_j)_{j=1,\ldots, n}$ une base de $V$ quelconque et 
+$f\colon h\mapsto A(h)$ comme dans la partie I. Alors $f$ vérifie
+la condition de cocycle par $1)$. On assume la continuité. Alors
+$f$ est un cocycle.
+
+Maintenant on applique la partie $2$ question $5)$ pour obtenir
+$H'$ distingué et d'indice fini dans $H$ et $B\in GL_n(\Or_\C)$
+vérifiant pour tout $h\in H'$ 
+\[f(h)=Bh(B)^{-1}.\]
+Si l'on pose maintenant $(w_j)_j:=(v_j)_j.B$ alors par la question
+$2)$, $(w_j)_j$ à ses composantes invariantes par l'action de $H'$.
+
+\subsection*{7)}
+Pour chaque $h\in H$, comme $F/K$ est profondément ramifiée par
+le même argument que dans 4a), par le théorème d'Ax-Sen-Tate il
+suffit de 
+montrer que les coefficients de $C(h)$ sont invariants par $H'$.
+Autrement dit que pour tout $h'\in H'$ on ait $h'C(h)=C(h)$. 
+Soit donc $h\in H$ et $h'\in H'$. Comme $H'$ est distingué dans
+$H$, il existe $h''\in H'$ tel que $h'.h=h.h''$. Maintenant
+on remarque que $C(h')=I_n$ d'où $C(h'h)=h'C(h)$. Enfin,
+$C(h'.h)$ est définie par 
+\[(h'.hw_j)_j=(w_j)_jC(h'h)\]
+et on a 
+\begin{align*}
+  (h'.hw_j)_j&=(h.h''w_j)_j\\
+	     &=(hw_j)_j\\
+	     &=(w_j)_jC(h)
+\end{align*}
+d'où par unicité $h'C(h)=C(h'h)=C(h)$ et le résultat.
+
+\subsection*{8)}
+On considère comme dans $6)$, $(w_j)_j$ une base $H'$-invariante 
+de $V$. Alors par $7)$ le cocycle
+\begin{align*}
+  C(\_)\colon &H\to GL_n(\C)\\
+\end{align*}
+vérifie $C(H)\subset GL_n(\hat F)$. On considère maintenant 
+le $\widehat F$-espace vectoriel $V'=\oplus_{j=1}^nw_j\widehat F$
+et on remarque que comme $H'$ fixe $\widehat F$, $H'$ agit
+trivialement sur $V'$. En particulier, l'action de $H$ restreinte
+à $V'$ se factorise en une action de $H/H'$ qui est fini et agit
+sur $\widehat F$ via l'action de $Gal(F/L)$ sur 
+$F\otimes_L \widehat L\simeq \widehat F$ où la flèche est un
+isomorphisme car $F/L$ est séparable. En particulier on obtient
+$H/H'\to Aut(\widehat F)$ une action semi-linéaire, via la 
+semi-linéarité de l'action de $H$, d'où par Hilbert 90 on obtient
+une base de $V'$, $(u_j)_j$, qui est $H/H'$-invariante et donc à
+fortiori $H$-invariante. Comme $(w_j)_j$ est dans $V'$, la famille
+$(u_j)_j$ est une $\C$-base de $V$ qui est $H$-invariante ce qui
+conclut la preuve.
 
 
+\section*{Annexe}
+\subsection{$1+p^mM_n(\Or_\C)$ est un sous-monoide de $GL_n(\Or_\C)$}
+On montre d'abord que $1+p^mM_n(\Or_\C)$ est un sous-ensemble
+de $GL_n(\Or_\C)$. Soit $A\in 1+p^mM_n(\Or_\C)=1+M_n(p^m\Or_C)$,
+l'application déterminant est polynomiale en les coefficients d'où
+$\det(A)\in 1+p^m\Or_\C\subset \Or_\C^\times$ et $A$ est 
+inversible dans $GL_n(\Or_\C)$.
+
+Maintenant si $A,B\in 1+p^mM_n(\Or_\C)$ alors 
+\begin{align*}
+  A.B&=(1+p^mA_1)(1+p^mB_1)\\
+     &=1+p^m(A_1+B_1+p^mA_1B_1)\in 1+p^mM_n(\Or_\C)
+\end{align*}
+d'où la stabilité par produit. Enfin $I_n$ est clairement dans
+$1+p^mM_n(\Or_\C)$.
+
+\subsection{Continuité de $h\mapsto A(h)$}
+On le montre uniquement dans le cas où $A(H)\subset 1+pM_n(\Or_C)$.
+Pour voir la continuité on prend
+$h_1,h_2\in H$ et $1>r>0$ tel que $A(h_1)\in B(A(h_2),r)$. Comme la
+norme est invariante par $K$-automorphisme on a 
+\begin{align*}
+  ||A(h_1)-A(h_2)||&=||h_1^{-1}A(h_2)-h_1^{-1}A(h_1)||\\
+		   &=||A(h_1^{-1})^{-1}A(h_1^{-1}h_2)-A(h_1^{-1})^{-1}||\\
+		   &=||A(h_1^{-1}h_2)-1||<r\\
+\end{align*}
+car $A(h_1^{-1})\in 1+pM_n(\Or_\C)$ d'où $||A(h_1^{-1})||=1$.
+Alors $B(I_n,r)$ contient $A(h_1^{-1}h_2)$ puis
+\[id,h_1^{-1}h_2\in f^{-1}(B(I_n,r))\]
+d'où il existe $E/L$ une extension finie telle que 
+$h_1^{-1}h_2\in Gal(\bar K,E)$.
 
 \end{document}
 

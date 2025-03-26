@@ -1,4 +1,4 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'homologie.blg'
-[68] biber:340> INFO - === mar. mars 25, 2025, 21:21:34
-[84] Biber.pm:419> INFO - Reading 'homologie.bcf'
+[117] biber:340> INFO - === mer. mars 26, 2025, 15:11:34
+[137] Biber.pm:419> INFO - Reading 'homologie.bcf'
