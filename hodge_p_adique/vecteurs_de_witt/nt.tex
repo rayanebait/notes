@@ -1,0 +1,206 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+
+
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Vecteurs de Witt}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Définitions}
+Pour $p$ un premier et $A$ un anneau commutatif
+unitaire déf 
+\[w_n(X_0,\ldots,X_n):=X_0^{p^n}+pX_1^{p^{n-1}}+\ldots+p^nX_n\]
+dans $R=\Z[X_0,\ldots,X_n,\ldots]$.
+
+On peut prouver que pour tout
+$F(X,Y)\in \Z[X,Y]$ il existe 
+\[(f_i(\bar X,\bar Y))_{i\in \N}\in (R\times R)^\N\] tel que
+\[w_n(f_0(\bar X,\bar Y),\ldots, f_n(\bar X,\bar Y))=F(w_n(\bar X),w_n(\bar Y))\]
+en particulier pour $F(X,Y)=X+Y$ ou $X.Y$. Je note 
+$\Phi(F)=(f_i)_{i\in \N}$ les polynômes associés à $F$. 
+Les $p,n$-vecteurs de Witt maintenant c'est
+\[W_n(A):=A^n\]
+muni de l'addition \[x+_{W(A)}y:=(\Phi(X+Y)_i(x,y))_{i\in n}\] et
+\[x._{W(A)}y:=(\Phi(X.Y)_i(x,y))_{i\in n}\]. Puis les
+$p$-vecteurs de Witt c'est $W(A):=W_{\omega}(A)$.
+
+\section{Calcul}
+En pratique pour le passage à la caractéristique $p$ faut calculer
+d'abord dans $\Z$ les $w_n$ puis réduire modulo $p$. 
+
+\subsection{Preuve de l'identité : congruences}
+L'unicité et la construction de $\Phi(F(X,Y))$ est directe par 
+récurrence. A priori 
+\[\Phi(F(X,Y))\in \Z[p^{-1}][\overline X]^\N\]
+et on veut 
+\[\Phi(F(X,Y))\in \Z[\overline X]^\N\]
+et pour ça faut montrer par récurrence que pour tout $n\geq 0$
+\[F(w_n(\bar X),w_n(\bar Y))=w_n(\Phi(F(X,Y)))\mod p^n\]
+L'idée c'est déjà que
+\begin{equation}
+w_{n-1}\circ\varphi(x)=w_n(x)\mod p^n
+\end{equation}
+puis que pour $f\in (X_0,\ldots, X_n)$ on a 
+\begin{equation}
+f^{p^m}\equiv f^{p^{m-1}}\circ\varphi\mod p^m
+\end{equation}
+d'où si 
+\begin{equation}
+F(w_{n-1}(\bar X),w_{n-1}(\bar Y))= w_{n-1}(\Phi(F(X,Y)))
+\end{equation}
+on obtient 
+\begin{align*}
+  F(w_n(\bar X),w_n(\bar Y))&=F(w_{n-1}\circ\varphi(\bar X),w_{n-1}\circ\varphi(\bar Y))\mod p^n\\
+                            &=w_{n-1}(h_0\circ\varphi,\ldots, h_{n-1}\circ\varphi)\mod p^n\\
+                            &=w_{n-1}(h_0^p,h_1^p,\ldots, h_{n-1}^p)\mod p^n\\
+                            &=w_n(h_0,\ldots, h_n)\mod p^n
+\end{align*}
+où la première égalité est dûe à $(3)$ la deuxième à $(1)$ et 
+la troisième à $(2)$. La dernière c'est à nouveau $(1)$
+
+\subsection{Preuve de (2)}
+L'équation $(2)$ est obtenue simplement parce que si 
+$A=B\mod p$ alors 
+\[A^{p^m}-B^{p^m}=(A^{p^{m-1}}-B^{p^{m-1}})\left(\sum_{i=0}^{p-1} A^{p^{m-1}i}B^{p^{m-1}(p-1-i)}\right)\]
+sauf que par récurrence le premier terme est divisible par
+$p^{m-1}$ et le deuxième vaut $0$ modulo $p$ via la congruence
+$A=B\mod p$ d'où le résultat.
+
+
+\section{$A$ parfait de caractéristique $p>0$}
+Dans ces conditions $W(A)$ est muni de la topologie $p$-adique et
+$p^n.x=V^n\varphi^n(x)$. Ça se voit au moment du calcul si 
+$x\in V^n(W(A))$ au moment du calcul de $x^2$ par exemple on voit
+que $\Phi(X.Y)_n(x,x)=p^nx_n^2$ qui se réduit en $0\mod p$. Et
+la suite aussi.
+
+\subsection{Topologie}
+Ducoup on peut munir $W(A)$ de la topologie $p$-adique via les
+$p^nW(A)=:I_n(A)=\ker(W(A)\to W_n(A))$. 
+
+\subsection{Lift de Teichmüller}
+Le lift de Teichmüller est donné par
+\[[\_]\colon a\mapsto (a,0,\ldots)\]
+et c'est clairement multiplicatif.
+\subsection{Verschiebung et Frobenius}
+L'opérateur Verschiebung (shift) de dual le Frobenius vérifie
+$V\varphi=\varphi V=p$ et on a 
+\[p.x=(0,x_0^p,x_1^p,\ldots)\]
+via l'identité 
+\[w_n(\Phi(p.X))=pw_n(X)\]
+et une récurrence. 
+
+\subsection{Écriture canonique et propriété universelle}
+De $p=\varphi.V$ on obtient la caractéristique $0$ et l'écriture
+canonique
+\[x=\sum_{i\in \N}p^n[x_n^{p^{-n}}]\]
+qui montre la $p$-complétude et la caractéristique $0$. Pour
+la propriété universelle, l'idée c'est que un anneau $p$-adiquement
+complet $R$ avec $R/p=A$ comme anneau résiduel vérifie que tout 
+élément $x\in R$ s'écrit comme $ x=\sum p^ia_i$ avec $a_i$ un
+représentant. Puis $W(A)\to R$ est défini terme à terme. Ça
+marche parce que $\Phi(F(X,Y))$ est dans $\F_p[\overline X,\overline Y]^\N$
+ou $\Z[\ldots]^\N$. D'où $w_n(\varphi(a+a'))$
+
+
+
+\subsection{Racines de l'unité, $W(\F_p)$}
+Vincent pense que l'idée c'est de canoniser le lift de teichmüller.
+Ce qui est plutôt cohérent, i.e. le système de représentants du
+corps résiduel est donné par les $([i])_{i\in A}$.
+
+Mais en fait il y'a une suite intéressante à cette histoire. 
+Voir l'article de M. Hazewinkel
+
+
+
+
+\end{document}
