@@ -162,6 +162,15 @@ $x\in V^n(W(A))$ au moment du calcul de $x^2$ par exemple on voit
 que $\Phi(X.Y)_n(x,x)=p^nx_n^2$ qui se réduit en $0\mod p$. Et
 la suite aussi.
 
+\subsection{Calculs}
+En fait si $h_0=h\mod p$ alors 
+\[p^ih_0^{p^{n-i}}=p^ih^{p^{n-i}}\mod p^{n+1}\]
+en particulier, une fois qu'on a calculé $\Phi(F)_i$ on peut
+prendre le lift qu'on veut mod $p$ et ça changera rien pour
+$\Phi(F)_j\mod p$, $j>i$. C'est pratique mais ça arrange pas non
+plus tout.
+
+
 \subsection{Topologie}
 Ducoup on peut munir $W(A)$ de la topologie $p$-adique via les
 $p^nW(A)=:I_n(A)=\ker(W(A)\to W_n(A))$. 
@@ -200,6 +209,13 @@ corps résiduel est donné par les $([i])_{i\in A}$.
 Mais en fait il y'a une suite intéressante à cette histoire. 
 Voir l'article de M. Hazewinkel
 
+\section{Anneaux de valuations}
+Une première remarque : les idéaux principaux ont valuation
+minorée $>0$. En particulier $\m_E$ est jamais principal. Ducoup
+de même $\alpha.\m_E$ non plus pour $\alpha\in \m_E$. Enfin si
+tu contiens $\alpha$ tu contiens $B(0, |\alpha|)$ de sorte que
+$\m_E$ est le seul idéal de valuation $0$ puis on a tout les
+idéaux !
 
 
 
