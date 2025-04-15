@@ -114,7 +114,9 @@ $p$-vecteurs de Witt c'est $W(A):=W_{\omega}(A)$.
 
 \section{Calcul}
 En pratique pour le passage à la caractéristique $p$ faut calculer
-d'abord dans $\Z$ les $w_n$ puis réduire modulo $p$. 
+d'abord dans $\Z$ les $h_n$ puis réduire modulo $p$. 
+
+En fait c'est plus compliqué je l'explique dans \ref{calcul}.
 
 \subsection{Preuve de l'identité : congruences}
 L'unicité et la construction de $\Phi(F(X,Y))$ est directe par 
@@ -162,7 +164,7 @@ $x\in V^n(W(A))$ au moment du calcul de $x^2$ par exemple on voit
 que $\Phi(X.Y)_n(x,x)=p^nx_n^2$ qui se réduit en $0\mod p$. Et
 la suite aussi.
 
-\subsection{Calculs}
+\subsection{Pré-calcul}
 En fait si $h_0=h\mod p$ alors 
 \[p^ih_0^{p^{n-i}}=p^ih^{p^{n-i}}\mod p^{n+1}\]
 en particulier, une fois qu'on a calculé $\Phi(F)_i$ on peut
@@ -216,6 +218,29 @@ de même $\alpha.\m_E$ non plus pour $\alpha\in \m_E$. Enfin si
 tu contiens $\alpha$ tu contiens $B(0, |\alpha|)$ de sorte que
 $\m_E$ est le seul idéal de valuation $0$ puis on a tout les
 idéaux !
+
+
+\section{Calcul en pratique}\label{calcul}
+Donc on veut évaluer $\Phi(F(X,Y))_n=:f_n$. On a $f_n\in \Z[\bar X,
+\bar Y]$ ou $\in \F_p[\bar X,\bar Y]$. Mais en pratique en fait
+pour évaluer y faut écrire $f_n\in A[\bar X,\bar Y]$. Pour 
+$a\in W(A)=A^\N$ je note $I_a:=(X_i-a_i,i\in \N)$.
+
+\subsection{L'intuition}
+Donc on veut écrire 
+$p^nf_n(a,b)=(w_n(F(a,b))-f_0^{p^n}-\ldots p^{n-1}f_{n-1}^p)$.
+Et ça on peut pas l'écrire dans $A$ si $A$ est de char $p>0$.
+
+En fait pour calculer $f_n(a,b)$ on peut simplement remarquer que
+la congruence 
+\[F(w_n(X),w_n(Y))-(w_n(\Phi(F(X,Y)))-p^n\Phi(F(X,Y))_n)
+=0\mod p^n\]
+implique que 
+\[F(w_n(b),w_n(a))-(w_n(\Phi(F(a,b)))-p^n\Phi(F(a,b))_n)
+=0\mod p^n\]
+en particulier, l'évaluation de $f_n$ en $(a,b)$ dépend seulement
+de l'évaluation des $f_i$ en $(a,b)$.
+
 
 
 
