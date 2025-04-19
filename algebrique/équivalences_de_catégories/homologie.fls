@@ -1,4 +1,4 @@
-PWD /home/docus/files/primaire/AGTN/geoalg/misc/équivalences_de_catégories
+PWD /home/docus/files/present/?/algebrique/équivalences_de_catégories
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT homologie.tex
