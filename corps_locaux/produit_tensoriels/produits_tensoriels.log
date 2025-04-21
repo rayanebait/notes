@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  28 JAN 2025 23:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.21)  21 APR 2025 15:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -929,30 +929,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \bbl@ensure@french {Chapitre} 1.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 318.
+(hyperref)                removing `math shift' on input line 321.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\otimes' on input line 318.
+(hyperref)                removing `\otimes' on input line 321.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 318.
+(hyperref)                removing `math shift' on input line 321.
 
 [7
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 328.
+(hyperref)                removing `math shift' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\otimes' on input line 328.
+(hyperref)                removing `\otimes' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 328.
+(hyperref)                removing `math shift' on input line 331.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -981,7 +981,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  131i,15n,135p,692b,1709s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on produits_tensoriels.pdf (8 pages, 164433 bytes).
+Output written on produits_tensoriels.pdf (8 pages, 164502 bytes).
 PDF statistics:
  203 PDF objects out of 1000 (max. 8388607)
  167 compressed objects within 2 object streams

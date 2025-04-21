@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber produits_tensoriels"] 0 "produits_tensoriels.bcf" "produits_tensoriels.bbl" "produits_tensoriels" 1738103352.39871 0
+["biber produits_tensoriels"] 0 "produits_tensoriels.bcf" "produits_tensoriels.bbl" "produits_tensoriels" 1745243153.52447 0
   "bib.bib" 0 -1 0 ""
   "produits_tensoriels.bcf" 0 -1 0 "pdflatex"
   (generated)
   "produits_tensoriels.bbl"
   "produits_tensoriels.blg"
   (rewritten before read)
-["pdflatex"] 1738103350.4716 "produits_tensoriels.tex" "produits_tensoriels.pdf" "produits_tensoriels" 1738103352.39922 0
+["pdflatex"] 1745243151.41844 "produits_tensoriels.tex" "produits_tensoriels.pdf" "produits_tensoriels" 1745243153.52502 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1736268207 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1736268207 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1736268207 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -204,11 +204,11 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1737471561.2799 5318467 8236939515598d005dfbcc2e1a40f206 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1737471525 7112996 3af390476c341cfc530b59c30f904728 ""
-  "produits_tensoriels.aux" 1738103352.1158 2976 8b9074bd4356fe807190d8f0821e6c48 "pdflatex"
+  "produits_tensoriels.aux" 1745243153.23948 2976 8b9074bd4356fe807190d8f0821e6c48 "pdflatex"
   "produits_tensoriels.bbl" 0 -1 0 "biber produits_tensoriels"
-  "produits_tensoriels.out" 1738103352.11913 2881 68ae08477d58f9c09a9eed67cbd327ac "pdflatex"
-  "produits_tensoriels.run.xml" 1738103352.12247 2408 b064c1d34cac44d63a48a40a4228c37e "pdflatex"
-  "produits_tensoriels.tex" 1738103349.77579 11863 79fc38b32c62b2a20727e8cf5d831cea ""
+  "produits_tensoriels.out" 1745243153.24281 2881 68ae08477d58f9c09a9eed67cbd327ac "pdflatex"
+  "produits_tensoriels.run.xml" 1745243153.24614 2408 b064c1d34cac44d63a48a40a4228c37e "pdflatex"
+  "produits_tensoriels.tex" 1745243150.96948 11935 b792b9b0d273960ec1f89b751119b78a ""
   (generated)
   "produits_tensoriels.aux"
   "produits_tensoriels.bcf"
