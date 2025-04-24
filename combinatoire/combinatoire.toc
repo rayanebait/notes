@@ -1,0 +1,7 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Coefficients binomiaux}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Absorption et choix imbriqués}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Binôme de Newton}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Sommes de binômes}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Multinômes}{7}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Congruences}{7}{section.1.5}%
