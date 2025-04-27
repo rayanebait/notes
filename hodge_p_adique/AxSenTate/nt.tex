@@ -1,0 +1,165 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Ax-Sen-Tate}
+\date{}
+
+\begin{document}
+\maketitle
+Je suis la preuve de Colmez avec quelques détails en
+plus.
+Le but c'est de montrer que pour $K$ un corps 
+local de caractéristique $0$ (y'a une version en char $p\geq 1$)
+on a 
+\[\C_K^{G_K}=K\]
+et plus généralement pour $\Q_p\subset L\subset \C_p$
+avec $L$ complet :
+\[\widehat{\overline{L}}^{G_L}=\widehat{\overline{L}^{G_L}}\]
+
+Intuitivement, si $L\subset M\subset \bar L$ et qu'on
+peut montrer qu'on peut borner continûment la distance 
+entre $M$ et un élément $\alpha\in \bar L$ par un truc
+qui dépend de $G_M.\alpha$ et $[M(\alpha):M]$.
+
+\section{Preuve}
+En notant 
+\[\Delta_L(\alpha):=\sup_{g\in G_L}|g\alpha-\alpha|\]
+pour $\alpha\in \C_L$. Maintenant si $\alpha_n\to \alpha$
+dans $\bar L$ on a 
+$\Delta_L(\alpha)\leq \Delta_L(\alpha_n)$ pour $n$ grand.
+
+Le truc cool maintenant c'est que pour $x\in \bar L$
+on peut trouver $a\in L$ tel que 
+\[|a-x|\leq c_p\Delta_L(x)\]
+pour une constante $c_p$ qui dépend que de $p$ d'où si
+$\alpha_n$ est fixe par $\G_L$ alors $\alpha$ aussi
+puis $\alpha$ est dans l'adhérence (la complétion) de
+$L[\alpha_n]$ dans $\C_L$!
+
+\section{Lemme principal}
+\subsection{Borne 0}
+Un truc connu pour $P(X)\in \Or_{\bar \Q_p}[X]$
+et $P(X)=X^n+a_{n-1}X^{n-1}+\ldots+a_0$ c'est la
+borne :
+\[|a_i|\leq |Rac(P)|^{n-i}\]
+\subsection{Borne I : Calculs}
+\subsubsection{Cas général}
+On a 
+$P^{(q)}(X)=a_n\frac{n!}{(n-q)!}X^{n-q}+\ldots+q!a_q$
+et $a_n=1$ d'où 
+$b=\frac{a_q}{\begin{pmatrix} n\\ q\end{pmatrix}}$ est
+le produit des racines de $P^{(q)}$ au signe près.
+En plus pour le coeff constant un analogue de la borne
+$0$ dit que
+il existe une racine $\beta\in Rac(P^{(q)})$ telle que
+\[|\beta|\leq |b|^{n-q}\]
+reste plus qu'à calculer 
+$|\begin{pmatrix} n\\ q\end{pmatrix}|^{1/(n-q)}$.
+\subsubsection{Ce qu'on veut}
+On peut prendre $q=p^{v_p(n)}=p^{k+1}$ si $n$ est pas une
+puissance de $p$ et $q=n/p$ sinon. Alors dans ces cas
+là on calcule bien
+\[|\begin{pmatrix} n\\ q\end{pmatrix}|^{1/(n-q)}=\begin{cases} 1,~\textrm{cas 1}\\\frac{1}{p^{\frac{1}{p^{k+1}}-\frac{1}{p^{k}}}},~\textrm{autre cas}\end{cases}\]
+parce que 
+\[\begin{pmatrix} n\\ q\end{pmatrix}=\frac{n}{q}\prod_{i=1}^{q-1}\frac{n-i}{i}\]
+
+
+
+
+
+
+\end{document}
