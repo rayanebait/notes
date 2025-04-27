@@ -1,0 +1,174 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Trace normalisée}
+\date{}
+
+\begin{document}
+\maketitle
+On prends $K$ un corps local de caractéristique $0$
+et $K_\infty/K$ une $\Z_p$-extension qui est pas de
+conducteur fini (en gros on peut se ramener à une
+$\Z_p$-extension totalement ramifiée). Je note
+$\Gamma = G_K/G_{K_\infty}\simeq \Z_p$ et $\gamma$
+un générateur topologique, puis $\gamma_n:=\gamma^{p^n}$.
+
+\section{Idée}
+L'idée c'est que $K_\infty/K$ est alors profondément
+ramifiée d'où on a Ax-Sen-Tate :
+\[\C_K^{G_{K_\infty}}=\widehat K_\infty\]
+puis $\C_K^{G_K}=\widehat{K_\infty}^\Gamma$.
+
+\subsection{Première partie}
+C'est Ax-Sen-Tate pour les extensions profondéments 
+ramifiées.
+\subsection{Deuxième cas}
+Si $Tr_{K_\infty/K}(x):=\frac{1}{p^n}Tr_{K_n/K}(x)$
+alors :
+\begin{enumerate}
+  \item $|Tr_{K_\infty/K}(x)|\leq c|\gamma.x-x|_K$
+  \item $Tr_{K_\infty/K}(.)$ est continue et s'étend à $\widehat{K_\infty}$.
+  \item On obtient $\widehat K_\infty=K\oplus \widehat K_\infty^\circ$ où
+    le deuxième terme c'est $\ker(Tr_{K_\infty/K})$.
+  \item $\gamma-1$ est bijectif d'inverse continu sur $\widehat K_\infty^\circ$.
+\end{enumerate}
+Le dernier point permet de montrer que 
+$\widehat{K_\infty}^\Gamma = K^\Gamma=K$
+par injectivité de $\gamma-1$.
+
+\subsection{Extension : $\C_K(\eta)^{G_K}=0$}
+On peut ensuite étendre le résultat et prouver que
+\begin{enumerate}
+  \item Si $\tau = \gamma -\lambda$ où $\lambda\in U_K^{(1)}$ est
+    pas une racine de l'unité alors $\tau$ est bijectif d'inverse
+    continu sur $\widehat{K_\infty}$.
+\end{enumerate}
+En particulier étant donné un caractère non trivial de 
+$G_K$, $\eta$, si $\eta(\gamma)=\lambda$ alors 
+$\widehat{K_\infty(\eta)}^\Gamma=0$ par injectivité de
+$\gamma-\lambda$. On prouve ensuite que
+\[\C_K(\eta)^{G_K}=0\]
+parce que 
+$\C_K(\eta)^{G_{K_\infty}}=\C_K^{G_{K_\infty}}(\eta)$.
+(directement via la déf)
+
+\section{Preuves}
+\subsection{(1.2.1.)}
+
+Dans l'ordre pour $1.2.1.$ on a :
+\begin{enumerate}
+  \item $v_K(Tr_{K_n/K_{n-1}})\geq v_K(x)+v_K(D_{K_n/K_{n-1}}) - \frac{1}{p^{n-1}}$ par les formules 
+    d'estimation de valuations de traces.
+  \item En déroulant avec le théorème de Tate
+    \[|Tr_{K_n/K_{n-1}}(x)|\leq |p|_K^{1-\frac{b}{p^{n-1}}}|x|_K\]
+\end{enumerate}
+et (en pensant $\alpha^k-1=(1+\alpha+\ldots+\alpha^{k-1}(\alpha-1)$) :
+\begin{enumerate}
+  \item Via $Tr_{K_n/K_{n-1}}(x)=\sum_{k=0}^{p-1}\gamma_{n-1}^k(x)$, $\gamma_n=\gamma^{p^n}$:
+    \[|Tr_{K_n/K_{n-1}}(x)-px|_K\leq|\gamma.x-x|_K\]
+\end{enumerate}
+on a une récurrence via si 
+$y=\frac{1}{p}Tr_{K_n/K_{n-1}}(x)$ alors
+\[Tr_{K_\infty/K}(x)=Tr_{K_\infty/K}(y)\]
+et 
+\[|Tr_{K_\infty/K}(x)-x|_K=|(Tr_{K_\infty/K}(y)-y)+\left(\frac{1}{p}Tr_{K_n/K_{n-1}}(x)-x\right)|_K\]
+Y faut juste estimer la constante $c$ via les 
+$p^{-b/p^{n-1}}$.
+
+\subsection{(1.2.2.)}
+
+\end{document}

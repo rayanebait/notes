@@ -131,6 +131,8 @@ puis $\alpha$ est dans l'adhérence (la complétion) de
 $L[\alpha_n]$ dans $\C_L$!
 
 \section{Lemme principal}
+On montre que pour $\alpha\in \bar L$ il existe $a\in M$
+tel que $|a-\alpha|\leq c_p\Delta_M(\alpha)$.
 \subsection{Borne 0}
 Un truc connu pour $P(X)\in \Or_{\bar \Q_p}[X]$
 et $P(X)=X^n+a_{n-1}X^{n-1}+\ldots+a_0$ c'est la
@@ -152,10 +154,74 @@ $|\begin{pmatrix} n\\ q\end{pmatrix}|^{1/(n-q)}$.
 \subsubsection{Ce qu'on veut}
 On peut prendre $q=p^{v_p(n)}=p^{k+1}$ si $n$ est pas une
 puissance de $p$ et $q=n/p$ sinon. Alors dans ces cas
-là on calcule bien
+là on calcule bien :
 \[|\begin{pmatrix} n\\ q\end{pmatrix}|^{1/(n-q)}=\begin{cases} 1,~\textrm{cas 1}\\\frac{1}{p^{\frac{1}{p^{k+1}}-\frac{1}{p^{k}}}},~\textrm{autre cas}\end{cases}\]
 parce que 
 \[\begin{pmatrix} n\\ q\end{pmatrix}=\frac{n}{q}\prod_{i=1}^{q-1}\frac{n-i}{i}\]
+maintenant via les hypothèses $|n-i|=|i|$ pour
+$1\leq i\leq q-1$ via $p^ka-i=p^l.u$ dit que
+$i=p^l(p^{k-l}a-u)$.
+
+\begin{rem}
+  Autrement, entre $n$ et $n-p^k$ y'a "qu'une seule
+  copie de $p^k$" d'où les mêmes "$p$-éléments" qu'entre
+  $1$ et $p^k$.
+\end{rem}
+
+\subsection{Preuve du Lemme}
+On peut étant donné $P(X)$ prendre $Q(X):=P(X+\alpha)$
+alors $\beta\in Rac(P)$ est de la forme 
+$g.\alpha-\alpha$ d'où $|Rac(Q)|\leq \Delta_M(\alpha)$.
+Ensuite on a $\gamma\in Rac(Q^{(q)})$ telle que 
+on ait $|\gamma|\leq c_p\Delta_M(\alpha)$. Maintenant
+le trick bizarre mais naturel en fait : 
+$d(X+\alpha)/dX=1$ d'où il existe 
+$\beta\in Rac(P^{(q)})$ telle que 
+\[|\gamma|=|\beta-\alpha|\leq c_p\Delta_M(\alpha)\]
+sauf que $[M(\beta):M]\leq [M(\alpha):M]-1$ ! D'où
+par récurrence sachant que 
+$\Delta_M(\beta)\leq \Delta_M(\alpha)$ on peut conclure.
+
+\subsection{Procédé récursif}
+Si on note $\alpha=:\alpha_0$ et $\beta=:\alpha_1$, 
+$n_i=[M(\alpha_i):M]$, $q_i=p^{v_p(n_i)}$ ou 
+$q_i=p^{v_p(n_i)-1}$ et $k_i$ cette puissance puis
+$P_0(X)=P(X)$, 
+$P_1(X)=Irr(\alpha_1)|P_0^{(q)}(X)/a_{n-q}^{(1)}$
+avec $a_i^{(j)}$ le $i$-ème coefficient de 
+$P_{j-1}^{(q_{j-1})}$ on obtient à chaque étape 
+une racine $\alpha_i$ de $P_i$ telle que 
+$\Delta_M(\alpha_i)\leq \Delta_M(\alpha)$ et 
+$|\alpha_i-\alpha_{i-1}|\leq c_p \Delta_M(\alpha_{i-1})$
+puis éventuellement $\alpha_m\in M$ et 
+\[|\alpha_m-\alpha|\leq c_p\Delta_M(\alpha)\]
+
+\subsection{Pourquoi $q=p^{k}$ ?}
+Ça a l'air d'être pour étendre la preuve à la 
+caractéristique $p\geq 1$ pour pouvoir obtenir
+$\Delta_M(\alpha_i)$ vu que quand y'a des extensions
+inséparables c'est embêtant.
+\subsection{Via la trace}
+En caractéristique $0$ si on pose $q=n-1$ on calcule
+\[|\beta|\leq|a_{n-1}|/|n|\leq \delta/p^{v_p(n)}\]
+de sorte que si $n\wedge p=1$ alors directement 
+$|\beta-\alpha|\leq \Delta_M(\alpha)$ et $\beta\in M$.
+
+EN FAIT NON : peut-être qu'il y'a un problème avec 
+la ramification sauvage et la surjectivité de la trace?
+
+
+\section{Avec $K\subset K_\infty\subset \C_K$}
+En fait l'idée d'approcher $\alpha$ par sa trace dans
+$M$ peut être systématisée. On peut poser $K_\infty/K$
+une $\Z_p$-extension de sorte qu'elle est pas de 
+conducteur finie. 
+
+Avec Coates-Greenberg on a la condition équivalente
+sur la trace qui la rend surjective pour toutes les
+extensions finies de $K_\infty$.
+
+Si on peut prouver que
 
 
 
