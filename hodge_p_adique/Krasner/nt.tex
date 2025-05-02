@@ -125,9 +125,21 @@ de taille $i$ :
 maintenant la valuation est donnée par les sommes
 de produits de taille $1$ (trace$=p$) et on a
 \[v_p(\prod_{j=1}^{p-1}(\alpha-(1-\zeta_p^j))\geq v_p(\alpha)+v_p(p)\]
-en particulier il doit existe $j$ tel que 
+en particulier il doit exister $j$ tel que 
 \[v_p(\alpha-(1-\zeta_p^j))\geq \frac{1}{(p-1)^2}+\frac{1}{p-1}\]
 d'où ce qu'on veut.
+
+\begin{rem}
+  En fait je m'étais trompé sur le calcul mais j'ai
+  mieux : On évalue $\phi_p(X+1)$ presque en $\alpha$
+  et comme $X\phi_p(X+1)=(X+1)^p-1$ comme d'hab chaque
+  coeff
+  est divisible par $p$ (!) d'où les autres sommes sont
+  de valuations $\geq v_p(\alpha^i)+v_p(p)$ et le
+  résultat. Attention nous on a une cancellation alors
+  que $v_p(\phi_p(\alpha+1))$ y'a le coeff dominant
+  qui est $1$.
+\end{rem}
 
 
 
