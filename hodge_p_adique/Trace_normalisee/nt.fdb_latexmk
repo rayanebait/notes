@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber nt"] 0 "nt.bcf" "nt.bbl" "nt" 1745790352.11647 0
+["biber nt"] 0 "nt.bcf" "nt.bbl" "nt" 1745931830.0964 0
   "bib.bib" 0 -1 0 ""
   "nt.bcf" 0 -1 0 "pdflatex"
   (generated)
   "nt.bbl"
   "nt.blg"
   (rewritten before read)
-["pdflatex"] 1745790350.91524 "nt.tex" "nt.pdf" "nt" 1745790352.11695 0
+["pdflatex"] 1745931828.90583 "nt.tex" "nt.pdf" "nt" 1745931830.09686 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1742685315 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1742685315 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1742685315 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -26,6 +26,7 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1742685315 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1742685315 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1742685315 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm" 1742685315 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "/usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm" 1742685315 688 37338d6ab346c2f1466b29e195316aa4 ""
   "/usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm" 1742685315 684 3a51bd4fd9600428d5264cf25f04bb9a ""
   "/usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm" 1742685315 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
@@ -43,6 +44,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1742685315 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1742685315 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1742685315 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1742685315 36118 fad905eba93cff5bce1e185fe980a177 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1742685315 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1742685315 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1742685315 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -205,11 +207,11 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1745684922 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1745684906 2008243 67b1f10e1074857832f0800708e2b1fd ""
-  "nt.aux" 1745790351.9304 1201 214834888d1600e57b0a29f20869c498 "pdflatex"
+  "nt.aux" 1745931829.92414 1913 86c7972ac80142d3e43217caa8d96bdd "pdflatex"
   "nt.bbl" 0 -1 0 "biber nt"
-  "nt.out" 1745790351.9334 780 07658268effe9a7a907aff82ee920a22 "pdflatex"
-  "nt.run.xml" 1745790351.93611 2289 35846a34ca1fffb67bc4a8fbf1faa022 "pdflatex"
-  "nt.tex" 1745790348.65141 5000 8c539673397c9b582cc04f905607d688 ""
+  "nt.out" 1745931829.92614 1488 de528b537bdae9070d8c4ae4301eacff "pdflatex"
+  "nt.run.xml" 1745931829.92982 2289 35846a34ca1fffb67bc4a8fbf1faa022 "pdflatex"
+  "nt.tex" 1745931827.10873 7407 a15afab1e45c6dc35c20cc0213481427 ""
   (generated)
   "nt.aux"
   "nt.bcf"

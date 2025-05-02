@@ -1,0 +1,249 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{La différente, À REORGANISER}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Cas Dedekind}
+On prends $A$ de Dedekind et $K=Frac(A)$ puis $L/K$
+finie séparable et $B$ les entiers de $L$ sur $A$.
+\subsection{$B^\wedge$ est fractionnaire}
+
+L'idée c'est de faire le cas d'un module libre et 
+de l'utiliser pour montrer le cas de type fini.
+
+Dans l'ordre on montre que pour $M\subset L$ un 
+$A$-réseau alors
+\begin{enumerate}
+    \item Si $M=\oplus w_i.A$ alors $M^\wedge=w_i^\wedge.A$ où $w_i^\wedge$ est la $L$-base duale.
+    \item Si $M\subset N$ alors $N^\wedge\subset M^\wedge$ pour deux $A$-modules quelconques.
+\end{enumerate}
+Ensuite si $L=\bigoplus_i e_iK$ alors y'a un $a\in \Or_K$
+tel que $\bigoplus ae_iA\subset B$ d'où
+\[\bigoplus_i ae_iA\subset B\subset B^\wedge\subset (\bigoplus_i ae_iA)^\wedge=\bigoplus_i (ae_i)^\wedge A\]
+et on peut montrer que $B^\wedge$ est fractionnaire
+via un dénominateur commun des $(ae_i^\wedge)_i$.
+
+\subsection{$D_{L/K}$ est un idéal de $B$}
+On a $B\subset B^\wedge$ d'où $D_{L/K}\subset B$.
+
+\subsection{Caractérisation}
+L'idéal $D_{L/K}^{-1}$ est maximal tel que 
+\[Tr_{L/K}(D_{L/K}^{-1})=\Or_K\]
+Pour le voir suffit de remarquer que pour $I\subset L$
+fractionnaire si on a 
+\[Tr_{L/K}(I.\Or_L)=Tr_{L/K}(I)=\Or_K\]
+alors $I\subset D_{L/K}^{-1}$ par déf.
+
+\subsection{Transitivité}
+On veut montrer que $D_{L/K}=D_{L/M}D_{M/K}$, y suffit
+de montrer sur les inverses (Dedekind). En fait on a
+\[Tr_{L/M}(D_{L/K}^{-1})\subset D_{L/M}^{-1}\]
+via la maximalité puis
+\[Tr_{L/M}(D_{L/K}^{-1}D_{M/K})=D_{M/K}Tr_{L/K}(D_{L/K}^{-1})\subset D_{M/K}D_{M/K}^{-1}\subset\Or_K\]
+d'où $D_{L/K}^{-1}D_{M/K}\subset D_{L/M}^{-1}$ puis
+\[D_{L/K}^{-1}\subset D_{L/M}^{-1}D_{M/K}^{-1}.\]
+À l'inverse 
+\[Tr_{L/K}(D_{M/K}^{-1}D_{L/M}^{-1})\subset \Or_K\]
+d'où le résultat.
+
+\subsection{Corps locaux de caractéristique $0$}
+On a toujours $\Or_L=\Or_K[\alpha]$ et on peut prouver
+qu'alors si $f=\mu_\alpha$ :
+\[D_{L/K}=(f'(\alpha))\]
+d'où 
+\begin{enumerate}
+    \item $v_L(D_{L/K})=e-1$ ssi l'extension est modérée.
+    \item $v_L(D_{L/K})\geq e$ en général.
+\end{enumerate}
+
+\section{La différente}
+Elle est donnée par 
+\[\D_{L/K}:=(\Or_L^\wedge)^{-1}=(\{x\in L| Tr_{L/K}(x\Or_L)\subset \Or_K\})^{-1}\]
+avec $I^{-1}=_L(\Or_L:I)$.
+
+\subsection{Base duale de $(\alpha^i)_i$ pour la trace}
+Pour trouver la base duale de $\D_{L/K}^{-1}$
+avec $L=K[\alpha]$ et $\alpha\in \Or_L$ on a en notant 
+$P(T)=(T-\alpha)(\sum_{i=1}^{n-1} c_i(\alpha)T^i)$ que 
+\[\sum_i \alpha_i^k\frac{P(T)}{P'(\alpha_i)(T-\alpha_i)}=T^k\]
+d'où en développant 
+$\sum_i \alpha_i^k\frac{c_j(\alpha_i)}{P'(\alpha_i)}=\delta_{ij}$.
+Et ça c'est $Tr_{L/K}(\alpha\frac{c_j(\alpha)}{P'(\alpha)})$ d'où
+$(\frac{c_j(\alpha)}{P'(\alpha)})_j$ est duale pour $(\alpha^k)_k$.
+En plus vu que on peut réécrire 
+\[([P(T)-P(\alpha))/(T-\alpha)=\sum_{i=1}^n a_i\frac{(T^i-\alpha^i)}{T-\alpha}\]
+et en développant on trouve $\sum_{i=j+1}^n a_i\alpha_{i-1-j}=c_j(\alpha)$.
+De $\alpha\in\Or_L$ on a $a_n=1$ d'où la matrice de transition de 
+$1,\alpha,\ldots,\alpha^{n-1}$ vers $(c_j(\alpha))_j$ est triangulaire
+inférieure avec une diagonale faite de $1$ d'où inversible dans 
+$\Or_K$.
+
+En conclusion la base duale
+pour la trace de $(\alpha^i)_i$ est $(c_j(\alpha)/f'(\alpha))_j$.
+Mais quand $\alpha\in\Or_L$, 
+$\Or_K[\alpha]^\wedge=\frac{1}{P'(\alpha)}\Or_K[\alpha]$.
+\subsection{La différente quand $\Or_L=\Or_K[\alpha]$}
+Par exemple dans des corps locaux de caractéristique $0$ un tel
+$\alpha$ existe toujours via $\Or_L=\Or_K[\theta,\pi_L]$ et
+le fait que l'extension résiduelle est séparable.
+
+Maintenant $\D_{L/K}=((\Or_L)^\wedge)^{-1}=\frac{1}{P'(\alpha)}\Or_L$.
+
+\begin{rem}
+    Directement si $L=K[\alpha]/K$ est non ramifiée, $P'(\alpha)\in \Or_L^\times$
+    car $\bar P'(\bar \alpha)\ne 0\mod \pi_L$.
+    d'où $\D_{L/K}=\Or_L$.
+\end{rem}
+
+\section{Transitivité}
+Étant donné $L/F/K$, on a $\D_{L/K}=\D_{L/F}\D_{F/K}$. Suffit de
+montrer
+que, $\Or_{L/K}^\wedge=\Or_{L/F}^\wedge(\Or_{F/K}^\wedge)$ vu que 
+$(IJ)^{-1}=I^{-1}J^{-1}$ c'est un calcul terme à terme. Et pour ça 
+le seul cas pas évident c'est $x\in \Or_{L/K}^\wedge$ implique est
+un produit.
+\subsection{Base produit}
+Dans le cas complet ça va, c'est que des dvrs d'où
+on a une base produit. 
+
+\section{Caractérisation}
+On a $Tr(D_{L/K}^{-1})=\Or_K$ et c'est le plus grand idéal 
+fractionnaire tel que c'est vrai. Faut penser à la base
+duale pour le voir! 
+
+\chapter{Résumé}
+On a $Tr_{L/K}(D_{L/K}^{-1})=\Or_K$, la surjectivité vient de
+la base duale. L'autre inclusion est par déf. 
+
+La transitivité on peut prouver que 
+$Tr_{L/F}(D_{L/K}^{-1})=D_{F/K}^{-1}$ sachant que si $x\in F$
+et $v_i^*$ est dans la base duale de $L$ sur $F$ alors $xv_i^*$ 
+est dans $D_{L/K}^{-1}$, la raison c'est que $Tr_{F/K}(x)\in\Or_K$.Par déf.
+
+L'autre côté est simple.
+
+L'existence de la base duale c'est que $Hom(L,K)$ est de
+dimension $\leq [L:K]$ et $x\mapsto Tr(\_x)$ est injective par non
+dégénérescence.
+
+
+
+
+
+
+
+
+
+\end{document}

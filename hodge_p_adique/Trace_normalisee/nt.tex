@@ -148,19 +148,35 @@ $\C_K(\eta)^{G_{K_\infty}}=\C_K^{G_{K_\infty}}(\eta)$.
 
 \section{Preuves}
 \subsection{(1.2.1.)}
+\subsubsection{Idée de la récurrence}
+On fait une récurrence sur $n$ pour montrer que si
+$x\in K_n$ alors
+\[|Tr_{K_\infty/K}(x)-x|\leq c_n|\gamma(x)-x|_K\]
+l'idée c'est que si $y=\frac{1}{p}Tr_{K_n/K_{n-1}}(x)$
+alors $Tr_{K_\infty/K}(x)=Tr_{K_\infty/K}(y)$.
+D'où 
+\[|Tr_{K_\infty/K}(x)-x|_K=|Tr_{K_\infty/K}(y)-y+\frac{1}{p}Tr_{K_n/K_{n-1}}(x)-x|_K\]
+Maintenant le terme de droite se majore facile via
+$3.$ et le terme de gauche c'est plus dur on a 
+\[Tr_{K_\infty/K}(y)-y=\frac{1}{p}Tr_{K_n/K_{n-1}}(\gamma(x)-x)\]
+et faut utiliser les formules de comparaisons de 
+valuations de traces.
 
+\subsubsection{Les preuves}
 Dans l'ordre pour $1.2.1.$ on a :
 \begin{enumerate}
   \item $v_K(Tr_{K_n/K_{n-1}})\geq v_K(x)+v_K(D_{K_n/K_{n-1}}) - \frac{1}{p^{n-1}}$ par les formules 
     d'estimation de valuations de traces.
   \item En déroulant avec le théorème de Tate
     \[|Tr_{K_n/K_{n-1}}(x)|\leq |p|_K^{1-\frac{b}{p^{n-1}}}|x|_K\]
-\end{enumerate}
-et (en pensant $\alpha^k-1=(1+\alpha+\ldots+\alpha^{k-1}(\alpha-1)$) :
-\begin{enumerate}
   \item Via $Tr_{K_n/K_{n-1}}(x)=\sum_{k=0}^{p-1}\gamma_{n-1}^k(x)$, $\gamma_n=\gamma^{p^n}$:
-    \[|Tr_{K_n/K_{n-1}}(x)-px|_K\leq|\gamma.x-x|_K\]
+    \[|\frac{1}{p}Tr_{K_n/K_{n-1}}(x)-x|_K\leq|p|_K^{-1}|\gamma.x-x|_K\]
 \end{enumerate}
+\begin{rem}
+  Faut penser $\alpha^k-1=(1+\alpha+\ldots+\alpha^{k-1})(\alpha-1)$).
+\end{rem}
+Le $3.$ est assez direct 
+
 on a une récurrence via si 
 $y=\frac{1}{p}Tr_{K_n/K_{n-1}}(x)$ alors
 \[Tr_{K_\infty/K}(x)=Tr_{K_\infty/K}(y)\]
@@ -170,5 +186,53 @@ Y faut juste estimer la constante $c$ via les
 $p^{-b/p^{n-1}}$.
 
 \subsection{(1.2.2.)}
+On a 
+\[|Tr_{K_\infty/K}(x)|_K\leq c.|x|_K\]
+d'où la continuité en $0$ puis la continuité partout
+par linéarité de la trace.
+
+\subsection{(1.2.3.)}
+Direct.
+\subsection{(1.2.4.)}
+Y s'agit juste de montrer que l'inverse est continu. Son
+existence est facile, je l'appelle $\rho$. On a 
+\[|x|_K=|x-Tr_{K_\infty/K}(x)+Tr_{K_\infty/K}(x)|_K\leq c.|(\gamma-1)x|_K\]
+pour tout $x\in \widehat{K_\infty^\circ}$ par les
+sections d'avant. En 
+particulier comme 
+$\rho(\widehat{K_\infty^\circ})=\widehat{K_\infty^\circ}$
+on a
+\[|\rho(x)|_K\leq c.|x|_K\]
+puis la continuité.
+
+
+\section{Extension}
+Pour $\lambda\in U_K^{(1)}$ l'idée c'est que
+\[(\gamma-1+1-\lambda)\rho=1+(1-\lambda).\rho\]
+et $|1-\lambda|_K<1$. Le truc de droite est de la
+forme $1-a$ et donc ça suggère de regarder l'opérateur
+\[\sum_{i=0}^\infty (1-a)^i\]
+Maintenant si $|1-\lambda|_K<c^{-1}$ la série
+\[\sum_{i=0}^{+\infty} (\lambda-1)^i\rho^i\]
+converge absolument ! Dans le cas général
+il existe $n$ tel que $|1-\lambda^{p^n}|_K<c^{-1}$
+d'où on peut conclure si $\lambda$ est pas une
+racine de l'unité.
+
+\section{Cohomologie}
+On a montré que 
+\[H^0(\Gamma, \widehat{K_\infty(\eta)})=\begin{cases} K,~\eta=1\\0,~\eta(\gamma)\notin \mu_K\end{cases}\]
+En fait on voit aussi directement que
+\[H^1(\Gamma, \widehat{K_\infty(\eta)})=\begin{cases} K,~\eta=1\\0,~\eta(\gamma)\notin \mu_K\end{cases}\]
+en remarquant qu'un cocycle $f$ est 
+\begin{enumerate}
+  \item entièremeent determiné par $f(\gamma)$,
+  \item $\gamma-\eta(\gamma)=\eta(\gamma)(\rho(\gamma)-1)$ dans $End(\widehat{K_\infty(\eta)})$.
+\end{enumerate}
+En particulier 
+\[H^1(\Gamma,\widehat{K_\infty(\eta)})\simeq \frac{\widehat{K_\infty(\eta)}}{im(\gamma-\eta(\gamma))}\]
+d'où le résultat par les parties d'avant.
+
+
 
 \end{document}

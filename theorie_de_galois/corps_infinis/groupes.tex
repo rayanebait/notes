@@ -1,0 +1,227 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{res}{Résumé}
+\newtheorem{rep}{Réponse}
+\newtheorem{cons}{Conséquence}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Théorie de Galois infinie}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Extensions galoisiennes}
+\subsection{Déf}
+On étend la définition en disant que $L/K$ est 
+galoisienne si algébrique, séparable et normale. En
+particulier si $K\subset E\subset L$ alors $E/L$ est
+galoisienne.
+
+\subsection{Paradigme/Rappel}
+Y s'agit toujours de remarquer que si $K^{sep}$ est
+une clôture séparable et $L/K$ est finie :
+\begin{enumerate}
+  \item Alors $\Hom_K(L,K^{sep})$ est fini de cardinal
+    $[L:K]$.
+  \item $\Hom_K(K^{sep},K^{sep})\to \Hom_K(L, K^{sep})$
+    est surjectif (Zorn).
+\end{enumerate}
+
+
+\section{Groupes de Galois}
+Milne prends une notation particulière : 
+$G=Aut_K(K^{sep})$, pour $S\subset K^{sep}$ fini ;
+$G(S)=\{g\in G| gs=s,~\forall s\in S\}$. Ensuite pour
+une extension galoisienne $E/K$ quelconque on définit
+\[Gal(E/K):=Aut_K(E)\]
+\subsection{Constructions}
+En fait $G(S)=Gal(K^{sep}/K(S))$.
+Par $1.2.1$, $\bar S:=\cup_{g\in G} gS$ est fini et
+$g\bar S=\bar S$ pour tout $g\in G$, alors $G(\bar S)$
+est normal dans $G$ (mini calcul). Ça correspond au 
+groupe de galois $Gal(K^{sep}/E)$ où $E$ est la
+clôture galoisienne de $K(S)/K$ dans $K^{sep}$.
+
+
+\subsection{Topologie de Krull}
+En fait 
+\begin{itemize}
+  \item $G(S)$ définit une base de voisinage ouverts de
+    $1$ et une topologie unique sur $G$.
+\end{itemize}
+On montre (1.) que la topologie déterminée par les $G(S)$
+coincide avec celle donnée par
+\[G\simeq \varprojlim_{[L:K]<+\infty,galois} Gal(L/K)\]
+
+et (2.) que les groupes de galois sont compacts et
+totalement déconnectés.
+\subsection{Preuve de 1.}
+Vu que $G(S)=Gal(K^{sep}/K(S))$ y suffit de montrer
+que 
+\begin{enumerate}
+  \item $Gal(K^{sep}/K)\to Gal(E/K)$ sont continues
+    pour tout $E/K$ galoisiennes finies.
+  \item On a bien tout les $G(S)$.
+\end{enumerate}
+Pour le $2.$ c'est juste que si $K(S)\subset E$ avec
+$E/K$ la clôture galoisienne de $K(S)$ alors 
+\[\bigcup_{g\in Gal(E/K(S))}\tilde{g}G_E=G_{K(S)}\]
+pour des lifts des $g$.
+
+Pour la continuité bah c'est juste que si $\tilde g$
+lift un $g$ alors $\tilde gG_E$ est ouvert par
+définition.
+
+\subsection{Preuve de 2.}
+La compacité on la prouve via 
+\begin{itemize}
+  \item $G\simeq \varprojlim_{[L:K]<+\infty,galois} Gal(L/K)$ est fermé dans
+    $ \prod_{[L:K]<+\infty,galois}G/G_L$
+    qui est compact.
+\end{itemize}
+Milne le prouve joliment en disant que l'égalisateur
+de \[pr_1\colon \prod_S G/G(S)\to G/G(S_1)\] et
+\[q\circ pr_2\colon \prod_S G/G(S)\to G/G(S_2)\to G/G(S_1)\]
+est fermé (intersection) pour $S_1\subset S_2$ et que
+$G$ est l'intersection de tout ces égalisateurs (!).
+La connectivité c'est simplement que 
+\[\bigcap_{S\subset K^{sep}~fini} G(S)=\{id_{K^{sep}}\}\]
+
+\subsection{$(K^{sep})^{Aut(K^{sep}/K(S))}=G(S)$}
+Ça découle du théorème de galois fini !
+
+\section{Théorème principal}
+Étant donné un sous-groupe $H\leq G_K$ :
+\[Gal(\overline{K}/\overline{K}^H)=\overline{H}\]
+et étant donné un sous-corps $K\subset M\subset \overline K$ :
+\[(\overline{K})^{G_M}=M\]
+et $G_M$ est fermé dans $G$.
+
+\subsection{$G_M$ est fermé}
+Pour montrer que $G_M$ est
+fermé l'idée c'est que pour tout $S\subset \overline K$
+fini, $G(S)$ est ouvert et $G_K/G(S)$ est fini d'où 
+\[G(S)=G_K-\bigsqcup_{\tilde g\ne 1}\tilde gG(S)\]
+est fermé. Puis $G_M=\bigcap_{S\subset M}G(S)$ est fermé.
+\subsection{Clôture de $H$}
+Méga instructif. Clairement 
+\[\bar H\subset Gal(\bar K/\bar K^H)\]
+maintenant si $g\in G_K-\bar H$, on a $E/K$ galoisienne
+t.q. $\bar K^H\subset E$ et (par déf)
+\[g.G_E\cap H=\emptyset\]
+en particulier si $\phi\colon G_K\to G_K/G_E=G_{E/K}$
+alors $\phi(g)\notin \phi(H)\leq G_{E/K}$ (!!) d'où
+$\phi(g)$ ne fixe pas $E^{\phi(H)}\subset \bar K^H$.
+
+
+\printbibliography
+\end{document}
+

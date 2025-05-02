@@ -1,0 +1,135 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Lemme de Krasner}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Preuve}
+Théorie de Galois et invariance de la valeur absolue.
+
+\section{Un exemple : $\Q_p(\zeta_p)=\Q_p((-p)^{\frac{1}{p-1}})$}
+C'est dingo : On peut montrer que si 
+$\alpha=(-p)^{\frac{1}{p-1}}$ alors il existe $j$ tel que
+\[v_p(\alpha-(\zeta_p^j-1))\geq \frac{1}{p-1}+\epsilon\]
+pour $0 <\epsilon$ sachant que 
+$v_p(\zeta_p^j-\zeta_p^k)=\frac{1}{p-1}$ si 
+$j\ne k\mod p$. Pour ça on peut remarquer que
+\[\prod_{j=1}^{p-1} (1-\zeta_p^j)=p=-\alpha^{p-1}\]
+d'où
+\[\prod_{j=1}^{p-1} \frac{1-\zeta_p^j}{\alpha}=-1.\]
+Maintenant si on calcule 
+$\prod_{j=1}^{p-1}(\alpha-(1-\zeta_p^j))$ on remarque que
+en notant $J_i$ les sous-ensembles de $\{1,\ldots, p-1\}$
+de taille $i$ :
+\begin{align*}
+  \prod_{j=1}^{p-1}(\alpha-(1-\zeta_p^j))&=1+S+(-1)\\
+                                        &=\sum_{i=1}^{p-2}\sum_{(j_1,\ldots,j_i)\in J_i}\alpha^i(1-\zeta_p^{j_1})\ldots(1-\zeta_p^{j_i})\\
+\end{align*}
+maintenant la valuation est donnée par les sommes
+de produits de taille $1$ (trace$=p$) et on a
+\[v_p(\prod_{j=1}^{p-1}(\alpha-(1-\zeta_p^j))\geq v_p(\alpha)+v_p(p)\]
+en particulier il doit existe $j$ tel que 
+\[v_p(\alpha-(1-\zeta_p^j))\geq \frac{1}{(p-1)^2}+\frac{1}{p-1}\]
+d'où ce qu'on veut.
+
+
+
+
+\end{document}
