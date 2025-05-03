@@ -1,0 +1,247 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+
+
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\newcommand{\RepBp}{\underline{\textrm{Rep}}_{\Q_p,B}(G_K)}
+\newcommand{\Repp}{\underline{\textrm{Rep}}_{\Q_p}(G_K)}
+\newcommand{\Repl}{\underline{\textrm{Rep}}_{\Q_l}(G_K)}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{$\RepBp$}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Trucs sur les modules}
+\subsection{Relation de taille minimale}
+Étant donné $M$ un $R$-module et 
+\[\pi\colon R^{(I)}\to M\to 0\]
+avec $\pi$ la flèche de gauche on peut regarder
+$r\in \pi^{-1}(m)$ pour $m\in M$. Puis $|supp(r)|$
+est fini par déf. D'où on peut regarder une relation
+de taille minimale pour $m$. Par déf si 
+$\sum_{j\in J} a_j m_j=m$ pour $n=|J|$ minimal
+et un des $a_j$ est inversible bah $(m_j)_j$ est libre ! 
+Sinon le $j=j_0$ t.q $a_{j_0}$ est inversible, $m_{j_0}$,
+se réécrit en fonction des autres !!
+
+\begin{rem}
+  Donc quand y'a un corps en jeu c'est direct une famille
+  libre.
+\end{rem}
+Par contre on voit aussi que passer au corps de fraction peut
+réduire la taille des relations logique.
+
+\subsection{Dans un sous-module}
+On peut pareil demander pour $N\leq M$ un élément de $N$
+d'écriture de taille minimale non nul. Vu que $N$ contient pas
+forcément de générateur $m\in M$ c'est intéressant, pour le 
+calcul de noyau par exemple.
+
+\subsection{Applications aux produits tensoriels}
+On peut donc prendre des écritures de taille minimales
+$\sum d_i\otimes c_i$. Ça permet par exemple de faire
+le trick d'Artin !
+
+\subsection{Modules libres sont plats}
+On a 
+\[R^n\otimes_R B\simeq B^n\]
+via
+\begin{align*}
+  \Hom_R(R^n\otimes_R B, C)&=\Hom_R(R^n,\Hom_R(B,C))\\
+                           &=(\Hom_R(R,\Hom_R(B,C)))^n\\
+                           &=(\Hom_R(B,C)^n)\\
+                           &=\Hom_R(B^n,C)
+\end{align*}
+D'où l'isomorphisme puis le résultat vu que on peut
+calculer des antécédents terme à terme pour la
+surjectivité à droite.
+
+
+
+\section{$B$ et $C$-admissibilité}
+La $\Q_p$-algèbre $B$ est supposée commutative intègre.
+En plus elle est $G_K$-régulière, i.e. 
+$B^{G_K}=C^{G_K}=E$ et 
+$\{b\in B| G_K(b.\Q_p)=b.\Q_p\}\subset B^\times$.
+
+\subsection{$\dim_E D_B(V)\leq\dim_{\Q_p}V$}
+On peut montrer que 
+\[\alpha_B\colon D_B(\_)\otimes_{E}B\to V\otimes_{\Q_p}B\]
+est injective, à noter que $(d_i\otimes 1)_i$ est lin indép
+sur $C$ !
+
+\subsection{$\alpha_B$ et admissibilité}
+Si $\dim_E D_B(V)=\dim_{\Q_p}(V)$ alors $\alpha_B$
+est un isomorphisme ! L'idée est vraiment jolie. On
+prends $v=(v_i)$ une base de $V$ et $d=(d_i)$ de 
+$D_B(V)$. Puis $d=A.v$ avec $A\in M_n(B)$. Maintenant
+en posant $\wedge_{i=1}^n d_i=x$ et 
+$\wedge_{i=1}^n v_i=y$ on obtient $x=\det(A).y$. Et
+l'action induite de $G_K$ est celle d'un caractère
+$\eta$! En particulier,
+\[x=g.x=g(\det(A))\eta(g).y\]
+d'où $g(\det(A))=\det(A)\eta(g)^{-1}\in \Q_p.\det(A)$.
+Puis $A$ est inversible dans $B$!
+
+\begin{rem}
+  Ça montre la surjectivité de $\alpha_B$. Faut
+  juste déterminer pq $g.y=\eta(g).y$ est un caractère
+  $G_K\to \Z_p^\times$.
+\end{rem}
+
+\section{$\RepBp$ est tannakienne.}
+
+\subsection{Exactitude de $D_B(\_)$}
+Quand on a $0\to V'\to V\to V''$ on a tjr 
+\[\dim_K V\leq \dim_K V' + \dim_K V''\]
+et égalité si $0\to V'\to V\to V''\to 0$ est exacte.
+Maintennat il s'agit juste de remarquer que si la
+première suite de
+% https://q.uiver.app/#q=WzAsMTcsWzEsMCwiMCJdLFsyLDAsIlYnIl0sWzMsMCwiViJdLFs0LDAsIlYnJyJdLFs1LDAsIjAiXSxbMSwxLCIwIl0sWzIsMSwiVidcXG90aW1lc197XFxRX3B9QiJdLFszLDEsIlZcXG90aW1lc197XFxRX3B9QiJdLFs0LDEsIlYnJ1xcb3RpbWVzX3tcXFFfcH1CIl0sWzUsMSwiMCJdLFsxLDIsIjAiXSxbMiwyLCJEX0IoVicpIl0sWzMsMiwiRF9CKFYpIl0sWzQsMiwiRF9CKFYnJykiXSxbMCwxXSxbMCwyXSxbMCwwXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbNSw2XSxbNiw3XSxbNyw4XSxbOCw5XSxbMTAsMTFdLFsxMSwxMl0sWzEyLDEzXSxbMTYsMTQsIlxcb3RpbWVzX3tcXFFfcH1CIiwyLHsibGV2ZWwiOjJ9XSxbMTQsMTUsIihcXF8pXntHX0t9IiwyLHsibGV2ZWwiOjJ9XV0=
+\[\begin{tikzcd}
+	{} & 0 & {V'} & V & {V''} & 0 \\
+	{} & 0 & {V'\otimes_{\Q_p}B} & {V\otimes_{\Q_p}B} & {V''\otimes_{\Q_p}B} & 0 \\
+	{} & 0 & {D_B(V')} & {D_B(V)} & {D_B(V'')}
+	\arrow["{\otimes_{\Q_p}B}"', Rightarrow, from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow["{(\_)^{G_K}}"', Rightarrow, from=2-1, to=3-1]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+\end{tikzcd}\]
+est exacte et $V$ est $B$-admissible par alors les
+deux autres sont $B$-admissible ET la suite du bas 
+devient exacte. En particulier, \[D_B(\_)\colon
+\RepBp\to \textrm{Vect}_E\]
+est exact.
+\subsection{$D_B(V'\otimes_{\Q_p}V'')=D_B(V')\otimes_ED_B(V'')$, $\Hom(V',V'')$}
+
+\subsection{$D_B(V)^*\simeq D_B(V^*)$ et admissibilité
+de $\Hom_{\Q_p}(V',V'')$}
+
+
+
+\section{Les bons exemples}
+On peut regarder 
+$B=\bar K,K^{un},\C_K,B_{dR},B_{crys},B_{ht},B_{st}$
+et encore d'autres. 
+
+
+
+
+
+\section{À faire}
+Comprendre les représentations $\Z_p(1), \Z_p(i):=\Z_p(1)^{\otimes i}$
+et leur lien avec les twists de faisceaux. Ducoup comprendre les 
+représentation de dimension $1$/abéliennes.
+
+Voir quelques représentations de dimension $2$, genre courbes 
+elliptiques. Juste se donner une idée des méthodes.
+
+Capter Ax-Sen-Tate qui est un des plus importants, appliquer à 
+la correspondance de galois entre $E$ et $E^\flat$.
+
+Capter Hilbert $90$ et ses applications, accessoirement 
+
+
+
+
+
+\section{Représentations $p$-adiques}
+
+
+\end{document}
