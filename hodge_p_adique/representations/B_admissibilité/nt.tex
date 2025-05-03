@@ -208,11 +208,35 @@ deux autres sont $B$-admissible ET la suite du bas
 devient exacte. En particulier, \[D_B(\_)\colon
 \RepBp\to \textrm{Vect}_E\]
 est exact.
-\subsection{$D_B(V'\otimes_{\Q_p}V'')=D_B(V')\otimes_ED_B(V'')$, $\Hom(V',V'')$}
+\subsection{Admissibilité de $V'\otimes_{\Q_p}V''$}
+Étant donné $V'$ et $V''$ dans $\RepBp$ on a
+\begin{align*}
+  D_B(V'\otimes_{\Q_p}V'')&=(V'\otimes_{\Q_p}B\otimes_{\Q_p}V'')^{(G_K)}\\
+			  &=(D_B(V')\otimes_E B\otimes_{\Q_p}V'')^{G_K}\\
+			  &=(D_B(V')\otimes_ED_B(V'')\otimes_E B)^{G_K}\\
+\end{align*}
+Et le truc de droite c'est $D_B(V')\otimes_ED_B(V'')$.
+D'où le résultat.
 
-\subsection{$D_B(V)^*\simeq D_B(V^*)$ et admissibilité
-de $\Hom_{\Q_p}(V',V'')$}
+\subsection{$V$ est $B$-admissible ssi $V^*$ aussi}
+Soit $V\in\RepBp$ alors 
+$D_B(V)\otimes_E B\simeq V\otimes_{\Q_p}B$ d'où
+\begin{align*}
+  (V^*\otimes_{\Q_p}B)^{G_K}&=(\Hom_{\Q_p}(V,\Q_p)\otimes_{\Q_p}B)^{G_K}\\
+			    &=(\Hom_{\Q_p}(V, B))^{G_K}\\
+			    &=(\Hom_B(V\otimes_{\Q_p}B,B))^{G_K}\\
+			    &=(\Hom_B(D_B(V)\otimes_E B,B))^{G_K}\\
+			    &=(\Hom_E(D_B(V),B))^{G_K}\\
+			    &=\Hom_E(D_B(V),E)\\
+			    &=D_B(V)^*
+\end{align*}
+où l'avant dernière égalité est dûe au fait que les
+$G_K$-invariant du Hom c'est les flèches 
+$G_K$-équivariantes et que $D_B(V)$ est $G_K$-invariant.
 
+\subsection{Admissibilité de $\Hom_{\Q_p}(V',V'')$}
+Il suffit de remarquer que \[\Hom_{\Q_p}(V',V'')\simeq
+(V'\otimes_{\Q_p}(V'')^*)^*\]
 
 
 \section{Les bons exemples}
