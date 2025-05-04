@@ -55,6 +55,15 @@
 \newcommand{\D}{\mathscr{D}}
 \newcommand{\E}{\mathscr{E}}
 
+\newcommand{\RepBp}{\underline{\textrm{Rep}}_{B}(G_K)}
+\newcommand{\RepKbar}{\underline{\textrm{Rep}}_{\bar K}(G_K)}
+\newcommand{\RepCK}{\underline{\textrm{Rep}}_{\C K}(G_K)}
+\newcommand{\RepBcrys}{\underline{\textrm{Rep}}_{B_{\textrm{crys}}}(G_K)}
+\newcommand{\RepBdR}{\underline{\textrm{Rep}}_{B_{\textrm{dR}}}(G_K)}
+\newcommand{\RepBHT}{\underline{\textrm{Rep}}_{B_{\textrm{HT}}}(G_K)}
+\newcommand{\Repp}{\underline{\textrm{Rep}}_{\Q_p}(G_K)}
+\newcommand{\Repl}{\underline{\textrm{Rep}}_{\Q_l}(G_K)}
+
 \theoremstyle{plain}
 \newtheorem{thm}{Théoreme}
 \newtheorem{lem}{Lemme}
@@ -88,66 +97,22 @@
     filecolor=wgrey
 }
 
-\title{$\underline{Rep}_{\Q_p,B}(G_K)$}
+\title{$\Repp$}
 \date{}
 
 \begin{document}
 \maketitle
+\section{$G_K$-Action}
+On 
 
-\section{Trucs sur les modules}
-Étant donné $M$ un $R$-module et 
-\[\colon R^{(I)}\to M\to 0\]
-avec $\pi$ la flèche de gauche on peut regarder
-$r\in \pi^{-1}(m)$ pour $m\in M$. Puis $|supp(r)|$
-est fini par déf. D'où on peut regarder une relation
-de taille minimale pour $m$. Par déf si 
-$\sum_{i\in I_n} a_i m_i=m$ pour $n=|I_n|$ minimal
-et un des $a_i$ est inversible bah $(\m_i)_i$ est libre ! 
-Sinon le $i=i_0$ t.q $a_{i_0}$ est inversible, $m_{i_0}$,
-se réécrit en fonction des autres !!
+\section{Représentations de dimension $1$}
+En assumant que $GL(\Q_p)\simeq \Q_p^\times$ une flèche
+$\rho\colon G_K\to Aut(\Q_p)$ est la multiplication par
+un élément. Et $G_K$ est d'image compacte. En particulier
+$\rho(G_K)\subset \Z_p^\times$ sinon si y'a un 
+$1<|\rho(g)|$ alors $|\rho(g^n)|\to +\infty$ d'où 
+$\rho(G_K)$ est pas compacte (direct).
 
-\begin{rem}
-  Donc quand y'a un corps en jeu c'est direct une famille
-  libre.
-\end{rem}
-Par contre on voit aussi que passer au corps de fraction peut
-réduire la taille des relations logique.
-
-\subsection{Dans un sous-module}
-On peut pareil demander pour $N\leq M$ un élément de $N$
-d'écriture de taille minimale non nul. Vu que $N$ contient pas
-forcément de générateur $m\in M$ c'est intéressant, pour le 
-calcul de noyau par exemple.
-
-\subsection{Applications aux produits tensoriels}
-On peut donc prendre des écritures de taille minimales
-$\sum d_i\otimes c_i$. Ça permet par exemple de faire
-le trick d'Artin $gx-x$!
-
-
-\section{$D_B(\_)$ et $D_C(\_)$}
-Pour prouver que \[D_B(\_)\otimes_{E}B\to V\otimes_{\Q_p}B\]
-est injective, à noter que $(d_i\otimes 1)_i$ est lin indép
-sur $C$ !
-
-\section{À faire}
-Comprendre les représentations $\Z_p(1), \Z_p(i):=\Z_p(1)^{\otimes i}$
-et leur lien avec les twists de faisceaux. Ducoup comprendre les 
-représentation de dimension $1$/abéliennes.
-
-Voir quelques représentations de dimension $2$, genre courbes 
-elliptiques. Juste se donner une idée des méthodes.
-
-Capter Ax-Sen-Tate qui est un des plus importants, appliquer à 
-la correspondance de galois entre $E$ et $E^\flat$.
-
-Capter Hilbert $90$ et ses applications, accessoirement 
-
-
-
-
-
-\section{Représentations $p$-adiques}
 
 
 \end{document}

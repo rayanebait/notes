@@ -103,53 +103,6 @@
 \begin{document}
 \maketitle
 
-\section{Trucs sur les modules}
-\subsection{Relation de taille minimale}
-Étant donné $M$ un $R$-module et 
-\[\pi\colon R^{(I)}\to M\to 0\]
-avec $\pi$ la flèche de gauche on peut regarder
-$r\in \pi^{-1}(m)$ pour $m\in M$. Puis $|supp(r)|$
-est fini par déf. D'où on peut regarder une relation
-de taille minimale pour $m$. Par déf si 
-$\sum_{j\in J} a_j m_j=m$ pour $n=|J|$ minimal
-et un des $a_j$ est inversible bah $(m_j)_j$ est libre ! 
-Sinon le $j=j_0$ t.q $a_{j_0}$ est inversible, $m_{j_0}$,
-se réécrit en fonction des autres !!
-
-\begin{rem}
-  Donc quand y'a un corps en jeu c'est direct une famille
-  libre.
-\end{rem}
-Par contre on voit aussi que passer au corps de fraction peut
-réduire la taille des relations logique.
-
-\subsection{Dans un sous-module}
-On peut pareil demander pour $N\leq M$ un élément de $N$
-d'écriture de taille minimale non nul. Vu que $N$ contient pas
-forcément de générateur $m\in M$ c'est intéressant, pour le 
-calcul de noyau par exemple.
-
-\subsection{Applications aux produits tensoriels}
-On peut donc prendre des écritures de taille minimales
-$\sum d_i\otimes c_i$. Ça permet par exemple de faire
-le trick d'Artin !
-
-\subsection{Modules libres sont plats}
-On a 
-\[R^n\otimes_R B\simeq B^n\]
-via
-\begin{align*}
-  \Hom_R(R^n\otimes_R B, C)&=\Hom_R(R^n,\Hom_R(B,C))\\
-                           &=(\Hom_R(R,\Hom_R(B,C)))^n\\
-                           &=(\Hom_R(B,C)^n)\\
-                           &=\Hom_R(B^n,C)
-\end{align*}
-D'où l'isomorphisme puis le résultat vu que on peut
-calculer des antécédents terme à terme pour la
-surjectivité à droite.
-
-
-
 \section{$B$ et $C$-admissibilité}
 La $\Q_p$-algèbre $B$ est supposée commutative intègre.
 En plus elle est $G_K$-régulière, i.e. 
@@ -159,8 +112,14 @@ $\{b\in B| G_K(b.\Q_p)=b.\Q_p\}\subset B^\times$.
 \subsection{$\dim_E \D_B(V)\leq\dim_{\Q_p}V$}
 On peut montrer que 
 \[\alpha_B\colon \D_B(\_)\otimes_{E}B\to V\otimes_{\Q_p}B\]
-est injective, à noter que $(d_i\otimes 1)_i$ est lin indép
-sur $C$ !
+est injective, à noter que $(d_i\otimes 1)_i$ est lin
+indép sur $C$ !
+\begin{note}
+  La preuve : $x=\sum d_i\otimes c_i$ de taille minimale
+  et $c_m=1$ ensuite $\alpha_C$ est $G_K$-équivariant 
+  d'où $gx-x$ est dans le noyau puis on conclut via la
+  taille.
+\end{note}
 
 \subsection{$\alpha_B$ et admissibilité}
 Si $\dim_E \D_B(V)=\dim_{\Q_p}(V)$ alors $\alpha_B$
@@ -180,6 +139,18 @@ Puis $A$ est inversible dans $B$!
   juste déterminer pq $g.y=\eta(g).y$ est un caractère
   $G_K\to \Z_p^\times$.
 \end{rem}
+
+\subsection{Ce que ça dit}
+Cet isomorphisme dit qu'en fait on peut obtenir
+une base $G_K$-invariante de $V\otimes_{\Q_p}B$. Vu que
+si $\bigoplus_{i=1}^n d_i.K=\D_B(V)$ alors 
+$\alpha_B(d_i)=d_i$ et $gd_i=d_i$.
+
+En particulier, l'action est semi-linéaire mais triviale
+sur $\D_B(V)$ d'où on peut se concentrer sur l'action
+sur $B$ !
+
+Ça ressemble donc à Hilbert 90 en un sens.
 
 \section{$\RepBp$ est tannakienne.}
 
@@ -244,10 +215,11 @@ Il suffit de remarquer que \[\Hom_{\Q_p}(V',V'')\simeq
 (V'\otimes_{\Q_p}(V'')^*)^*\]
 
 
-\section{Les bons exemples}
+\section{Les premiers exemples}
 On peut regarder 
 $B=\bar K,K^{un},\C_K,B_{dR},B_{crys},B_{ht},B_{st}$
-et encore d'autres. 
+et encore d'autres. Ici je regarde juste $\bar K$ et 
+$\C_K$.
 \subsection{$\bar K$-admissibilité}
 Les représentations $\bar K$-admissibles sont les
 $\rho\colon G_K\to GL_n(\Q_p)$ telles que $\rho$ 
@@ -270,7 +242,7 @@ où $\chi_K$ est le caractère cyclotomique. Comme y'a
 une infinité de ramification cette représentation
 est pas $\C_K$-admissible.
 
-\subsection{$B_{HT}$-admissibilité}
+\section{$B_{HT}$-admissibilité}
 On pose $B_{HT}:=\C_K[t,t^{-1}]$ avec l'action :
 \[g\sum a_it^i=\sum g(a_i)\chi_K^i(g)t^i\]
 i.e. $t$ est la période de $\mathbb G_m$. 
@@ -279,7 +251,7 @@ i.e. $t$ est la période de $\mathbb G_m$.
   homotopie près le $\pi_1$ est engendré par $S^1$.
   D'où $t=2\pi i$ ici !
 \end{rem}
-\subsubsection{$B_{HT}$ est régulière}
+\subsection{$B_{HT}$ est régulière}
 D'abord $B_{HT}\subset \C_K(t)\subset \C_K((t))$ et
 à droite on sait que la $G_K$-invariance est sur les
 monômes ! Or $\C_K(\chi_K^i)^{G_K}=0$ si $i\ne 0$ et $K$
@@ -288,7 +260,7 @@ Faut prouver que $B_{HT}$ est régulière. L'idée est
 qu'un $b$ t.q la ligne $\Q_p.b$ est $G_K$-stable est
 un monôme $a_it^i$. Faut utiliser 
 $\C_K(\chi_K^i)^{G_K}=0$.
-\subsubsection{$\Repp\to \textrm{Grad}_K$}
+\subsection{$\Repp\to \textrm{Grad}_K$}
 On a 
 \[(V\otimes_{\Q_p}\C_K[t,t^{-1}])^{G_K}=(\bigoplus_{i\in\Z}V\otimes \C_Kt^i)^{G_K}=\bigoplus_{i\in\Z}(V\otimes \C_Kt^i)^{G_K}\]
 parce que les $:=V\otimes \C_Kt^i$ sont $G_K$-stables.
@@ -298,7 +270,9 @@ et obtenir
 \[\Repp\to \textrm{Grad}_K\]
 exact à gauche. Puis exact et fidèle en restreignant
 à $\RepBHT$ par la théorie générale. 
-\subsubsection{Graduation et critère d'admissibilité}
+\subsection{Graduation et critère d'admissibilité}
+En gros il suffit de prouver l'isomorphisme en degré 
+$0$.
 Étant donné $V\in \Repp$ on forme 
 $V(i)\subset V\otimes_{\Q_p}\C_K$ les $v$ tels que 
 $g.v=\chi_K(g)^iv$ pour tout $g\in G_K$. Puis on a
@@ -327,7 +301,7 @@ ducoup. En particulier l'iso
 en haut induit l'iso en bas qui est l'admissibilité vu
 que $\alpha_{HT}$ respecte la graduation.
 
-\subsubsection{Poids de Hodge-Tate}
+\subsection{Poids de Hodge-Tate}
 Dans la décomposition $V\otimes_{\Q_p}\C_K\simeq \bigoplus_{i\in \Z}V\{i\}$
 les $i$ tels que $V\{i\}\ne 0$ sont les poids de 
 Hodge-Tate. Maintenant $m_i:=\dim_{\C_K}V\{i\}$ est la 
@@ -336,25 +310,57 @@ $V\{i\}\simeq \C_K(\chi_K^i)^{m_i}$. D'où
 \[V\otimes_{\Q_p}\C_K\simeq \bigoplus_{i\in \Z}\C_K(i)^{m_i}.\]
 
 
+\section{$B_{dR}$-admissibilité}
 
-\section{À faire}
-Comprendre les représentations $\Z_p(1), \Z_p(i):=\Z_p(1)^{\otimes i}$
-et leur lien avec les twists de faisceaux. Ducoup comprendre les 
-représentation de dimension $1$/abéliennes.
+\section{$B_{crys}$-admissibilité}
 
-Voir quelques représentations de dimension $2$, genre courbes 
-elliptiques. Juste se donner une idée des méthodes.
+\section{Hiérarchie}
+\section{Trucs sur les modules}
+\subsection{Relation de taille minimale}
+Étant donné $M$ un $R$-module et 
+\[\pi\colon R^{(I)}\to M\to 0\]
+avec $\pi$ la flèche de gauche on peut regarder
+$r\in \pi^{-1}(m)$ pour $m\in M$. Puis $|supp(r)|$
+est fini par déf. D'où on peut regarder une relation
+de taille minimale pour $m$. Par déf si 
+$\sum_{j\in J} a_j m_j=m$ pour $n=|J|$ minimal
+et un des $a_j$ est inversible bah $(m_j)_j$ est libre ! 
+Sinon le $j=j_0$ t.q $a_{j_0}$ est inversible, $m_{j_0}$,
+se réécrit en fonction des autres !!
 
-Capter Ax-Sen-Tate qui est un des plus importants, appliquer à 
-la correspondance de galois entre $E$ et $E^\flat$.
+\begin{rem}
+  Donc quand y'a un corps en jeu c'est direct une famille
+  libre.
+\end{rem}
+Par contre on voit aussi que passer au corps de fraction peut
+réduire la taille des relations logique.
 
-Capter Hilbert $90$ et ses applications, accessoirement 
+\subsection{Dans un sous-module}
+On peut pareil demander pour $N\leq M$ un élément de $N$
+d'écriture de taille minimale non nul. Vu que $N$ contient pas
+forcément de générateur $m\in M$ c'est intéressant, pour le 
+calcul de noyau par exemple.
+
+\subsection{Applications aux produits tensoriels}
+On peut donc prendre des écritures de taille minimales
+$\sum d_i\otimes c_i$. Ça permet par exemple de faire
+le trick d'Artin !
+
+\subsection{Modules libres sont plats}
+On a 
+\[R^n\otimes_R B\simeq B^n\]
+via
+\begin{align*}
+  \Hom_R(R^n\otimes_R B, C)&=\Hom_R(R^n,\Hom_R(B,C))\\
+                           &=(\Hom_R(R,\Hom_R(B,C)))^n\\
+                           &=(\Hom_R(B,C)^n)\\
+                           &=\Hom_R(B^n,C)
+\end{align*}
+D'où l'isomorphisme puis le résultat vu que on peut
+calculer des antécédents terme à terme pour la
+surjectivité à droite.
 
 
-
-
-
-\section{Représentations $p$-adiques}
 
 
 \end{document}
