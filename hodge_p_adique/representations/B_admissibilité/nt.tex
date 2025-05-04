@@ -35,6 +35,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\A}{\mathbb{A}}
+\newcommand{\D}{\mathbb{D}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\Or}{\mathcal{O}}
 \newcommand{\F}{\mathbb F}
@@ -52,10 +53,14 @@
 
 \newcommand{\cL}{\mathscr{L}}
 \newcommand{\G}{\mathscr{G}}
-\newcommand{\D}{\mathscr{D}}
 \newcommand{\E}{\mathscr{E}}
 
-\newcommand{\RepBp}{\underline{\textrm{Rep}}_{\Q_p,B}(G_K)}
+\newcommand{\RepBp}{\underline{\textrm{Rep}}_{B}(G_K)}
+\newcommand{\RepKbar}{\underline{\textrm{Rep}}_{\bar K}(G_K)}
+\newcommand{\RepCK}{\underline{\textrm{Rep}}_{\C K}(G_K)}
+\newcommand{\RepBcrys}{\underline{\textrm{Rep}}_{B_{\textrm{crys}}}(G_K)}
+\newcommand{\RepBdR}{\underline{\textrm{Rep}}_{B_{\textrm{dR}}}(G_K)}
+\newcommand{\RepBHT}{\underline{\textrm{Rep}}_{B_{\textrm{HT}}}(G_K)}
 \newcommand{\Repp}{\underline{\textrm{Rep}}_{\Q_p}(G_K)}
 \newcommand{\Repl}{\underline{\textrm{Rep}}_{\Q_l}(G_K)}
 
@@ -151,17 +156,17 @@ En plus elle est $G_K$-régulière, i.e.
 $B^{G_K}=C^{G_K}=E$ et 
 $\{b\in B| G_K(b.\Q_p)=b.\Q_p\}\subset B^\times$.
 
-\subsection{$\dim_E D_B(V)\leq\dim_{\Q_p}V$}
+\subsection{$\dim_E \D_B(V)\leq\dim_{\Q_p}V$}
 On peut montrer que 
-\[\alpha_B\colon D_B(\_)\otimes_{E}B\to V\otimes_{\Q_p}B\]
+\[\alpha_B\colon \D_B(\_)\otimes_{E}B\to V\otimes_{\Q_p}B\]
 est injective, à noter que $(d_i\otimes 1)_i$ est lin indép
 sur $C$ !
 
 \subsection{$\alpha_B$ et admissibilité}
-Si $\dim_E D_B(V)=\dim_{\Q_p}(V)$ alors $\alpha_B$
+Si $\dim_E \D_B(V)=\dim_{\Q_p}(V)$ alors $\alpha_B$
 est un isomorphisme ! L'idée est vraiment jolie. On
 prends $v=(v_i)$ une base de $V$ et $d=(d_i)$ de 
-$D_B(V)$. Puis $d=A.v$ avec $A\in M_n(B)$. Maintenant
+$\D_B(V)$. Puis $d=A.v$ avec $A\in M_n(B)$. Maintenant
 en posant $\wedge_{i=1}^n d_i=x$ et 
 $\wedge_{i=1}^n v_i=y$ on obtient $x=\det(A).y$. Et
 l'action induite de $G_K$ est celle d'un caractère
@@ -178,7 +183,7 @@ Puis $A$ est inversible dans $B$!
 
 \section{$\RepBp$ est tannakienne.}
 
-\subsection{Exactitude de $D_B(\_)$}
+\subsection{Exactitude de $\D_B(\_)$}
 Quand on a $0\to V'\to V\to V''$ on a tjr 
 \[\dim_K V\leq \dim_K V' + \dim_K V''\]
 et égalité si $0\to V'\to V\to V''\to 0$ est exacte.
@@ -188,7 +193,7 @@ première suite de
 \[\begin{tikzcd}
 	{} & 0 & {V'} & V & {V''} & 0 \\
 	{} & 0 & {V'\otimes_{\Q_p}B} & {V\otimes_{\Q_p}B} & {V''\otimes_{\Q_p}B} & 0 \\
-	{} & 0 & {D_B(V')} & {D_B(V)} & {D_B(V'')}
+	{} & 0 & {\D_B(V')} & {\D_B(V)} & {\D_B(V'')}
 	\arrow["{\otimes_{\Q_p}B}"', Rightarrow, from=1-1, to=2-1]
 	\arrow[from=1-2, to=1-3]
 	\arrow[from=1-3, to=1-4]
@@ -205,34 +210,34 @@ première suite de
 \end{tikzcd}\]
 est exacte et $V$ est $B$-admissible par alors les
 deux autres sont $B$-admissible ET la suite du bas 
-devient exacte. En particulier, \[D_B(\_)\colon
+devient exacte. En particulier, \[\D_B(\_)\colon
 \RepBp\to \textrm{Vect}_E\]
 est exact.
 \subsection{Admissibilité de $V'\otimes_{\Q_p}V''$}
 Étant donné $V'$ et $V''$ dans $\RepBp$ on a
 \begin{align*}
-  D_B(V'\otimes_{\Q_p}V'')&=(V'\otimes_{\Q_p}B\otimes_{\Q_p}V'')^{(G_K)}\\
-			  &=(D_B(V')\otimes_E B\otimes_{\Q_p}V'')^{G_K}\\
-			  &=(D_B(V')\otimes_ED_B(V'')\otimes_E B)^{G_K}\\
+  \D_B(V'\otimes_{\Q_p}V'')&=(V'\otimes_{\Q_p}B\otimes_{\Q_p}V'')^{(G_K)}\\
+			  &=(\D_B(V')\otimes_E B\otimes_{\Q_p}V'')^{G_K}\\
+			  &=(\D_B(V')\otimes_E\D_B(V'')\otimes_E B)^{G_K}\\
 \end{align*}
-Et le truc de droite c'est $D_B(V')\otimes_ED_B(V'')$.
+Et le truc de droite c'est $\D_B(V')\otimes_E\D_B(V'')$.
 D'où le résultat.
 
 \subsection{$V$ est $B$-admissible ssi $V^*$ aussi}
 Soit $V\in\RepBp$ alors 
-$D_B(V)\otimes_E B\simeq V\otimes_{\Q_p}B$ d'où
+$\D_B(V)\otimes_E B\simeq V\otimes_{\Q_p}B$ d'où
 \begin{align*}
   (V^*\otimes_{\Q_p}B)^{G_K}&=(\Hom_{\Q_p}(V,\Q_p)\otimes_{\Q_p}B)^{G_K}\\
 			    &=(\Hom_{\Q_p}(V, B))^{G_K}\\
 			    &=(\Hom_B(V\otimes_{\Q_p}B,B))^{G_K}\\
-			    &=(\Hom_B(D_B(V)\otimes_E B,B))^{G_K}\\
-			    &=(\Hom_E(D_B(V),B))^{G_K}\\
-			    &=\Hom_E(D_B(V),E)\\
-			    &=D_B(V)^*
+			    &=(\Hom_B(\D_B(V)\otimes_E B,B))^{G_K}\\
+			    &=(\Hom_E(\D_B(V),B))^{G_K}\\
+			    &=\Hom_E(\D_B(V),E)\\
+			    &=\D_B(V)^*
 \end{align*}
 où l'avant dernière égalité est dûe au fait que les
 $G_K$-invariant du Hom c'est les flèches 
-$G_K$-équivariantes et que $D_B(V)$ est $G_K$-invariant.
+$G_K$-équivariantes et que $\D_B(V)$ est $G_K$-invariant.
 
 \subsection{Admissibilité de $\Hom_{\Q_p}(V',V'')$}
 Il suffit de remarquer que \[\Hom_{\Q_p}(V',V'')\simeq
@@ -243,8 +248,92 @@ Il suffit de remarquer que \[\Hom_{\Q_p}(V',V'')\simeq
 On peut regarder 
 $B=\bar K,K^{un},\C_K,B_{dR},B_{crys},B_{ht},B_{st}$
 et encore d'autres. 
+\subsection{$\bar K$-admissibilité}
+Les représentations $\bar K$-admissibles sont les
+$\rho\colon G_K\to GL_n(\Q_p)$ telles que $\rho$ 
+est d'image finie. Si $V\in\RepKbar$ et $d=(d_i)_i$
+engendre $\D_{\bar K}(V)$, $v=(v_i)_i$ engendre $V$.
+Alors $d_i=\sum a_{ij}\otimes v_j$ et l'idée c'est
+que $A$ est dans $GL_n(L)$ pour $L/K$ finie puis
+$G_L$ agit triv sur $v$. D'où
+\[G_K\to Gal(L/K)\to Aut_{\Q_p}(V)\]
 
+\subsection{$\C_K$-admissibilité}
+Un peu le seum de pas l'avoir vu en cours : c'est la
+théorie de Sen. En gros on a 
+\begin{thm}[Sen]
+  $\rho\colon G_K\to Aut_{\Q_p}(V)$ est $\C_K$-admissible ssi $\rho(I_K)$ est fini.
+  finie.
+\end{thm}
+Un très bon non-exemple c'est $\Q_p(\chi_K)=\Q_p(1)$
+où $\chi_K$ est le caractère cyclotomique. Comme y'a
+une infinité de ramification cette représentation
+est pas $\C_K$-admissible.
 
+\subsection{$B_{HT}$-admissibilité}
+On pose $B_{HT}:=\C_K[t,t^{-1}]$ avec l'action :
+\[g\sum a_it^i=\sum g(a_i)\chi_K^i(g)t^i\]
+i.e. $t$ est la période de $\mathbb G_m$. 
+\begin{rem}
+  Pour rappel sur $\C$, $\C-0$ est de genre $1$ et à
+  homotopie près le $\pi_1$ est engendré par $S^1$.
+  D'où $t=2\pi i$ ici !
+\end{rem}
+\subsubsection{$B_{HT}$ est régulière}
+D'abord $B_{HT}\subset \C_K(t)\subset \C_K((t))$ et
+à droite on sait que la $G_K$-invariance est sur les
+monômes ! Or $\C_K(\chi_K^i)^{G_K}=0$ si $i\ne 0$ et $K$
+sinon.
+Faut prouver que $B_{HT}$ est régulière. L'idée est
+qu'un $b$ t.q la ligne $\Q_p.b$ est $G_K$-stable est
+un monôme $a_it^i$. Faut utiliser 
+$\C_K(\chi_K^i)^{G_K}=0$.
+\subsubsection{$\Repp\to \textrm{Grad}_K$}
+On a 
+\[(V\otimes_{\Q_p}\C_K[t,t^{-1}])^{G_K}=(\bigoplus_{i\in\Z}V\otimes \C_Kt^i)^{G_K}=\bigoplus_{i\in\Z}(V\otimes \C_Kt^i)^{G_K}\]
+parce que les $:=V\otimes \C_Kt^i$ sont $G_K$-stables.
+On peut déf
+\[gr^i(\D_{B_{HT}}(V)):=(V\otimes \C_Kt^i)^{G_K}\]
+et obtenir
+\[\Repp\to \textrm{Grad}_K\]
+exact à gauche. Puis exact et fidèle en restreignant
+à $\RepBHT$ par la théorie générale. 
+\subsubsection{Graduation et critère d'admissibilité}
+Étant donné $V\in \Repp$ on forme 
+$V(i)\subset V\otimes_{\Q_p}\C_K$ les $v$ tels que 
+$g.v=\chi_K(g)^iv$ pour tout $g\in G_K$. Puis on a
+via $v\mapsto vt^{-i}\otimes t^i$
+\[V(i)\simeq gr^{-1}\D_{HT}(V)\otimes_K Kt^i\]
+ensuite si $V\{i\}:=V(i)\otimes_K \C_K$ alors 
+\[V\{i\}\simeq gr^{-i}\D_{HT}(V)\otimes_K\C_Kt^i\]
+puis
+\[\bigoplus_{i\in \Z}V\{i\}\simeq gr^0(\D_{HT}(V)\otimes_K B_{HT})\]
+et le diagramme suivant 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGJpZ29wbHVzX3tpXFxpblxcWn1WXFx7aVxcfSJdLFsxLDAsIlZcXG90aW1lc197XFxRX3B9XFxDX0siXSxbMSwxLCJWXFxvdGltZXNfe1xcUV9wfVxcQ19LIl0sWzEsMiwiVlxcb3RpbWVzX3tcXFFfcH1CX3tIVH0iXSxbMCwxLCJncl4wKFxcRF97SFR9KFYpXFxvdGltZXNfS0Jfe0hUfSkiXSxbMCwyLCJcXERfe0hUfShWKVxcb3RpbWVzX0sgQl97SFR9Il0sWzAsMV0sWzQsMl0sWzAsNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDVdLFs1LDNdLFsyLDNdLFsxLDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	{\bigoplus_{i\in\Z}V\{i\}} & {V\otimes_{\Q_p}\C_K} \\
+	{gr^0(\D_{HT}(V)\otimes_KB_{HT})} & {V\otimes_{\Q_p}\C_K} \\
+	{\D_{HT}(V)\otimes_K B_{HT}} & {V\otimes_{\Q_p}B_{HT}}
+	\arrow[hook,from=1-1, to=1-2]
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow["\alpha_{HT}"',from=3-1, to=3-2]
+\end{tikzcd}\]
+Où la flèche du haut est la restriction au degré $0$ 
+ducoup. En particulier l'iso
+en haut induit l'iso en bas qui est l'admissibilité vu
+que $\alpha_{HT}$ respecte la graduation.
+
+\subsubsection{Poids de Hodge-Tate}
+Dans la décomposition $V\otimes_{\Q_p}\C_K\simeq \bigoplus_{i\in \Z}V\{i\}$
+les $i$ tels que $V\{i\}\ne 0$ sont les poids de 
+Hodge-Tate. Maintenant $m_i:=\dim_{\C_K}V\{i\}$ est la 
+multiplicité du poids et 
+$V\{i\}\simeq \C_K(\chi_K^i)^{m_i}$. D'où
+\[V\otimes_{\Q_p}\C_K\simeq \bigoplus_{i\in \Z}\C_K(i)^{m_i}.\]
 
 
 
