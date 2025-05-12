@@ -125,8 +125,10 @@ Une première remarque : les idéaux principaux ont valuation
 minorée $>0$. En particulier $\m_E$ est jamais principal. Ducoup
 de même $\alpha.\m_E$ non plus pour $\alpha\in \m_E$. Enfin si
 tu contiens $\alpha$ tu contiens $B(0, |\alpha|)$ de sorte que
-$\m_E$ est le seul idéal de valuation $0$ puis on a tout les
-idéaux !
+$\m_E$ est le seul idéal de valuation $0$. Il y'a quand
+même des idéaux qui ne sont pas de la forme $\alpha.\m_E$
+si $\sup|I|$ est pas dans $|E|$. Même si $(|y_n|)_n$ tend
+vers $a$ y'a pas de raisons pour que $(y_n)$ soit Cauchy.
 
 \section{Corps perfectoide}
 Un corps non-archimédien (NA) $(E,|.|_E)$ est perfectoide si
@@ -165,7 +167,7 @@ on a alors
 c'est simplement l'équivalence $x^{(n)}=0\mod p$ équivaut à
 \[x^{(0)}=(x^{(n)})^{p^n}=0\mod p^{p^n}\]
 
-\subsection{Valeur absolue}
+\subsection{Valeur absolue d'un corps perfectoide}
 On a 
 \begin{enumerate}
     \item $|E^\flat|=|E|$ de manière évidente.
@@ -201,15 +203,19 @@ et regarder
 \subsubsection{Topologie sur le Tilt (complétude)}
 Via un $g\in \Or_E^\flat$ tel que $|g|=|p|^{1/p}$ on pose $t=g^p$.
 On a naturellement la flèche surjective
-\[\Or_E^\flat\to \Or_E/p\]
-et on prouve aussi naturellement que le noyau est $(t)$ simplement
-en en remarquant que $g^{(0)} \in (p)$ implique
-\[g^{(0)}=a^{(0)}.p\]
-puis via $t^{(0)}=u^{(0)}p$ pour une unité on a
-\[g^{(0)}=\frac{a^{(0)}}{u^{(0)}}t^{(0)}\]
-et de la même manière $g^{(n)}=\frac{a^{(n)}}{u^{(n)}}t^{(n)}$.
+\[\pi\colon \Or_E^\flat\to \Or_E/p\]
+et on prouve aussi naturellement que le noyau est $(t)$.
+Si $x\in \ker(\pi)$ alors $|x|\leq |p|=|t|$ d'où
+$x/t\in \Or_E^\flat$ puis $x=(x/t).t\in (t)$.
 On a montré que 
 \[\Or_{E^\flat}/t\simeq \Or_E/p\]
+\begin{rem}
+    Pas vraiment, en fait j'ai triché en montrant pas
+    que $\Or_E^\flat$ est de valuation. Il faudrait lift
+    $x$ en $x\in (\Or_E)^{perf}$ et successivement approximer
+    en utilisant le fait que $\Or_E$ est lui de valuation.
+\end{rem}
+
 
 \section{Théorème de presque-pureté}
 \subsection{Untilt}
@@ -244,8 +250,8 @@ commutatitivité de
 en particulier si $x\in \ker(\theta_E)$ alors 
 \[|x_0^{(0)}|_E\leq |p|_E\]
 et en fait si $|x_0^{(0)}|_E=|p|$ alors il engendre (!!) le
-noyau. La preuve est juste par approximation successive (voir 
-Fontaine si jamais).
+noyau. La preuve est par approximations successives.
+Voir la sous-section d'après.
 \begin{rem}
     Via une pseudo-uniformisante du tilt, $t$, si 
     $t^{(0)}=u^{(0)}.p$ alors $[t]-p[u]$ engendre le noyau. En
@@ -253,6 +259,16 @@ Fontaine si jamais).
     $t=(0,p^{1/p},p^{1/p^2},\ldots)$ d'où 
     $[t]-p=\ker(\theta_{\C_p})$.
 \end{rem}
+\subsubsection{$\ker(\theta_E)$ est principal}
+Si on prends $x\in \ker(\theta_E)$ tel que $|x_1|=1$
+et $y\in\ker(\theta_E)$ on peut supposer que 
+\[y=xz_m+p^mc.\]
+Pour $m=0$, on prends $z_0=[y_0/x_0]$ (on voit $|x_0|=1$)
+puis pour $m\geq 1$ on a 
+\[\theta_E(y-xz_m)=0\]
+d'où $c\in\ker(\theta_E)$ puis $c=xd_0+p.e$ et en
+remplaçant l'approximation voulue. La suite $(z_n)_n$
+converge facilement !
 
 \subsubsection{Topologie de $A_{\inf}$}
 On prend les vecteurs de Witt d'un anneau parfait de 

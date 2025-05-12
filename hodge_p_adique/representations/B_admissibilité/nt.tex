@@ -272,13 +272,18 @@ exact à gauche. Puis exact et fidèle en restreignant
 à $\RepBHT$ par la théorie générale. 
 \subsection{Graduation et critère d'admissibilité}
 En gros il suffit de prouver l'isomorphisme en degré 
-$0$.
+$0$ pour être $B_{HT}$-admissible.
+\newline
+
 Étant donné $V\in \Repp$ on forme 
 $V(i)\subset V\otimes_{\Q_p}\C_K$ les $v$ tels que 
 $g.v=\chi_K(g)^iv$ pour tout $g\in G_K$. Puis on a
 via $v\mapsto vt^{-i}\otimes t^i$
 \[V(i)\simeq gr^{-1}\D_{HT}(V)\otimes_K Kt^i\]
-ensuite si $V\{i\}:=V(i)\otimes_K \C_K$ alors 
+\begin{note}
+  Le calcul est direct!
+\end{note}
+\noindent ensuite si $V\{i\}:=V(i)\otimes_K \C_K$ alors 
 \[V\{i\}\simeq gr^{-i}\D_{HT}(V)\otimes_K\C_Kt^i\]
 puis
 \[\bigoplus_{i\in \Z}V\{i\}\simeq gr^0(\D_{HT}(V)\otimes_K B_{HT})\]
@@ -296,11 +301,15 @@ et le diagramme suivant
 	\arrow[from=2-2, to=3-2]
 	\arrow["\alpha_{HT}"',from=3-1, to=3-2]
 \end{tikzcd}\]
-Où la flèche du haut est la restriction au degré $0$ 
+où la flèche du haut est la restriction au degré $0$ 
 ducoup. En particulier l'iso
 en haut induit l'iso en bas qui est l'admissibilité vu
 que $\alpha_{HT}$ respecte la graduation.
 
+\begin{rem}
+  Pour rappel l'iso a pas besoin d'être équivariant
+  c'est juste un calcul de dimension. 
+\end{rem}
 \subsection{Poids de Hodge-Tate}
 Dans la décomposition $V\otimes_{\Q_p}\C_K\simeq \bigoplus_{i\in \Z}V\{i\}$
 les $i$ tels que $V\{i\}\ne 0$ sont les poids de 
@@ -312,9 +321,19 @@ $V\{i\}\simeq \C_K(\chi_K^i)^{m_i}$. D'où
 
 \section{$B_{dR}$-admissibilité}
 
+
 \section{$B_{crys}$-admissibilité}
 
 \section{Hiérarchie}
+
+\section{Trucs sur les complétions}
+\subsection{Anneaux de valuations discrets complets}
+Étant donné $A$ commutatif intègre ayant un idéal
+principal maximal $\m$ : la flèche
+\[\iota\colon A\to \varprojlim A/\m^n\]
+est injective et $\widehat A:=\varprojlim A/\m^n$ est
+un DVR complet.
+
 \section{Trucs sur les modules}
 \subsection{Relation de taille minimale}
 Étant donné $M$ un $R$-module et 
