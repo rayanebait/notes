@@ -1,0 +1,158 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Surfaces de Riemann}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Motivation topologique}
+Pour expliquer l'idée des revêtements ramifiés. Un
+super exemple en fait assez général c'est les surfaces
+de Riemann. On peut construire les revêtements via des
+fonctions à valeurs multiples obtenues via des fonctions
+inversibles sur des branches, genre logarithme ou
+exponentielle ou polynômes. 
+
+\subsection{Polynômes, logarithmes et exponentielles.}
+La fonction $z\mapsto z^2$ est un super exemple. On 
+peut étendre la fonction à $S^2=\C\cup \infty$ séparer 
+$S^2$ en deux selon l'axe imaginaire. Dans ce cas
+si $C_1$ est la partie à gauche et $C^2$ la partie
+à droite. Les mettre au carré recouvre $S^2$. 
+
+L'axe de symétrie étant donné par les points fixes de
+$z\mapsto -z$, il va falloir recoller sur cet axe.
+En fait on a : Faire dessin.
+
+
+Le truc maintenant c'est que à gauche on peut prendre la
+racine carrée comme étant $-z^{1/2}$ et à droite comme
+$z^{1/2}$ en posant $z^{1/2}$ la branche principale.
+
+À noter que chaque demi-sphère est pas stable par la
+racine carrée, mais sur la surface de Riemann c'est
+bon.
+
+AUSSI, la surface de Riemann si on prendre un lacet
+autour de $\infty$ sur $S^2$, celui correspond sur
+la surface de riemann est que la "moitié" de ce qu'il
+devrait être, ça fait un lemniscate en fait faut
+faire 2 fois le tour.
+
+Enfin, on peut voir la surface via le recollement de
+$ab^{-1}$ et $ab^{-1}$. En recollant selon $b^{-1}$
+on obtient $aa^{-1}$. L'orientation est renversée,
+voir pq.
+\end{document}

@@ -1,0 +1,420 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Groupes libres et colimites}
+\section{Propriété universelle ou adjonction ?}
+Le truc bizarre c'est que les objets et objets sont dans $Set$
+et/ou dans $Grp$. Ducoup en notant $i(G)\in Set$ le foncteur
+d'oubli on a
+\[\Hom_{Grp}(L(S),G)\simeq \Hom_{Set}(S,i(G))\]
+Et la propriété universelle du groupe libre sur $S\in Set$
+est donnée par 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJTIl0sWzEsMCwiTChTKSJdLFsxLDEsIkciXSxbMCwxLCJqIl0sWzAsMiwiayIsMl0sWzEsMiwiXFxleGlzdHMgIUwoaykiXV0=
+\[\begin{tikzcd}
+	S & {L(S)} \\
+	& G
+	\arrow["j", from=1-1, to=1-2]
+	\arrow["k"', from=1-1, to=2-2]
+	\arrow["{\exists !L(k)}", from=1-2, to=2-2]
+\end{tikzcd}\]
+\section{Construction de $L(S)$}
+Pour construire le groupes libre on prend les suites finies 
+à coefficients dans $S\times \{\pm 1\}$ munies de la concaténation
+et l'élement neutre c'est le vide.
+
+\section{Colimites de groupes}
+Étant donné $(G_i)_i$ un petit diagramme dans $Grp$. On a
+\[f_i\colon L(G_i)\to L(\sqcup G_i)\]
+via $G_i\to \sqcup G_i$ dans $Set$
+et
+\[0\to N_i\to L(G_i)\to G_i\to 0\]
+dans $Grp$ via $G_i\to G_i$ l'identité! Ensuite on a
+$N:=L(\sqcup N_i)\to L(\sqcup G_i)$
+puis $L(\sqcup G_i)/N$ est pas tout à faire universel, à ce
+stade c'est le coproduit dans $Grp$. On 
+identifie les $G_i$ et leurs image dans $L(\sqcup G_i)$ puis on
+quotiente par le sous groupe normal (normalisé ? Oui faut
+normaliser) engendré par l'ensemble des
+$x\rho_{ij}^{-1}(x)$ pour tout $x\in G_i$ et $f_{ij}\in F_{ij}$
+(on prend un diagramme petit quelconque). 
+
+Pour prouver que c'est universel on peut juste obtenir d'abord
+$L(\sqcup G_i)\to H$ puis montrer que ça passe au quotient de
+manière unique. 
+
+\section{Remarque}
+Dans un groupe libre $L=L(S)$, l'ensemble des mots engendrés par
+une partie $S'$ est en fait $L(S')$.
+
+\section{Objet libre en général}
+L'adjonction du 1.1 se généralise en prenant $Set$ avec
+$Mod_R$ par exemple, ou $Ab$. On obtient le produit libre.
+
+\chapter{Sommes amalgamées et arbres}
+\section{Somme amalgamée à deux éléments}
+C'est le cas particulier
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDIl0sWzEsMCwiQV8xIl0sWzAsMSwiQV8yIl0sWzEsMSwiQV8xKl9DQV8yIl0sWzAsMiwiaV8yIiwyXSxbMCwxLCJpXzEiXSxbMSwzXSxbMiwzXV0=
+\[\begin{tikzcd}
+	C & {A_1} \\
+	{A_2} & {A_1*_CA_2}
+	\arrow["{i_1}", from=1-1, to=1-2]
+	\arrow["{i_2}"', from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+et dans ce cas, on peut écrire une présentation de $A_1*_CA_2$ 
+à partir de présentations de $A_1$ et $A_2$. On a construit
+la limite générale à partir de celle du bas :
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiUl9pIl0sWzIsMCwiU19pIl0sWzAsMSwiMCJdLFsxLDEsIk5faSJdLFsyLDEsIkwoQV9pKSJdLFszLDEsIkFfaSJdLFs0LDEsIjAiXSxbMCwxXSxbMSwyXSxbMyw0XSxbNCw1XSxbNSw2XSxbNiw3XSxbMiw2XV0=
+\[\begin{tikzcd}
+	0 & {R_i} & {S_i} \\
+	0 & {N_i} & {L(A_i)} & {A_i} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+Pour utiliser celle du haut on remarque qu'on a 
+$\pi_i\colon L(S_i)\to A_i$
+surjection canonique et $L(R_i)\to L(S_i)$ injective, où plutôt le 
+groupe engendré par $R_i$. On regarde dans $L(S_1\sqcup S_2)$
+le groupe (libre) engendré par 
+
+\[<R_1\sqcup R_2\sqcup \{a_1a_2^{-1}| (a_1,a_2)\in \pi_1^{-1}(i_1(c))\times \pi_2^{-1}(i_2(c)),~c\in C\}\]
+En gros on a quotienté $L(S_1\sqcup S_2)$ plutôt que 
+$L(A_1\sqcup A_2)$. On a quand même 
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJMKFJfMVxcc3FjdXAgUl8yKSJdLFswLDAsIjAiXSxbMiwwLCJMKFNfMVxcc3FjdXAgU18yKSJdLFszLDAsIkwoR18xXFxzcWN1cCBHXzIpIl0sWzQsMCwiMCJdLFsxLDBdLFswLDJdLFsyLDNdLFszLDRdXQ==
+\[\begin{tikzcd}
+	0 & {L(R_1\sqcup R_2)} & {L(S_1\sqcup S_2)} & {L(G_1\sqcup G_2)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+
+\section{Exemple}
+Si je me suis pas trompé, on a via 
+$\Z/20\Z\to \Z/10\Z;1\mapsto 1:=a$ et
+$\Z/20\Z\to D_{10};1\mapsto r$ :
+\[\Z/10\Z *_{\Z/20\Z} D_{10}=<a,r,s|a^{10}=1,r^5=1,s^2=1,srs=r^{-1}, ar^{-1}=1>\]
+d'où $\Z/10\Z *_{\Z/20\Z} D_{10}=D_{10}$ à cause de la relation
+$ar^{-1}=1$. J'ai mis que celle là parce que $i_1(i)=i(i_1(1))=a^i$
+et $i_2(i)=i(i_2(1))=r^i$.
+
+\section{Somme amalgamée générale}
+Si on a une famille $(G_i)_{i\in I}$ et $A\to G_i$. ON peut former
+$*_A G_i=: G$. Là le quotient à une forme spéciale, on peut
+décrire assez bien ses éléments. On a quelques bijections, si
+on note $S_i$ les classes à gauche de $A$ dans $G_i$. On
+\[A\times S_i\to G_i\]
+via $(a,s)\mapsto a.s$ une bijection.
+\subsection{Mots réduits}
+À chaque $s\in \sqcup S_i$ on peut associer $i_s$ l'unique
+élément de $\{i|s\in S_i\}$. Alors une suite finie de la forme
+$(a,s_1,s_2,\ldots,s_n)$
+avec $s_j\in S_{i_{s_j}}-\{e\}$ et $i_{s_j}\ne i_{s_{j+1}}$ est
+appelé réduit. En gros on peut regarder chaque lettre modulo $A$
+et concentrer $A$ à l'avant. Et deux lettres adjacentes sont dans
+des $S_i$ différents.
+
+\subsection{Théorème}
+On a que pour tout $g\in G$, $g$ a une forme réduite unique, i.e. 
+$g=f(a)f_{i_{s_1}}(s_1)\ldots f_{i_{s_n}}(s_n)$
+On identifie les $G_i$ à leurs images dans $G$. Si on note
+$X$ l'ensemble des mots réduits 
+On peut faire agir $G$ dessus. Y suffit de faire agir chaque
+$G_i$ tel que l'action de $A$ ne dépende pas de $i$. On peut 
+définir $Y_i:=\{(1,s_1,\ldots,s_n)|i_{s_1}\ne i\}$. On a 
+\[A\times Y_i\to X\]
+$(a,(1,s_1,\ldots,s_n))\mapsto (a,s_1,\ldots,s_n)$ et
+\[A\times S_i-\{e\}\times Y_i\to X\]
+via $(a,s,(1,s_1,\ldots,s_n))\mapsto (a,s,s_1,\ldots,s_n)$.
+Le point c'est que $A\times Y_i$ c'est les mots réduits où
+$i_{s_1}\ne i$ et $A\times S_i-\{e\}\times Y_i$ c'est les mots
+réduits où $i_{s_1}=i$. Ducoup on a une bijection
+\[A\times Y_i\cup A\times S_i-\{e\}\times Y_i\to X\]
+et si on identifie $A\times Y_i$ et $A\times \{e\}\times Y_i$
+le membre de gauche c'est $G_i\times Y_i$. Donc on a une bijection
+\[G_i\times Y_i\to X\]
+et on peut agir avec $G_i$ sur le truc de gauche via 
+$g((a,s), (m))=(g.a.s,(m))$.
+et si $g\in A$ $g(a,s)=(ga,s)$. D'où $G$ agit sur $X$.
+\subsubsection{En résumé}
+D'un mot de $X$, $m=(a,s_1,\ldots, s_n)$, et de 
+$g=g_1\ldots g_n\in G$ on agit successivement sur les deux
+premiers termes OU sur le premier terme. En gros si 
+$i_{s_1}=i_{g_1}$ alors on calcule $(g_1.a.s_1)=(a',s_1')$ et
+on réinjecte. Sinon on calcule $g_1.a=(a',s)$ et on réinjecte!
+Vu que dans le deuxième cas $s_1\notin S_{i_{g_1}}=S_{i_s}$
+on est bon. En plus, l'action de $G$ sur $X\subset G$ coincide
+avec l'action de $G$ sur lui même. 
+
+\subsection{Unicité}
+Le point de l'action d'avant c'est de montrer qu'on a une section
+$G\to X$. On a une flèche $X\to G$ donnée par 
+\[(a,s_1,\ldots,s_n)\mapsto f(a)f_{i_{s_1}}(s_1)\ldots f_{i_{s_n}}(s_n)\]
+et une section $G\to X$ donnée par $g\mapsto g((1;)$. 
+On peut remarquer que si $m=as_1\ldots s_n$ et 
+$g=f(a).f_{i_{s_1}}(s_1)\ldots f_{i_{s_n}}(s_n)$ alors $g(1;)=m$.
+Pour le voir c'est pas dur, comme $i_{s_i}\ne i_{s_{i+1}}$
+on est toujours dans le deuxième cas de l'action et on a des
+représentants directement. 
+\subsection{Existence}
+D'après Serre come $X\to G$ est injective, on peut l'identifier
+à son image. Ensuite suffit de remarquer que $G_i.X\subset X$.
+D'où $G.X\subset X$ puis $G\subset X$ car $(1;)=1\in X$.
+En fait c'est vraiment immédiat mdr, ptn c'est magique. Vu
+autrement on peut remarquer que 
+$f_{i_{g_1}}(g_1)\ldots f_{i_{g_n}}(g_n)$ se réecrit
+\[f_{i_{g_1}}(g_1)\ldots f_{i_{g_n}}(a_ns_n)\] puis 
+\[f_{i_{g_1}}(g_1)\ldots f_{i_{g_{n-1}}}(g_{n-1}a_n) f_{i_{g_n}}(s_n)\]
+d'où par récurrence le résultat. En fait c'est la preuve de 
+Serre dans le sens inverse un peu. On agit par $g_n=a_ns_n$ sur
+$(1;)$ puis par $a_{n-1}s_{n-1}=g_{n-1}$ sur $(a_n,s_n)$, etc.. On
+a bien une réecriture à chaque étape, celle de 
+$a_{n-1}(s_{n_1}a_n)$.
+
+\section{Description systématique}
+Avec des nouvelles notations, $\bar i=(i_1,\ldots,i_n)$ vérifie
+$(T)$ si $i_j\ne i_{j+1}$.
+Serre propose une description systématique du processus de 
+réduction. Si on note $G_i'=G_i-A$ en fait on peut agir sur
+\[\prod_{j=1}^n G_{i_j}'\]
+avec $A^{n-1}$ via 
+\[(a_1,\ldots,a_{n-1})(g_1,\ldots, g_n)=(g_1a_1^{-1},a_1g_2a_2^{-1},\ldots,a_{n-1}g_n)\]
+\begin{rem}
+Par exemple avec $A^2$ sur $G_1'\times G_2'\times G_3'$ via
+$(a_1,a_2)(g_1,g_2,g_3)=(g_1a_1^{-1},a_1g_2a_2^{-1},a_2g_3)$.
+\end{rem}
+Maintenant pour tout $\bar i$, je note $G_{\bar i}'$ le quotient
+par l'action. On a 
+\[f_{\bar i}\colon G_{\bar i}'\to G\]
+le morphisme produit qui est passé automatiquement au quotient
+est injectif vu que dans chaque classe d'équivalence y'a un mot
+réduit (si $\bar i$ vérifie (T), c'est ça qu'il faut éclaircir) !
+On obtient \[A\sqcup \bigsqcup_{\bar i\textrm{ vérifie (T)}} G_{\bar i}'\to G\]
+vu que chaque mot à une longueure bien définie. Pour conclure
+on peut comprendre qu'il y'a un mot réduit dans chaque classe
+de l'action ca : $g_1\ldots g_n=a_1s_1\ldots a_ns_n$ puis
+en notant $a_n=:a_{n-1}'$ 
+on réecrit 
+\begin{align*}
+g_1\ldots g_n&=a_1(s_1a_1'^{-1})(g_2a_2'^{-1})\ldots (a_{n-1}'g_n)\\
+	     &=a_1((s_1a_1'^{-1})\ldots (s_{n-1}a_{n-1}'^{-1}))s_n\\
+\end{align*}
+maintenant on agit sur le sous mot avec $A^{n-1}$ en mettant
+$a_{n-1}=1$ puis par récurrence.
+
+\subsection{Nouveau résumé}
+Pour voir $G$ comme les mots réduits $X$ on fait agir $G$ sur
+$X$ via $G_i$ sur 
+\[G_i\times Y_i\]
+ou on a deux types d'actions suivant si $i_{s_1}=i$.
+Puis on a $G\to X$ donné par $g\mapsto g.(1;)$. D'où $X\subset G$.
+Enfin, $G_i.X\subset X$ par définition puis $G.1\subset X$.
+
+En plus la réduction de $g_1\ldots g_n$ via \[g_1\ldots a_n s_n=
+g_1\ldots (g_{n-1}a_n)s_n=g_1\ldots(a_{n-1}s_{n-1})s_n=\ldots\]
+peut se faire dans
+\[G_{\bar i}':=(\prod G_{i_j}')/A^{|\bar i|-1}\]
+avec $G_i':=G_i-A$. Donc on a une autre décomposition
+\[A\sqcup \bigsqcup_{\bar i\in (T)}G_{\bar i}'\]
+et là $G_{\bar i}'$ c'est les mots de type $\bar i$ vérifiant 
+$(T)$, i.e. réduits, et $A$ c'est $(a;)$.
+
+\section{Longueurs de mots et applications du théorème}
+Nouvelle notation : si $g=as_1\ldots s_n$ alors $i_j(g):=i_{s_j}$.
+Pour que ce soit bien déf de $\N\times G\to I$ faut ajouter 
+$\{*\}$ à $I$ quand $j>l(g)$.
+On remarque que la longueur de $g$ donnée par $l(g)=|\bar i|$ si
+$g$ est de type $\bar i$ est bien déf !! Donc récurrence hehe.
+Par exemple, $g\in G$ est cycliquement réduit si 
+$i_1(g)!=i_{l(g)}(g)$. 
+\subsection{Cycliquement réduit et ordre}
+Si $g$ est cycliquement réduit alors $l(g^i)=i.l(g)$! D'où
+d'ordre infini. Aussi, un $g$ quelconque est soit conjugué à un
+élément de $G_i$ soit conjugué à un élément cycliquement réduit. 
+Suffit de remarquer que 
+$g_1^{-1}gg_1=s_1^{-1}a^{-1}(as_1\ldots s_n)a_1s_1$
+est cycliquement réduit où de longueur $l(g)-1$ donc
+récurrence. Penser au fait que $G_{\bar i}'$
+est stable par réduction, pour voir qu'il suffit de regarder
+$i_1(s_na_1)$! Ou $i_1(g_{n-1}g_1)$.
+
+\begin{rem}
+ Un élément d'ordre fini est donc conjugué à un élément d'un 
+ $G_i$. Aussi, si les $G_i$ sont sans torsion, $G$ aussi par
+ contraposée.
+\end{rem}
+\section{Sous somme amalgamées}
+Étant donné une famille de sous-groupes $H_i\leq G_i$. Tels que
+$B=H_i\cap A$ ne dépend pas de $i$ dans $G$. Alors, étant
+donné un système de représentants $e\in T_i$ du quotient 
+$H_i/B$ on peut l'étendre en $S_i$ de $G_i$! D'où les mots
+réduits de $*_B H_i$ sont des mots réduits de $G$.
+D'où $*_B H_i\to *_A G_i$ est injective.
+
+En particulier si $H_i\cap A = \{1\}$ pour tout $i$,
+$*_B H_i=* H_i$ est libre dans $G$. 
+
+\subsection{Conséquence : produit libre et produit abélien libre.}
+Étant donné $A*B\to A\times B$, son noyau est le groupe engendré
+par les commutateurs $X:=\{[a:b]:=a^{-1}b^{-1}ab\}$ ET $X$ est
+libre dans, je note $S$ le groupe. On peut remarque que pour
+$a'\in A$ $a'^{-1}[a:b]a'=[aa':b][a':b]^{-1}=[aa':b][b:a']$
+(calcul). D'où $S$ est normal dans $A*B$ (on fait pareil avec
+$b\in B$). Maintenant $(A*B)/S$ est un groupe qui vérifie la
+propriété universelle du produit $A\times B$. La liberté de $X$
+est plus compliquée. Je regarderai plus tard. Faut simplement
+scruter les mots. 
+
+\subsection{Conséquence marrante}
+Le produit libre de deux groupes finis contient un groupe libre
+d'indice fini. Wah dit comme ça ca parait compliqué, en fait
+$A*B$ contient $S$ qui est libre et $(A*B)/S = A\times B$ qui
+est fini lol.
+
+
+
+
+%\printbibliography
+\end{document}
+
