@@ -1,0 +1,6 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Revêtements universels}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Cas du tore $\Sigma _1$ }{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Cas du 2-tore $\Sigma _2$ }{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}$\Sigma _g$ est un revêtement fini de $\Sigma _2$ }{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Revêtement de degré $2$ d'une surface non orientable}{1}{subsection.1.4}%
