@@ -1,0 +1,311 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\im}{\textrm{im}}
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{rep}{Réponse}
+\newtheorem{concl}{Conclusion}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Courbes géometriquement intègres propres lisses?}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\[\ldots\]   
+
+On prends la convention qu'une courbe est une variété
+séparée de dimension pure $1$ (ses composantes sont de dimension
+$1$).
+\chapter{Courbes intègres lisses propres et corps de fonctions.}
+Le but c'est de montrer l'équivalence de catégorie entre 
+\begin{enumerate}
+  \item Corps de fonctions de degré de transcendance $1$,
+  \item Courbes intègres lisses propres (munies de morphismes non constants).
+\end{enumerate}
+\section{Courbe associée à un corps.}
+Étant donné un corps $K$ :
+\begin{enumerate}
+  \item On prends $U$ intègre affine t.q $k(U)=K$.
+  \item On prends une clôture projective $\bar U$.
+  \item On normalise $\pi\colon X\to \bar U$.
+\end{enumerate}
+Alors $X$ est lisse car normale, birationnelle à
+$U$ donc $K=k(U)=k(X)$ et propre car $\pi$ est fini
+et $\bar U$ est propre.
+
+\section{Étendre des morphismes}
+Étant donné $C$ une courbe lisse. On peut étendre
+tout morphisme $C\supset U \to Y$ avec $U$ dense 
+en $C\to Y$ dès que $Y$ est propre!
+C'est unique puisque $Y$ est séparée.
+\subsection{Candidat pour l'extension}
+On peut se ramener au cas $C$ affine irréductible 
+et $U=C-\{p\}$. Faut trouver un candidat pour
+le morphisme étendu :
+\begin{enumerate}
+  \item De $f\colon U\to Y$ on identifie 
+    \[\Gamma_f\subset U\times Y\]
+    et $U$. 
+  \item L'idée est que en notant
+    \[Z=\overline{\Gamma_f}\subset C\times Y\]
+    alors $Z\to C$ est surjective car $C\times Y$ est fermée
+    (\textbf{hypothèse de Y propre})
+    et $U\subset \im(Z\to C)$.
+  \item Le candidat est maintenant
+    \[(p_1|_{Z})^{-1}\circ p_2 \colon C\to Z \to Y.\]
+\end{enumerate} 
+Ce qu'on montre c'est que $p_1\colon C\times Y \supset Z\to C$
+est un isomorphisme. 
+
+\subsection{Extension}
+À noter $p_1|_Z=g$ est un morphisme fermé car $Y$ est propre et
+l'image contient $U$ donc est surjective. C'est aussi 
+birationnel car un isomorphisme sur $U$. Et là donc on
+construit un morphisme autour de $z\in g^{-1} p$.  
+\begin{enumerate}
+  \item On prends $z\in W$ ouvert affine. On obtient
+    $A(C)\hookrightarrow A(W)\hookrightarrow k(C)$.
+  \item À noter $A(W)$ est de type fini sur $k$. 
+  \item Maintenant, $C$ est lisse en $p$ donc on peut réduire
+  $C$ en $V$ avec $p\in V=D(f)$ tel que $\m_p=(t)$. (Nakayama
+  donne $f\in 1+\m_p$.)
+  \item Les générateurs $b_i$ de $A(W)$ vérifient 
+    $b_i(z)=t^{n_i}(z)a_i/u_i(z)$ avec $a_i,u_i\in A(C)$.
+    Via 
+    \[u_i(z)b_i(z)=t^{n_i}(z)a_i(z)\]
+    ça force $n_i\geq 0$ car $v_p(u_i)=v_p(a_i)=0$
+    et $b_i$ est régulière.
+    (pas oublier l'identification de $A(C)$ a son 
+    image, $u_i(z)=u_i(p)$.)
+  \item Maintenant pas finitude on obtient
+    \[A(C)\hookrightarrow A(W)\hookrightarrow A(C)_{u_0}\]
+    d'où on obtient \[g^{-1}D(u_0)\cap W\to D(u_0)\]
+    est un isomorphisme qui coincide avec $A(C)\to A(W)$
+    sur les intersections.
+  \item Enfin, il est définit en $p$!
+\end{enumerate}
+
+\subsection{Explication résumée}
+En points clés :
+\begin{enumerate}
+  \item $W$ et $C$ sont birationnelles : Ça force le sens de 
+    $b$ s'écrit $t^n a/u$ localement, car $A(W)\hookrightarrow
+    Frac(A(C))$.
+  \item $b$ est régulière d'où $b\in A(C)_{u}$.
+\end{enumerate}
+Je sais pas si l'écrire via l'uniformisante c'est pas overkill?
+C'est pour sûr pour faire apparaître la régularité en $P$.
+
+Maintenant 
+\begin{enumerate}
+  \item Ce "localement" est commun à tout les générateurs via
+    $\m_P=(t)$ sur un ouvert.
+  \item On obtient $A(W)_{u_0}\simeq A(C)_{u_0}$ via le 
+    morphisme induit $A(W)\hookrightarrow k(C)$.
+\end{enumerate}
+
+\begin{concl}
+  On sait étendre les morphismes $C-\{p\} \to Y$ 
+  si $C$ est lisse et $Y$ est propre.
+\end{concl}
+\section{L'équivalence de catégorie}
+\subsection{Isomorphismes de courbes intègres propres lisses}
+On sait qu'un morphisme birationnel $X\supset U\to V\subset Y$
+s'étend en $X\to Y$ un isomorphisme.
+
+\subsection{Morphismes de courbes intègres propres lisses}
+Un tel morphisme est soit constant soit fini surjectif ! 
+\begin{enumerate}
+  \item La surjectivité est claire.
+  \item La finitude c'est juste que si
+    \[\pi \colon X'\to Y\]
+    est la normalisaiton de $Y$ dans $k(X)$ alors
+    $X\simeq X'$ par l'identité de $k(X)\simeq k(X')$.
+    Alors $X\to Y$ coincide avec $X\to X'\to Y$ est fini.
+\end{enumerate}
+
+\section{Les courbes propres intègres propres lisses sont projectives.}
+Comme le résultat de la section!
+
+\chapter{Ramification}
+\section{}
+
+
+\chapter{Questions de définitions}
+\section{$f\in \Or_C(C-\Supp_\infty(f))$}
+La question est non triviale, au sens des définitions. Ça revient
+à dire que $D(f)\cup D(1/f)=C$. Le but c'est de dire que 
+\begin{enumerate}
+  \item $f\in \Or_C(D(1/f))$.
+  \item Pour tout $P\in C$, $P\in D(f)$ ou $P\in D(1/f)$ d'où
+    on regarde en $P$, $(f,D(1/f))=(u_pt_p,V_p)$ et inversement.
+\end{enumerate}
+Bon bah faut faire deux choses :
+\begin{enumerate}
+  \item Dire ce que c'est que $D(1/f),D(f)$.
+  \item Montrer que $f\in \Or_C(D(1/f))$.
+\end{enumerate}
+\subsection{$D(1/f)$?}
+On a deux manières de le voir, en fait la bonne et qui me
+"déçoit" un peu c'est de recouvrir par des affines. Et là
+on sait comment étendre $1/f$ au maximum. L'autre c'est
+par zorn et par exemple :
+\[f.1/f=1\in k(X)\]
+sauf qu'à droite ça s'étend partout donc à gauche aussi puis
+$D(f)\cup D(1/f)=X$.
+
+\subsection{$f\in \Or_C(D(1/f))$}
+En fait c'est un peu con quand on y pense. Faut vraiment juste
+recouvrir par des affines et étendre au maximum sur un 
+recouvrement. C'est clair quand $C$ est affine!
+
+\subsection{Définition}
+Maintenant pour l'étendre :
+\begin{enumerate}
+  \item $C-\Supp_\infty(f)$ est fini.
+  \item Pour chaque point $p\in C-\Supp_\infty(f)=D(1/f)$, on a 
+    \[(t_pu,U_p)=(f,D(1/f))\]
+  d'où $f(p):=t_p(p)u_p(p)$ est défini, si t'es toujours pas 
+  convaincu, dans une carte affine c'est évident que $t_pu$ a une
+  valeur en $p$. Et pour être vraiment rigoureux
+  on voit qu'on peut relever ces trucs locaux partout et
+  recoller !
+\end{enumerate}
+Un petit détail, ducoup si c'est pas des fonctions, faut utiliser
+cette histoire de rigueur.
+\begin{note}
+  Sur un schéma, tout se passe comme la version recollement.
+\end{note}
+
+
+\printbibliography
+\end{document}
+
