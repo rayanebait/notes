@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+\newcommand{\PSL}{\textrm{PSL}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\newcommand{\h}{\mathfrak{h}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Plan hyperbolique}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+En écrivant $\gamma\colon I\to \h$ via $\gamma(t)=z(t)=(x(t),y(t))$,
+la distance
+\[\rho(z_0,z_1):=\inf_\gamma\int_0^1\frac{\sqrt{\left(\frac{dx(t)}{dt}\right)^2+\left(\frac{dy(t)}{dt}\right)^2}}{y(t)}dt\]
+se réécrit $\rho(z,w)=\int_0^1\lvert\frac{dz(t)}{dt}\rvert.\frac{dt}{y(t)}$
+pour un chemin géodesique. Avec ça on 
+calcule les distances hyperboliques.
+
+\subsection{$\PSL_2(\R)\subset \textrm{Isom}(\h)$}
+Pour ça : les $T\in \PSL_2(\R)$ vérifient 
+\[dT(z)/dz=\frac{1}{(cz+d)^2}\]
+en plus $\Im(T(z))=\frac{\Im(z)}{(cz+d)^2}$ d'où
+\begin{align*}
+  \int_0^1\lvert\frac{dT(z(t))}{dt}\rvert.\frac{dt}{\Im(T(z(t))}&=\int_0^1\lvert\frac{dz(t)}{dt}\rvert.\frac{dt}{y(t)}\\
+\end{align*}
+Ça dit en particulier que $\PSL_2(\R)\hookrightarrow
+\textrm{Isom}(\h)$. 
+
+\subsection{Géodésiques}
+Pour une droite verticale, un chemin vertical
+$t\mapsto a+ib(t)$ on a $da(t)/dt=0$ et $y(t)\geq 0$.
+D'où
+\begin{align*}
+\int_0^1|\frac{db(t)}{dt}|\frac{dt}{b(t)}&\geq\int_0^1\frac{db(t)}{dt}\frac{dt}{b(t)}\\
+					 &=\int_{b(0)}^{b(1)} dy/y\\
+					 &=\ln\frac{b(1)}{b(0)}
+\end{align*}
+en supposant ce qu'y faut supposer.
+
+
+
+
+%\printbibliography
+\end{document}
+

@@ -113,36 +113,39 @@ sorting=ynt
     filecolor=wgrey
 }
 
-\title{Revêtements des surfaces}
+\title{Propriétés d'extensions}
 \date{2024-2025}
 
 \begin{document}
 \maketitle
 \tableofcontents
 
-\section{Revêtements universels}
-Le théorème principal c'est qu'un revêtement simplement
-connexe est universel.
-\subsection{Cas du tore $\Sigma_1$ }
-Dans le cas du tore c'est facile y suffit de
-prendre $aba^{-1}b^{-1}$ c'est un carré et
-y'a un pavage du plan avec.
+\section{Extensions}
+Un couple $(X,A)$ a la propriété d'extension
+d'homotopies si pour tout $Y$, et toute fonction
+$g\colon X\to Y$, toute les homotopies 
+$f_t\colon A\to Y$ telles que $f_0=g|_A$ s'étendent
+à $X$.
 
-\subsection{Cas du 2-tore $\Sigma_2$ }
-On peut à nouveau le faire dans le plan euclidien
-mais clairement on peut pas prendre un octogone
-régulier
+Le théorème principal dit que :
+\begin{thm}
+  $(X,A)$ a la propriété d'extension ssi
+  $X\times\{0\}\cup A\times I$ est un rétract
+  de $X\times I$.
+\end{thm}
+De gauche à droite suffit d'étendre l'identité.
+De droite à gauche (Quand $A$ est fermé dans $X$)
+on a la composition
+\[X\times I\to X\times \{0\}\cup A\times I\to Y\]
+où la flèche de droite est l'union des flèches de 
+l'hypothèse, la continuité c'est qu'on regarde
+$(X\times\{0\})\cap g^{-1}F\bigcup (A\times I)\cap f^{-1}F$
+l'union de deux fermés.
 
-\subsection{$\Sigma_g$ est un revêtement fini de $\Sigma_2$ }
-
-
-
-\subsection{Revêtement de degré $2$ 
-d'une surface non orientable} 
-
-
-
-
+\begin{thm}
+  Si $A$ est un sous CW-complexe de $X$ alors
+  $(X,A)$ a la propriété d'extension.
+\end{thm}
 
 
 
