@@ -1,0 +1,236 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Propriétés de base}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Revêtements}
+Un revêtement de $X$ est la donnée d'un ensemble $F$, 
+et pour chaque $x\in X$ de l'existence d'un ouvert 
+$x\in U\subset X$ d'un diagramme commutatif 
+% https://q.uiver.app/#q=WzAsNSxbMywwLCJcXHdpZGV0aWxkZSBYIl0sWzMsMSwiWCJdLFsyLDAsInBeey0xfVUiXSxbMiwxLCJVIl0sWzAsMCwiVVxcdGltZXMgRiJdLFswLDEsInAiXSxbMiwwLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDMsInB8X3twXnstMX1VfSIsMl0sWzQsMiwiXFxzaW1lcSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDNdLFszLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
+\[\begin{tikzcd}
+	{U\times F} && {p^{-1}U} & {\widetilde X} \\
+	&& U & X
+	\arrow["\simeq"{description}, draw=none, from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-3]
+	\arrow[hook, from=1-3, to=1-4]
+	\arrow["{p|_{p^{-1}U}}"', from=1-3, to=2-3]
+	\arrow["p", from=1-4, to=2-4]
+	\arrow[hook, from=2-3, to=2-4]
+\end{tikzcd}\]
+tel que $x\in U$ dans $Top$ où $F$ est discret. Ducoup
+$U$ \textbf{trivialise} le revêtement.
+
+Je note $U_x$ un ouvert trivialisant qui contient $x$.
+
+\subsection{Degré}
+Le degré est donné par 
+\[\deg\colon X\to \N\cup\infty\]
+via $\deg(x):=\#p^{-1}x$. Avec la topologie discrète sur
+$\N$ le degré est continu. En général c'est localement
+constant ducoup et si $X$ est connexe le degré
+est constant.
+
+\begin{rem}
+  La continuité c'est que pour $x$ tel que $\deg(x)=n$
+  alors $U_x\subset \deg^{-1}n$. En fait 
+  $\deg^{-1}n=\cup_{\deg(y)=n}U_y$.
+\end{rem}
+
+
+
+\section{Relèvement de chemins}
+Étant donné $p\colon \tilde X\to X$ et $\gamma\colon I\to X$.
+Pour tout $t\in I$ on associe $U_t\subset X$ trivialisant
+avec $\gamma(t)\in U_t$. Ensuite $\cup_{t\in I}\gamma^{-1}U_t=I$
+et par compacité et décomposition en composantes connexes,
+on a un recouvrement minimal 
+\[I=\cup_{k=0}^{n-1} I_k\]
+où les $I_k$ sont ouverts connexes par arcs. On pose 
+$t_0=0$ et $t_n=1$, puis $t_k\in I_{k-1}\cap I_{k}$ pour 
+$1\leq k\leq n-1$. Puis 
+\[\gamma_k:=\gamma|_{I_k}\]
+ensuite par déf $\gamma(I_k)\subset V_k$ est dans un 
+ouvert
+trivialisant. Maintenant on peut tout construire : si 
+$\gamma_0(0)=x_0$, à un choix $\tilde x_0\in p^{-1}(x_0)$
+on pose
+\[p_0:=p^{-1}\colon V_0\to \tilde V_0\]
+c'est un homéomorphisme, puis 
+$\tilde\gamma_0:=p_0(\gamma_0)$, ça lift uniquement 
+$\gamma$ sur $[0,t_1]$. Maintenant, en supposant que
+les $\gamma_j$ sont liftés en $\tilde\gamma_j$ pour 
+$0\leq j\leq k-1$ on réitère avec 
+$x_k=\gamma_{k-1}(t_k)$ et 
+$\tilde x_k=p_{k-1}(\gamma_{k-1}(t_k))$.
+Alors $\gamma_{k-1}$ et $\gamma_{k}$ sont toujours
+composables dans le groupoide et le lift de $\gamma$ est
+unique immédiatemment via les lifts locaux.
+
+\section{Relèvement des homotopies}
+On regarde une homotopie $f_t\colon Y\to X$ ou
+$F\colon Y\times I\to X$, on suppose qu'on a un lift
+$\tilde F\colon Y\times \{0\}\to \tilde X$. On construit
+pour tout $y\in Y$ un lift local unique 
+$N\times I\to \tilde X$ de $F$ avec $y\in N$. Pour ça :
+pour chaque $t\in I$, on pose $U_t$ tel que 
+$f_t(y)\in U_t$ est trivialisant, ensuite si on écrit
+\[F^{-1}(U_t)=N_t\times J_t=\cup_{j\in J_t}N_t\times I_j\]
+où $I_j$ est un intervalle alors
+\[I=\bigcup_{t\in I} F^{-1}(U_t)=\bigcup_{t\in I}\bigcup_{j\in J_t}N_t\times I_j\]
+puis par compacité de $I$, 
+\[I=p_I(\bigcup_{i=1}^nN_{t_i}\times I_{t_i})\]
+et même 
+\[I=p_I(\cup_{i=1}^nN\times I_{t_i})\]
+avec $N=\cap_i N_{t_i}$. En plus 
+$y\in p_Y(N\times I_{t_i})$ et
+\[F(N\times I_{t_i})\subset U_{t_i}\]
+est trivialisant d'où les conditions qu'on voulait.
+
+
+Maintenant le lift se construit exactement de la même
+manière que pour les chemins, avec la conditions
+initiales étant le lift $N\times \{0\}$ qu'on a déjà,
+et la condition de récurrence étant le lift de
+$N\times \{t_i\}$ qui est fournit via
+$p_i^{-1}F|_{N\times [t_{i-1},t_i]}(N\times \{t_i\}$
+qui est supposée construite. Ici, 
+$p_i\colon \tilde U_{t_i}\to U_{t_i}$ est choisie via
+$f_{t_{i-1}}(y)\in U_{t_i}$ et $p_{i-1}^{-1}(f_{t_{i-1}}(y)$
+
+
+
+
+
+\section{En pratique}
+Étant donné un revêtement pointé 
+$p\colon(\tilde X, \tilde x_0)\to (X,x_0)$,
+la condition initiale pour relever des chemins c'est le point base $\tilde x_0$
+et pour relever des homotopies c'est un chemin base $p_*\gamma=f_0$.
+
+L'unicité du chemin force le relèvement pointé. L'unicité
+d'homotopies force le chemin d'arrivée dès le point
+choisi.
+
+C'est TRÈS rigide.
+
+%\printbibliography
+\end{document}
+

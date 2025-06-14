@@ -1,0 +1,5 @@
+\babel@toc {french}{}\relax 
+\contentsline {subsection}{\numberline {0.1}$\textrm {PSL}_2(\mathbb {R})\subset \textrm {Isom}(\mathfrak {h})$}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Géodésiques}{2}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Calcul de $\rho $ par cross-ratio}{2}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Calcul explicite de $\rho $}{2}{subsection.0.4}%

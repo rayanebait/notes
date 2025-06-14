@@ -1,0 +1,2 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Calcul de $\rho $ par fonction trigonométrique}{1}{section.1}%
