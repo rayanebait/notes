@@ -1,59 +1,62 @@
 \babel@toc {french}{}\relax 
 \contentsline {section}{\numberline {0.1}Yoneda et foncteurs représentables}{4}{section.0.1}%
-\contentsline {chapter}{\numberline {1}Objets universels dans les catégories abéliennes}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Remarques sur la variance}{5}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Le plongement de Yoneda}{5}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Spécialisation, foncteur représentable}{5}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Exactitude du foncteur Hom}{5}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Preuves du deuxième cas}{6}{subsection.1.2.1}%
-\contentsline {subsubsection}{Injectivité et surjectivité sur les côtés}{6}{section*.2}%
-\contentsline {subsubsection}{Exactitude au milieu où $\ker $ et $\textrm {coker}$}{6}{section*.3}%
-\contentsline {subsubsection}{Exactitude au milieu en bref}{7}{section*.4}%
-\contentsline {subsubsection}{Le théorème d'iso est un pont entre $h^{\_}$ et $h_{\_}$}{8}{section*.5}%
-\contentsline {subsection}{\numberline {1.2.2}Preuves du premier cas}{8}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Injectifs et projectifs}{8}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Monomorphismes et épimorphismes}{8}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Détail}{9}{subsection.1.4.1}%
-\contentsline {section}{\numberline {1.5}Ker et coker}{9}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Snake Lemma}{10}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Obtenir des flèches}{10}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Obtenir des flèches, version 2}{11}{section.1.8}%
-\contentsline {section}{\numberline {1.9}Théorème d'isomorphisme}{11}{section.1.9}%
-\contentsline {chapter}{\numberline {2}Catégories abéliennes}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Codiagonale, produit = coproduit}{13}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Catégories abéliennes}{14}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Splitting}{14}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Foncteurs entre catégories abéliennes}{14}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Foncteurs exacts}{15}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Suites exactes splittées}{15}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Foncteurs exacts sont additifs.}{15}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Injectifs et projectifs}{15}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Adjonctions, exactitude et injectifs/projectifs}{15}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Dans $Mod_R$}{16}{subsection.2.5.2}%
-\contentsline {subsubsection}{Ab a assez d'injectifs}{16}{section*.6}%
-\contentsline {subsubsection}{$Mod_R$ a assez d'injectifs}{17}{section*.7}%
-\contentsline {chapter}{\numberline {3}Cohomologie}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Fonctorialité et additivité de $H^n(\_)$}{19}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Construction}{19}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Fonctorialité}{20}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Additivité}{20}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Suite exacte longue}{21}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Homotopies}{21}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Résolutions}{22}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Assez d'injectifs et résolutions}{22}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}$H^n(A)$ ne dépend pas de la résolution.}{22}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Foncteurs dérivés}{23}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Cohomologie des faisceaux}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}$Sh(X)$ est abélienne.}{25}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Résolution de Godemont 1}{25}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Hypercohomologie}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Résolutions de complexes bornés par le bas}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Catégories dérivée }{27}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Et adjonctions dans le cas des faisceaux}{28}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Cadre}{28}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Adjonctions encore?}{28}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Hypercohomologie et complexe total.}{28}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Définition}{29}{subsection.5.5.1}%
-\contentsline {section}{\numberline {5.6}Application et récap}{29}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Catégorie dérivées et adjonctions}{29}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Mayer-Vietoris}{29}{section.5.8}%
+\contentsline {section}{\numberline {0.2}Résumé}{4}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}Chapitre I et II}{4}{subsection.0.2.1}%
+\contentsline {section}{\numberline {0.3}Cohomologie}{5}{section.0.3}%
+\contentsline {chapter}{\numberline {1}Objets universels dans les catégories abéliennes}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Remarques sur la variance}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Le plongement de Yoneda}{7}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Spécialisation, foncteur représentable}{7}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Exactitude du foncteur Hom}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Preuves du deuxième cas}{8}{subsection.1.2.1}%
+\contentsline {subsubsection}{Injectivité et surjectivité sur les côtés}{8}{section*.2}%
+\contentsline {subsubsection}{Exactitude au milieu où $\ker $ et $\textrm {coker}$}{8}{section*.3}%
+\contentsline {subsubsection}{Exactitude au milieu en bref}{9}{section*.4}%
+\contentsline {subsubsection}{Le théorème d'iso est un pont entre $h^{\_}$ et $h_{\_}$}{10}{section*.5}%
+\contentsline {subsection}{\numberline {1.2.2}Preuves du premier cas}{10}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Injectifs et projectifs}{10}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Monomorphismes et épimorphismes}{10}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Détail}{11}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5}Ker et coker}{11}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Snake Lemma}{12}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Obtenir des flèches}{12}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Obtenir des flèches, version 2}{13}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Théorème d'isomorphisme}{13}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Catégories abéliennes}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Codiagonale, produit = coproduit}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Catégories abéliennes}{16}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Splitting}{16}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Foncteurs entre catégories abéliennes}{16}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Foncteurs exacts}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Suites exactes splittées}{17}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Foncteurs exacts sont additifs.}{17}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Injectifs et projectifs}{17}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Adjonctions, exactitude et injectifs/projectifs}{17}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Dans $Mod_R$}{18}{subsection.2.5.2}%
+\contentsline {subsubsection}{Ab a assez d'injectifs}{18}{section*.6}%
+\contentsline {subsubsection}{$Mod_R$ a assez d'injectifs}{19}{section*.7}%
+\contentsline {chapter}{\numberline {3}Cohomologie}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Fonctorialité et additivité de $H^n(\_)$}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Construction}{21}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Fonctorialité}{22}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Additivité}{22}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Suite exacte longue}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Homotopies}{23}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Résolutions}{24}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Assez d'injectifs et résolutions}{24}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}$H^n(A)$ ne dépend pas de la résolution.}{24}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Foncteurs dérivés}{25}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Cohomologie des faisceaux}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}$Sh(X)$ est abélienne.}{27}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Résolution de Godemont 1}{27}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Hypercohomologie}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Résolutions de complexes bornés par le bas}{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Catégories dérivée }{29}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Et adjonctions dans le cas des faisceaux}{30}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Cadre}{30}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Adjonctions encore?}{30}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Hypercohomologie et complexe total.}{30}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Définition}{31}{subsection.5.5.1}%
+\contentsline {section}{\numberline {5.6}Application et récap}{31}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Catégorie dérivées et adjonctions}{31}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Mayer-Vietoris}{31}{section.5.8}%
