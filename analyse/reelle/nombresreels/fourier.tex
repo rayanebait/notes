@@ -1,0 +1,212 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Nombres rééls}
+\date{}
+
+\begin{document}
+\maketitle
+Je suis Analyse I de Tao. Le but c'est juste le sup, et l'ordre des preuves.
+
+\section{Ordre}
+On met d'abord un ordre sur $\Q$ via celui de $\Z$. On a alors une métrique via la
+séparation de $\Q^-$ et $\Q^+$. Après construction de $\R$ comme classes d'équivalences
+de suites de Cauchy, on a un ordre dessus et la densité de $\Q$ dedans tombe 
+directement. 
+
+\section{Outils qu'on admet}
+\subsection{Sur $\N$}
+Essentiellement, l'ordre sur $\N$ et la compatibilité avec les lois. Puis l'extension
+à $\Q$. Et enfin l'inf sur les parties de $\N$ et la récurrence.
+
+\subsection{Passage à la limite}
+Les inégalités types $(\forall n,~x_n\leq x)$ passent à la limite, même pour LIM.
+
+\subsection{Suites de Cauchy}
+La définition consiste à itérer l'idée que si on tronque un nombre fini du début
+de la suite, l'infinité suivante est contenue dans un intervalle. Et quitte 
+à tronquer plus, on peut rétrécir l'intervalle.
+
+\subsection{Les suites de Cauchy sont bornées}
+Ça tombe direct de la phrase d'avant.
+
+\subsection{Convergence des suites de Cauchy dans $\R$}
+C'est un argument de diagonalisation direct.
+
+\subsection{LIM avant lim, intérêt.}
+Si on déf $LIM_n x_n$ la classe d'équivalence de la suite de Cauchy. Muni de
+$\Q\to \R$ et de la métrique, on peut faire les arguments habituels de passage
+à la limite.
+
+L'intérêt est que la "limite" en question est un nombre réel.
+
+\subsection{Propriété archimédienne}
+Elle dit que pour tout $0<\epsilon, M$ il existe un entier $n$ tel que 
+\[M<n\epsilon\]
+On sait le faire dans $\Q$, donc par densité dans $\R$.
+
+\begin{rem}
+		Ducoup c'est marrant on a la densité de $\Q$ dans $\R$ avant la propriété
+		archimédienne.
+\end{rem}
+
+\section{Supremum}
+C'est défini simplement comme un majorant minimal.
+
+L'idée est de converger par en dessous vers le sup avec une suite de Cauchy. On
+prends $E$ une partie non vide de $\R$ qui a un majorant. Ensuite on prends,
+\[L/n<x_0<K/n\]
+où $L,K$ sont entiers, $x_0\in E$ et $K/n$ majore $E$ en majorant son majorant. 
+Comme 
+\[\{a\in  \Z|E\leq a/n\}\cap [L,K]\]
+a un inf, $(a-1)/n$ majore pas $E$. On peut poser $a=m_n$ et recommencer. Le choix
+de $L,K$ importe pas, on les change à chaque étape. Ils sont juste la pour contrôler
+de très loin et permettre de choisir l'inf!
+
+Ça donne $(m_n/n)_{n\in \N}$ une suite de Cauchy avec la propriété que
+$E\leq m_n/n$ mais pas $(m_n-1)/n$. Les inégalités passent à la limite d'où 
+le résultat.
+
+\subsection{Exemple 1 : $\exists x\in\R, x^2$}
+Il suffit de prendre le sup de $\{x\in \R, x^2\leq 2\}$ (il faut montrer l'égalité).
+
+\subsection{Exemple 2 : Suites convergentes}
+On peut mtn prouver que borné + monotone implique convergent. Grâce à ça on obtient
+la limsup, la liminf etc...
+
+\subsection{Exemple 3 : Séries convergentes}
+Étant donné une suite $(a_n)$ de réels positifs on peut former $(\sum_{i=0}^n a_n)_n$
+une suite monotone. Si cette série est majorée alors elle converge. 
+
+\subsection{Exemple 4 : Séries convergentes, réarrangement}
+p.174 du Analysis I de Tao.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
