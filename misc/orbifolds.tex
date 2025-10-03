@@ -1,0 +1,174 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Actions de groupes et orbifolds}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Revêtements et actions de groupes}
+
+
+\section{Orbifolds}
+34.8 du voight. Petite idée pour la suite : définition de manifolds avec 
+faisceaux, comparer avec orbifolds.
+
+L'idée est de traiter des actions de groupes non libres en donnant une
+structure au quotient. 
+\begin{defn}[Orbivariétés]
+		Une orbivariété de dimension $n$ est un espace topologique à base
+		dénombrable (second-countable) séparé localement homéomorphe à
+		$G\backslash\mathbb R^n $ pour un groupe fini $G$ agissant par
+		homéos.
+\end{defn}
+\begin{rem}
+		Y'a plusieurs typo sur le voight, "fij" smooth, ou l'ordre dans
+		la composition.
+\end{rem}
+\begin{defn}[Atlas]
+		Recouvrement ouvert $(U_i)_i$ de cartes fermé par intersection tel 
+		que pour tout $i$, il existe $G_i\acts V_i\subset \mathbb R^n$ avec
+		un homéo
+		\[ \phi_i\colon U_i\to G_i\backslash V_i\]
+		et dès que $U_i\subset U_j$ des flèches injectives
+		$f_{ij}\colon G_i\to G_j$
+		et des flèches
+		\[ \psi_{ij}\colon V_i\to V_j\]
+		$G_i$-équivariantes telles que $\phi_j^{-1}\circ \psi_{ij}=\phi_i^{-1}$.
+\end{defn}
+Les $\psi_{ij}$ ont le role des $\phi_i^{-1}\circ \phi_j$ habituels. En 
+demandant $\psi_{ij}$ lisses ou holomorphes on obtient des orbivariétés
+lisses ou complexes. En ajoutant $\psi_{ij}$ préservent une $G_i$-métrique
+Riemannienne on obtient une orbivariété riemannienne.
+\begin{defn}[Point orbital]
+		Un point $p$ est orbital si localement autour on a $G\backslash \R^n$
+		avec $G$ non trivial.
+\end{defn}
+\begin{ex}
+		Un exemple avec un ensemble discret de points orbitaux c'est 
+		Un bon exemple c'est $Y(1)$. 
+\end{ex}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
