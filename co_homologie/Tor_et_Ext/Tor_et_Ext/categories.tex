@@ -1,0 +1,318 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cat}{\mathcal{C}}
+\newcommand{\Dat}{\mathcal{D}}
+\newcommand{\Aat}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\Ouv}{\textrm{Ouv}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coker}{\textrm{coker}}
+\newcommand{\coim}{\textrm{coim}}
+
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\a}{\mathfrak{a}}
+\newcommand{\p}{\mathfrak{p}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{exmp}{Exemples}
+\newtheorem{exo}{Exercices}
+\newtheorem{ex}{Exemple}
+\newtheorem{exs}{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Cohomologie des groupes}
+\date{2024-2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Catégories et catégories abéliennes.}
+J'veux un petit inventaire de choses cool.
+\section{Yoneda, théorème d'isomorphisme et exactitude}
+On applique $h\colon \Aat\to Ab$.
+
+De $0\to A\to B\to C\to 0$ exacte on tire
+\[0\to h_A\to h_B\to h_C\]
+pour l'exactitude à gauche et
+\[0\to h^C\to h^B\to h^A\]
+pour l'exactitude à droite. On voit ça comme ça :
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQSJdLFsyLDAsIkIiXSxbMywwLCJDIl0sWzIsMSwiTSJdLFswLDFdLFsxLDJdLFsyLDNdLFs0LDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDJdXQ==
+\[\begin{tikzcd}
+	0 & A & B & C \\
+	&& M
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[dashed, from=2-3, to=1-2]
+	\arrow[from=2-3, to=1-3]
+\end{tikzcd}\]
+pour le premier, l'exactitude de $0\to A\to B\to C$ montre que
+$M$ va dans le noyau si $(M\to B\to C )= 0$. Et on utilise
+$A\simeq \im(A\to B)=\ker(B\to C)$ et la PU du
+noyau pour montrer qu'on a l'exactitude sur les hom. 
+Pour le deuxième, on utilise :
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMSwxLCJNIl0sWzMsMCwiMCJdLFswLDFdLFsxLDJdLFsyLDRdLFsxLDNdLFsyLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	A & B & C & 0 \\
+	& M
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[dashed, from=1-3, to=2-2]
+\end{tikzcd}\]
+et là de l'exactitude de $A\to B\to C\to 0$ et du théorème 
+d'isomorphisme on a $coker(A\to B)\simeq coim(B\to C)\simeq C$
+d'où $(A\to B\to M)=0$ implique l'existence de la flèche vers
+$\coker(A\to B)$ est la factorisation par $C$.
+
+Montrer l'inverse consiste juste à spécialiser et utiliser les PU.
+
+
+\section{Adjonctions}
+Étant donné $F\colon \Cat\to\Dat\colon G$ si
+\[\Hom_\Dat(F(\_),\_)\simeq \Hom_\Cat(\_,G(\_))\]
+naturellement alors $F$ est adjoint à gauche de $G$
+qui lui est adjoint à droite de $F$. Via Yoneda ça dit que 
+$h^{F(\_)}(\_)\simeq h^{\_}(G(\_))$
+dans \[Nat(\widehat{\Cat\times \Dat}, \widehat{\Dat\times\Cat})\]
+y'a aussi la formulation $h^{FG(\_)}(\_)\simeq h^{G(\_)}(G(\_))$.
+
+
+\subsection{Propriétés d'exactitude}
+On déduit tout du premier isomorphisme.
+Un adjoint à gauche est exact à droite et inversement. Plus
+généralement un adjoint à gauche préserve les colimites et les 
+limites finies (La preuve est non triviale).
+
+Si $F$ est adjoint à gauche de $G$ on a
+\[0\to h^{F(C)}\to h^{F(B)}\to h^{F(A)}\]
+qui est iso à 
+\[0\to h^{C}\circ G\to h^{B}\circ G\to h^{A}\circ G\]
+en particulier si $A\to B\to C\to 0$ est exacte à droite alors
+$F(A\to B\to C\to 0)$ est exacte à droite. 
+
+Maintenant si $G$ est exact, alors $h^{F(P)}\simeq h^{P}\circ G$
+d'où $h^{F(P)}$ est exact si $P$ est projectif.
+
+À l'inverse si $F$ est exact, $h_{G(I)}\simeq h_I(F(\_))$ est
+exact dès que $I$ est injectif.
+
+\subsection{Limites, adjoints et l'axiome du choix.}
+Quand j'ai une catégorie $I$-cocomplète pour $I$ filtrante,
+genre $Mod_R$, bah y'a une adjonction cool pour les colimites 
+\[\varinjlim\colon\Aat^I\leftrightarrow\Aat\colon \Delta\]
+où $\Delta$ c'est le foncteur constant. MAIS, bah pour définir
+le foncteur $\varinjlim$ faut faire un choix de colimite pour
+chaque foncteur! Penser le point dans Set.
+
+\begin{rem}
+  Pour $I$ filtrante, $\Aat^I$ est abélienne si $\Aat$ l'est.
+  Pour prouver que y'a
+  les noyaux, via $C,D\colon I\to \Aat$ et $C\to D$, on prend
+  $K^0\colon I^0\to \Aat$ la donnée des noyaux termes
+  à termes et on montre que ça s'étend naturellement en 
+  $K\colon I\to \Aat$ (on trouve juste un foncteur)
+  tel que les flèches de noyaux termes à termes ça fait une
+  transformation naturelle $K\to C$. C'est bien le noyau parce
+  que ça l'est terme à terme. 
+\end{rem}
+
+\subsection{Fidélité d'un foncteur ayant un adjoint}
+On déduit tout du deuxième isomorphisme, i.e. la counité. Et c'est
+clair que $G$ est pleinement fidèle ssi la counité est un 
+isomorphisme.
+
+\section{Exemples d'adjonctions}
+Les foncteurs $Free$ qu'ont peut définir comme les adjoints
+à gauche de foncteurs d'oublis $C\to Set$. Et les foncteurs
+d'oublis plus généraux $(\_)^\times\colon Ring\to Grp$ par exemple.
+
+
+\chapter{(co)homologie}
+\section{(co)Homologie sur les résolutions acycliques}
+Le Weibel dit qu'en tronquant une résolution projective et
+de proche en proche on montre qu'une résolution acyclique calcule
+la cohomologie. I.e. via
+\[0\to \ker(d_{-1})\to P\to A\to 0\]
+puis
+\[0\to \ker(d_{m-1})\to \to P_m\to \ldots\to P_0\to A\to 0\]
+avec les $P_i$ acycliques et la suite exacte courte de proche
+en proche que 
+$L_{m+1}F(A)\simeq \ker(F(\ker(d_{m-1}))\to F(P_m))$. Pour faire
+de proche en proche faut utiliser que 
+$L_iF(A)\simeq L_{i-(m-1)}F(\ker(d_{m-1}))$ et ça c'est la
+suite exacte longue et l'acyclicité.
+
+\section{Foncteurs dérivés et limites}
+Sur une catégorie AB5 ($\varinjlim\colon \Aat^I\to \Aat$ est
+exact et $\Aat$ est cocomplète.) on a 
+\[\varinjlim_j L_iF(C(j))\simeq L_iF(\varinjlim_j C(j))\]
+
+\chapter{Cohomologies}
+J'prends que des bi-modules pour les preuves.
+
+\section{Tenseur et Hom}
+Y'a une adjonction :
+\[h^{\_\otimes_R A}(\_)\simeq h^A(h^{\_}(\_))\]
+c'est juste qu'à une application $R$-linéaire $B\otimes_RA\to C$ à
+gauche on associe l'application vers le dual $A\to (\Hom(B, C))$
+via la propriété universelle des produits tensoriels.
+
+\subsection{Exactitudes}
+On a $\otimes_R A$ qui est adjoint à gauche d'où est exact à 
+droite. 
+
+\section{Ext}
+On déf $Ext^n(A,\_)=R^nh^A(\_)$ et $Ext^n(\_,B)=R^nh_B(\_)$.
+
+\subsection{Localisation}
+
+\section{Tor}
+On déf $Tor_n^R(A,B)=L_nA\otimes_R(B)$. La notation est symétrique!
+\subsection{Groupes abéliens, $Mod_\Z$}
+On sé réduit à $A=\Z/n\Z$ où on a la résolution
+\[0\to\Z\to\Z\to\Z/n\Z\to 0\]
+alors en appliquant $\otimes_R B$, $Tor_*^\Z(\Z/n\Z,B)$ est 
+l'homologie
+\[0\to B\to B\to 0\]
+où on multiplie par $n$, d'où $Tor_0^\Z(\Z/n\Z, B)=B/nB$, 
+$Tor_1^\Z(\Z/n\Z,B)=_nB$ et le reste est nul.
+
+Ensuite page 66 du weibel mais ca consiste tjr à écrire 
+$A=\varinjlim A_i$ pour les sous groupes de types finis puis
+dans ce cas $A_i\simeq \Z^m\oplus_i\Z/n_i\Z$ et de tjr faire
+tout commuter avec Tor.
+\subsection{Modules plats}
+C'est les modules $\otimes_R B$ acycliques. Une liste :
+\begin{itemize}
+  \item Les modules libres. Parce qu'alors l'injectivité se
+    vérifie terme à terme. (C'est direct que $R^{(I)}\otimes N\simeq\oplus_{I}N$).
+  \item Si $R$ est un pid, les modules sans torsion. 
+  \item $S^{-1}R$. En particulier $Frac(R)$.
+\end{itemize}
+
+\subsection{Localisation}
+La localisation marche. Si $R$ est commutatif et $A,B$ des
+$R$-modules quelconques, $Tor_n^R(A,B)=0$ ssi pour tout
+idéal maximal $\m$ on a
+\[Tor_n^{R_\m}(A_\m,B_\m)\]
+
+
+%\printbibliography
+\end{document}
+
