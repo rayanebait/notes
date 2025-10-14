@@ -1,0 +1,164 @@
+\documentclass[amsart,10pt]{article}
+\usepackage{amsmath,  amsthm, enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Frac}{\textrm{Frac}}
+
+
+\newcommand{\PSL}{\textrm{PSL}}
+\newcommand{\SL}{\textrm{SL}}
+\newcommand{\h}{\mathfrak h}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\U}{\mathscr{U}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Cohomology of Shimura Curves in quasi-linear time}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Assumed $\h$, $\PSL_2(\R)$. 
+\section{Preliminaries}
+Let $G$ be a topological group and $X$ be a topological space.
+We say a left action of $G$ on $X$ is 
+\begin{itemize}
+		\item \textbf{Discontinuous} if $G$ is endowed with the discrete
+				topology.
+		\item \textbf{Proper} if for any compact
+sets $K$ and $K'$ in $X$, the set of $g\in G$ such that the intersection $K\cap g.K'$ is nonempty is compact.
+\item\textbf{Properly discontinuous} if it is both discontinous
+				and proper.
+		\item\textbf{Totally discontinuous} if it is properly discontinous
+				and free.
+\end{itemize}
+\begin{rem}
+		One can also define a proper action of $G$ on $X$ to be 
+		a $G$-action on $X$ such that the map 
+		$G\times X\to X\times X$ defined by $(g,x)\mapsto (x,g.x)$
+		is proper as a continuous map.
+\end{rem}
+
+
+
+La prop clé ici c'est que $\h$ est haussdorf localement compact.
+
+An idiomatic example of a proper action is given by the action of
+$\PSL_2(\R):=\SL_2(\R)/\{\pm I_2\}$ on the upper-half plane
+$\h\subset \C$ by homographies. Further, discrete subgroups of 
+$\PSL_2(\R)$ or so-called Fuchsian groups yield properly
+discontinuous on $\h$.
+
+\subsection{Fuchsian groups}
+$\textrm{Isom}(\h)=\textrm{Isom}^+(\h)\cup \tau\textrm{Isom}^+(\h)$
+avec $\tau\colon z\mapsto -\bar z$.
+\begin{prop}
+		$\PSL_2(\R)$ acts properly on $\h$.
+\end{prop}
+As a corollary, discrete subgroups of $\PSL_2(\R)$ act properly
+discontinuously on $\h$.
+
+\subsection{Arithmetic fuchsian groups}
+
+
+
+\subsection{Fundamental groups of surfaces}
+
+
+
+
+
+
+
+\end{document}

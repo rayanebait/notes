@@ -41,13 +41,13 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>homologie.bcf</file>
+      <file>CohomologyOfShimuraCurves.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>homologie.bbl</file>
+      <file>CohomologyOfShimuraCurves.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -60,23 +60,23 @@
       <file>french.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>homologie</infile>
+      <infile>CohomologyOfShimuraCurves</infile>
     </cmdline>
     <input>
-      <file>homologie.bcf</file>
+      <file>CohomologyOfShimuraCurves.bcf</file>
     </input>
     <output>
-      <file>homologie.bbl</file>
+      <file>CohomologyOfShimuraCurves.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>homologie.bbl</file>
+      <file>CohomologyOfShimuraCurves.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>homologie.bcf</file>
+      <file>CohomologyOfShimuraCurves.bcf</file>
     </requires>
     <requires type="editable">
       <file>bib.bib</file>
