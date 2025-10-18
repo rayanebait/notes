@@ -11,4 +11,19 @@ Exo 18 et 19
 C'est notre cas.
 
 
+# Pour l'instant
+##  Exemples : Ramification
+Simplement noter ce qui est utile pour trouver une algèbre de quaternion
+associée à une donnée de ram/un discriminant.
 
+***BUT*** : Avoir un exemple quaternionique.
+
+## Amener partie graphe rubané.
+
+
+# Introduction
+METHODE INDEFINIE !
+
+Idée : Généraliser symboles modulaires.
+Proche de l'article Mathew Greenberg et John Voight.
+Les sources antérieures c'est Dembelé/Dembelé-Donnelly.

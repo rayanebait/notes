@@ -1,9 +1,9 @@
 \documentclass[amsart,10pt]{article}
-\usepackage{amsmath,  amsthm, enumerate}
+\usepackage{amsmath,  amsthm, enumerate, amssymb}
 \usepackage{csquotes}
 \usepackage[provide=*,french]{babel}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{quiver, tikz}
+%\usepackage{quiver, tikz}
 
 %symbole caligraphique
 \usepackage{mathrsfs}
@@ -26,7 +26,7 @@ style=alphabetic,
 sorting=ynt
 ]{biblatex}
 
-\addbibresource{bib.bib}
+\addbibresource{COSC.bib}
 
 \usepackage{appendix}
 \renewcommand{\appendixpagename}{Annexe}
@@ -51,17 +51,18 @@ sorting=ynt
 \renewcommand{\a}{\mathfrak a}
 \newcommand{\p}{\mathfrak p}
 \newcommand{\I}{\mathfrak I}
+\newcommand{\h}{\mathfrak h}
+
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\PSL}{PSL}
+%TODO operators, ajouter Isom
+\newcommand{\SL}{\textrm{SL}}
 \newcommand{\Hom}{\textrm{Hom}}
 \newcommand{\disc}{\textrm{disc}}
 \newcommand{\Pic}{\textrm{Pic}}
-\newcommand{\End}{\textrm{End}}
 \newcommand{\Spec}{\textrm{Spec}}
 \newcommand{\Frac}{\textrm{Frac}}
-
-
-\newcommand{\PSL}{\textrm{PSL}}
-\newcommand{\SL}{\textrm{SL}}
-\newcommand{\h}{\mathfrak h}
 
 \newcommand{\cL}{\mathscr{L}}
 \newcommand{\G}{\mathscr{G}}
@@ -109,8 +110,60 @@ sorting=ynt
 \maketitle
 
 
+Intérêt courbes de Shimura ?  Courbes modulaires -> modularité courbes ells. 
+Courbes Shimura -> langlands surfaces abéliennes? ($SP_2(\Z)\subset GL_4$)
+
+%Tentative 1
+As can be seen by the existence of databases such as the LMFDB \cite{}, the Langlands
+program and its algorithmic counterpart have been the subject of extensive efforts,
+both in the theoritical and algorithmic number theory communities. 
+
+The modularity of elliptic curves, can be seen as a part
+of Langlands programme for $GL_2(\Q)$.
+The $GL_2(F)$ case, where $F$ is a totally real number field
+with a single split place at infinity.
+
+%Tentative 2
+Tabulating families of modular forms has remained a popular subject among 
+the algorithmic number theory community. Partly fueled by various aspects of 
+the Langlands programme. The study of classical modular forms 
+can be seen as part of $GL_2(\Q)$-Langlands, 
+
+% autre motivation: applications diophantiennes: example
+% HYPERGEOMETRIC MOTIVES AND THE GENERALIZED FERMAT EQUATION
+% FRANCO GOLFIERI MADRIAGA AND ARIEL PACETTI
+
+% Heegner / Darmon points ????? Not clear that our method gives an improvement there
+% DARMON POINTS ON ELLIPTIC CURVES OVER NUMBER FIELDS OF ARBITRARY SIGNATURE
+% XAVIER GUITART, MARC MASDEU, AND MEHMET HALUK ŞENGÜN
+
+
+Following the success of modular symbols in computing spaces of classical modular
+forms, various algorithms have been made to generalize the idea to Shimura Curves
+\cite{databasehilbert} (Citer le survey). In the classical setting as well as in
+the Hilbert setting 
+
+
+Tn : Trace formula -> modular symbols $\equiv$$ O(n....+d^3)->\tilde O(dn)$ 
+En fait y font une petite remarque dans le cas classique pour dire que c'est de
+l'algèbre linéaire sparse une fois qu'on a la base de Manin.
+
+
+Manin's trick -> word problem
+
+Amélioration : calcul de $H^1(\Gamma, W_k(\C))$ en temps quasi-linéaire pour tout
+poids $(k_1,...,k_n)$ (ou au moins $(k,2,...,2)$. Si 
+$\Gamma=\Gamma_0^D(N)$, calcul de $\Gamma_0^D(N)$ par revêtement de $\Gamma_0^D(1)$
+en temps quasi-linéaire. 
+
+
+
 Assumed $\h$, $\PSL_2(\R)$. 
+
+
+
 \section{Preliminaries}
+
 Let $G$ be a topological group and $X$ be a topological space.
 We say a left action of $G$ on $X$ is 
 \begin{itemize}
@@ -130,8 +183,6 @@ sets $K$ and $K'$ in $X$, the set of $g\in G$ such that the intersection $K\cap 
 		is proper as a continuous map.
 \end{rem}
 
-
-
 La prop clé ici c'est que $\h$ est haussdorf localement compact.
 
 An idiomatic example of a proper action is given by the action of
@@ -149,6 +200,9 @@ avec $\tau\colon z\mapsto -\bar z$.
 As a corollary, discrete subgroups of $\PSL_2(\R)$ act properly
 discontinuously on $\h$.
 
+\subsection{Quaternion algebras}
+
+
 \subsection{Arithmetic fuchsian groups}
 
 
@@ -156,9 +210,26 @@ discontinuously on $\h$.
 \subsection{Fundamental groups of surfaces}
 
 
+\section{Algorithms on ribbon graphs}
+\begin{itemize}
+  \item Fundamental domain $\to$ Ribbon graph [R]
+  \item Ribbon graph $\to$ pres $1$ word $\to$ pres $1$ handle $\to$ pres
+    standard [R]
+  \item Finite coverings [R]
+\end{itemize}
 
 
+\section{Cohomology}
+\begin{itemize}
+  \item pres $1$ handle $\to$ $H^1(W_k)$ [A/R]
+\end{itemize}
 
+\section{Hecke action}
+\begin{itemize}
+  \item Hecke action on $H^1$ [A]
+  \item Hecke eigenvalues by CRT on with $H^1(W_k(\F_q))$ [A]
+\end{itemize}
 
+\printbibliography
 
 \end{document}
