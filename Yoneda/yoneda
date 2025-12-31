@@ -1,0 +1,36 @@
+# Talk sur les catégories
+J'aimerai parler d'analogies en translatant des diagrammes dans diverses 
+contextes. Un premier point de vue : ensembles. Isoler propriétés toposiques
+qui permettent de définir les choses par propriétés. Voir les catégories
+(étonnantes) qui ont le même genre de propriétés en étant plus rigide pour
+PROUVER.
+
+0) définitions, parler de diagrammes et qu'à deux points du diagramme on veut
+que tout chemin soit équvalent (le mot de composées de fonctions).
+Foncteur = tout diagramme envoyé sur diagramme.
+
+1) isoler la catégorie des ensembles via propriétés toposiques ? parler des
+catégories ayant des propriétés proches et de l'intérêt : difféologie, 
+faisceaux?
+
+2) parler d'analogie, transformer les limites de suites en limites projectives.
+Carrément comparer la topologie à des commutativités successives de cônes.
+Via le fait que cauchy équivaut à convergent dans complet ? Puis 
+
+Peut-être : amener les topos comme une catégorie de revêtement et parler
+de l'hypothèse de riemann sur Fq? pas sur
+
+## isoler la catégorie des ensembles
+
+
+Complète + co-complète, tier exclu via classificateur de ss objet = {0,1}+...
+->trouver ... pour isoler Set via ses propriétés (topos sur 1 point ?)
+
+Amener que la définition en théorie des ensembles revient à définir les
+ensembles par propriétés !
+
+Montrer ***l'algébricité*** via des constructions par quotients.
+
+
+ANALOGIES : 
+Transformer la notion de point, puis de suite, puis de limite. 

@@ -1,0 +1,205 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\renewcommand{\Im}{\textrm{Im}}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}{\mathfrak{p}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\Po}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+\newtheorem{res}{Résumé}
+\newtheorem{rep}{Réponse}
+\newtheorem{cons}{Conséquence}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Modules}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Algèbre linéaire sur les anneaux à divisions, $D$ et $D^{op}$}
+\href{https://math.stackexchange.com/questions/45056/linear-algebra-over-a-division-ring-vs-over-a-field}{Une discussion}
+
+sur les différences entre modules sur un corps et un anneau à division non
+commutatif.
+\section{Endomorphismes et la distinction $D$ et $D^{op}$}
+\subsection{Action de $D^{op}$ sur $D$}
+De manière générale, $D$ agit sur lui même à gauche via 
+\[d\mapsto(\varphi_d\colon a\mapsto da)\]
+mais l'action est $D$-linéaire si et seulement si $D$ est commutatif! Parce
+que $\phi_d(d'a)=dd'a!=d'\phi_d(a)=d'da$. Par contre, $D^{op}$ agit à droite
+$D$-linéairement : deux trucs à décrire,  $D^{op}$ en tant que $D$-module
+et traduire la linéarité.
+
+En conséquence,
+\begin{thm}
+	Si $D$ est une algèbre à division, $\End_D(D)\simeq D^{op}$. D'où
+	$\End_D(D^n)\simeq M_n(D^{op})$.
+\end{thm}
+Ensuite,
+\begin{prop}[Il existe $D\neq D^{op}$]
+	Il existe des algèbres à division $D$ non-isomorphes à leur opposé.
+\end{prop}
+\begin{ex}
+	Pour un corps $F$, $M_n(F)\simeq M_n(F)^{op}$ via $A\mapsto A^t$. D'après
+	ce \href{https://math.stackexchange.com/questions/45085/an-example-of-a-division-ring-d-that-is-not-isomorphic-to-its-opposite-rin?noredirect=1&lq=1}{post}
+	en tant qu'algèbre, il suffit de trouver une algèbre d'ordre $2<$ dans
+	le groupe de Brauer d'un corps $F$ pour avoir un contre exemple (parce 
+	que l'inverse est $D^{op}$).Une algèbre cyclique d'ordre $3$ fait l'affaire.
+	Mais d'après une des réponses et cet 
+	\href{Division algebras with an anti-automorphism but with no involut
+	ion}{article} en tant qu'anneaux c'est moins facile. Mais pas besoin
+	d'aller chercher dans des algèbres d'Azumaya. Le groupe de Brauer
+	de $\Q$ est suffisamment compliqué, et dans ce cas pour toutes
+	les algèbres à division sur $\Q$, les morphismes d'anneaux sont des
+	morphismes de $\Q$-algèbres. 
+\end{ex}
+Ce serait marrant d'investiguer plus en détail l'algèbre opposée.
+
+\section{}
+
+
+\chapter{Comparaisons de modules sur anneaux commutatifs, non commutatifs}
+\section{Anneaux principaux}
+En suivant \href{https://kconrad.math.uconn.edu/blurbs/linmultialg/modulesoverPID.pdf}{K. Conrad}
+
+Dans le cas commutatif (pids), on a
+\begin{lem}[Le rang est bien défini]
+	Si $A$ est un pid commutatif, $A^m\simeq A^n$ en tant que $A$-modules 
+	implique $m=n$.
+\end{lem}
+\begin{proof}
+	Suffit de prendre un idéal maximal $\m$ et passer au quotient.
+\end{proof}
+Dans le cas non commutatif $\m$ doit être maximal à gauche et à droite 
+et bilatère pour avoir un anneau quotient.
+
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
+

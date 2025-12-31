@@ -1,0 +1,485 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathscr F}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+\newcommand{\Supp}{\textrm{Supp}}
+\newcommand{\supp}{\textrm{supp}}
+\renewcommand{\Im}{\textrm{Im}}
+
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\renewcommand{\P}{\mathscr{P}}
+\renewcommand{\H}{\mathscr{H}}
+
+\makeatletter
+\newcommand{\colim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\colim}{%
+  \mathop{\mathpalette\colim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varprojlim}{%
+  \mathop{\mathpalette\varlim@{\leftarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\renewcommand{\varinjlim}{%
+  \mathop{\mathpalette\varlim@{\rightarrowfill@\scriptscriptstyle}}\nmlimits@
+}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}[subsection]{Théoreme}
+\newtheorem{lem}[subsection]{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}[subsection]{Définition}
+\newtheorem{exmp}[subsection]{Exemples}
+\newtheorem{exo}[subsection]{Exercices}
+\newtheorem{ex}[subsection]{Exemple}
+\newtheorem{exs}[subsection]{Exemples}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Géometrie}
+\date{2023-2024}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter*{Introduction}
+Je me rappelle plus le but du cours c'était quoi, je sais qu'il
+va présenter la courbure de Ricci et montrer pourquoi c'est une 
+bonne notion de courbure (une courbure suffisante montre un diamètre fini,
+où le suffisant est la courbure de ricci de la n-sphère).
+
+\chapter{Géometrie différentielle}
+\section{Définitions}
+\begin{defn}[\textbf{Variété topologique}]
+    Espace topologique séparé localement homéomorphe à $R^n$ pour un $n$
+    fixé à base dénombrable (second countable).
+\end{defn}
+\begin{defn}[\textbf{Atlas $C^k$}]
+    C'est une collection de cartes $(U,\phi)$ tels que
+    les changements de cartes sont $C^k$.
+\end{defn}
+\begin{defn}[\textbf{Structure différentielle}]
+    Classe d'équivalence d'atlas, où l'équivalence est donnée par 
+    \textit{l'union est un atlas}.
+\end{defn}
+\begin{defn}[\textbf{Manifold/Variété différentielle}]
+    Variété topologique munie d'une structure différentielle $C^{\infty}$.
+\end{defn}
+
+\begin{exs}
+    \textbf{(1)} Un ouvert $U$ de $R^n$ muni de la classe d'équivalence 
+    de $(U,\iota)$ où $\iota$ est l'injection. En particulier, 
+    les ouverts $(U\cap U_{\alpha}, \iota_{\alpha})$ sont dans la classe
+    d'équivalence (la topologie induite).
+
+    \textbf{(2)} Si on prends $GL_n(\R)\subset R^{n^2}$ on obtient 
+    une variété différentielle en regardant celle induite sur l'ouvert
+    $\det^{-1}(\R-0)$ qui est homéomorphe par déf à $GL_n(\R)$.
+\end{exs}
+\section{Morphismes}
+\begin{note}
+    Les équivalences de critères pour montrer qu'un sous ensemble de 
+    $\R^n$ est un submanifold ça a l'air vraiment pratique. À faire
+    à un moment donné mais, y'en a deux que je peux facilement 
+    citer.
+\end{note}
+\begin{defn}[Immersion et submersion]
+    Une $C^k$-flèche $f\colon U\cap \R^n\to \R^d$ est une immersion
+    (resp. submersion) en $P\in U$ si sa différentielle 
+    \[df\colon \R^n\to \R^d\]
+    est surjective (resp. injective).
+\end{defn}
+En gros faut regarder le rang de la jacobienne sur $U$, si il est 
+constant de rang $n-d$ pour la surjectivité, constant plein pour
+l'injectivité.
+\begin{prop}[Des critères pour avoir des structures de sous-variété.]
+    Soit $M\subset \R^n$, $M$ est une $C^k$-sous-variété de $\R^n$
+    de dimension $d$ ssi
+    \begin{itemize}
+        \item \textbf{Critère local :} Pour tout $P$ il existe
+            $g\colon U\cap\R^n\to \R^{n-d}$ une submersion telle que 
+            $M\cap U=g^{-1}(\{0\})$.
+        \item \textbf{Sous forme de graphe :} Au changement d'axe près,
+            pour tout $P\in U$ il existe 
+            $F\colon \Omega\subset \R^d\to \R^{n-d}$ une 
+            $C^k$-flèche telle que $M\cap U=Graph(F)$.
+    \end{itemize}
+\end{prop}
+Y'a un troisième critère qui demande une immersion 
+$h\colon \Omega\to M\cap U$ qui est un homéomorphisme et envoie $0$ sur 
+$P$.
+
+\section{Plan, fibré et espace tangent}
+Dans une sous-variété $M$ de $\R^n$ c'est facile, on déf
+\begin{defn}[Espace tangent]
+    Le plan tangent en $P$ de $\R^n$ est l'ensemble 
+    \[\{v\in\R^n : \exists c\in C^1(I,M),~v=c'(0),~P=c(0)\}\]
+\end{defn}
+Sur une variété différentielle abstraite c'est plus compliqué
+\begin{defn}[Plan tangent]
+    On définit une classe d'équivalence sur les $(I,c)$ où 
+    $I$ est un intervalle ouvert de $\R$ et $c\in C^1(I,M)$ avec 
+    $c(0)=P$ par $(I_1,c_1)~(I_2,c_2)$ si il existe une carte 
+    autour de $P$ t.q 
+    \[(\phi\circ c_1)'(0)=(\phi\circ c_2)'(0)\]
+
+    On définit alors le plan tangent comme l'ensemble des vecteurs 
+    tangents en $P$ où un vecteur tangent est une classe d'équivalence
+    $[I,c]$.
+\end{defn}
+\begin{rem}
+    La flèche $\phi\circ c$ va de $I$ dans $\R^n$.
+\end{rem}
+
+Pour la prochaine fois : Structure d'ev sur le plan tangent indép de la 
+carte puis fibré.
+
+\section{Partitions de l'unité, paracompacité et local-global.}
+Il s'avère que ls manifolds sont T4 et métrisables. On peut montrer 
+qu'y sont T4 en montrant qu'ils sont T3 et paracompacts. Et la 
+paracompacité permet à son tour de déterminer l'existence de partitions
+de l'unité, qui permettent un local-global.
+\begin{defn}[\textbf{Raffinement de recouvrements}]
+    Un recouvrement $(V_{\alpha})$ raffine $(U_{\beta})$ si pour tout
+    $\beta$ on peut trouver $\alpha$ tel que 
+    $V_{\alpha}\subset U_{\beta}$.
+\end{defn}
+\begin{defn}[\textbf{Locale finitude}]
+    Une collection d'ensemble $(A_{\alpha})$ inclus dans un manifold $M$
+    est localement fini si pour tout $m\in M$ on peut trouver $W_m$ un
+    voisinage de $m$ tel que 
+    $\#\{\alpha|A_{\alpha}\cap W_m \ne \emptyset\}$ est fini.
+\end{defn}
+\begin{defn}[\textbf{Partition de l'unité}]
+    Une partition de l'unité sur $M$ est un ensemble de fonctions 
+    $C^{\infty}$, $(\phi_i)_i$ telles que
+    \begin{itemize}
+        \item $\{\supp(\phi_i), i\in I\}$ est localement fini.
+        \item Pour tout $p\in M$,$ \sum_{i\in I} \phi(p) = 1$ et les 
+            $\phi_i$ sont positives.
+    \end{itemize}
+\end{defn}
+
+\section{Variétés riemanniennes}
+À rattraper, 
+$g=\sum g_{ij}d_{x_i}\otimes d_{x_j}$ dans 
+$(T_PM)_{0,2}=T_PM^*\otimes T_PM^*$.
+
+\begin{defn}[Géodésique]
+    Une courbe $C^1$ par morceau $\gamma\colon [a,b]\to (M,g)$ est
+    une géodésique si $\forall [c,d]\subset [a,b]$ on a 
+    \[d_g(\gamma(c), \gamma(d))=lg(\gamma|_{[c,d]}) \]
+    On demande pour l'unicité plus tard que elle soit de vitesse 
+    constante (la norme de la dérivée par la dérivée).
+\end{defn}
+\begin{quest}
+    Étant donné deux points de $(M,g)$ peut-on trouver une géodésique 
+    entre les deux.
+\end{quest}
+
+Non, par exemple dans le plan ou on enlève $(0,0)$ pas de géodésique
+entre $P$ et $-P$.
+\begin{thm}[Hopf-Ridow]
+    Tout deux points de $(M,g)$ sont joints par une géodésique ($M$ est
+    géodésiquement complète) ssi $(M, d_g)$ est complète.
+\end{thm}
+\begin{rem}
+    Toujours vrai si $M$ est compacte. 
+\end{rem}
+
+Soit $(U,\phi)$ une carte de $M$ et $g$ une métrique Riemannienne sur 
+$M$. Soit $D\subset U$ un domaine (ouvert connexe de cloture compacte).
+
+\begin{defn}[Volume de $D$]
+Le volume de $D$ est \[\mu_g(D)=\int_{\phi(D)} \sqrt{det(g_{ij})\circ\phi^{-1}} dx^1\ldots dx^{d}\]
+    avec la mesure Lebesgue sur $\R^d$.
+\end{defn}
+La matrice $(g_{ij})$ est définie positive donc c'est bien défini. Reste
+à voir pourquoi c'est indépendant de la carte et ca mesure bien le 
+volume. 
+\begin{proof}
+    On fixe $u=(u_1,\ldots, u_d)$ une base orthogonale de $(T_PM,g_P)$.
+    On écrit $\partial_i=\sum a_{ki}u_k$. On rappelle que $\partial_i=
+    (d_P\phi)^{-1}e_i$ dans la base canonique $e=(e_1,\ldots,e_d)$. Alors
+    $(a_{ij})=A=[(d_P\phi)^{-1}]_{e\to u}$. On veut m.q :
+    \[\sqrt{det(g_{ij})\phi^{-1}}=det(A)!\]
+    mais $g_{ij}=g_P(\partial_i,\partial_j)=g_P(\sum_ka_{ki}uk,\sum_l a_{lj}u_l)$
+    puis $=\sum_{k,l} a_{ki}a_{lj}g_P(u_k,u_l)$ et 
+    $g_P(u_k,u_l)=\delta_k^l$ d'où $=\sum a_{ki}a_{kh}=(tA.A)_{ij}$.
+    Soit maintenant $\psi\colon U\to \R^d$ une autre carte avec $\psi=
+    (y_1,\ldots,y_d)$. On a $h_{ij}=g(\frac{\partial}{\partial y_i},\frac{\partial}{\partial y_j})$ et 
+    $\frac{\partial}{\partial y_i}=(d_P\psi)^{-1}e_i$. On a 
+    \begin{align*}
+        \mu_g(D)&=\int_{\phi(D)}|det[((d_{\phi(\ldots)}\phi)^{-1}]_{e\to u}\circ \phi^{-1} dx_1\ldots dx_d\\
+                &=\int_{\phi(D)} |det[d_x(\phi^{-1})]_{e\to u}dx_1\ldots dx_d\\
+    \end{align*}
+    et on a $\phi^{-1}=\psi^{-1}\circ\psi\circ\phi^{-1}$ d'où
+    \begin{align*}
+        &=\int_{\phi(D)}|det[d_{\psi\circ\phi^{-1}}\psi^{-1}]_{e\to u}
+                |.|det[d_x\psi\circ\phi^{-1}]_{e\to e}|dx_1\ldots dx_d\\
+        &=\int_{\phi(D)}|det[d_y\psi^{-1}]|dy_1\ldots y_d\\
+        (claim)&=\int_{\phi(D)}\sqrt{det(h_{ij})\circ\psi^{-1}}dy_1\ldots dy_d
+    \end{align*}
+    \begin{rem}
+        $\mu_g$ est absolument continue par rapport à la mesure de 
+        Lebesgue. (i.e. elle est nulle dès que la mesure de lebesgue est
+        nulle) D'où $\mu_g(\bar D- D)=0$.
+    \end{rem}
+    On coupe alors $D$ en des $D_i$ contenus dans dans des cartes 
+    de sorte à être des domaines. C'est là que la remarque est utile.
+\end{proof}
+
+On veut construire des dérivations de $\gamma$ ($\gamma\colon I\to (M,g)$
+, $C^{\infty}$) de sorte que $\gamma$ est une géodésique ssi $(\gamma')'$
+. Pour que ca fasse sens on demande que la norme de la vitesse de la
+dérivée soit constante.
+\chapter{Connexions de Levi-Cevita, dérivée covariantes}
+\section{Connexion de Levi-Cevita}
+\begin{defn}
+    Une connexion sur une variété différentielle est une forme 
+    $\R$-bilinéaire 
+    \[D\colon \Gamma(M)\times \Gamma(M)\to \Gamma(M)\]
+    qu'on note $D(X,Y):= D_XY$. Vérifiant pour tout $f\in C^{\infty}(M)$
+    \begin{itemize}
+        \item $D_{f(X)}Y=fD_XY$
+        \item $D_X(fY)=X.fY+fD_XY$ où $X.f=L_X(f)$ la dérivée de Lie.
+    \end{itemize}
+    Une connexion est sans torsion si $D_XY-D_YX=[X,Y]$. 
+\end{defn}
+\begin{rem}
+    On peut remarquer que $(D_XY)_x$ dépend seulement en $X_x$ et en 
+    $Y$ sur un voisinage de $x$. Plus précisément, si $X,Z\in \Gamma(M)$
+    tel que \[X_x=Z_x\] alors $(D_XY)_x=(D_ZY)x$. On le vérifie, 
+    c'est équivalent à ce que $X_x=0\implies $ 
+    Si $f\in C^{\infty}(M)$ telle que $f(x)=1$ alors 
+    $(D_{fX}Y)_x=f(x)(D_XY)_x)=(D_XY)_x$. On considère maintenant une
+    carte $(U,\phi)$ autour de $x$ et on suppose que $f=0$ sur $M-U$.
+    Alors $fX=0$ sur $M-U$. On écrit $X=\sum_i X^i\partial_i$ sur $U$, 
+    on a
+    \[fX=\sum_ifX^i\partial_i\]
+    avec $=0~ou~\partial$ sur $M-U$. On a 
+    \begin{align*}
+        (D_XY)_x&=(D_{fX}Y)_x\\
+                &=(D_{\sum_i fX^i\partial_i}Y)_x\\
+        (linearite)&=\sum_iX^i(x)(D_{f\partial_i}Y)_x\\
+                   &=0
+    \end{align*}
+    On dit que $D$ est tensoriel par rapport à la premiere variable.
+\end{rem}
+\begin{ex}[Exemples de connexions]
+    Si on prends $X,Y\in \Gamma(\R^n)$, un champ de vecteur sur 
+    $\R^n$ correspond à une flèche $(X,Y)\colon\R^n\to\R^n$. Alors
+    $D_XY=dY(X)$ définit une connexion sans torsion.
+\end{ex}
+
+\begin{defn}
+    Une connexion $D$ sur une variété Riemannienne $(M,g)$ est 
+    compatible avec la métrique $g$ si pour tout $X,Y,Z\in \Gamma(M)$
+    on a 
+    \[X.g(Y,Z)=g(D_XY,Z)+g(Y,D_XZ)\]
+\end{defn}
+
+\begin{heur}
+    La connexion $D$ s'intérprète comme la dérivée $dY$ dans la 
+    direction $X$. La donnée de $(D_XY)_x$ dépend de $X_x$. Sur $\R^n$
+    on a choisi un champ de vecteur à chaque point. On peut choisir
+    une courbe $c$ t.q. $c(0)=Y$ et $c'(0)=X_x$, autrement dit
+    telle que $[c]=X_x$. On a 
+    \begin{align*}
+    \frac{d}{dt|_{t=0}}Y_{c(t)}&=d_{c(0)}Y(c'(0))\\
+                               &=d_xY(X_x)\\
+                               &=(D_XY)_x
+    \end{align*}
+
+    (Si on bouge le long de $X$ comment $Y$ change?)
+\end{heur}
+\begin{rem}[Exemple de compatibiité]
+    $D_XY=dY(X)$ est compatible dans $\R^n$ avec la métrique euclidienne.
+    En un point $x$, si $X_x=c'(0)$ alors
+    \begin{align*}
+        (X.g(Y,Z))^f_x&=(X.f)_x\\
+                      &=(df(X))_x\\
+                      &=d_xf(X_x)\\
+                      &=\frac{d}{dt|_{t=0}}f(c(t))\\
+                      &(t=0)\\
+                      &(g_{c(t)} \textrm{constant en métrique euclidienne})\\
+                      &=\frac{d}{dt}g_{c(t)}(Y_{c(t)},Z_{c(t)})\\
+                      &=<\frac{d}{dt}Y_{c(t)},Z>+<Y,\frac{d}{dt}Z_{c(t)}>\\
+                      &=<D_XY,Z>+<Y,D_XZ>
+    \end{align*}
+\end{rem}
+
+\begin{ex}[Exemple de non compatibilité]
+    Dans $H=\{(x,y)|y>0\}$ le demi-plan. Est-ce que $D_XY=dY(X)$ est 
+    compatible avec $g_H=\frac{dx^2+dy^2}{y^2}$? Pour 
+    $X=(0,1)=\partial_y$ et $Y=(1,0)=\partial_x$. On a 
+    \[D_XY=dY(X)=0\]
+    et 
+    \begin{align*}
+        (X.g_H(Y,Y))_{(x,y)}&=\partial_y1/y^2\\
+                            &=-2/y^3\\
+                            &=2g(D_XY,Y)=0
+    \end{align*}
+    D'où $D_XY=dY(X)$ n'est pas compatible avec $g_H$. On doit changer
+    la "dérivée" par rapport à $Y$ pour contenir la variation de la 
+    métrique par rapport à $y$.
+\end{ex}
+
+\begin{prop}
+    Toute variété Riemannienne a une unique connexion sans torsion 
+    compatible avec sa métrique. On l'appelle la connexion de 
+    Levi-Cevita (une seule personne).
+\end{prop}
+\begin{proof}
+    Soit $X,Y,Z\in \Gamma(M)$. Si $D$ est une connexion sans torsion
+    compatible avec une métrique $g$. On a 
+    \begin{align}
+        X.g(Y,Z)&=g(D_XY,Z)+g(Y,D_XZ)\\
+        Y.g(X,Z)&=g(D_YX,Z)+g(X,D_YZ)\\
+        Z.g(X,Y)&=g(D_ZX,Y)+g(X,D_ZY)
+    \end{align}
+    En calculant $(2.1)+(2.2)-(2.3)$ on a par linéarité
+    \begin{align*}
+    X.g(Y,Z)+Y.g(X,Z)-Z.g(X,Y)&=g(D_XY+D_YX,Z)+g(Y,[X,Z])+g(X,[Y,Z])\\
+                              &=2g(D_XY,Z)+\\
+                              &g([Y,X],Z)+g(Y,[X,Z])+g(X,[Y,Z])
+    \end{align*}
+    Alors 
+    \begin{align*}\label{eq:metriquecompatible}
+        2g(D_XY,Z)&=X.g(Y,Z)+Y.g(X,Z)-Z.g(X,Y)+\\
+                  &g([X,Y],Z)-g([X,Z],Y)-g(X,[Y,Z])
+    \end{align*}
+    Ca prouve l'unicité car $D$ apparaît pas à droite.
+    Maintenant on montre que $g(D_XY, Z)$ est tensorielle en $Z$, i.e.
+    $\forall f\in C^{\infty}(M)$ on a $g(D_XY,fZ)=fg(D_XY,Z)$ (c'est
+    juste un calcul on le fait pas). Alors $g(D_XY,Z)_x$ ne dépend que de
+    $Z_x$ et $X,Y$. Soit $(e_i$ une base orthonormale de $(T_xM, g_x)$,
+    on a
+    \begin{align*}
+        (D_XY)_x&=\sum_ig_x((D_xY)_x,e_i)e_i\\
+                &=\sum g(D_XY, Z_i)e_i\\
+                &(\textrm{où }Z_{i,x}=e_i, Z_i\in \Gamma(M))\\
+    \end{align*}
+    alors le côté droit de \ref{eq:metriquecompatible} détermine
+    $(D_XY)_x$. Un calcul montre que le côté droit de 
+    \ref{eq:metriquecompatible} vérifie les axiomes.
+\end{proof}
+\begin{ex}
+    $D_XY=dY(X)$ est la connexion de Levi-Cevita sur $\R^n$ pour la 
+    métrique euclidienne.
+\end{ex}
+\textit{Dans une carte :} Sur $(M,g)$  et $D$ sa connexion de Levi-Cevita
+, $(U,\phi)$ une carte, $\phi=(x_1,\ldots,x_d)$ des coordonnées, comme
+$\partial_i,\partial_j\in \Gamma(U)$ on a $D_{\partial_i}\partial_j\in
+\Gamma(U)$. Donc on peut écrire 
+\[D_{\partial_i}\partial_j=\sum_{k=1}^d \Gamma_{ij}^k\partial_k\]
+où $\Gamma_{ij}^k\in C^{\infty}(U)$ sont appelés les symboles de 
+Christoff, ils déterminent $D$. 
+
+\begin{ex}
+    Tout le long on utilise que $\partial_x$ et $\partial_y$ sont
+    perpendiculaire (pour la métrique hyperbolique, regarder la matrice).
+    On calcule la connexion de Levi-Cevita de la métrique hyperbolique.
+    On a \[g_H\colon (g_{H,(i,j)}=\begin{pmatrix}1/y^2&0\\0&1/y^2\end{pmatrix}\].
+    Avec \[\partial_x.g(\partial_x,\partial_x)=0=2g_x(D_{\partial_x}\partial_x,\partial_x\]) 
+    On a la perpendicularité d'où $\Gamma_{11}^1=0$ et $D_{\partial_x}\partial_x=\Gamma_{11}^2\partial_y$.
+    Ensuite \[\partial_x.g(\partial_x,\partial_y)=0=g(D_{\partial_x}\partial_x,
+    \partial_y)+g(\partial_x,D_{\partial_x}\partial_y)\]
+    et \[\partial_y.g(\partial_x,\partial_x)=-2/y^3=2g(D_{\partial_y}\partial_x,\partial_x)=2g(D_{\partial_x}\partial_y,\partial_x)\]
+    sachant que $D_{\partial_x}\partial_y-D_{\partial_y}\partial_x=
+    [\partial_x,\partial_y]=0$.
+    Bon c'est le bordel.
+\end{ex}
+
+
+\end{document}
+

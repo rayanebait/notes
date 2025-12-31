@@ -1,0 +1,169 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amsmath,  amsthm,enumerate}
+\usepackage{csquotes}
+\usepackage[provide=*,french]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{quiver, tikz}
+
+%symbole caligraphique
+\usepackage{mathrsfs}
+
+%hyperliens
+\usepackage{hyperref}
+
+%pseudo-code
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\makeatletter
+  \renewcommand{\ALG@name}{Algorithme}
+  \makeatother
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[LO]{\textit \leftmark}
+\fancyhead[RE]{\textit \rightmark}
+\renewcommand{\headrulewidth}{0pt} % and the line
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+}
+
+%bibliographie
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Annexe}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+
+\setlength\parindent{24pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rel}{\omathcal{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\m}{\mathfrak m}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\disc}{\textrm{disc}}
+\newcommand{\Pic}{\textrm{Pic}}
+\newcommand{\End}{\textrm{End}}
+\newcommand{\Spec}{\textrm{Spec}}
+
+\newcommand{\cL}{\mathscr{L}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théoreme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{heur}{Heuristique}
+\newtheorem{rem}{Remarque}
+\newtheorem{rembis}{Remarque}
+\newtheorem{note}{Note}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}
+\newtheorem*{eq}{Équivalences}
+\newtheorem{prob}{Problème}
+\newtheorem{quest}{Question}
+\newtheorem{prot}{Protocole}
+\newtheorem{algo}{Algorithme}
+\newtheorem{defn}{Définition}
+\newtheorem{defnbis}{Définition}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercices}
+
+\theoremstyle{remark}
+
+\definecolor{wgrey}{RGB}{148, 38, 55}
+\definecolor{wgreen}{RGB}{100, 200,0} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=wgreen,
+    urlcolor=wgrey,
+    filecolor=wgrey
+}
+
+\title{Intuitions}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Sections, Yoneda, faisceaux et topos}
+Dans le Serre pour calculer $*_AG_i$ il utilise localement 
+\[G_i/A=\langle s_{ij}|j\rangle\]
+et $S_i\times A\to G_i$. Ensuite il note $X$ les mots réduits (découpés) et montre 
+qu'on peut agir avec G sur les mots réduits ET LÀ, il utilise que $G$ se découpe en des
+$G_i\times Y_i$ avec lesquels on sait agir.  Puis que l'action se recolle car on
+a une section $G\to X$ !! En gros 1), découpage de l'action $G$ sur $X$, puis
+section $G\to X$ via yoneda ($g$ associe $g(1;)$)!
+Ça suggérait $X$ comme la descente et les $G_i\times Y_i$ comme le découpage de $G$.
+La section montre que le découpage se recolle. Et le crux est qu'on agit via Yoneda.
+
+
+\section{Exemples d'analogies très (trop) concrète}
+\subsection{Suites convergentes et limites projectives}
+Une suite $\overline \N\to \R^2$ qui est cauchy et une limite projective $(A_i)$ dans
+une catégorie. Le lien ? J'aimerai supposer que si $|y_i-y_{i+1}|>|y_{i+1}-y_{i+2}|$
+et si $|y_i-y_{i+1}|<\epsilon$ et $|y_{i+1}-y_{i+2}|<\epsilon$ alors
+$|y_i-y_{i+2}|<\epsilon$ implique cauchy (c'est clair). Maintenant d'une
+suite de Cauchy je forme la catégorie sur $\overline\N$ formée de flèches entre
+$i$ et $j$ si $|y_i-y_j|<\epsilon$, on peut tronquer et là on obtient juste
+l'ordre totale sur $\overline \N$. À l'inverse j'aimerai dire que si
+je peux construire $\N$ et une colimite via les cônes alors en fait 
+j'obtiens une suite de Cauchy.
+
+Peut-être que ce que je peux dire c'est que pour une suite dans $\R^2$
+je met une flèche entre $y_i$ et $y_j$ ssi $|y_i-y_j|<\epsilon$. Alors
+ma suite est Cauchy ssi éventuellement j'ai un "graphe orienté complet"
+qui correspond à $\overline N$. Ou plutôt, si je peux vérifier que
+tout les triangles commutent (la condition du haut), alors c'est
+Cauchy et donc converge. OUI voilà.
+
+\subsection{Traduire "la suite converge"}
+Dans le cas des fonctions, ca veut dire que la définition locale implique la
+définition globale.
+
+\subsection{Limites projectives utilisées}
+limites de fonctions trivialement.
+
+\subsection{Limites projectives utiles}
+Une fonction du disque $=$ limite de fonction des disques fermés et autre exemples$=$
+système cohérent de fonction sur n'importe quelle chaine qui remplie le disque.
+
+Cribles ? faisceaux ?
+
+
+\subsection{Ca suggère les faisceaux!}
+
+
+
+
+\end{document}
+
