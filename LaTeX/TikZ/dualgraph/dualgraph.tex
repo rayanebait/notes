@@ -14,7 +14,36 @@
 %	}
 %\end{tikzpicture}
 %\end{center}
-Normal text
+%\begin{figure}
+%%\centering
+%\begin{tikzpicture}[line width=0.8pt]
+%\foreach \i in {-9,...,9}{
+%	\foreach \j in {-9,...,9}{
+%		\coordinate(v\i\j) at (\i,\j);
+%		\foreach \k in {1,...,8}{
+%			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*45-22.5: 0.3)$);
+%		}
+%	}
+%}
+%
+%\draw (v02)--(v04)--(v26)--(v46)node[near start, above]{$a$}--(v64)--(v62)node[near end, right]{$a^{-1}$}--(v40)--(v20)--cycle;
+%
+%\draw [dashed](v33)--(v11);
+%\draw [dashed](v33)--(v03);
+%\draw [dashed](v33)--(v15);
+%\draw [dashed, ->](v33)--(v37);
+%\draw [dashed](v33)--(v55);
+%\draw [dashed](v33)--(v63);
+%\draw [dashed, ->](v73)--(v63);
+%\draw [dashed](v33)--(v51);
+%\draw [dashed](v33)--(v30);
+%
+%\draw [dashed, ->](v33)--(v30);
+%
+%
+%\end{tikzpicture}
+%\end{figure}
+
 \begin{figure}
 \centering
 \begin{tikzpicture}[line width=0.8pt]
@@ -27,16 +56,28 @@ Normal text
 	}
 }
 
-\draw (v02)--(v20)node[midway,sloped, below]{$a^{-1}$}--(v22)node[midway, left]{$b$}--cycle node[midway, sloped, above]{$e$};
-\draw (v20)--(v22)node[midway, right]{$b^{-1}$}--(v42)node[midway, sloped, below]{$d^{-1}$}--cycle node[midway, sloped, below]{$c$};
-\draw (v22)--(v42)node[midway,above]{$d$}--(v24)node[midway, sloped, above]{$e^{-1}$}--cycle node[midway,left]{$c^{-1}$};
-\draw (v00) circle (0.4) node[left]{$<$} node[right]{$a$};
-\draw [line width=0.2pt, blue, dashed,->] (v028)--(v225)node[midway,below]{$h_2$};
+\draw (v-10)--(v-32)node[near end, sloped,below]{$c$}--(v-14)node[near start, sloped, above]{$c^{-1}$}--(v14)node[near start, above]{$a$}--(v32)node[near start, sloped, above]{$b$}--(v10)node[near start, sloped, below]{$a^{-1}$}--cycle node[near start, below]{$b^{-1}$};
 
+
+\draw [dashed](v02)--(v-21);
+\draw [dashed](v02)--(v-23);
+\draw [dashed](v02)--(v21);
+\draw [dashed](v02)--(v23);
+\draw [dashed](v02)--(v00);
+\draw [dashed, ->](v02)--(v05);
+\draw [dashed, ->,](v40)--(v21);
+
+\draw [dashed] (v50)--(v54)--(v94)--(v90)--cycle;
+\draw [dashed] (v50) arc (180:135:2) arc (135:90:2.06);
+\draw [dashed] (v50) arc (270:315:2) arc (315:360:2.06);
+
+\draw (v61) node{$.~v_1$};
+\draw (v83) node{$.~v_2$};
 \end{tikzpicture}
-\caption{One face reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$}
 \end{figure}
+
+
+
+
 \end{document}
-
-
 
