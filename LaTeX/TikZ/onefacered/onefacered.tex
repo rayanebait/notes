@@ -39,6 +39,29 @@ Normal text
 \end{tikzpicture}
 \caption{Reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$.}
 \end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line width=0.8pt]
+\foreach \i in {-9,...,9}{
+	\foreach \j in {-9,...,9}{
+		\coordinate(v\i\j) at (\i,\j);
+		\foreach \k in {1,...,8}{
+			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*45-22.5: 0.3)$);
+		}
+	}
+}
+
+\draw (v00)--(v20)--(v22)--(v02)--cycle; 
+\draw (v20)--(v40)--(v42)--(v22)--cycle; 
+\draw (v40)--(v60)--(v62)--(v42)--cycle; 
+\draw (v60)--(v80)--(v82)--(v62)--cycle; 
+\draw (v42)--(v62)--(v64)--(v44)--cycle; 
+
+\end{tikzpicture}
+\caption{Reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$.}
+\end{figure}
+
 \end{document}
 
 

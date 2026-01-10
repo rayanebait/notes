@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1767714132.77038 "onefacered.tex" "onefacered.pdf" "onefacered" 1767714141.40925 0
+["pdflatex"] 1768068821.21334 "dualgraph.tex" "dualgraph.pdf" "dualgraph" 1768068825.8418 0
   "/etc/texmf/web2c/texmf.cnf" 1720539970.77665 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -97,10 +97,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1744212065.59447 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1744212200 8214190 91a4c7efbc70bec92f0a16f36d923de4 ""
-  "onefacered.aux" 1767714141.36521 390 eb571b244b7064a1bbf009616be41e47 "pdflatex"
-  "onefacered.tex" 1767714132.20615 2072 6a520afd369b5a4c0ab5f2f479145921 ""
+  "dualgraph.aux" 1768068825.79679 221 d3dcc8035bd368fbf3e131d855bdd68e "pdflatex"
+  "dualgraph.tex" 1768068819.25274 3950 4dc2d1188dd35632176f548e4377765b ""
   (generated)
-  "onefacered.aux"
-  "onefacered.log"
-  "onefacered.pdf"
+  "dualgraph.aux"
+  "dualgraph.log"
+  "dualgraph.pdf"
   (rewritten before read)

@@ -17,7 +17,7 @@
 Normal text
 \begin{figure}
 \centering
-\begin{tikzpicture}[line width=0.8pt]
+\begin{tikzpicture}[line width=0.8pt,scale=0.5]
 \foreach \i in {-9,...,9}{
 	\foreach \j in {-9,...,9}{
 		\coordinate(v\i\j) at (\i,\j);
@@ -27,14 +27,119 @@ Normal text
 	}
 }
 
-\draw (v02)--(v20)node[midway,sloped, below]{$a^{-1}$}--(v22)node[midway, left]{$b$}--cycle node[midway, sloped, above]{$e$};
-\draw (v20)--(v22)node[midway, right]{$b^{-1}$}--(v42)node[midway, sloped, below]{$d^{-1}$}--cycle node[midway, sloped, below]{$c$};
-\draw (v22)--(v42)node[midway,above]{$d$}--(v24)node[midway, sloped, above]{$e^{-1}$}--cycle node[midway,left]{$c^{-1}$};
-\draw (v00) circle (0.4) node[left]{$<$} node[right]{$a$};
-\draw [line width=0.2pt, blue, dashed,->] (v028)--(v225)node[midway,below]{$h_2$};
+\draw [fill=gray!20](v-70)--node[midway,sloped,below]{$a$}(v-92)--node[midway,left]{$a^{-1}$}(v-94)--node[midway,sloped,above]{$b^{-1}$}(v-76)--node[midway,sloped,above]{$d$}(v-56)--node[midway,above]{$c$}(v-34)--node[midway, right]{$d^{-1}$}(v-32)--node[midway,sloped, below]{$c^{-1}$}(v-50)--node[midway,sloped,below]{$b$}cycle;
+
+%5
+\fill [gray!20] (v335)--(v115)--(v025)--(v035)--cycle;
+%a^*
+\draw [blue, dashed, ->](v335)--(v225);
+\draw [blue, dashed](v225)--(v115);
+\draw [blue] (0.2,0.2)node{$a^*$};
+%a^*-1
+\draw [blue, dashed, ->](v035)--++(1.5,0);
+\draw [blue, dashed](v035)++(1.5,0)--(v335);
+
+\draw (v115)--(v025)--(v035);
+
+%4
+\fill [gray!20](v334)--(v034)--(v044)--(v154)--cycle;
+%a^*-1
+\draw [blue, dashed, ->](v034)--++(1.5,0);
+\draw [blue, dashed](v034)++(1.5,0)--(v334);
+%b^*-1
+\draw [red, dashed, ->](v154)--(v244);
+\draw [red, dashed](v244)--(v334);
+
+\draw (v034)--(v044)--(v154);
+
+%3
+\fill [gray!20](v333)--(v153)--(v263)--(v363)--cycle;
+%b^*-1
+\draw [red, dashed, ->](v153)--(v243);
+\draw [red, dashed](v243)--(v333);
+%d^*
+\draw [brown, dashed, ->](v333)--++(0,1.5);
+%\draw [brown, dashed](v333)++(0,1.5)--node[midway,right]{$d^*$}(v363);
+\draw [brown, dashed](v333)++(0,1.5)--(v363);
+\draw [brown] (v37)node{$d^*$};
+
+\draw (v153)--(v263)--(v363);
+
+%2
+\fill [gray!20](v332)--(v362)--(v462)--(v552)--cycle;
+%c^*
+\draw [green, dashed, ->](v332)--(v442);
+\draw [green, dashed](v442)--(v552);
+
+%d^*
+\draw [brown, dashed, ->](v332)--++(0,1.5);
+\draw [brown, dashed](v332)++(0,1.5)--(v362);
+
+\draw (v362)--(v462)--(v552);
+
+%1
+\fill [gray!20](v331)--(v551)--(v641)--(v631)--cycle;
+%c^*
+\draw [green, dashed, ->](v331)--(v441);
+%\draw [green, dashed](v441)--node[midway,sloped,below]{$c^*$}(v551);
+\draw [green, dashed](v441)--(v551);
+\draw [green] (5.8,5.8)node{$c^*$};
+%d^*-1
+\draw [brown, dashed, ->](v631)--++(-1.5,0);
+\draw [brown, dashed](v631)++(-1.5,0)--(v331);
+
+\draw (v551)--(v641)--(v631);
+
+%8
+\fill [gray!20](v338)--(v638)--(v628)--(v518)--cycle;
+%d^*-1
+\draw [brown, dashed, ->](v638)--++(-1.5,0);
+\draw [brown, dashed](v638)++(-1.5,0)--(v338);
+%c^*-1
+\draw [green, dashed, ->](v518)--(v428);
+\draw [green, dashed](v428)--(v338);
+
+\draw (v638)--(v628)--(v518);
+
+%7
+\fill [gray!20](v337)--(v517)--(v407)--(v307)--cycle;
+%b^*
+\draw [red, dashed, ->](v337)--++(0,-1.5);
+%\draw [red, dashed](v337)++(0,-1.5)--node[midway,right]{$(b^*)^{-1}$}(v307);
+\draw [red, dashed](v337)++(0,-1.5)--(v307);
+\draw[red] (v3-1)node{$b^*$};
+%c^*-1
+\draw [green, dashed, ->](v517)--(v427);
+\draw [green, dashed](v427)--(v337);
+
+\draw (v517)--(v407)--(v307);
+
+%6
+\fill [gray!20](v336)--(v306)--(v206)--(v116)--cycle;
+%a^*-1
+\draw [blue, dashed, ->](v336)--(v226);
+\draw [blue, dashed](v226)--(v116);
+%b^*
+\draw [red, dashed, ->](v336)--++(0,-1.5);
+\draw [red, dashed](v336)++(0,-1.5)--(v306);
+
+\draw (v306)--(v206)--(v116);
+
+
+\draw [dashed, blue,->](9,0)--node[midway, above]{$a^*$}(11,0);
+\draw [dashed, red,->](9,1)--node[midway, above]{$b^*$}(11,1);
+\draw [dashed, green,->](9,2)--node[midway, above]{$c^*$}(11,2);
+\draw [dashed, brown,->](9,3)--node[midway, above]{$d^*$}(11,3);
+
+
+
+
+
+
+
 
 \end{tikzpicture}
-\caption{One face reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$}
+\caption{Dualizing $aa^{-1}b^{-1}dcd^{-1}c^{-1}b$ into ($a$, $ba^{-1}$, $cd^{-1}b^{-1}c^{-1}d$)}
 \end{figure}
 \end{document}
 
