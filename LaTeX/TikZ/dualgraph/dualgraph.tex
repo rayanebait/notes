@@ -155,12 +155,53 @@
 \draw (v306)--(v206)--(v116);
 
 
-\draw [dashed, blue,->](9,0)--node[midway, above]{$a^*$}(11,0);
-\draw [dashed, red,->](9,1)--node[midway, above]{$b^*$}(11,1);
-\draw [dashed, green,->](9,2)--node[midway, above]{$c^*$}(11,2);
-\draw [dashed, brown,->](9,3)--node[midway, above]{$d^*$}(11,3);
+%\draw [dashed, blue,->](9,0)--node[midway, above]{$a^*$}(11,0);
+%\draw [dashed, red,->](9,1)--node[midway, above]{$b^*$}(11,1);
+%\draw [dashed, green,->](9,2)--node[midway, above]{$c^*$}(11,2);
+%\draw [dashed, brown,->](9,3)--node[midway, above]{$d^*$}(11,3);
+\foreach \i in {0,...,9}{
+	\foreach \j in {0,...,9}{
+		\coordinate(w\i\j) at ($(v\i\j)+(10,0)$);
+		\foreach \k in {1,...,8}{
+			\coordinate(w\i\j\k) at ($(w\i\j)+(\k*45-22.5: 0.3)$);
+		}
+	}
+}
 
+% f1
+\draw [dashed, blue] (w00) circle (0.8) node[right]{$a^*$};
 
+\draw (w00)--++(-0.6, -0.6);
+
+\fill [gray!50, opacity=0.2] (w00) circle (0.8);
+
+%f2
+\draw [dashed, blue, ->] (w02)--(w11);
+\draw [dashed, blue] (w11)--(w20);
+\draw [dashed, red,->] (w02) arc (90:45: 2);
+\draw [dashed, red] (w20) arc (0:45: 2);
+\fill [gray!50, opacity=0.2] (w20)--(w02)arc(90:0:2)--cycle;
+
+\draw (w11)--++(0.4,0.4);
+
+%f3
+\draw [dashed, red,->] (w31)--node[midway, sloped,above]{$b^*$}(w22);
+\draw [dashed, red] (w22)--(w13);
+
+\draw[dashed, green,->] (w13)--node[midway,left]{$c^*$}(w14);
+\draw[dashed,green](w14)--(w15);
+\draw[dashed, brown,->] (w15)--node[midway,above]{$d^*$}(w25);
+\draw[dashed,brown](w25)--(w35);
+
+\draw [dashed, green,->] (w53)--(w44);
+\draw [dashed, green] (w44)--(w35);
+
+\draw [dashed, brown,->] (w31)--(w42);
+\draw [dashed, brown] (w42)--(w53);
+
+\fill [gray!50,opacity=0.2] (w31)--(w13)--(w15)--(w35)--(w53)--cycle;
+
+\draw (w25)--(w24)--(w22)--(w24)--(w14)--(w24)--(w44)--(w24)--(w42);
 
 \end{tikzpicture}
 \caption{Dualizing $aa^{-1}b^{-1}dcd^{-1}c^{-1}b$ into ($a$, $ba^{-1}$, $cd^{-1}b^{-1}c^{-1}d$)}
