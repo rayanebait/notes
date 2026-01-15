@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768406667.83658 "dualgraph.tex" "dualgraph.pdf" "dualgraph" 1768406675.86212 0
+["pdflatex"] 1768472214.96128 "dualgraph.tex" "dualgraph.pdf" "dualgraph" 1768472227.69347 2
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1755987285 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1755987285 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1755987285 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -95,8 +95,8 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1755987285 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1764524549 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1764524526 2008253 f34bb2954df41dc84858751ce0436cc5 ""
-  "dualgraph.aux" 1768406675.83167 237 fb1bcdf664b4375105b33bc1b8aa4bd9 "pdflatex"
-  "dualgraph.tex" 1768406654.34434 5948 6e00d6e9edbb891fb34fa4050119738a ""
+  "dualgraph.aux" 1768472227.66319 237 fb1bcdf664b4375105b33bc1b8aa4bd9 "pdflatex"
+  "dualgraph.tex" 1768472214.89204 7717 e3d0b44dba5a801767dc0ca5bacf45d0 ""
   (generated)
   "dualgraph.aux"
   "dualgraph.log"
