@@ -3,65 +3,136 @@
 \usetikzlibrary{calc}
 \begin{document}
 
-%\begin{center}
-%\begin{tikzpicture}
-%
-%	\foreach \i [remember=\i as \j (initially 0), evaluate=\i as \c using 100*\i/100] in {10,20,...,100} {
-%		%\fill [yellow!\c](\j:0.5) circle (0.5);
-%		\fill [red!\c](\i:1) circle (0.5);
-%		%\fill [blue!\c](-\j:0.5) circle (0.5);
-%		\fill [black!\c](-\i:1) circle (0.5);
-%	}
-%\end{tikzpicture}
-%\end{center}
-Normal text
 \begin{figure}
 \centering
-\begin{tikzpicture}[line width=0.8pt]
+\begin{tikzpicture}[line width=0.8pt,scale=0.5]
 \foreach \i in {-9,...,9}{
 	\foreach \j in {-9,...,9}{
 		\coordinate(v\i\j) at (\i,\j);
-		\foreach \k in {1,...,8}{
-			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*45-22.5: 0.3)$);
+		\foreach \k in {0,...,9}{
+			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*36-18: 0.4)$);
 		}
 	}
 }
 
-\draw (v-42)--(v-20)node[midway,sloped, below]{$a^{-1}$}--(v-22)node[midway, left]{$b$}--cycle node[midway, sloped, above]{$e$};
-\draw (v-20)--(v-22)node[midway, right]{$b^{-1}$}--(v02)node[midway, sloped, below]{$d^{-1}$}--cycle node[midway, sloped, below]{$c$};
-\draw (v-22)--(v02)node[midway,above]{$d$}--(v-24)node[midway, sloped, above]{$e^{-1}$}--cycle node[midway,left]{$c^{-1}$};
-\draw (v-40) circle (0.4) node[left]{$<$} node[right]{$a$};
-\draw [line width=0.2pt, blue, dashed,->] (v-428)--(v-225)node[midway,below]{$h_2$};
+%% Cercle elliptique
+\fill [gray!20] (v00) circle (1);
+\draw [blue, dashed] (v00) circle (1);
+
+\draw [blue] (v00) node[left]{$<$} node[right]{$a^*$};
+
+
+%% triangle bas gauche
+
+\fill [gray!20] (v40)--(v04)--(v44)--cycle;
+\draw (v22)--(v33)--(v42)--(v33)--(v24);
+
+%a*^-1
+\draw [blue,dashed ,->](v40)--(v22)node[midway,sloped, below]{$a^{-1}$};
+\draw [blue, dashed](v22)--(v04);
+
+% b*^{-1}
+\draw [red, dashed,->](v40)--(v42);
+\draw [red, dashed](v42)--(v44);
+
+%e^*
+\draw [purple,dashed, ->] (v04)--(v24)node[midway, above]{$e^*$};
+\draw [purple,dashed ] (v24)--(v44);
+
+%% triangle bas droite
+
+\fill [gray!20] (v54)--(v94)--(v50)--cycle;
+\draw (v63)--(v72)--(v63)--(v52)--(v63)--(v74);
+
+%b^*
+\draw [red, dashed, ->] (v50)--(v52)node[midway, left]{$b^*$};
+\draw [red, dashed] (v52)--(v54);
+
+%c^*
+\draw [green, dashed,->] (v50)--(v72)node[midway, sloped, below]{$c^*$};
+\draw [green, dashed] (v72)--(v94);
+
+%d^*
+\draw [brown, dashed,->] (v94)--(v74)node[midway, above]{$d^*$};
+\draw [brown, dashed] (v74)--(v54);
+
+%% triangle haut droite
+\fill [gray!20] (v55)--(v59)--(v95)--cycle;
+\draw (v57)--(v75)--(v66)--(v77);
+
+%d*^-1
+\draw [brown, dashed, ->] (v95)--(v75);
+\draw [brown, dashed] (v75)--(v55);
+
+%c*^-1
+\draw [green, dashed] (v55)--(v57);
+\draw [green, dashed, ->] (v59)--(v57);
+
+\draw [purple, dashed,->] (v95)--(v77);
+\draw [purple, dashed] (v77)--(v59);
+
+
+
+\draw (v-90)--(v-63)--(v-33)--(v-36);
+%e c^-1 e^-1 c^-1
 
 %\draw (v20)--(v31)--(v51)--(v53);
-\draw (2,0)--(4/3+2,4/3)--(8/3+2,4/3)--(8/3+2,8/3);
-\draw (8/3+2,4/3)--(10/3+2,2/3);
+%\draw (2,0)--(4/3+2,4/3)--(8/3+2,4/3)--(8/3+2,8/3);
+%\draw (8/3+2,4/3)--(10/3+2,2/3);
+
 \end{tikzpicture}
-\caption{Reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$.}
 \end{figure}
 
 \begin{figure}
-\centering
-\begin{tikzpicture}[line width=0.8pt]
+\begin{tikzpicture}[line width=0.8pt,scale=0.5]
 \foreach \i in {-9,...,9}{
 	\foreach \j in {-9,...,9}{
 		\coordinate(v\i\j) at (\i,\j);
-		\foreach \k in {1,...,8}{
-			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*45-22.5: 0.3)$);
+		\foreach \k in {0,...,9}{
+			\coordinate(v\i\j\k) at ($(v\i\j)+(\k*36-18: 0.4)$);
 		}
 	}
 }
 
-\draw (v00)--(v20)--(v22)--(v02)--cycle; 
-\draw (v20)--(v40)--(v42)--(v22)--cycle; 
-\draw (v40)--(v60)--(v62)--(v42)--cycle; 
-\draw (v60)--(v80)--(v82)--(v62)--cycle; 
-\draw (v42)--(v62)--(v64)--(v44)--cycle; 
+%% Cercle e
+\fill [gray!20] (v44) arc (90:270:2);
+\draw [purple, dashed] (v44) arc (90:270:2);
+
+\draw [blue, dashed] (v42) arc (0:180:1);
+
+
+
+%% triangle bas droite
+
+\fill [gray!20] (v44)--(v84)--(v40)--cycle;
+
+%b^*
+\draw [red, dashed, ->] (v40)--(v42)node[midway, left]{$b^*$};
+\draw [red, dashed] (v42)--(v44);
+
+%c^*
+\draw [green, dashed,->] (v40)--(v62)node[midway, sloped, below]{$c^*$};
+\draw [green, dashed] (v62)--(v84);
+
+%d^*
+\draw [brown, dashed,->] (v84)--(v64)node[midway, above]{$d^*$};
+\draw [brown, dashed] (v64)--(v44);
+
+%% triangle haut droite
+\fill [gray!20] (v44)--(v48)--(v84)--cycle;
+%d*^-1
+\draw [brown, dashed, ->] (v84)--(v64);
+\draw [brown, dashed] (v64)--(v44);
+
+%c*^-1
+\draw [green, dashed] (v44)--(v46);
+\draw [green, dashed, ->] (v48)--(v46);
+
+\draw [purple, dashed,->] (v84)--(v66);
+\draw [purple, dashed] (v66)--(v48);
 
 \end{tikzpicture}
-\caption{Reduction of the words $a$, $a^{-1}eb$, $b^{-1}d^{-1}c$ and $c^{-1}de^{-1}$.}
 \end{figure}
-
 \end{document}
 
 
