@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.30)  11 JAN 2026 15:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.30)  15 JAN 2026 11:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -279,31 +279,29 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 22.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 22.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
+(Font)              <6> on input line 22.
 
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-] (./onefacered.aux)
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./onefacered.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 34683 strings out of 475171
- 602732 string characters out of 5767094
- 1533438 words of memory out of 5000000
- 57505 multiletter control sequences out of 15000+600000
+ 39745 strings out of 475171
+ 682222 string characters out of 5767094
+ 1744644 words of memory out of 5000000
+ 62567 multiletter control sequences out of 15000+600000
  561573 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 102i,9n,107p,412b,741s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,8n,107p,412b,760s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on onefacered.pdf (1 page, 41866 bytes).
+Output written on onefacered.pdf (1 page, 37024 bytes).
 PDF statistics:
  31 PDF objects out of 1000 (max. 8388607)
  19 compressed objects within 1 object stream
